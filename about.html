@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Nikethana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f4f0;
+      --fg: #111;
+      --muted: #777;
+      --border: #dddbd5;
+      --card-bg: #eeecea;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: var(--bg);
+    }
+
+    .nav-left { display: flex; gap: 24px; }
+    .nav-left a { font-size: 14px; color: var(--muted); transition: color .2s; }
+    .nav-left a:hover, .nav-left a.active { color: var(--fg); }
+
+    .nav-social { display: flex; gap: 16px; align-items: center; }
+    .nav-social a { display: flex; align-items: center; opacity: .55; transition: opacity .2s; }
+    .nav-social a:hover { opacity: 1; }
+    .nav-social svg { width: 16px; height: 16px; fill: var(--fg); }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 120px 40px 80px;
+    }
+
+    .about-layout {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+      width: 200px;
+      aspect-ratio: 1/1;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .about-content h1 {
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+    }
+
+    .about-content .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .about-content p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-notice {
+      margin-top: 40px;
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    footer .social-links { display: flex; gap: 20px; }
+    footer .social-links a { color: var(--muted); transition: color .2s; }
+    footer .social-links a:hover { color: var(--fg); }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .page { padding: 80px 20px 40px; }
+      .about-layout { flex-direction: column; }
+      footer { flex-direction: column; gap: 16px; padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">home</a>
+      <a href="about.html" class="active">about</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://x.com/nike_thana" target="_blank" title="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://github.com/Nikethana-Nagasubramanian/" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="mailto:itsmenike3@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://medium.com/@nike_thana/" target="_blank" title="Medium">
+        <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="about-layout">
+      <div class="about-photo">
+        <img src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg" alt="Nikethana (Nike)" />
+      </div>
+      <div class="about-content">
+        <h1>Nikethana (Nike)</h1>
+        <p class="subtitle">Product Builder · Boston, MA</p>
+        <p>
+          I design and build products end to end — from strategy and user research to UI and functional prototypes. Experienced in B2B, B2C and AI tools.
+        </p>
+        <p>
+          Based in Boston, open to relocate.
+        </p>
+        <!-- ⬇️ Add more about content here — paste text from your Framer about page -->
+        <div class="about-notice">
+          📝 <strong>Note:</strong> This page needs your full about content. Paste what's on your Framer about page and I'll fill it in.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Nikethana Nagasubramanian</span>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank">LinkedIn</a>
+      <a href="https://x.com/nike_thana" target="_blank">X</a>
+      <a href="https://github.com/Nikethana-Nagasubramanian/" target="_blank">GitHub</a>
+      <a href="https://medium.com/@nike_thana/" target="_blank">Medium</a>
+      <a href="mailto:itsmenike3@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</body>
+</html>
