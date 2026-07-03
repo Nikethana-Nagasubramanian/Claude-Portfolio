@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=layout-3" />
+  <link rel="stylesheet" href="styles.css?v=layout-5" />
 </head>
 <body>
   <nav class="top-nav archive-nav" aria-label="Primary">
@@ -38,21 +38,20 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
-      <a href="#overview">Summary</a>
-      <a href="#impact">Impact</a>
-      <a href="#context">Context</a>
-      <a href="#role">Role</a>
-      <a href="#shift">Core Shift</a>
-      <a href="#discovery">Discovery</a>
-      <a href="#principles">Principles</a>
-      <a href="#solution">Solution</a>
-      <a href="#framework">Framework</a>
+      <a href="#overview">Overview</a>
+      <a href="#value">Value Delivered</a>
+      <a href="#growthfactor">Why It Matters</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#research">Research</a>
+      <a href="#ia-design">IA & Design</a>
+      <a href="#iterations">Iterations</a>
+      <a href="#final-designs">Final Designs</a>
       <a href="#reflection">Reflection</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <h1 class="case-title">Accelerating Retail Location Evaluation from 6 Hours to Under 1 Minute</h1>
+        <h1 class="case-title">How I Helped Accelerate Retail Location Evaluation: From 6 Hours to Under 1 Minute</h1>
 
         <div class="case-info-grid" aria-label="Project details">
           <div class="case-info-card">
@@ -65,11 +64,20 @@
           </div>
           <div class="case-info-card">
             <p class="case-info-label">Collaborated With</p>
-            <p class="case-info-value">Real Estate Managers, VPs of Real Estate, CPO, CEO</p>
+            <p class="case-info-value">Real Estate Managers, VPs of Real Estate, CPO, CEO, Engineers</p>
           </div>
         </div>
 
-        <p class="case-summary">I led the 0-to-1 design of GrowthFactor, a decision system that helps retail real estate teams evaluate new store locations faster and with more confidence.</p>
+        <div class="case-overview-grid">
+          <div class="case-info-card">
+            <p class="case-info-label">Problem Statement</p>
+            <p class="case-info-value">Retailers struggled with slow, manual site selection processes and lacked a unified tool to make data-driven expansion decisions.</p>
+          </div>
+          <div class="case-info-card">
+            <p class="case-info-label">What I Did</p>
+            <p class="case-info-value">I led user interviews, sketched the first wireframes, and owned the information architecture from the ground up.</p>
+          </div>
+        </div>
 
         <div class="case-media hero-video">
           <video autoplay muted loop playsinline controls>
@@ -79,93 +87,109 @@
         <p class="case-caption">Fig: Final design I shipped</p>
       </header>
 
-      <section class="case-section" id="impact">
-        <p class="case-kicker">Impact</p>
-        <h2 class="case-heading">GrowthFactor changed the behavior around site evaluation.</h2>
-        <p>Instead of starting with scattered research, analysts could start with one focused decision system.</p>
+      <section class="case-section" id="value">
+        <p class="case-kicker">Value Delivered</p>
+        <h2 class="case-heading">The product turned a slow, manual workflow into a repeatable decision system.</h2>
+        <p>GrowthFactor reduced the work of evaluating a retail site from a multi-hour research process into a focused workflow analysts could repeat across hundreds of addresses.</p>
+        <p>Across 30+ customers and 5,000+ analyzed sites, the biggest shift was behavioral: teams no longer had to start with scattered tools, export-heavy research, or manual comparison before deciding whether a location deserved deeper investigation.</p>
 
         <div class="metrics-grid" aria-label="Value delivered">
           <div class="metric-card">
-            <p class="metric-value">6 hrs</p>
-            <p class="metric-label">Reduced to under 1 minute</p>
+            <p class="metric-value">4x</p>
+            <p class="metric-label">Increase in address search capacity</p>
           </div>
           <div class="metric-card">
-            <p class="metric-value">5,000+</p>
-            <p class="metric-label">Sites analyzed in 6 months</p>
+            <p class="metric-value">95%</p>
+            <p class="metric-label">Reduction in site evaluation time</p>
           </div>
           <div class="metric-card">
-            <p class="metric-value">30+</p>
-            <p class="metric-label">Customers supported</p>
+            <p class="metric-value">1</p>
+            <p class="metric-label">Source for accessible location data</p>
           </div>
           <div class="metric-card">
             <p class="metric-value">180+</p>
-            <p class="metric-label">Store openings supported</p>
+            <p class="metric-label">Store openings supported in 6 months</p>
           </div>
         </div>
       </section>
 
-      <section class="case-section" id="context">
-        <p class="case-kicker">Context</p>
-        <h2 class="case-heading">Retail expansion is a high-stakes decision, but the workflow was scattered.</h2>
-        <p>Analysts were piecing together maps, spreadsheets, broker lists, demographics, competitors, traffic, and internal assumptions.</p>
-        <p>The goal was not just a better interface; it was to become the first place teams go when evaluating a location.</p>
-      </section>
-
-      <section class="case-section" id="role">
-        <p class="case-kicker">My Role</p>
-        <h2 class="case-heading">I owned the product shape from raw signals to shipped workflow.</h2>
-        <p>As founding designer, I led strategy, research, information architecture, visual design, and early product direction.</p>
-        <p>I worked closely with founders, real estate stakeholders, and users to turn fragmented data into a repeatable decision system.</p>
-      </section>
-
-      <section class="case-section" id="shift">
-        <p class="case-kicker">Core Shift</p>
-        <h2 class="case-heading">I started by thinking users needed better access to data.</h2>
-        <p>Research showed the real need was a decision framework: what signals matter, how they relate, and when to surface them.</p>
-      </section>
-
-      <section class="case-section" id="discovery">
-        <p class="case-kicker">Discovery</p>
-        <h2 class="case-heading">I simulated the workflow before designing the product.</h2>
-        <p>Without early user access, I evaluated Boston locations as if I were choosing a site for a taco truck.</p>
-        <p>That gave me a baseline for the pressure, ambiguity, and cost behind every location decision.</p>
+      <section class="case-section" id="growthfactor">
+        <p class="case-kicker">Why GrowthFactor Matters</p>
+        <h2 class="case-heading">Opening the next store is as much about where not to go as where to go.</h2>
+        <p>Imagine you are deciding the next location for a growing restaurant chain. A promising address is not enough; you need to understand demand, saturation, nearby competitors, complementary anchors, traffic, and whether a new store could hurt existing locations.</p>
+        <p>GrowthFactor helped retail teams evaluate those signals in one place, so the product could support the first decision in the workflow: should this site move forward or be ruled out early?</p>
 
         <div class="case-media image">
-          <img src="https://framerusercontent.com/images/b7Ssa6fTttffngzMzkgAGjVD4cs.png?width=4201&height=4638" alt="" />
+          <img src="assets/gf/final-map.png" alt="Final GrowthFactor map interface showing retail trade areas, competitors, complements, and site evaluation signals." />
         </div>
-        <p class="case-caption">Fig: User journey and findings from user interviews</p>
+        <p class="case-caption">Fig: Final map-first evaluation experience for understanding where to go and where not to go</p>
       </section>
 
-      <section class="case-section" id="principles">
-        <p class="case-kicker">Design Principles</p>
-        <h2 class="case-heading">The map should do 75% of the storytelling.</h2>
-        <p>The data should support the remaining 25%, giving analysts confidence without forcing them to parse every raw signal.</p>
-        <p>This principle helped me simplify the interface while preserving the depth real estate teams needed.</p>
+      <section class="case-section" id="challenge">
+        <p class="case-kicker">Challenge</p>
+        <h2 class="case-heading">I had the product skills, but not the retail real estate context.</h2>
+        <p>Coming from a CS background, I had to quickly build domain fluency in how real estate teams evaluate trade areas, competitors, and site quality.</p>
+        <p>To close that gap, I simulated the workflow myself before turning research into product structure.</p>
       </section>
 
-      <section class="case-section" id="solution">
-        <p class="case-kicker">Final Solution</p>
-        <h2 class="case-heading">The final workflow turned scattered inputs into one evaluation system.</h2>
-        <p>Analysts could search an address, review market signals, understand competitors and complements, and decide whether a site deserved deeper evaluation.</p>
-        <p>Early versions prioritized data completeness; later versions made the map the hero because that is where users found meaning fastest.</p>
-      </section>
+      <section class="case-section" id="research">
+        <p class="case-kicker">User Research & Interviews</p>
+        <h2 class="case-heading">The research shifted my focus from showing data to structuring decisions.</h2>
+        <p>My initial model was straightforward: competitors, complements, demographics, and traffic. User interviews revealed that the decision was more nuanced, with signals like cannibalization risk, market growth, and analog stores shaping whether a site felt viable.</p>
+        <p>That changed the product direction. Instead of treating every data point as an equal card, I started designing around how signals relate to a site decision and when each signal should appear.</p>
 
-      <section class="case-section" id="framework">
-        <p class="case-kicker">Decision Framework</p>
-        <h2 class="case-heading">The product organized evaluation around market, site, brand, and demographic signals.</h2>
-        <p>This created a foundation for future ranking and comparison workflows without overwhelming non-technical users.</p>
-        <p>We balanced structured inputs with user-friendly language so the system could evolve toward smarter recommendations later.</p>
-
-        <div class="case-media media-slot">
-          <p>Visual slot: decision framework, signal hierarchy, or before-and-after IA.</p>
+        <div class="case-media image">
+          <img src="assets/gf/mental-model.png" alt="Initial and revised mental model showing how site decision signals expanded after user interviews." />
         </div>
+        <p class="case-caption">Fig: My mental model before and after user interviews</p>
+      </section>
+
+      <section class="case-section" id="ia-design">
+        <p class="case-kicker">Research-Informed IA & Design</p>
+        <h2 class="case-heading">The core design problem was moving users from fragmented signals to a unified evaluation flow.</h2>
+        <p>Users needed complements, competitors, demographics, visibility, traffic, analogs, and cannibalization risk without jumping across tools or manually comparing every factor. The interface had to make the site story readable, not just complete.</p>
+        <p>I organized the experience around progressive disclosure: the map carried spatial context, while the side panel grouped signals so analysts could scan, expand, and compare without losing the location context.</p>
+
+        <div class="case-media image">
+          <img src="assets/gf/sidebar-expanded.png" alt="Expanded side panel showing sales estimate, competitors, complements, cannibalization, analogs, traffic, and demographics." />
+        </div>
+        <p class="case-caption">Fig: Expanded side panel organizing the signals users needed for site evaluation</p>
+      </section>
+
+      <section class="case-section" id="iterations">
+        <p class="case-kicker">Iterations</p>
+        <h2 class="case-heading">The early versions had the right data, but the wrong path to understanding.</h2>
+        <p>Version 1 was intentionally ugly but functional: it helped us test whether the data set was useful before polishing the interface. The problem was that the map, which gave users the fastest sense of place, was treated as secondary.</p>
+        <p>As I iterated, I grouped the signals more clearly, reduced the number of jumps required to understand a site, and eventually moved toward a map-first decision flow where cards supported the spatial story instead of competing with it.</p>
+
+        <div class="case-media image">
+          <img src="assets/gf/iterations.png" alt="Three interface iterations showing how the site evaluation cards evolved toward clearer signal groups." />
+        </div>
+        <p class="case-caption">Fig: Iterations from complete-but-hard-to-prioritize cards toward clearer signal grouping</p>
+      </section>
+
+      <section class="case-section" id="final-designs">
+        <p class="case-kicker">Final Designs</p>
+        <h2 class="case-heading">The final product matched how retail teams actually evaluate sites.</h2>
+        <p>The final design made the map the primary workspace and used the side panel as the decision layer. Analysts could search a market, inspect trade areas, compare nearby competitors and complements, and evaluate risk without leaving the main context.</p>
+        <p>This was the core product shift: from a dashboard that displayed everything to a workflow that helped users decide what mattered next.</p>
+
+        <div class="case-media image">
+          <img src="assets/gf/v1-map.png" alt="Early GrowthFactor map version with competitors and complements shown in a side panel." />
+        </div>
+        <p class="case-caption">Fig: Early functional version that helped validate map-based site evaluation</p>
+
+        <div class="case-media image">
+          <img src="assets/gf/final-map.png" alt="Final GrowthFactor map experience with trade areas, brand markers, side panel, and site signals." />
+        </div>
+        <p class="case-caption">Fig: Final version with map-first evaluation and richer decision signals</p>
       </section>
 
       <section class="case-section" id="reflection">
         <p class="case-kicker">Reflection</p>
-        <h2 class="case-heading">This project taught me how to design for trust in data-heavy workflows.</h2>
-        <p>Users need speed, but they also need to understand why a recommendation makes sense.</p>
-        <p>My strongest contribution was turning fragmented signals into a product system people could repeatedly act on.</p>
+        <h2 class="case-heading">This project taught me that speed only matters when users trust the path to the answer.</h2>
+        <p>If I did it again, I would spend more time observing users inside their existing evaluation workflow before designing the first version.</p>
+        <p>I would also involve engineering earlier, because the best product decisions came from balancing user needs with what could be built reliably.</p>
       </section>
 
       <footer class="bottom-contact">
