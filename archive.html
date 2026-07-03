@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=layout-1" />
+  <link rel="stylesheet" href="styles.css?v=case-8" />
 </head>
 <body>
   <nav class="top-nav archive-nav" aria-label="Primary">
@@ -36,18 +36,18 @@
     </div>
   </nav>
 
-  <main class="page">
+  <main class="page archive-page">
     <header class="page-header">
       <p class="eyebrow">Archive</p>
       <p class="intro">Welcome to my Archive collection of earlier projects that reveal my design process, decision-making, and growth as a designer.</p>
     </header>
 
-    <div class="filters" aria-label="Project categories">
-      <span class="filter-pill active">Work</span>
-      <span class="filter-pill">Interview experiences</span>
+    <div class="filters" role="tablist" aria-label="Project categories">
+      <button class="filter-pill active" id="tab-work" type="button" role="tab" aria-selected="true" aria-controls="panel-work" data-tab="work">Work</button>
+      <button class="filter-pill" id="tab-interviews" type="button" role="tab" aria-selected="false" aria-controls="panel-interviews" data-tab="interviews">Interview experiences</button>
     </div>
 
-    <section class="projects" aria-label="Archive projects">
+    <section class="projects archive-projects" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
       <a class="project-card" href="https://itsmenike.com/designing-clara" target="_blank" rel="noopener">
         <div class="project-media archive-media">
           <img src="https://framerusercontent.com/images/qlDHK3A2kEPlhZnu8MdxdQKB4.png" alt="" />
@@ -96,6 +96,60 @@
         <p class="project-title">High-performance website builder with drag-n-drop, undo/redo, keyboard-first navigation</p>
       </a>
     </section>
+
+    <section class="projects archive-projects interview-projects" id="panel-interviews" role="tabpanel" aria-labelledby="tab-interviews" hidden>
+      <a class="project-card interview-card" href="sumble.html">
+        <div class="project-media archive-media interview-media">
+          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
+        </div>
+        <div class="interview-card-footer">
+          <p class="project-title">Sumble: Solving the 'Data Dump' with Logic-First UX</p>
+          <div class="project-tags">
+            <span class="tag">data heavy</span>
+            <span class="tag">series A</span>
+            <span class="tag">b2b</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="project-card interview-card" href="nordic-semiconductor.html">
+        <div class="project-media archive-media interview-media">
+          <img src="https://framerusercontent.com/images/CGyhsxixvpx8jxoPjNSu8F5AxCs.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
+        </div>
+        <div class="interview-card-footer">
+          <p class="project-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</p>
+          <div class="project-tags">
+            <span class="tag">data heavy</span>
+            <span class="tag">public</span>
+            <span class="tag">b2b</span>
+          </div>
+        </div>
+      </a>
+    </section>
   </main>
+
+  <script>
+    const archiveTabs = document.querySelectorAll('[role="tab"][data-tab]');
+    const archivePanels = {
+      work: document.getElementById('panel-work'),
+      interviews: document.getElementById('panel-interviews')
+    };
+
+    archiveTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const selected = tab.dataset.tab;
+
+        archiveTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', String(isActive));
+        });
+
+        Object.entries(archivePanels).forEach(([key, panel]) => {
+          panel.hidden = key !== selected;
+        });
+      });
+    });
+  </script>
 </body>
 </html>

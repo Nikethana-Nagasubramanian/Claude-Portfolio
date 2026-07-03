@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designing Trust Into a Conversational AI — Nikethana</title>
+  <meta name="description" content="A case study on designing privacy-first conversational AI workflows for Charlie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=case-8" />
+</head>
+<body>
+  <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
+    <div class="nav-content">
+      <a class="nav-link" href="index.html">home</a>
+      <a class="nav-link" href="about.html">about</a>
+      <span class="nav-separator" aria-hidden="true"></span>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/nike_thana" target="_blank" rel="noopener" title="Twitter" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M23.95 4.57a10 10 0 0 1-2.82.77 4.93 4.93 0 0 0 2.16-2.72 9.86 9.86 0 0 1-3.13 1.2 4.92 4.92 0 0 0-8.38 4.48A13.96 13.96 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.62v.06a4.93 4.93 0 0 0 3.95 4.83 4.93 4.93 0 0 1-2.22.08 4.93 4.93 0 0 0 4.6 3.42A9.87 9.87 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14.01-7.5 14.01-14.01v-.64a10.02 10.02 0 0 0 2.46-2.55l-.02-.01z"/></svg>
+        </a>
+        <a href="https://github.com/Nikethana-Nagasubramanian/travel-planner/tree/staging" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="mailto:itsmenike3@gmail.com" title="Email" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h17v11h-17z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://medium.com/@nike_thana/" target="_blank" rel="noopener" title="Medium" aria-label="Medium">
+          <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="case-shell">
+    <aside class="case-nav" aria-label="Case study sections">
+      <a href="#overview">Overview</a>
+      <a href="#context">Context</a>
+      <a href="#problem">Problem</a>
+      <a href="#discovery">Discovery</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#testing">Testing</a>
+      <a href="#impact">Impact</a>
+    </aside>
+
+    <article class="case-content">
+      <header class="case-hero" id="overview">
+        <h1 class="case-title">Designing Trust Into a Conversational AI</h1>
+
+        <div class="case-info-grid" aria-label="Project details">
+          <div class="case-info-card">
+            <p class="case-info-label">Role</p>
+            <p class="case-info-value">Design Engineer</p>
+          </div>
+          <div class="case-info-card">
+            <p class="case-info-label">Timeline</p>
+            <p class="case-info-value">Mar 2026 - June 2026</p>
+          </div>
+          <div class="case-info-card">
+            <p class="case-info-label">Collaborated With</p>
+            <p class="case-info-value">Engineers, PM, Growth Officer</p>
+          </div>
+        </div>
+
+        <p class="case-note">NDA alert: mockups in this case study are illustrative, reimagined to protect sensitive product details while preserving the design approach, decisions, and outcomes that shaped the work.</p>
+
+        <div class="case-media hero-video">
+          <video autoplay muted loop playsinline controls>
+            <source src="https://framerusercontent.com/assets/AQcNffvkgSvuA5MhzzyetIihlaA.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p class="case-caption">Fig: Privacy-first conversational AI workflow</p>
+      </header>
+
+      <section class="case-section" id="context">
+        <p class="case-kicker">Context</p>
+        <h2 class="case-heading">Charlie sits between the user and the LLM as a privacy layer.</h2>
+        <p>Charlie is an AI-powered personal assistant that masks identifying data before a query leaves the product, so the model gets useful context without knowing who the user is. The first wedge was personal finance, where trust breaks quickly if security feels confusing or heavy.</p>
+        <p>I led user research, feature design, and rapid AI-assisted prototyping across onboarding, data masking, source ingestion, and recurring assistant tasks.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/hXrKhHBAes2JaKpmo4U75rY1gY.png?width=2092&amp;height=1102" alt="Diagram showing the gap between enterprise buyer needs and end-user trust needs." />
+        </div>
+        <p class="case-caption">Fig: The gap between buyer requirements and end-user trust</p>
+      </section>
+
+      <section class="case-section" id="problem">
+        <p class="case-kicker">Problem</p>
+        <h2 class="case-heading">How do you make privacy feel invisible?</h2>
+        <p>Users want deeply personalized financial answers, but the product has to handle sensitive data to get there. Every security step is a moment where confidence can grow, or trust can break.</p>
+        <p>The design challenge was making that infrastructure legible without making it feel like surveillance. Users needed clarity, control, and momentum inside the same flow.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/SuqdsTdOVA5noGJeGwfFP0lEM.png?width=3016&amp;height=1706" alt="Illustrative Charlie onboarding screens for a privacy-first assistant." />
+        </div>
+        <p class="case-caption">Fig: Onboarding designed to build trust before asking for deeper context</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/6pMAwbG4qECb087nF4Z7DxiCkqQ.png?width=2260&amp;height=1534" alt="Charlie masking user data before sending a query to an external LLM." />
+        </div>
+        <p class="case-caption">Fig: Charlie disguising user data before sending it to an LLM</p>
+      </section>
+
+      <section class="case-section" id="discovery">
+        <p class="case-kicker">Discovery</p>
+        <h2 class="case-heading">I did not wait for a formal research brief.</h2>
+        <p>I ran proactive unmoderated sessions to pressure-test early interaction patterns and understand where security friction made users hesitate. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
+        <p>In a B2B2C model, the enterprise buyer and the end user are different people. I translated session observations into four strategy questions that leadership could use to shape the roadmap.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/L5XvfQ9DuvH3aehqPEiqHB2cBUU.png?width=2276&amp;height=740" alt="Research observations translated into product strategy questions." />
+        </div>
+        <p class="case-caption">Fig: Observations turned into strategic product questions</p>
+      </section>
+
+      <section class="case-section" id="architecture">
+        <p class="case-kicker">Design & Architecture</p>
+        <h2 class="case-heading">I treated AI as a design-to-code partner to move from brief to prototype in 1-2 days.</h2>
+        <p>My focus was four modular pillars, each designed so privacy operated as invisible infrastructure rather than a separate security chore.</p>
+
+        <div class="case-feature-grid" aria-label="Feature pillars">
+          <div class="case-feature-card">
+            <h3>Visualizing the Knowledge Graph</h3>
+            <p>Made the assistant's context visible enough for users to understand what Charlie knows and why.</p>
+          </div>
+          <div class="case-feature-card">
+            <h3>Frictionless Ingestion</h3>
+            <p>Explored email and document flows that made adding context feel lightweight and reversible.</p>
+          </div>
+          <div class="case-feature-card">
+            <h3>Local-First Voice Architecture</h3>
+            <p>Protected sensitive user input while preserving the speed and naturalness of voice interaction.</p>
+          </div>
+          <div class="case-feature-card">
+            <h3>Autonomous Task Execution</h3>
+            <p>Designed recurring task flows that made automation feel controlled instead of opaque.</p>
+          </div>
+        </div>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/l57MaiRk9TmOj8S59Mey4wGnRg.png?width=1792&amp;height=560" alt="Illustrative knowledge graph interface for Charlie." />
+        </div>
+        <p class="case-caption">Fig: Interactive knowledge graph, reimagined for NDA protection</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/O2HGbhoFKJN45fNqW17PtbKNQ.png?width=2260&amp;height=1248" alt="Charlie source ingestion concept showing different information sources." />
+        </div>
+        <p class="case-caption">Fig: Different information sourced from documents, conversations, and connected accounts</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/Mak02RU0k6V6KY816XgnfkGnH4.png?width=2610&amp;height=1488" alt="Charlie email sync concept for connecting data sources." />
+        </div>
+        <p class="case-caption">Fig: Connecting through email without making setup feel heavy</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/Mh8RSCUuTlNxRBuDTFE6axR09Bs.png?width=2328&amp;height=1786" alt="Charlie recurring task execution concept." />
+        </div>
+        <p class="case-caption">Fig: Tasks designed to run on recurrence with user control</p>
+      </section>
+
+      <section class="case-section" id="testing">
+        <p class="case-kicker">Testing</p>
+        <h2 class="case-heading">Four user sessions surfaced one clear thread.</h2>
+        <p>I ran moderated evaluation sessions across mobile and desktop, focused on the Data Package Review component: the moment where users decide what context to share before a query goes out.</p>
+        <p>The sessions surfaced friction around masking and review, which directly informed the v2 direction for clearer consent, better defaults, and less cognitive load at the point of sharing.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/w8eUXRGkszaqYu03NBrmPqJC6k.png?width=739&amp;height=276" alt="Brief insights from Charlie user testing sessions." />
+        </div>
+        <p class="case-caption">Fig: Brief insights from testing</p>
+      </section>
+
+      <section class="case-section" id="impact">
+        <p class="case-kicker">Impact</p>
+        <h2 class="case-heading">The work shaped what got built next.</h2>
+        <p>The research, prototypes, and interaction framework did not just produce screens. They fed into the product roadmap, the formal testing strategy, and the enterprise narrative presented to institutional stakeholders.</p>
+        <p>Charlie is being positioned for a closed-to-institutional launch, and the design system I established gives the team a foundation to keep scaling privacy-first AI workflows.</p>
+      </section>
+
+      <a class="next-case" href="gf.html">
+        <span>Next Case Study</span>
+        <span>How I Helped Accelerate Retail Location Evaluation: From 6 Hours to Under 1 Minute</span>
+      </a>
+
+      <footer class="bottom-contact">
+        <span>Reach out to me on:</span>
+        <div class="social-links" aria-label="Contact links">
+          <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/nike_thana" target="_blank" rel="noopener" title="Twitter" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23.95 4.57a10 10 0 0 1-2.82.77 4.93 4.93 0 0 0 2.16-2.72 9.86 9.86 0 0 1-3.13 1.2 4.92 4.92 0 0 0-8.38 4.48A13.96 13.96 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.62v.06a4.93 4.93 0 0 0 3.95 4.83 4.93 4.93 0 0 1-2.22.08 4.93 4.93 0 0 0 4.6 3.42A9.87 9.87 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14.01-7.5 14.01-14.01v-.64a10.02 10.02 0 0 0 2.46-2.55l-.02-.01z"/></svg>
+          </a>
+          <a href="mailto:itsmenike3@gmail.com" title="Email" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h17v11h-17z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

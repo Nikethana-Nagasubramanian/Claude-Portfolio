@@ -1,0 +1,26 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/archive",
+      "destination": "/archive.html"
+    },
+    {
+      "source": "/gf",
+      "destination": "/gf.html"
+    },
+    {
+      "source": "/designing-charlie",
+      "destination": "/designing-charlie.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/about-nike",
+      "destination": "/about.html"
+    }
+  ]
+}

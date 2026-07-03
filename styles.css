@@ -1,5 +1,45 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+@font-face {
+  font-family: "Inter Display";
+  src: url("https://rsms.me/inter/font-files/InterDisplay-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("https://rsms.me/inter/font-files/InterDisplay-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("https://rsms.me/inter/font-files/InterDisplay-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600 699;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("https://rsms.me/inter/font-files/InterDisplay-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("https://rsms.me/inter/font-files/InterDisplay-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --bg: #ffffff;
   --fg: #171717;
@@ -10,7 +50,7 @@
   --tag-fg: #263238;
   --blue: #3f7ff4;
   --blue-soft: rgba(143, 178, 255, .22);
-  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font: "Inter Display", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -46,6 +86,13 @@ img, video { max-width: 100%; }
 }
 
 .top-nav.archive-nav { margin-bottom: 56px; }
+
+.top-nav.case-top-nav {
+  position: sticky;
+  top: 16px;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+}
 
 .nav-content {
   display: flex;
@@ -218,6 +265,7 @@ img, video { max-width: 100%; }
   border-radius: 999px;
   background: rgba(255, 255, 255, .82);
   color: #444;
+  cursor: pointer;
   font: inherit;
   font-size: 14px;
   font-weight: 500;
@@ -317,6 +365,152 @@ img, video { max-width: 100%; }
   letter-spacing: 0;
 }
 
+.archive-page .page-header {
+  max-width: 800px;
+}
+
+.archive-page .eyebrow {
+  color: #878787;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.archive-page .intro {
+  color: #121212;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+
+.archive-page .filters {
+  margin-bottom: 34px;
+}
+
+.archive-page .filter-pill {
+  min-height: 36px;
+  padding: 7px 16px;
+  border: 0;
+  background: #f0f0f0;
+  color: #212529;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.archive-page .filter-pill.active {
+  background: #121212;
+  color: #fff;
+}
+
+.archive-projects {
+  gap: 38px;
+}
+
+.archive-projects .project-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.archive-projects .project-card:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.archive-projects .project-media {
+  height: 400px;
+  aspect-ratio: auto;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #dedede;
+  border-radius: 26px;
+  background: #fff;
+}
+
+.archive-projects .archive-media.short {
+  height: 150px;
+  padding: 0;
+  border-radius: 20px;
+}
+
+.archive-projects .project-media img,
+.archive-projects .project-media video {
+  border: 1px solid #dedede;
+  border-radius: 20px;
+  object-position: left top;
+}
+
+.archive-projects .archive-media.short video {
+  border: 0;
+  border-radius: 12px;
+  object-position: center;
+}
+
+.archive-projects .project-meta {
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.archive-projects .project-year {
+  color: #787878;
+}
+
+.archive-projects .tag {
+  background: #d9f7ff;
+  color: #3d3d3d;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  line-height: 1.4;
+}
+
+.archive-projects .project-title {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .02em;
+}
+
+.interview-projects {
+  gap: 44px;
+}
+
+.interview-card {
+  padding-bottom: 44px;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.interview-card:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.archive-projects .interview-media {
+  height: 400px;
+  margin-bottom: 18px;
+}
+
+.interview-card-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.interview-card-footer .project-tags {
+  order: 2;
+  justify-content: flex-end;
+}
+
+.interview-card-footer .project-title {
+  order: 1;
+  padding-top: 8px;
+}
+
 .archive-link,
 .next-case {
   display: flex;
@@ -386,10 +580,10 @@ img, video { max-width: 100%; }
 
 .case-title {
   margin-bottom: 28px;
-  color: #101010;
-  font-size: clamp(32px, 5vw, 54px);
+  color: #4285F5;
+  font-size: 34px;
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
@@ -425,14 +619,28 @@ img, video { max-width: 100%; }
   color: #6e6e6e;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.48;
+  line-height: 1.4;
+  letter-spacing: .01em;
 }
 
 .case-summary {
   color: #6e6e6e;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.48;
+  line-height: 1.4;
+  letter-spacing: .01em;
+}
+
+.case-note {
+  padding: 18px 20px;
+  border: 1px solid #efe3a8;
+  border-radius: 16px;
+  background: #FFFDEB;
+  color: #6e6e6e;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .01em;
 }
 
 .case-section {
@@ -451,9 +659,10 @@ img, video { max-width: 100%; }
 .case-heading {
   margin-bottom: 14px;
   color: #111;
-  font-size: clamp(25px, 3vw, 34px);
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .02em;
 }
 
 .case-section p:not(.case-kicker):not(.case-caption):not(.metric-value):not(.metric-label):not(.media-slot-text),
@@ -461,7 +670,8 @@ img, video { max-width: 100%; }
   color: #6e6e6e;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.48;
+  line-height: 1.4;
+  letter-spacing: .01em;
 }
 
 .case-section p + p { margin-top: 10px; }
@@ -477,6 +687,34 @@ img, video { max-width: 100%; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 18px;
+}
+
+.case-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.case-feature-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .86);
+}
+
+.case-feature-card h3 {
+  margin-bottom: 8px;
+  color: #2b2b2b;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.case-feature-card p {
+  color: #6e6e6e;
+  font-size: 16px;
+  line-height: 1.45;
 }
 
 .metric-card {
@@ -608,6 +846,7 @@ img, video { max-width: 100%; }
   }
 
   .top-nav.archive-nav { margin-bottom: 40px; }
+  .top-nav.case-top-nav { top: 12px; }
 
   .nav-content { gap: 15px; }
   .nav-link { font-size: 20px; }
@@ -666,6 +905,64 @@ img, video { max-width: 100%; }
 
   .archive-media.short { aspect-ratio: 16 / 9; }
 
+  .archive-page .intro {
+    font-size: 18px;
+  }
+
+  .archive-projects {
+    gap: 34px;
+  }
+
+  .archive-projects .project-card {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .archive-projects .project-media {
+    height: auto;
+    aspect-ratio: 358 / 255;
+    padding: 12px;
+    border-radius: 26px;
+  }
+
+  .archive-projects .archive-media.short {
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border-radius: 20px;
+  }
+
+  .archive-projects .project-title {
+    font-size: 18px;
+  }
+
+  .interview-projects {
+    gap: 34px;
+  }
+
+  .interview-card {
+    padding-bottom: 34px;
+  }
+
+  .archive-projects .interview-media {
+    height: auto;
+    aspect-ratio: 358 / 255;
+  }
+
+  .interview-card-footer {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .interview-card-footer .project-tags {
+    order: 1;
+    justify-content: flex-start;
+  }
+
+  .interview-card-footer .project-title {
+    order: 2;
+    padding-top: 0;
+  }
+
   .project-meta {
     align-items: flex-start;
     flex-direction: column;
@@ -691,10 +988,14 @@ img, video { max-width: 100%; }
     margin: 0 auto;
     gap: 34px;
   }
-  .case-title { margin-bottom: 22px; }
+  .case-title {
+    margin-bottom: 22px;
+    font-size: 32px;
+  }
 
   .case-info-grid,
-  .metrics-grid {
+  .metrics-grid,
+  .case-feature-grid {
     grid-template-columns: 1fr;
   }
 
