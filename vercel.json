@@ -29,6 +29,14 @@
     {
       "source": "/nordic",
       "destination": "/nordic.html"
+    },
+    {
+      "source": "/designing-clara",
+      "destination": "/designing-clara.html"
+    },
+    {
+      "source": "/gf-features",
+      "destination": "/gf-features.html"
     }
   ]
 }
