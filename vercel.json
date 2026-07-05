@@ -21,6 +21,14 @@
     {
       "source": "/about-nike",
       "destination": "/about.html"
+    },
+    {
+      "source": "/sumble",
+      "destination": "/sumble.html"
+    },
+    {
+      "source": "/nordic",
+      "destination": "/nordic.html"
     }
   ]
 }
