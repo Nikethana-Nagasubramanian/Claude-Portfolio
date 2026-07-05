@@ -37,6 +37,10 @@
     {
       "source": "/gf-features",
       "destination": "/gf-features.html"
+    },
+    {
+      "source": "/website-project",
+      "destination": "/website-project.html"
     }
   ]
 }

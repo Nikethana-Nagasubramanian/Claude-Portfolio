@@ -717,6 +717,18 @@ img, video { max-width: 100%; }
   line-height: 1.45;
 }
 
+.case-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.case-cta-group .archive-link {
+  margin-top: 0;
+  font-size: 16px;
+}
+
 .metric-card {
   padding: 18px;
   border: 1px solid var(--border);

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sumble: Solving the 'Data Dump' with Logic-First UX — Nikethana</title>
-  <meta name="description" content="A 72-hour interview take-home redesigning Sumble's lead profile experience for GTM decision-making." />
+  <title>High-Performance Website Builder — Nikethana</title>
+  <meta name="description" content="A keyboard-first, drag-and-drop website builder built with React, Zustand, and dnd-kit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -39,118 +39,85 @@
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
       <a href="#overview">Overview</a>
-      <a href="#scenario">The Scenario</a>
-      <a href="#audit">Product Audit</a>
-      <a href="#research">User Research</a>
-      <a href="#solution">Solution</a>
-      <a href="#tradeoffs">Trade-offs</a>
-      <a href="#next-steps">Next Steps</a>
+      <a href="#roles">Roles</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#try-it">Try It</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <h1 class="case-title">Sumble: Solving the "Data Dump" with Logic-First UX</h1>
+        <h1 class="case-title">High-Performance Website Builder</h1>
 
         <div class="case-info-grid" aria-label="Project details">
           <div class="case-info-card">
-            <p class="case-info-label">Format</p>
-            <p class="case-info-value">72-Hour Interview Take-Home</p>
+            <p class="case-info-label">Type</p>
+            <p class="case-info-value">Side Project</p>
           </div>
           <div class="case-info-card">
-            <p class="case-info-label">Company</p>
-            <p class="case-info-value">Sumble (Series A)</p>
+            <p class="case-info-label">Timeline</p>
+            <p class="case-info-value">Dec 2025</p>
           </div>
           <div class="case-info-card">
-            <p class="case-info-label">Focus</p>
-            <p class="case-info-value">GTM lead qualification UX</p>
+            <p class="case-info-label">Stack</p>
+            <p class="case-info-value">React, Zustand, dnd-kit</p>
           </div>
         </div>
 
         <div class="case-overview-grid">
           <div class="case-info-card">
             <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">GTM managers were drowning in noisy prospect data and couldn't quickly tell which leads were worth acting on.</p>
+            <p class="case-info-value">Most website builders optimize for beginners with slow, visual-first interactions, leaving no fast option for people who already know what they want to build.</p>
           </div>
           <div class="case-info-card">
             <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">Audited the existing profile UI, ran two GTM interviews, and redesigned the profile as a decision tool instead of a data viewer.</p>
+            <p class="case-info-value">Built a keyboard-first builder with drag-and-drop, undo/redo, and instant interactions that feel closer to a code editor than a website builder.</p>
           </div>
         </div>
 
-        <div class="case-media image">
-          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png" alt="Redesigned Sumble lead profile interface prioritizing qualification signals." />
+        <div class="case-media short">
+          <video autoplay muted loop playsinline controls>
+            <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
+          </video>
         </div>
-        <p class="case-caption">Fig: Redesigned lead profile, reframed around the qualify-or-contact decision</p>
+        <p class="case-caption">Fig: Keyboard-first drag-and-drop editing with instant undo/redo</p>
       </header>
 
-      <section class="case-section" id="scenario">
-        <p class="case-kicker">The Scenario</p>
-        <h2 class="case-heading">Sumble helps GTM teams cut through noisy data to find high-intent leads.</h2>
-        <p>The take-home scenario: a head of technology at Jaguar Land Rover shows up after filtering by "MATLAB" as a technology. The rep has to decide, in seconds, whether this is the right contact and what to do next.</p>
+      <section class="case-section" id="roles">
+        <p class="case-kicker">Roles</p>
+        <h2 class="case-heading">One person, three lenses.</h2>
+        <p>Building this solo meant switching between three perspectives on the same problem:</p>
 
-        <div class="case-feature-grid" aria-label="Key questions">
+        <div class="case-feature-grid" aria-label="Perspectives">
           <div class="case-feature-card">
-            <h3>Qualify or contact?</h3>
-            <p>The UI never made clear which decision it was actually helping the rep make.</p>
+            <h3>As a user</h3>
+            <p>I paid attention to moments of hesitation — where a click felt like it might have failed, and where the tool needed to feel as responsive as a native app.</p>
           </div>
           <div class="case-feature-card">
-            <h3>Right person, right time</h3>
-            <p>What GTM signals actually define this for a profile like the one shown?</p>
+            <h3>As a designer</h3>
+            <p>I prioritized intuitive keyboard workflows, consistent performance, and a component system that could scale without turning into visual debt.</p>
           </div>
           <div class="case-feature-card">
-            <h3>CTA hierarchy</h3>
-            <p>Contact, list, message, share — which action should be primary, and when?</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>Graceful degradation</h3>
-            <p>How should the UI hold up when a profile has sparse or incomplete data?</p>
+            <h3>As a developer</h3>
+            <p>I kept the codebase clean and non-repetitive, chose technology that would scale, and made sure the architecture's logic stayed easy to reason about.</p>
           </div>
         </div>
       </section>
 
-      <section class="case-section" id="audit">
-        <p class="case-kicker">Product Audit</p>
-        <h2 class="case-heading">The original UI was built for data volume, not decisions.</h2>
-        <p>Three failures stood out immediately:</p>
-        <ul class="case-list">
-          <li>The layout optimized for showing everything it knew, not for helping someone decide.</li>
-          <li>Sparse profiles broke the layout, since it assumed every field would be populated with a clear next action.</li>
-          <li>The signals that actually mattered for GTM — recent hiring, tech mentions, timing — were buried below less relevant data.</li>
-        </ul>
+      <section class="case-section" id="implementation">
+        <p class="case-kicker">Implementation</p>
+        <h2 class="case-heading">Built for 60fps, not just for features.</h2>
+        <p>The builder runs on React with Zustand for state management, and a custom drag-and-drop layer built on dnd-kit rather than a heavier off-the-shelf solution. Debouncing strategies keep heavy operations — like dragging large layouts — running at 60fps, so the tool feels closer to a code editor than a typical drag-and-drop builder.</p>
       </section>
 
-      <section class="case-section" id="research">
-        <p class="case-kicker">User Research</p>
-        <h2 class="case-heading">Two conversations were enough to reframe the problem.</h2>
-        <p>I interviewed two GTM professionals to understand velocity, volume, and where their actual pain lived. Both described the same pattern: they weren't short on data, they were short on a fast way to separate signal from noise across dozens of profiles a day.</p>
-      </section>
+      <section class="case-section" id="try-it">
+        <p class="case-kicker">Try It</p>
+        <h2 class="case-heading">See it in action.</h2>
+        <p>The project is live, and the code is open for anyone curious about the drag-and-drop and state management approach.</p>
 
-      <section class="case-section" id="solution">
-        <p class="case-kicker">Solution</p>
-        <h2 class="case-heading">I repositioned the profile from a "viewer" to an agentic decision tool.</h2>
-        <ul class="case-list">
-          <li>Condensed summaries that answer the core qualification question first, before any raw data.</li>
-          <li>A modular, component-based layout that holds up cleanly even when a profile is missing fields.</li>
-          <li>Time-relevancy badges that surface recency so hiring signals and tech mentions can't get buried.</li>
-          <li>Restructured action buttons ordered to match how a GTM rep actually works a lead, not alphabetically or by feature availability.</li>
-        </ul>
-
-        <div class="case-media image">
-          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&width=2955&height=2110" alt="Low-fidelity sketches showing the iteration from data viewer to decision tool." />
+        <div class="case-cta-group">
+          <a class="archive-link" href="https://atomicpage.vercel.app/" target="_blank" rel="noopener">Live Demo ↗</a>
+          <a class="archive-link" href="https://github.com/Nikethana-Nagasubramanian/website-builder" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
-        <p class="case-caption">Fig: Early sketches exploring sparse-profile states and CTA hierarchy</p>
-      </section>
-
-      <section class="case-section" id="tradeoffs">
-        <p class="case-kicker">Trade-offs</p>
-        <h2 class="case-heading">Shipping in 72 hours meant cutting scope deliberately.</h2>
-        <p>I narrowed the redesign to Sales Leadership personas only, rather than trying to generalize across every GTM role. I also prioritized real-time relevance signals over building out historical analytics, since the immediate decision mattered more than a trend line within the take-home's constraints.</p>
-      </section>
-
-      <section class="case-section" id="next-steps">
-        <p class="case-kicker">Future Improvements &amp; Testing</p>
-        <h2 class="case-heading">Next, I'd validate the decision speed, not just the layout.</h2>
-        <p>With more time, I'd expand research to additional user segments and explore historically predictive signals alongside the real-time ones. For testing, I'd measure time-to-qualify and rep confidence before and after the redesign, since those are the two metrics that actually reflect whether the tool is doing its job.</p>
       </section>
 
       <footer class="bottom-contact">
