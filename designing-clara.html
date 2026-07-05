@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-9" />
+  <link rel="stylesheet" href="styles.css?v=case-10" />
 </head>
 <body>
   <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
@@ -38,18 +38,19 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
+      <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
       <a href="#problem">Problem</a>
-      <a href="#dashboard">Solution 1: Dashboard</a>
-      <a href="#clara">Solution 2: Clara</a>
+      <a href="#solution-1">Solution 1</a>
+      <a href="#solution-2">Solution 2</a>
       <a href="#process">Process</a>
       <a href="#reflection">Reflection</a>
-      <a href="#roadmap">Product Roadmap</a>
+      <a href="#product-roadmap">Product Roadmap</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <h1 class="case-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant, Clara</h1>
+        <h1 class="case-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant</h1>
 
         <div class="case-info-grid" aria-label="Project details">
           <div class="case-info-card">
@@ -57,73 +58,117 @@
             <p class="case-info-value">Founding Designer</p>
           </div>
           <div class="case-info-card">
-            <p class="case-info-label">Timeline</p>
-            <p class="case-info-value">March 2025 - April 2025</p>
+            <p class="case-info-label">Collaborated with</p>
+            <p class="case-info-value">Engineers, CPO, CEO</p>
           </div>
           <div class="case-info-card">
-            <p class="case-info-label">Collaborated With</p>
-            <p class="case-info-value">Engineers, Chief Product Officer, CEO</p>
+            <p class="case-info-label">Timeline</p>
+            <p class="case-info-value">Mar 2025 - Apr 2025</p>
           </div>
         </div>
 
-        <div class="case-overview-grid">
-          <div class="case-info-card">
-            <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">Once a site was approved, lease management fell apart into disconnected local files, generic PDF tools, and manual re-reading of 80+ page documents.</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">I designed a lease management dashboard and Clara, an NLP assistant that turns static lease documents into answerable, trustworthy data.</p>
-          </div>
-        </div>
+        <p class="case-info-label">Project Summary</p>
+        <p class="case-info-value">I designed a Lease Management system that serves as a central hub for all signed leases. The system uses NLP to instantly extract key data points, turning static documents into actionable information. This design reduces cognitive overload and empowers agents to move faster, ensuring they can easily track, manage, and act on their lease portfolio without ever losing context.</p>
 
         <div class="case-media image">
-          <img src="https://framerusercontent.com/images/qlDHK3A2kEPlhZnu8MdxdQKB4.png" alt="Clara lease management dashboard with an integrated NLP assistant." />
+          <img src="https://framerusercontent.com/images/z9lhqagSHI6I5cUlQgDWwVuRM.png" alt="Final design I shipped" />
         </div>
-        <p class="case-caption">Fig: Clara answering a portfolio-wide lease question from the dashboard</p>
+        <p class="case-caption">Fig: Final design I shipped</p>
       </header>
 
       <section class="case-section" id="problem">
         <p class="case-kicker">Problem</p>
-        <h2 class="case-heading">The burden of disconnected information.</h2>
-        <p>Users evaluated sites inside our platform, then dropped into a completely disconnected, manual process to manage the resulting lease. Signed leases lived as local files, searched with generic PDF tools that could return keyword frequency but nothing close to an intelligent summary.</p>
-        <p>The scale made this unsustainable: portfolios with 160+ documents, and leases running 80+ pages where a single question meant re-reading dozens of pages to find the answer.</p>
+        <h2 class="case-heading">Burden of disconnected Information</h2>
+        <p>Users were painstakingly storing and manually searching through lease documents on their local devices. Existing PDF search tools were ineffective, providing only keyword counts rather than intelligent, summarized answers.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/vM7ugwfLMH6iFGfZL3hkozaog.png" alt="The grim reality of manually searching 160+ documents and storing them locally." />
+        </div>
+        <p class="case-caption">Fig: The grim reality of manually searching 160+ documents and storing them locally.</p>
+
+        <p class="case-info-label">Putting it in numbers perspective…</p>
+        <p>"If I have 10 questions per lease document, and each document is 80+ pages, and I have 160+ lease documents... can I quit right now?" was our user's journey.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/UFkxHBcnzxdqBZRxE4yhfxJz7g.png" alt="" />
+        </div>
+
+        <p class="case-info-label">The Big Picture</p>
+        <p class="case-info-value">The core issue was a fragmented workflow. Users were already evaluating sites on the platform, but the subsequent lease management was a disconnected, manual process, causing significant cognitive load and inefficiency.</p>
       </section>
 
-      <section class="case-section" id="dashboard">
-        <p class="case-kicker">Solution 1: Dashboard</p>
-        <h2 class="case-heading">A quick-reference layer over complex lease data.</h2>
-        <p>I designed a dashboard that transforms dense lease data into scannable summaries, reducing cognitive load by surfacing what's urgent first. Highlighted cards carry the key data points for fast decisions, while a detailed table view stays available for anyone who needs to go deeper.</p>
+      <section class="case-section" id="solution-1">
+        <p class="case-kicker">Solution 1</p>
+        <h2 class="case-heading">Dashboard</h2>
+        <p>I designed a dashboard to transform complex lease data into an at-a-glance overview.</p>
+        <p>This approach reduces cognitive load by prioritizing urgent information and providing a foundation for a more detailed table view. The goal was to streamline lease management by creating an intuitive experience that empowers users to make data-informed decisions without extensive searching.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/l6s4ysGYA8mllYJA9rMJbdoTOE.png" alt="The highlight cards in the dashboard and the questions they answer for the user" />
+        </div>
+        <p class="case-caption">Fig: The highlight cards in the dashboard and the questions they answer for the user</p>
       </section>
 
-      <section class="case-section" id="clara">
-        <p class="case-kicker">Solution 2: Clara</p>
-        <h2 class="case-heading">An assistant built for retrieval inside long documents, not just chat.</h2>
-        <p>Clara operates in two states depending on where you are: from the lease management homepage, it answers questions across the entire portfolio; inside an individual lease page, it answers questions scoped to that document alone.</p>
+      <section class="case-section" id="solution-2">
+        <p class="case-kicker">Solution 2</p>
+        <h2 class="case-heading">Clara: Integrated Intelligent Assistant</h2>
+        <p>Designing the dashboard helped with management of humungous amount of data. Now, what about the data retrieval inside each 90 page document?</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/VRSSsWup4iblBHRVQmpFvT4pWA.png" alt="State 1: While on Home Page (i.e. the Lease Management page), Clara answers any question about all leases" />
+        </div>
+        <p class="case-caption">Fig: State 1: While on Home Page (i.e. the Lease Management page), Clara answers any question about all leases</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/Af5tyXJZjbl5qv2kvAPxLKNpxVY.png" alt="State 2: While inside a specific lease, Clara answers specifically questions related to that lease" />
+        </div>
+        <p class="case-caption">Fig: State 2: While inside a specific lease, Clara answers specifically questions related to that lease</p>
       </section>
 
       <section class="case-section" id="process">
         <p class="case-kicker">Process</p>
-        <h2 class="case-heading">Beyond "just another chat interface."</h2>
-        <p>Clara's job is to give people their time back, but accuracy alone wasn't enough to earn that. Every answer links back to the source document, so users can verify the answer instead of taking it on faith — that's what turns a chat box into something people actually trust.</p>
-        <p>I iterated through multiple versions before landing on v2, which made snapshot elements more prominent and clickable, and worked through how Clara should handle edge cases: complex multi-part queries and outright system errors, not just the happy path.</p>
+        <h2 class="case-heading">Beyond "Just another chat interface"</h2>
+        <p>The core purpose of Clara was to do more than just provide answers; it was to give users back their time. We knew that even the most accurate AI response wouldn't be enough, as users need to verify information for themselves.</p>
+        <p>My design philosophy was built on this understanding. Instead of simply saying, "Here is the answer," the system was designed to provide a direct link to the source document. This empowers users to cross-verify any information, saving them the headache of a manual search and building trust by making sure it's earned, not assumed.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/x1oor1ncpLrUrvd6BUUIX6hB9E.png" alt="Versions I thought of before going with the version 2." />
+        </div>
+        <p class="case-caption">Fig: Versions I thought of before going with the version 2. I chose version 2 because: The 'Snapshot' being clickable is more prominent</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/TzZLO03caBtjHrlc6BdQvqHPkYA.png" alt="Different states of Clara" />
+        </div>
+        <p class="case-caption">Fig: Different states of Clara</p>
       </section>
 
       <section class="case-section" id="reflection">
         <p class="case-kicker">Reflection</p>
-        <h2 class="case-heading">Impactful products solve problems while giving users control.</h2>
-        <p>The team designed and validated Clara's core functionality and states, and handed off a complete, engineering-ready flow. Shipping this from 0 to 1 — problem framing through validated design — is one of the projects I'm proudest of.</p>
+        <h2 class="case-heading">Key Learnings</h2>
+        <p>This project has been an invaluable learning experience, reinforcing my belief that the most impactful products are those that not only solve a user's problem but also empower them with trust and control.</p>
+        <p>During my time on the team, we successfully designed and validated Clara, defining its core functionality and states to handle a variety of user needs, including complex queries and system errors. The project has been handed off for engineering.</p>
+
+        <p class="case-info-label">Roadmap</p>
+        <p>Looking ahead, our next steps will involve monitoring user adoption and collecting feedback to inform future iterations.</p>
+        <p>We plan to expand Clara's capabilities to include automatic alerts for contract renewals and to integrate with a company-wide knowledge base.</p>
       </section>
 
-      <section class="case-section" id="roadmap">
-        <p class="case-kicker">Product Roadmap</p>
-        <h2 class="case-heading">Clara was designed as infrastructure, not a feature.</h2>
-        <p>Near-term, the plan is to monitor adoption and gather feedback, then build toward automatic contract renewal alerts and knowledge-base integration. Longer-term, Clara is meant to grow from a chat interface into an indispensable part of the workflow — one that can proactively surface insights and alerts instead of only answering when asked.</p>
+      <section class="case-section" id="product-roadmap">
+        <p class="case-kicker">Product's Big Picture</p>
+        <h2 class="case-heading">This Feature's future</h2>
+        <p>I designed Clara not as a one-off feature, but as a strategic component for the product's future. By ensuring a cohesive integration with the dashboard and other tools, this approach guarantees the product can evolve seamlessly.</p>
+        <p>The goal was to transform a single-use chat into an indispensable part of the user's workflow, ready to support future capabilities like automated alerts and proactive insights.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/P2WqvLsEb5Kuz9W6Ezy46DW6Mmo.png" alt="Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life." />
+        </div>
+        <p class="case-caption">Fig: Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life.</p>
       </section>
 
       <a class="next-case" href="gf-features.html">
-        <span>Next Case Study</span>
-        <span>Beyond Site Selection: Building the Deal Management Solution</span>
+        <img class="next-case-thumb" src="https://framerusercontent.com/images/6ihHiutmYDvUy8ZykSUbdpp6po.png" alt="" />
+        <span>Next Case Study:</span>
+        <span>See how I designed the Deal Management &amp; Lease Engines That Power Retail Growth</span>
       </a>
 
       <footer class="bottom-contact">

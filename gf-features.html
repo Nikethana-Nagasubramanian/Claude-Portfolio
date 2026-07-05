@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-9" />
+  <link rel="stylesheet" href="styles.css?v=case-10" />
 </head>
 <body>
   <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
@@ -38,6 +38,7 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
+      <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
       <a href="#problem">Problem</a>
       <a href="#context">Context</a>
@@ -55,55 +56,78 @@
             <p class="case-info-value">Founding Designer</p>
           </div>
           <div class="case-info-card">
-            <p class="case-info-label">Timeline</p>
-            <p class="case-info-value">2024 - 2025</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Collaborated With</p>
-            <p class="case-info-value">Engineers, Chief Product Officer, Chief Executive Officer</p>
+            <p class="case-info-label">Collaborated with</p>
+            <p class="case-info-value">Engineers, CPO, CEO</p>
           </div>
         </div>
 
-        <div class="case-overview-grid">
-          <div class="case-info-card">
-            <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">Once a site was approved, teams tracked the deal to closing through emails, spreadsheets, or memory, losing the evaluation context along the way.</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">I designed a Deal Management dashboard that carries a site from analysis through closing in one connected place.</p>
-          </div>
-        </div>
+        <p class="case-info-label">Project Summary</p>
+        <p class="case-info-value">Working closely with key stakeholders, we realized that site evaluation was just the first domino in a much longer chain. I then designed a Deal Management dashboard that guides retail teams from initial analysis through to closing.</p>
+        <p class="case-info-value">I helped transform a messy, email-driven workflow into a single, streamlined hub.</p>
+        <p class="case-info-value">The result: teams can now track, advance, and revisit deals without ever losing context or momentum.</p>
 
         <div class="case-media image">
-          <img src="https://framerusercontent.com/images/6ihHiutmYDvUy8ZykSUbdpp6po.png?scale-down-to=2048" alt="Deal Management dashboard tracking sites from evaluation through lease closing." />
+          <img src="https://framerusercontent.com/images/hCPlzzJzNibGBWE72PzM3mzyo.png" alt="Final design I shipped" />
         </div>
-        <p class="case-caption">Fig: Deal Management dashboard carrying evaluation context into closing</p>
+        <p class="case-caption">Fig: Final design I shipped</p>
       </header>
 
       <section class="case-section" id="problem">
         <p class="case-kicker">Problem</p>
-        <h2 class="case-heading">The fragile link from evaluation to execution.</h2>
-        <p>GrowthFactor helped teams decide which sites were worth pursuing, but once a site was approved, there was no structured way to track it forward. Teams fell back on emails, spreadsheets, or "in people's heads" to manage the deal, and the evaluation context that justified the site in the first place quietly disappeared before it ever reached closing.</p>
+        <h2 class="case-heading">The Fragile Link from Evaluation to Execution</h2>
+        <p>Once a site was approved, retail real estate teams had no structured way to track deals. Everything lived in emails, spreadsheets, or in people's heads.</p>
+        <p>This manual, fragmented workflow meant the valuable context gathered during site evaluation was being lost, creating a messy scavenger hunt just as a deal was about to close. The lack of a unified hub meant teams were losing momentum and risking critical details.</p>
       </section>
 
       <section class="case-section" id="context">
         <p class="case-kicker">Context</p>
-        <h2 class="case-heading">Closing a deal is its own multi-stage workflow.</h2>
-        <p>Approved sites move through Analysis, Letter of Intent, Committee Discussions, Negotiation, and Closing. Keeping every detail of that path straight, for every active site, was too much to hold in memory or scattered documents — the process needed the same rigor we'd already given to evaluation.</p>
+        <h2 class="case-heading">What does 'approved' mean?</h2>
+        <p>Site getting approved means, a specific location has checked off all the requirements of the business, has good predicted-returns etc. Then this site goes through a lot of stages: Analysis, Letter Of Intent, Committee Discussions, Negotiation, Closing (or Cancelled if something falls through).</p>
+        <p>Maintaining all these in the head… is menial.</p>
       </section>
 
       <section class="case-section" id="integration">
         <p class="case-kicker">Integration</p>
-        <h2 class="case-heading">Designed for both new deals and the full history behind them.</h2>
-        <p>The dashboard covers two scenarios: tracking new deals as they move through each stage, and archiving historical ones so past decisions stay searchable. Interface flows let a team search for a site and add it directly into deal tracking without re-entering context that already existed from evaluation.</p>
+        <h2 class="case-heading">Fitting This with the entire product</h2>
+        <p>There were 2 cases Deal Management would be used in:</p>
+        <ul class="case-list">
+          <li>Keeping track of new deals</li>
+          <li>For old deals: acts as a searchable archive, letting teams quickly reference, review, and analyze past deals</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/RGPYaliTYTU9VSGIfJAUHmXn4.png" alt="For old deals, its easy to add them" />
+        </div>
+        <p class="case-caption">Fig: For old deals, its easy to add them</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/hAswH1eJVFpb8PYaymvqML6eyGE.png" alt="For new deals, when they search for a site, they get an option to add to deals directly" />
+        </div>
+        <p class="case-caption">Fig: For new deals, when they search for a site, they get an option to add to deals directly</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/tFMBQzYGvYBK5BCvIIh158CfbU.png" alt="Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life." />
+        </div>
+        <p class="case-caption">Fig: Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life.</p>
       </section>
 
       <section class="case-section" id="conclusion">
         <p class="case-kicker">Conclusion</p>
-        <h2 class="case-heading">One system, from first look to signed lease.</h2>
-        <p>The dashboard replaced scattered manual tracking with a single source of truth, giving teams instant clarity and control over their lease portfolio instead of relying on memory and disconnected files.</p>
+        <h2 class="case-heading">Value This deal management delivered</h2>
+        <p>While this dashboard was an additive feature, its impact was transformative. By creating a single, centralized hub, we eliminated the scattered, manual workflows that were a source of constant user frustration.</p>
+        <p>The dashboard's value isn't measured in a single metric, but in the seamless, cohesive experience it delivers.</p>
+        <p>It provides users with instant clarity and control over their lease portfolio, ultimately strengthening the core solution and setting a new standard for workflow efficiency.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/y1NCw95P9EU65QBArNz1hAUV4.png" alt="" />
+        </div>
       </section>
+
+      <a class="next-case" href="https://itsmenike.com/gf-2" target="_blank" rel="noopener">
+        <img class="next-case-thumb" src="https://framerusercontent.com/images/y1NCw95P9EU65QBArNz1hAUV4.png" alt="" />
+        <span>Next Case Study:</span>
+        <span>See how I designed a tool by bringing machine learning–powered confidence to benchmark new sites and predict sales performance</span>
+      </a>
 
       <footer class="bottom-contact">
         <span>Reach out to me on:</span>

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-9" />
+  <link rel="stylesheet" href="styles.css?v=case-10" />
 </head>
 <body>
   <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
@@ -38,106 +38,188 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
+      <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
-      <a href="#problem">The Problem</a>
-      <a href="#research">Research &amp; Benchmarking</a>
-      <a href="#solution">Solution</a>
-      <a href="#dashboard">Revenue Dashboard &amp; MVP</a>
-      <a href="#psychology">Psychology &amp; Trade-offs</a>
-      <a href="#testing">Testing Strategy</a>
+      <a href="#problem">Problem Statement</a>
+      <a href="#questions">Questions</a>
+      <a href="#submission">Submission Requirements</a>
+      <a href="#process">Process</a>
+      <a href="#provisioning">Provisioning Tracker</a>
+      <a href="#revenue">Revenue Management</a>
+      <a href="#mvp">MVP</a>
+      <a href="#engineering">Engineering Constraints</a>
+      <a href="#psychology">User Psychology</a>
+      <a href="#tradeoffs">Trade-offs</a>
+      <a href="#testing">Testing</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
         <h1 class="case-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</h1>
 
-        <div class="case-info-grid" aria-label="Project details">
-          <div class="case-info-card">
-            <p class="case-info-label">Format</p>
-            <p class="case-info-value">72-Hour Interview Take-Home</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Company</p>
-            <p class="case-info-value">Nordic Semiconductor</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Focus</p>
-            <p class="case-info-value">Scooter-fleet management platform</p>
-          </div>
+        <div class="case-tags">
+          <span class="tag">data heavy</span>
+          <span class="tag">b2b</span>
         </div>
 
-        <div class="case-overview-grid">
-          <div class="case-info-card">
-            <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">New customers stared at an empty dashboard for days while technicians provisioned hardware, and many abandoned before ever seeing value.</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">Scoped the problem down to four investigative questions, benchmarked comparable products, and designed a transparency-first provisioning flow.</p>
-          </div>
-        </div>
-
-        <div class="case-media image">
-          <img src="https://framerusercontent.com/images/CGyhsxixvpx8jxoPjNSu8F5AxCs.png" alt="Provisioning status tracker interface for a scooter fleet management platform." />
-        </div>
-        <p class="case-caption">Fig: Provisioning status tracker replacing the empty dashboard state</p>
+        <p class="case-info-label">Hypothetical Product Context</p>
+        <p class="case-info-value">Mobility solution management platform focusing on scooter rental companies to track scooters in real time and also, understand business performance.</p>
       </header>
 
       <section class="case-section" id="problem">
-        <p class="case-kicker">The Problem</p>
-        <h2 class="case-heading">Hardware-dependent provisioning created a multi-day trust gap.</h2>
-        <p>New users signed up expecting immediate value, but their dashboard stayed empty until a technician physically provisioned their scooters — sometimes days later. Without any signal that progress was happening, users lost confidence in the product before it had a chance to prove itself.</p>
+        <h2 class="case-heading">Problem Statement</h2>
+        <p>New users see an empty dashboard for days because scooter provisioning requires multiple technician-driven steps.</p>
+        <p>This delays time-to-value and causes users to abandon the product.</p>
 
-        <div class="case-feature-grid" aria-label="Scope-sharpening questions">
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/rlw7m556YeB5qTZiyhimaiOXmWA.png" alt="The Issue" />
+        </div>
+        <p class="case-caption">Fig: The Issue</p>
+      </section>
+
+      <section class="case-section" id="questions">
+        <p class="case-kicker">Questions</p>
+        <h2 class="case-heading">Scope sharpening questions</h2>
+        <p>To solve for scalability and long-term utility, I audited the operational bottlenecks that usually break IoT dashboards:</p>
+
+        <div class="case-feature-grid" aria-label="Scope sharpening questions">
           <div class="case-feature-card">
-            <h3>Technician timelines</h3>
-            <p>What should users realistically expect, and when should that expectation be communicated?</p>
+            <h3>Operational Velocity</h3>
+            <p>What is the typical technician timeline? Setting these expectations reduces user uncertainty.</p>
           </div>
           <div class="case-feature-card">
-            <h3>Duplicate prevention</h3>
-            <p>How does the system avoid double-provisioning the same device or account?</p>
+            <h3>System Scalability</h3>
+            <p>How does the internal registry handle scooters added over time without duplicate setups?</p>
           </div>
           <div class="case-feature-card">
-            <h3>Role-based notifications</h3>
-            <p>Who needs to know what, and at which step of setup?</p>
+            <h3>Role-Based Logic</h3>
+            <p>Who handles repairs — Admin, Mechanic, or Technician? This defines the notification flows and visibility layers.</p>
           </div>
           <div class="case-feature-card">
-            <h3>Insurance approval</h3>
-            <p>Where does the approval workflow sit relative to provisioning and go-live?</p>
+            <h3>Process Bottlenecks</h3>
+            <p>Does the platform need to support insurance approval chains before a scooter appears live?</p>
           </div>
         </div>
       </section>
 
-      <section class="case-section" id="research">
-        <p class="case-kicker">Research &amp; Benchmarking</p>
-        <h2 class="case-heading">Other products already solved pieces of this problem.</h2>
-        <p>I benchmarked against Joyride and ScootAPI for fleet-management patterns, then borrowed further from outside the category: Stripe's test mode and AWS's pre-populated demo environments, both of which let users explore a fully-functioning product before any real data exists.</p>
+      <section class="case-section" id="submission">
+        <p class="case-kicker">Submission Requirements</p>
+        <h2 class="case-heading">What was asked to submit</h2>
+        <p>Describe your proposed directions. Outline an MVP (that can be put together in 1-2 months), explain what you would prioritize and leave out of the MVP.</p>
       </section>
 
-      <section class="case-section" id="solution">
-        <p class="case-kicker">Solution</p>
-        <h2 class="case-heading">Make the wait itself the product experience.</h2>
-        <p>The core solution was a Provisioning Status Tracker: instead of a blank dashboard, users see exactly which technical setup steps remain, turning an anxious wait into a transparent, trackable process.</p>
+      <section class="case-section" id="process">
+        <p class="case-kicker">Process</p>
+        <h2 class="case-heading">Design Process &amp; Research</h2>
+        <p>I bypassed standard "onboarding tours" to look at how world-class technical platforms handle the "Cold Start" problem:</p>
+        <ul class="case-list">
+          <li><strong>Competitive Benchmarking:</strong> Analyzed Joyride and ScootAPI; found they focus on features but require lengthy hardware setup before users see value.</li>
+          <li><strong>Empty-State Architecture:</strong> Modeled the solution after Stripe's "Test Mode" and AWS's pre-filled dashboards, allowing users to simulate high-stakes transactions and usage without real-world risk.</li>
+          <li><strong>Intent-Based Pathing:</strong> Designed 2 distinct entry points - one for users ready to connect their fleet and one for those who need to explore the product first.</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/XbbtXLBDXd3hEsoeE0vPohhnIEs.png" alt="Dashboard - focusing on business and fleet management overview" />
+        </div>
+        <p class="case-caption">Fig: Dashboard - focusing on business and fleet management overview</p>
       </section>
 
-      <section class="case-section" id="dashboard">
-        <p class="case-kicker">Revenue Dashboard &amp; MVP</p>
-        <h2 class="case-heading">The dashboard had to answer three business questions, not display every metric.</h2>
-        <p>Once live, the dashboard needed to answer: is the fleet profitable, how well are scooters being utilized, and where can operational costs come down? I recommended shipping only the core fleet-management view with basic financial metrics as the MVP, rather than a fully-loaded reporting suite.</p>
-        <p>On the engineering side, I scoped for Mapbox with stale-while-revalidate caching, clustering to support 10k+ devices, and prioritizing critical alerts over full fleet visibility when the map gets dense.</p>
+      <section class="case-section" id="provisioning">
+        <p class="case-kicker">Nice-to-Have</p>
+        <h2 class="case-heading">Provisioning Status tracker</h2>
+        <p>To bridge the "empty state" gap, I proposed a Provisioning Status Tracker designed to reduce user uncertainty during the technician-driven onboarding period. By providing a granular view of the remaining technical steps, the feature gives users assurance on exactly what needs to happen before their live fleet data appears.</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/jkTAkgFNJJEALXXN8R4FznKwF1c.png" alt="Aimed at reducing uncertainty for the users" />
+        </div>
+        <p class="case-caption">Fig: Aimed at reducing uncertainty for the users</p>
+      </section>
+
+      <section class="case-section" id="revenue">
+        <p class="case-kicker">Revenue Management</p>
+        <h2 class="case-heading">The core focus</h2>
+        <p>Not to just show numbers, but actually give insight into the business, answer:</p>
+        <ul class="case-list">
+          <li>Am I making or bleeding money?</li>
+          <li>What is my scooter utilization rate?</li>
+          <li>How can I reduce my operational spending?</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/KDyng9zukz9CzSDprOdwiUdRY.png" alt="Revenue page 1" />
+        </div>
+        <p class="case-caption">Fig: Revenue page 1</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/KMWeoyz8Qejzsz3AssYgvHDkLQ.png" alt="Revenue page 2" />
+        </div>
+        <p class="case-caption">Fig: Revenue page 2</p>
+      </section>
+
+      <section class="case-section" id="mvp">
+        <p class="case-kicker">MVP</p>
+        <h2 class="case-heading">For submission, i had to outline mVP</h2>
+        <p>I proposed to ship only the initial dashboard - because it focused on fleet management (delivering value immediately) and a bit of financial management.</p>
+      </section>
+
+      <section class="case-section" id="engineering">
+        <p class="case-kicker">MVP</p>
+        <h2 class="case-heading">Engineering Constraints</h2>
+        <p>Drawing from my previous experience in high-performance geospatial visualization, I treat system performance (speed, snappiness, and loading behavior) as a core UX pillar that is inseparable from engineering</p>
+
+        <p><strong>Map stack &amp; responsiveness</strong></p>
+        <ul class="case-list">
+          <li>Proposed using Mapbox with GeoJSON for flexible styling and custom scooter pins.</li>
+          <li>Suggested a stale-while-revalidate (SWR) caching strategy so map interactions (pan/zoom, repeated searches) feel instant by serving cached results while refreshing in the background.</li>
+        </ul>
+
+        <p><strong>Scalability for large fleets (10k+ pins)</strong></p>
+        <ul class="case-list">
+          <li>Clustering/aggregation at higher zoom levels, revealing individual pins only when zoomed in.</li>
+          <li>Keeping list + map in sync, but not rendering all 10k at once.</li>
+          <li>Lazy loading or moving to a dedicated "all scooters" page for full lists.</li>
+        </ul>
+
+        <p><strong>Prioritizing critical data to reduce load &amp; noise</strong></p>
+        <ul class="case-list">
+          <li>Surface only scooters needing critical attention (e.g., low battery, repair needed) instead of all devices.</li>
+          <li>This lowers backend/UI load and focuses the user on urgent actions, improving both performance and usefulness.</li>
+        </ul>
       </section>
 
       <section class="case-section" id="psychology">
-        <p class="case-kicker">User Psychology &amp; Trade-offs</p>
-        <h2 class="case-heading">Mock fleets built ownership before real data existed.</h2>
-        <p>I used the endowment effect deliberately: showing a mock fleet during setup builds a sense of ownership and momentum, so I designed the transition from simulated to real data to soften the emotional dip when the mock scooters disappear.</p>
-        <p>Within the 72-hour constraint, I prioritized getting the state-transition logic right over feature breadth, and trust-building over comprehensive reporting.</p>
+        <p class="case-kicker">User Psychology</p>
+        <h2 class="case-heading">Managing the 'dip' in UX</h2>
+        <ul class="case-list">
+          <li><strong>Leveraging the Endowment Effect:</strong> By populating the dashboard with a simulated fleet upon sign-up, I create an immediate sense of ownership that motivates users to complete the technician-driven onboarding required to replace "their" demo fleet with live production data.</li>
+          <li><strong>Mitigating the "Depressing Zero":</strong> To prevent the emotional dip when switching from rich demo data to initially empty real-world data, I proposed locking key metrics or displaying currency symbols alongside specific activation goals (like "Complete your first rental to unlock these metrics") to maintain momentum.</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/C5cBceCQiAE0KzjkOdTdnnc1GNQ.png" alt="Endowment effect - they feel they're seeing their fleet" />
+        </div>
+        <p class="case-caption">Fig: Endowment effect - they feel they're seeing their fleet</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/Upj1nuT9A4wiAgiQ3jCxUnooLMc.png" alt="Preventing the dip when moving from mock data to real data" />
+        </div>
+        <p class="case-caption">Fig: Preventing the dip when moving from mock data to real data</p>
+      </section>
+
+      <section class="case-section" id="tradeoffs">
+        <p class="case-kicker">Trade-offs</p>
+        <h2 class="case-heading">Time Vs. Solution</h2>
+        <p>To ship a high-impact solution within a strict 72-hour design window, I made 2 critical trade-offs to protect velocity and project focus:</p>
+        <ul class="case-list">
+          <li><strong>Logic over breadth:</strong> I deprioritized individual scooter deep-dives and full repair request workflows to obsess over the "Mock-to-Real" state logic. Proving ROI early is the highest-leverage way to prevent "empty state" abandonment.</li>
+          <li><strong>Systemic trust over polished features:</strong> I traded a comprehensive revenue management suite for a Provisioning Status Tracker. In an IoT environment, user trust during the 1-2 week technical setup period is more significant than complex financial reporting.</li>
+        </ul>
       </section>
 
       <section class="case-section" id="testing">
-        <p class="case-kicker">Testing Strategy</p>
-        <h2 class="case-heading">Time-to-value is the metric that matters here.</h2>
-        <p>I proposed measuring time-to-value improvements directly against the old empty-state experience, plus load-testing geospatial performance at enterprise fleet scale to confirm the clustering approach holds up beyond the take-home's scope.</p>
+        <p class="case-kicker">Testing</p>
+        <h2 class="case-heading">How I'd evaluate the design</h2>
+        <p>To evaluate the design, I would measure the "Time-to-Value" for users using simulated ROI data versus the original empty state. Additionally, I would load-test the geospatial clustering to ensure the 60fps "snappiness" is maintained when scaling to 10k+ enterprise-level scooters.</p>
       </section>
 
       <footer class="bottom-contact">

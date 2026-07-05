@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-9" />
+  <link rel="stylesheet" href="styles.css?v=case-10" />
 </head>
 <body>
   <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
@@ -38,119 +38,161 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
+      <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
-      <a href="#scenario">The Scenario</a>
-      <a href="#audit">Product Audit</a>
-      <a href="#research">User Research</a>
-      <a href="#solution">Solution</a>
-      <a href="#tradeoffs">Trade-offs</a>
-      <a href="#next-steps">Next Steps</a>
+      <a href="#design-process">Design Process</a>
+      <a href="#questions">Questions</a>
+      <a href="#product-auditing">Product Auditing</a>
+      <a href="#perspective">Perspective</a>
+      <a href="#solution-lowfi">Low-Fi Solutions</a>
+      <a href="#solution-why">The Why</a>
+      <a href="#tradeoffs">Trade Offs</a>
+      <a href="#future">Future</a>
+      <a href="#testing">Testing</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
         <h1 class="case-title">Sumble: Solving the "Data Dump" with Logic-First UX</h1>
 
-        <div class="case-info-grid" aria-label="Project details">
-          <div class="case-info-card">
-            <p class="case-info-label">Format</p>
-            <p class="case-info-value">72-Hour Interview Take-Home</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Company</p>
-            <p class="case-info-value">Sumble (Series A)</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Focus</p>
-            <p class="case-info-value">GTM lead qualification UX</p>
-          </div>
+        <div class="case-tags">
+          <span class="tag">series A</span>
+          <span class="tag">data heavy</span>
+          <span class="tag">b2b</span>
         </div>
 
-        <div class="case-overview-grid">
-          <div class="case-info-card">
-            <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">GTM managers were drowning in noisy prospect data and couldn't quickly tell which leads were worth acting on.</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">Audited the existing profile UI, ran two GTM interviews, and redesigned the profile as a decision tool instead of a data viewer.</p>
-          </div>
-        </div>
+        <p class="case-info-label">The Challenge</p>
+        <p class="case-info-value">GTM managers were overwhelmed by "noisy" data. They needed to identify high-intent leads within non-deterministic datasets, requiring a way to "steer" the data filtering without losing the big picture.</p>
+
+        <p class="case-info-label">The Ask</p>
+        <p class="case-info-value">This exercise involves taking a rapid first-pass at rethinking the view in the wider context of the application.</p>
 
         <div class="case-media image">
-          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png" alt="Redesigned Sumble lead profile interface prioritizing qualification signals." />
+          <img src="https://framerusercontent.com/images/yU7Nk1xo1VG3lyvJR3FOpmwVOhg.png" alt="The screen I was asked to improve" />
         </div>
-        <p class="case-caption">Fig: Redesigned lead profile, reframed around the qualify-or-contact decision</p>
+        <p class="case-caption">Fig: The screen I was asked to improve</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/SbHIeUouV8mpMTcnjxGxtmK9c.png" alt="My process" />
+        </div>
+        <p class="case-caption">Fig: My process</p>
       </header>
 
-      <section class="case-section" id="scenario">
-        <p class="case-kicker">The Scenario</p>
-        <h2 class="case-heading">Sumble helps GTM teams cut through noisy data to find high-intent leads.</h2>
-        <p>The take-home scenario: a head of technology at Jaguar Land Rover shows up after filtering by "MATLAB" as a technology. The rep has to decide, in seconds, whether this is the right contact and what to do next.</p>
+      <section class="case-section" id="design-process">
+        <p class="case-kicker">My Design Process</p>
+        <h2 class="case-heading">Scenario</h2>
+        <p>A head of technology and innovation at Jaguar Land Rover. The user has arrived at the above page via a filter for the MATLAB technology.</p>
+        <p><strong>What decision are they trying to make?</strong></p>
+        <p>Is this the right MATLAB decision‑maker at JLR, and what should I do next?</p>
+      </section>
 
-        <div class="case-feature-grid" aria-label="Key questions">
+      <section class="case-section" id="questions">
+        <p class="case-kicker">Questions</p>
+        <h2 class="case-heading">Scope sharpening questions</h2>
+
+        <div class="case-feature-grid" aria-label="Scope sharpening questions">
           <div class="case-feature-card">
-            <h3>Qualify or contact?</h3>
-            <p>The UI never made clear which decision it was actually helping the rep make.</p>
+            <h3>Primary decision</h3>
+            <p>What single first move should this page drive: qualify, or contact?</p>
           </div>
           <div class="case-feature-card">
-            <h3>Right person, right time</h3>
-            <p>What GTM signals actually define this for a profile like the one shown?</p>
+            <h3>Right person + right time</h3>
+            <p>How is this defined in GTM terms, and which data proves it (role/seniority, tech mentions, recent hiring/posts, location, timing)?</p>
           </div>
           <div class="case-feature-card">
             <h3>CTA hierarchy</h3>
-            <p>Contact, list, message, share — which action should be primary, and when?</p>
+            <p>Which action is primary and why: Contact, Add to List, Compose Message, Share?</p>
           </div>
           <div class="case-feature-card">
-            <h3>Graceful degradation</h3>
-            <p>How should the UI hold up when a profile has sparse or incomplete data?</p>
+            <h3>Data variance</h3>
+            <p>How often is data sparse/fuzzy, and how should the UI degrade gracefully?</p>
           </div>
         </div>
       </section>
 
-      <section class="case-section" id="audit">
-        <p class="case-kicker">Product Audit</p>
-        <h2 class="case-heading">The original UI was built for data volume, not decisions.</h2>
-        <p>Three failures stood out immediately:</p>
+      <section class="case-section" id="product-auditing">
+        <p class="case-kicker">Product Auditing</p>
+        <h2 class="case-heading">Where is the current layout failing?</h2>
+        <p>Before designing, I audited the existing platform to find where the view was failing the user.</p>
         <ul class="case-list">
-          <li>The layout optimized for showing everything it knew, not for helping someone decide.</li>
-          <li>Sparse profiles broke the layout, since it assumed every field would be populated with a clear next action.</li>
-          <li>The signals that actually mattered for GTM — recent hiring, tech mentions, timing — were buried below less relevant data.</li>
-        </ul>
-      </section>
-
-      <section class="case-section" id="research">
-        <p class="case-kicker">User Research</p>
-        <h2 class="case-heading">Two conversations were enough to reframe the problem.</h2>
-        <p>I interviewed two GTM professionals to understand velocity, volume, and where their actual pain lived. Both described the same pattern: they weren't short on data, they were short on a fast way to separate signal from noise across dozens of profiles a day.</p>
-      </section>
-
-      <section class="case-section" id="solution">
-        <p class="case-kicker">Solution</p>
-        <h2 class="case-heading">I repositioned the profile from a "viewer" to an agentic decision tool.</h2>
-        <ul class="case-list">
-          <li>Condensed summaries that answer the core qualification question first, before any raw data.</li>
-          <li>A modular, component-based layout that holds up cleanly even when a profile is missing fields.</li>
-          <li>Time-relevancy badges that surface recency so hiring signals and tech mentions can't get buried.</li>
-          <li>Restructured action buttons ordered to match how a GTM rep actually works a lead, not alphabetically or by feature availability.</li>
+          <li><strong>Data Dump vs. Decision Tool:</strong> The original UI optimized for data volume rather than decision-making, forcing users to manually scan biographies to find relevance.</li>
+          <li><strong>Layout Fragility:</strong> The existing design failed to degrade gracefully; sparse data profiles resulted in a broken user experience with no clear call-to-action.</li>
+          <li><strong>The 'Recency' Blindspot:</strong> Vital GTM signals (recent hiring, MATLAB mentions) were buried, missing the 'Right Time' window critical for successful outreach.</li>
         </ul>
 
         <div class="case-media image">
-          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&width=2955&height=2110" alt="Low-fidelity sketches showing the iteration from data viewer to decision tool." />
+          <img src="https://framerusercontent.com/images/KXmPTn9uq0nMNZZiLUTHz6cmYc.png" alt="Example of sparse profile - to highlight inconsistency" />
         </div>
-        <p class="case-caption">Fig: Early sketches exploring sparse-profile states and CTA hierarchy</p>
+        <p class="case-caption">Fig: Example of sparse profile - to highlight inconsistency</p>
+      </section>
+
+      <section class="case-section" id="perspective">
+        <p class="case-kicker">Perspective</p>
+        <h2 class="case-heading">Talking to GTM Users</h2>
+        <p>GTM is a new field for me; to understand how agile they move, what is the volume the face and what are the active challenges in finding good leads, I talked to 2 users to get their perspective</p>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/OTBs48wQzz4qYuZwnHkC7m34ns.jpg" alt="A snippet of user interview insight from 2 GTM folks" />
+        </div>
+        <p class="case-caption">Fig: A snippet of user interview insight from 2 GTM folks</p>
+      </section>
+
+      <section class="case-section" id="solution-lowfi">
+        <p class="case-kicker">Solution</p>
+        <h2 class="case-heading">Low fidelity solutions</h2>
+        <p>The solution is aimed at</p>
+        <ul class="case-list">
+          <li>reducing cognitive load</li>
+          <li>reduce time-to-decision</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/AUg1Tcz6SwNp6iRJ6Ong6Xlj58.png" alt="Rapid first-pass 1" />
+        </div>
+        <p class="case-caption">Fig: Rapid first-pass 1</p>
+      </section>
+
+      <section class="case-section" id="solution-why">
+        <p class="case-kicker">Solution</p>
+        <h2 class="case-heading">The Why behind my design decisions</h2>
+        <p>My solution shifted the platform from a "profile viewer" to an agentic decision tool.</p>
+        <ul class="case-list">
+          <li><strong>The "One-Line Why":</strong> Replaced dense biographical text with an AI-interpretable summary that answers the user's primary question: "Is this the right decision-maker right now?".</li>
+          <li><strong>Modular Extensibility:</strong> Engineered a component-based layout that prioritizes high information density regardless of data completeness, ensuring the UI remains functional for sparse profiles.</li>
+          <li><strong>Recency Signal Architecture:</strong> Promoted "Timing" to a primary data dimension, using time-relevancy badges for tech mentions and hiring spikes to drive immediate action.</li>
+          <li><strong>Actionable Hierarchy:</strong> Refactored the CTA logic to prioritize "Contact" and "List-building," aligning the UI with the user's high-velocity workflow.</li>
+        </ul>
+
+        <div class="case-media image">
+          <img src="https://framerusercontent.com/images/sl81GhPdP8VGNGx9tlpW7RVAIJ4.png" alt="Rapid first-pass 2" />
+        </div>
+        <p class="case-caption">Fig: Rapid first-pass 2</p>
       </section>
 
       <section class="case-section" id="tradeoffs">
-        <p class="case-kicker">Trade-offs</p>
-        <h2 class="case-heading">Shipping in 72 hours meant cutting scope deliberately.</h2>
-        <p>I narrowed the redesign to Sales Leadership personas only, rather than trying to generalize across every GTM role. I also prioritized real-time relevance signals over building out historical analytics, since the immediate decision mattered more than a trend line within the take-home's constraints.</p>
+        <p class="case-kicker">Trade Offs</p>
+        <h2 class="case-heading">Time vs. solution</h2>
+        <p>To deliver a high-signal solution in 72 hours, I made two critical cuts to protect the core value proposition:</p>
+        <ul class="case-list">
+          <li><strong>Deep vs. Wide User Segments:</strong> I intentionally ignored SDR and Marketing personas to solve exclusively for Sales Leadership. By narrowing the scope, I could obsess over the "One-liner Why" - the primary signal a leader needs to authorize outreach.</li>
+          <li><strong>Logic over Analytics:</strong> I deprioritized historical outreach data to focus on real-time relevance. In GTM, the "Right Time" is often a transient signal (recent job posts, tech mentions); I chose to build a robust UI for these "live" signals rather than a mediocre retrospective dashboard.</li>
+        </ul>
       </section>
 
-      <section class="case-section" id="next-steps">
-        <p class="case-kicker">Future Improvements &amp; Testing</p>
-        <h2 class="case-heading">Next, I'd validate the decision speed, not just the layout.</h2>
-        <p>With more time, I'd expand research to additional user segments and explore historically predictive signals alongside the real-time ones. For testing, I'd measure time-to-qualify and rep confidence before and after the redesign, since those are the two metrics that actually reflect whether the tool is doing its job.</p>
+      <section class="case-section" id="future">
+        <p class="case-kicker">Future</p>
+        <h2 class="case-heading">How I'd Improve If I had the time &amp; Resources</h2>
+        <ul class="case-list">
+          <li>Understand the different user segments and how success differs with each segment (RevOps, SDRs, AEs, Sales leadership, Marketing)</li>
+          <li>What signals have historically predicted successful outreach (for both precision and volume GTM workflows)?</li>
+          <li>How do GTM teams operationalize "right person + right time" today?</li>
+        </ul>
+      </section>
+
+      <section class="case-section" id="testing">
+        <p class="case-kicker">Testing</p>
+        <h2 class="case-heading">How I'd evaluate the design</h2>
+        <p>Measure lead qualification time and confidence rating after 10 profiles each.</p>
       </section>
 
       <footer class="bottom-contact">

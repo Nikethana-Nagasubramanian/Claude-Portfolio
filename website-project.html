@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-9" />
+  <link rel="stylesheet" href="styles.css?v=case-10" />
 </head>
 <body>
   <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
@@ -38,85 +38,70 @@
 
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
+      <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
       <a href="#roles">Roles</a>
-      <a href="#implementation">Implementation</a>
+      <a href="#building">Building</a>
       <a href="#try-it">Try It</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <h1 class="case-title">High-Performance Website Builder</h1>
+        <h1 class="case-title">High-performance website builder with drag-n-drop, undo/redo, keyboard-first navigation</h1>
 
-        <div class="case-info-grid" aria-label="Project details">
-          <div class="case-info-card">
-            <p class="case-info-label">Type</p>
-            <p class="case-info-value">Side Project</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Timeline</p>
-            <p class="case-info-value">Dec 2025</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Stack</p>
-            <p class="case-info-value">React, Zustand, dnd-kit</p>
-          </div>
+        <div class="case-tags">
+          <span class="tag">reactjs</span>
+          <span class="tag">design engineering</span>
         </div>
 
-        <div class="case-overview-grid">
-          <div class="case-info-card">
-            <p class="case-info-label">Problem Statement</p>
-            <p class="case-info-value">Most website builders optimize for beginners with slow, visual-first interactions, leaving no fast option for people who already know what they want to build.</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">What I Did</p>
-            <p class="case-info-value">Built a keyboard-first builder with drag-and-drop, undo/redo, and instant interactions that feel closer to a code editor than a website builder.</p>
-          </div>
-        </div>
+        <p class="case-info-label">Problem &amp; My Approach</p>
+        <p class="case-info-value">Most website builders optimize for beginners - visual, guided, but slow. Every action requires clicking through menus and waiting for animations. I built a website builder for power users who already know what they want: keyboard-first, instant interactions, zero friction.</p>
 
-        <div class="case-media short">
+        <div class="case-media hero-video">
           <video autoplay muted loop playsinline controls>
             <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
           </video>
         </div>
-        <p class="case-caption">Fig: Keyboard-first drag-and-drop editing with instant undo/redo</p>
+        <p class="case-caption">Fig: Website Builder</p>
       </header>
 
       <section class="case-section" id="roles">
         <p class="case-kicker">Roles</p>
-        <h2 class="case-heading">One person, three lenses.</h2>
-        <p>Building this solo meant switching between three perspectives on the same problem:</p>
+        <h2 class="case-heading">a user, A designer and a developer</h2>
 
-        <div class="case-feature-grid" aria-label="Perspectives">
-          <div class="case-feature-card">
-            <h3>As a user</h3>
-            <p>I paid attention to moments of hesitation — where a click felt like it might have failed, and where the tool needed to feel as responsive as a native app.</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>As a designer</h3>
-            <p>I prioritized intuitive keyboard workflows, consistent performance, and a component system that could scale without turning into visual debt.</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>As a developer</h3>
-            <p>I kept the codebase clean and non-repetitive, chose technology that would scale, and made sure the architecture's logic stayed easy to reason about.</p>
-          </div>
-        </div>
+        <p><strong>As a user, I observed myself where I -</strong></p>
+        <ul class="case-list">
+          <li>Paused</li>
+          <li>Thought something was broken</li>
+          <li>Expected performance to feel jank-free</li>
+          <li>Expected the product to feel native</li>
+        </ul>
+
+        <p><strong>As a designer, I made sure -</strong></p>
+        <ul class="case-list">
+          <li>Keyboard navigation feels intuitive</li>
+          <li>The performance stayed up to the bar</li>
+          <li>And the product is scalable</li>
+        </ul>
+
+        <p><strong>As a developer, I made sure -</strong></p>
+        <ul class="case-list">
+          <li>The code is clean and not redundant</li>
+          <li>The stack + methodologies were scalable</li>
+          <li>The logic was easy to architect</li>
+        </ul>
       </section>
 
-      <section class="case-section" id="implementation">
-        <p class="case-kicker">Implementation</p>
-        <h2 class="case-heading">Built for 60fps, not just for features.</h2>
-        <p>The builder runs on React with Zustand for state management, and a custom drag-and-drop layer built on dnd-kit rather than a heavier off-the-shelf solution. Debouncing strategies keep heavy operations — like dragging large layouts — running at 60fps, so the tool feels closer to a code editor than a typical drag-and-drop builder.</p>
+      <section class="case-section" id="building">
+        <p class="case-kicker">Building</p>
+        <h2 class="case-heading">The Technical Execution</h2>
+        <p>Built with React and Zustand state management. Custom drag-and-drop system using dnd-kit overlays. Debouncing logic maintains 60fps during intensive updates. The result: a builder that feels as responsive as a code editor, not a toy.</p>
       </section>
 
       <section class="case-section" id="try-it">
-        <p class="case-kicker">Try It</p>
-        <h2 class="case-heading">See it in action.</h2>
-        <p>The project is live, and the code is open for anyone curious about the drag-and-drop and state management approach.</p>
-
         <div class="case-cta-group">
-          <a class="archive-link" href="https://atomicpage.vercel.app/" target="_blank" rel="noopener">Live Demo ↗</a>
-          <a class="archive-link" href="https://github.com/Nikethana-Nagasubramanian/website-builder" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="archive-link" href="https://atomicpage.vercel.app/" target="_blank" rel="noopener">See Live Site</a>
+          <a class="archive-link" href="https://github.com/Nikethana-Nagasubramanian/website-builder" target="_blank" rel="noopener">GitHub</a>
         </div>
       </section>
 

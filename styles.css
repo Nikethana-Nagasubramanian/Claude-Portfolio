@@ -536,10 +536,11 @@ img, video { max-width: 100%; }
 
 .case-shell {
   width: 100%;
+  max-width: 1440px;
   min-width: 800px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 178px minmax(0, 830px);
+  grid-template-columns: 178px minmax(0, 1fr);
   gap: 56px;
   justify-content: center;
   align-items: start;
@@ -555,6 +556,15 @@ img, video { max-width: 100%; }
   padding: 16px 0;
 }
 
+.case-nav-label {
+  margin-bottom: 4px;
+  color: #292929;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
 .case-nav a {
   color: #6f6f6f;
   font-size: 13px;
@@ -567,10 +577,19 @@ img, video { max-width: 100%; }
 
 .case-content {
   width: 100%;
-  max-width: 830px;
   min-width: 0;
   display: grid;
   gap: 42px;
+}
+
+.case-hero > *:not(.case-media),
+.case-section > *:not(.case-media) {
+  max-width: 830px;
+}
+
+.case-content > .next-case,
+.case-content > .bottom-contact {
+  max-width: 830px;
 }
 
 .case-hero {
@@ -591,6 +610,13 @@ img, video { max-width: 100%; }
   display: grid;
   gap: 18px;
   margin-bottom: 32px;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .case-overview-grid {
@@ -752,7 +778,8 @@ img, video { max-width: 100%; }
 }
 
 .case-media {
-  margin: 22px 0 10px;
+  width: 95%;
+  margin: 22px auto 10px;
   border: 1px solid var(--border);
   border-radius: 18px;
   background: #fff;
@@ -821,6 +848,15 @@ img, video { max-width: 100%; }
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.next-case-thumb {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 4px;
 }
 
 .bottom-contact {
