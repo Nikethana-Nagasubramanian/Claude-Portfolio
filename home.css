@@ -1,0 +1,282 @@
+/* Homepage — editorial system shared with gf-case.css (pilot for site-wide look).
+   Loaded only by index-v2.html while the revamp is under review. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FAFAF8;
+  --ink: #141414;
+  --muted: #6b6b6b;
+  --faint: #a3a3a3;
+  --rule: #e4e2dc;
+  --accent: #3f7ff4;
+  --sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img, video { max-width: 100%; display: block; }
+
+/* ── Top nav: flat editorial bar (same as /gf) ── */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 250, 248, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--muted);
+  transition: color .15s ease;
+}
+.nav-link:hover { color: var(--ink); }
+
+.nav-separator {
+  width: 1px;
+  height: 18px;
+  background: var(--rule);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  transition: color .15s ease;
+}
+.social-links a:hover { color: var(--accent); }
+.social-links svg { width: 15px; height: 15px; fill: currentColor; }
+
+/* ── Shell: single centered column, quieter than /gf ── */
+.home-shell {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 116px 48px 150px;
+}
+
+/* ── Hero ── */
+.hero-id {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  object-fit: cover;
+}
+
+.hero-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hero-name span {
+  color: var(--faint);
+}
+.hero-name span::before { content: "— "; }
+
+.hero-status {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.hero-status::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 9px;
+  vertical-align: 1px;
+}
+
+.hero-headline {
+  margin-top: 54px;
+  font-size: clamp(44px, 6.4vw, 78px);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.02;
+  max-width: 14ch;
+}
+
+.hero-support {
+  margin-top: 24px;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 46ch;
+}
+.hero-support strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── Selected work ── */
+.work-section { margin-top: 170px; }
+
+.work-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.work-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.work-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--faint);
+}
+
+/* Project entries — editorial rows, not boxed cards */
+.work-entry {
+  display: block;
+  margin-top: 92px;
+}
+.work-entry:first-of-type { margin-top: 72px; }
+
+.work-media {
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.work-media video { width: 100%; }
+
+.work-meta {
+  margin-top: 22px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-index { color: var(--accent); font-weight: 500; }
+.work-tags { margin-left: auto; color: var(--faint); text-align: right; }
+
+.work-title {
+  margin-top: 14px;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  max-width: 22ch;
+  transition: color .15s ease;
+}
+
+.work-support {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.work-arrow {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--faint);
+  transition: color .15s ease, transform .2s ease;
+}
+
+.work-entry:hover .work-title { color: var(--accent); }
+.work-entry:hover .work-arrow { color: var(--accent); transform: translateX(6px); }
+
+/* ── Archive link ── */
+.archive-link {
+  display: block;
+  margin-top: 130px;
+  padding-top: 26px;
+  border-top: 1px solid var(--ink);
+}
+
+.archive-link .work-title { margin-top: 12px; font-size: clamp(24px, 2.6vw, 32px); }
+.archive-link:hover .work-title { color: var(--accent); }
+.archive-link:hover .work-arrow { color: var(--accent); transform: translateX(6px); }
+
+/* ── Breakpoints ── */
+@media (max-width: 720px) {
+  .nav-content { padding: 0 20px; gap: 18px; }
+
+  .home-shell { padding: 72px 18px 100px; }
+
+  .hero-status { margin-left: 0; flex-basis: 100%; }
+  .hero-headline { margin-top: 40px; font-size: clamp(38px, 11vw, 48px); }
+  .hero-support { font-size: 18px; }
+
+  .work-section { margin-top: 110px; }
+  .work-entry { margin-top: 70px; }
+  .work-entry:first-of-type { margin-top: 54px; }
+  .work-tags { margin-left: 0; text-align: left; flex-basis: 100%; }
+  .work-support { font-size: 16px; }
+
+  .archive-link { margin-top: 90px; }
+}
