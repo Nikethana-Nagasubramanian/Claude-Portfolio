@@ -17,7 +17,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(circle, rgba(63, 127, 244, .16) 1px, transparent 1.4px) 0 0 / 24px 24px,
+    var(--bg);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
@@ -121,9 +123,9 @@ img, video { max-width: 100%; display: block; }
 .hero-status {
   margin-left: auto;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: .12em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--accent);
   white-space: nowrap;
@@ -131,12 +133,12 @@ img, video { max-width: 100%; display: block; }
 .hero-status::before {
   content: "";
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--accent);
-  margin-right: 9px;
-  vertical-align: 1px;
+  margin-right: 10px;
+  vertical-align: 0;
 }
 
 .hero-headline {
@@ -166,10 +168,10 @@ img, video { max-width: 100%; display: block; }
 
 .work-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding-bottom: 14px;
+  padding-bottom: 22px;
   border-bottom: 1px solid var(--ink);
 }
 
@@ -187,7 +189,41 @@ img, video { max-width: 100%; display: block; }
   font-size: 11px;
   letter-spacing: .1em;
   color: var(--faint);
+  white-space: nowrap;
 }
+
+/* Segmented control: Selected Work / Personal Projects */
+.work-tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+.work-tab {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 9px 18px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.work-tab:hover:not(.active) { color: var(--ink); }
+
+.work-tab.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.work-panel[hidden] { display: none; }
 
 /* Project entries — editorial rows, not boxed cards */
 .work-entry {
@@ -273,6 +309,8 @@ img, video { max-width: 100%; display: block; }
   .hero-support { font-size: 18px; }
 
   .work-section { margin-top: 110px; }
+  .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .work-tab { padding: 8px 14px; font-size: 10px; }
   .work-entry { margin-top: 70px; }
   .work-entry:first-of-type { margin-top: 54px; }
   .work-tags { margin-left: 0; text-align: left; flex-basis: 100%; }

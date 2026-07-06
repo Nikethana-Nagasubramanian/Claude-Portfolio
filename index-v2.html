@@ -51,57 +51,80 @@
 
     <section class="work-section" aria-labelledby="work-title">
       <div class="work-header">
-        <p class="work-label" id="work-title">Selected Work</p>
-        <p class="work-count">3 projects</p>
+        <div class="work-tabs" role="tablist" aria-label="Project categories">
+          <button class="work-tab active" id="tab-selected" type="button" role="tab" aria-selected="true" aria-controls="panel-selected" data-tab="selected">Selected Work</button>
+          <button class="work-tab" id="tab-personal" type="button" role="tab" aria-selected="false" aria-controls="panel-personal" data-tab="personal">Personal Projects</button>
+        </div>
+        <p class="work-count" id="work-title">2 projects</p>
       </div>
 
-      <a class="work-entry" href="gf.html">
-        <div class="work-media">
-          <video autoplay muted loop playsinline controls>
-            <source src="https://framerusercontent.com/assets/qqD1nHfeezPmLHta3mPfMuFagNg.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="work-meta">
-          <span class="work-index">01</span>
-          <span>2024 – 2025</span>
-          <span class="work-tags">Shipped / Enterprise Design / Visual Design / B2B</span>
-        </div>
-        <p class="work-title">Accelerating Retail Site Evaluation</p>
-        <p class="work-support">From 6 hours to under 1 minute.</p>
-        <span class="work-arrow">→</span>
-      </a>
+      <div class="work-panel" id="panel-selected" role="tabpanel" aria-labelledby="tab-selected">
+        <a class="work-entry" href="gf.html">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/qqD1nHfeezPmLHta3mPfMuFagNg.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>2024 – 2025</span>
+            <span class="work-tags">Shipped / Enterprise Design / Visual Design / B2B</span>
+          </div>
+          <p class="work-title">Accelerating Retail Site Evaluation</p>
+          <p class="work-support">From 6 hours to under 1 minute.</p>
+          <span class="work-arrow">→</span>
+        </a>
 
-      <a class="work-entry" href="designing-charlie.html">
-        <div class="work-media">
-          <video autoplay muted loop playsinline controls>
-            <source src="https://framerusercontent.com/assets/AQcNffvkgSvuA5MhzzyetIihlaA.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="work-meta">
-          <span class="work-index">02</span>
-          <span>2026 – Present</span>
-          <span class="work-tags">Shipped / Enterprise Design / Product Strategy / B2B2C</span>
-        </div>
-        <p class="work-title">Designing Trust Into a Conversational AI</p>
-        <p class="work-support">A privacy layer between the user and the LLM.</p>
-        <span class="work-arrow">→</span>
-      </a>
+        <a class="work-entry" href="designing-charlie.html">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/AQcNffvkgSvuA5MhzzyetIihlaA.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>2026 – Present</span>
+            <span class="work-tags">Shipped / Enterprise Design / Product Strategy / B2B2C</span>
+          </div>
+          <p class="work-title">Designing Trust Into a Conversational AI</p>
+          <p class="work-support">A privacy layer between the user and the LLM.</p>
+          <span class="work-arrow">→</span>
+        </a>
+      </div>
 
-      <a class="work-entry" href="https://medium.com/@nike_thana/redesigning-gptzeros-advanced-scan-a-product-teardown-7234a19c4c95" target="_blank" rel="noopener">
-        <div class="work-media">
-          <video autoplay muted loop playsinline controls>
-            <source src="https://framerusercontent.com/assets/mN1CIicWpPowfEVqSN07Pf5qlUs.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="work-meta">
-          <span class="work-index">03</span>
-          <span>Feb 2026</span>
-          <span class="work-tags">Medium Article / Product Teardown</span>
-        </div>
-        <p class="work-title">Redesigning GPTZero's Advanced Scan</p>
-        <p class="work-support">A product teardown, published on Medium.</p>
-        <span class="work-arrow">↗</span>
-      </a>
+      <div class="work-panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
+        <a class="work-entry" href="https://medium.com/@nike_thana/redesigning-gptzeros-advanced-scan-a-product-teardown-7234a19c4c95" target="_blank" rel="noopener">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/mN1CIicWpPowfEVqSN07Pf5qlUs.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>Feb 2026</span>
+            <span class="work-tags">Medium Article / Product Teardown</span>
+          </div>
+          <p class="work-title">Redesigning GPTZero's Advanced Scan</p>
+          <p class="work-support">A product teardown, published on Medium.</p>
+          <span class="work-arrow">↗</span>
+        </a>
+
+        <a class="work-entry" href="website-project.html">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>Dec 2025</span>
+            <span class="work-tags">Side Project / ReactJS / Design Engineering</span>
+          </div>
+          <p class="work-title">High-Performance Website Builder</p>
+          <p class="work-support">Keyboard-first, instant interactions, zero friction.</p>
+          <span class="work-arrow">→</span>
+        </a>
+      </div>
     </section>
 
     <a class="archive-link" href="archive.html">
@@ -110,5 +133,33 @@
       <span class="work-arrow">→</span>
     </a>
   </main>
+
+  <script>
+    const workTabs = document.querySelectorAll('.work-tab[data-tab]');
+    const workPanels = {
+      selected: document.getElementById('panel-selected'),
+      personal: document.getElementById('panel-personal')
+    };
+    const workCount = document.getElementById('work-title');
+
+    workTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const selected = tab.dataset.tab;
+
+        workTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', String(isActive));
+        });
+
+        Object.entries(workPanels).forEach(([key, panel]) => {
+          panel.hidden = key !== selected;
+        });
+
+        const count = workPanels[selected].querySelectorAll('.work-entry').length;
+        workCount.textContent = `${count} project${count === 1 ? '' : 's'}`;
+      });
+    });
+  </script>
 </body>
 </html>
