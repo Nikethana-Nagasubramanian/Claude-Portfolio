@@ -227,6 +227,30 @@ img, video { max-width: 100%; display: block; }
   color: var(--ink);
 }
 
+/* Notice / callout — e.g. NDA disclosures, constraints */
+.notice {
+  margin-top: 36px;
+  padding: 16px 20px;
+  border-left: 2px solid var(--accent);
+  background: rgba(63, 127, 244, .05);
+  max-width: 68ch;
+}
+.notice p {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: .01em;
+  line-height: 1.7;
+  color: var(--muted);
+  text-transform: none;
+}
+.notice p b {
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
 /* ── Section scaffolding ── */
 .case-section {
   margin-top: 90px;
