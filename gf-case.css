@@ -31,11 +31,11 @@ img, video { max-width: 100%; display: block; }
 /* ── Mono label utility ── */
 .mono-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: #616060;
 }
 
 /* ── Top nav: flat editorial bar ── */
@@ -129,15 +129,25 @@ img, video { max-width: 100%; display: block; }
   font-weight: 400;
   letter-spacing: .04em;
   color: var(--faint);
-  counter-increment: toc;
   transition: color .15s ease;
 }
-.case-nav a::before {
+/* First link (Overview) sits outside the numbered flow — sec-index
+   numbering starts at 01 on the section right after it, so the nav
+   counter must skip it to stay in sync. */
+.case-nav a:not(:first-child) {
+  counter-increment: toc;
+}
+.case-nav a:not(:first-child)::before {
   content: counter(toc, decimal-leading-zero) "  ";
   color: var(--accent);
   opacity: .55;
 }
 .case-nav a:hover { color: var(--ink); }
+.case-nav a.active {
+  color: var(--ink);
+  font-weight: 500;
+}
+.case-nav a.active::before { opacity: 1; }
 
 /* ── Content column ── */
 .case-content {
@@ -174,22 +184,30 @@ img, video { max-width: 100%; display: block; }
   max-width: 52ch;
 }
 
-/* Spec sheet strip */
+/* Spec sheet strip — rows stack column-wise; each row is itself
+   label + value arranged row-wise via the grid below. */
 .spec-strip {
   margin-top: 48px;
-  padding: 16px 0;
+  padding: 20px 0;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 40px;
-  row-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.spec-rows {
+  display: grid;
+  gap: 12px;
 }
 
 .spec-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -198,7 +216,6 @@ img, video { max-width: 100%; display: block; }
 .spec-item b {
   font-weight: 500;
   color: var(--faint);
-  margin-right: 10px;
 }
 
 .spec-badge {
@@ -208,7 +225,6 @@ img, video { max-width: 100%; display: block; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-left: auto;
   white-space: nowrap;
 }
 
@@ -260,16 +276,15 @@ img, video { max-width: 100%; display: block; }
 
 .sec-index {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: #3f7ff4;
   margin-bottom: 20px;
 }
 .sec-index em {
   font-style: normal;
-  color: var(--accent);
   margin-right: 10px;
 }
 
@@ -297,21 +312,7 @@ img, video { max-width: 100%; display: block; }
 }
 .sec-body > p + p { margin-top: 16px; }
 
-/* Variant A: split — header block left (sticky), body right */
-.sec--split .sec-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 56px;
-  align-items: start;
-}
-.sec--split .sec-head {
-  position: sticky;
-  top: 120px;
-}
-.sec--split .sec-body { margin-top: 6px; }
-.sec--split .sec-title { font-size: clamp(30px, 3.2vw, 42px); }
-
-/* Variant C: narrow header */
+/* Narrow header variant — same row-stack, just a tighter text measure */
 .sec--narrow .sec-title { max-width: 14ch; }
 .sec--narrow .sec-support { max-width: 44ch; }
 
@@ -343,8 +344,8 @@ img, video { max-width: 100%; display: block; }
 .stat-label {
   margin-top: 14px;
   font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -363,7 +364,7 @@ img, video { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 3.2fr);
   gap: 32px;
-  align-items: end;
+  align-items: center;
 }
 .media-inset {
   border: 1px solid var(--rule);
@@ -371,7 +372,6 @@ img, video { max-width: 100%; display: block; }
 .media-inset img { width: 100%; }
 .media-inset-row .media-caption {
   margin-top: 0;
-  padding-bottom: 6px;
   text-align: left;
 }
 
@@ -381,11 +381,11 @@ img, video { max-width: 100%; display: block; }
 .media-caption {
   margin-top: 14px;
   font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: #616060;
   line-height: 1.7;
   max-width: 60ch;
 }
@@ -448,10 +448,6 @@ img, video { max-width: 100%; display: block; }
   }
   .case-nav { display: none; }
 
-  .sec--split .sec-inner { grid-template-columns: 1fr; gap: 0; }
-  .sec--split .sec-head { position: static; }
-  .sec--split .sec-body { margin-top: 30px; }
-
   .media-inset-row { grid-template-columns: 1fr; gap: 12px; }
   .media-inset-row .media-caption { order: 2; }
 }
@@ -464,8 +460,8 @@ img, video { max-width: 100%; display: block; }
   .case-title { font-size: clamp(34px, 10vw, 44px); }
   .hero-support { font-size: 18px; }
 
-  .spec-strip { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .spec-badge { margin-left: 0; }
+  .spec-strip { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .spec-item { grid-template-columns: 90px 1fr; font-size: 13px; }
 
   .hero-duo { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; }
 

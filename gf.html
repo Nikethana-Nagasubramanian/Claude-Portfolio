@@ -57,9 +57,11 @@
         <p class="hero-support">From gut-feel spreadsheets to a repeatable decision system.</p>
 
         <div class="spec-strip" aria-label="Project details">
-          <span class="spec-item"><b>Role</b>Founding Designer</span>
-          <span class="spec-item"><b>Timeline</b>2024–2025</span>
-          <span class="spec-item"><b>With</b>Real Estate Managers, VPs of Real Estate, CPO, CEO, Engineers</span>
+          <div class="spec-rows">
+            <p class="spec-item"><b>Role</b>Founding Designer</p>
+            <p class="spec-item"><b>Timeline</b>2024–2025</p>
+            <p class="spec-item"><b>With</b>Real Estate Managers, VPs of Real Estate, CPO, CEO, Engineers</p>
+          </div>
           <span class="spec-badge">6 hrs → &lt;1 min</span>
         </div>
 
@@ -82,17 +84,15 @@
         <p class="media-caption">Fig: Final design I shipped</p>
       </header>
 
-      <section class="case-section sec--split sec--major" id="value">
-        <div class="sec-inner">
-          <div class="sec-head">
-            <p class="sec-index"><em>01</em>Value Delivered</p>
-            <h2 class="sec-title">From Manual to Repeatable</h2>
-            <p class="sec-support">The product turned a slow workflow into a system teams could trust and reuse.</p>
-          </div>
-          <div class="sec-body">
-            <p>GrowthFactor reduced the work of evaluating a retail site from a multi-hour research process into a focused workflow analysts could repeat across hundreds of addresses.</p>
-            <p>Across 30+ customers and 5,000+ analyzed sites, the biggest shift was behavioral: teams no longer had to start with scattered tools, export-heavy research, or manual comparison before deciding whether a location deserved deeper investigation.</p>
-          </div>
+      <section class="case-section sec--major" id="value">
+        <div class="sec-head">
+          <p class="sec-index"><em>01</em>Value Delivered</p>
+          <h2 class="sec-title">From Manual to Repeatable</h2>
+          <p class="sec-support">The product turned a slow workflow into a system teams could trust and reuse.</p>
+        </div>
+        <div class="sec-body">
+          <p>GrowthFactor reduced the work of evaluating a retail site from a multi-hour research process into a focused workflow analysts could repeat across hundreds of addresses.</p>
+          <p>Across 30+ customers and 5,000+ analyzed sites, the biggest shift was behavioral: teams no longer had to start with scattered tools, export-heavy research, or manual comparison before deciding whether a location deserved deeper investigation.</p>
         </div>
 
         <div class="stats-band" aria-label="Value delivered">
@@ -144,23 +144,21 @@
         </div>
       </section>
 
-      <section class="case-section sec--split" id="research">
-        <div class="sec-inner">
-          <div class="sec-head">
-            <p class="sec-index"><em>04</em>Research</p>
-            <h2 class="sec-title">From Showing Data to Structuring Decisions</h2>
-            <p class="sec-support">Research reframed the problem: less about displaying signals, more about sequencing them.</p>
-          </div>
-          <div class="sec-body">
-            <p>My initial model was straightforward: competitors, complements, demographics, and traffic. User interviews revealed that the decision was more nuanced, with signals like cannibalization risk, market growth, and analog stores shaping whether a site felt viable.</p>
-            <p>That changed the product direction. Instead of treating every data point as an equal card, I started designing around how signals relate to a site decision and when each signal should appear.</p>
-
-            <div class="media-plain">
-              <img src="assets/gf/mental-model.png" alt="Initial and revised mental model showing how site decision signals expanded after user interviews." />
-            </div>
-            <p class="media-caption">Fig: My mental model before and after user interviews</p>
-          </div>
+      <section class="case-section" id="research">
+        <div class="sec-head">
+          <p class="sec-index"><em>04</em>Research</p>
+          <h2 class="sec-title">From Showing Data to Structuring Decisions</h2>
+          <p class="sec-support">Research reframed the problem: less about displaying signals, more about sequencing them.</p>
         </div>
+        <div class="sec-body">
+          <p>My initial model was straightforward: competitors, complements, demographics, and traffic. User interviews revealed that the decision was more nuanced, with signals like cannibalization risk, market growth, and analog stores shaping whether a site felt viable.</p>
+          <p>That changed the product direction. Instead of treating every data point as an equal card, I started designing around how signals relate to a site decision and when each signal should appear.</p>
+        </div>
+
+        <div class="media-plain">
+          <img src="assets/gf/mental-model.png" alt="Initial and revised mental model showing how site decision signals expanded after user interviews." />
+        </div>
+        <p class="media-caption">Fig: My mental model before and after user interviews</p>
       </section>
 
       <section class="case-section sec--narrow" id="ia-design">
@@ -223,17 +221,15 @@
         <p class="media-caption">Fig: Final version with map-first evaluation and richer decision signals</p>
       </section>
 
-      <section class="case-section sec--split" id="reflection">
-        <div class="sec-inner">
-          <div class="sec-head">
-            <p class="sec-index"><em>08</em>Reflection</p>
-            <h2 class="sec-title">Speed Only Works With Trust</h2>
-            <p class="sec-support">Fast answers don't matter if users don't trust the path that produced them.</p>
-          </div>
-          <div class="sec-body">
-            <p>If I did it again, I would spend more time observing users inside their existing evaluation workflow before designing the first version.</p>
-            <p>I would also involve engineering earlier, because the best product decisions came from balancing user needs with what could be built reliably.</p>
-          </div>
+      <section class="case-section" id="reflection">
+        <div class="sec-head">
+          <p class="sec-index"><em>08</em>Reflection</p>
+          <h2 class="sec-title">Speed Only Works With Trust</h2>
+          <p class="sec-support">Fast answers don't matter if users don't trust the path that produced them.</p>
+        </div>
+        <div class="sec-body">
+          <p>If I did it again, I would spend more time observing users inside their existing evaluation workflow before designing the first version.</p>
+          <p>I would also involve engineering earlier, because the best product decisions came from balancing user needs with what could be built reliably.</p>
         </div>
       </section>
 
@@ -259,5 +255,22 @@
       </footer>
     </article>
   </main>
+
+  <script>
+    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
+    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+  </script>
 </body>
 </html>

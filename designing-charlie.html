@@ -55,9 +55,11 @@
         <p class="hero-support">A privacy layer between the user and the model, built to feel invisible, not enforced.</p>
 
         <div class="spec-strip" aria-label="Project details">
-          <span class="spec-item"><b>Role</b>Design Engineer</span>
-          <span class="spec-item"><b>Timeline</b>Mar 2026 – June 2026</span>
-          <span class="spec-item"><b>With</b>Engineers, PM, Growth Officer</span>
+          <div class="spec-rows">
+            <p class="spec-item"><b>Role</b>Design Engineer</p>
+            <p class="spec-item"><b>Timeline</b>Mar 2026 – June 2026</p>
+            <p class="spec-item"><b>With</b>Engineers, PM, Growth Officer</p>
+          </div>
           <span class="spec-badge">Status → Institutional Pilot</span>
         </div>
 
@@ -112,23 +114,21 @@
         <p class="media-caption">Fig: Charlie disguising user data before sending it to an LLM</p>
       </section>
 
-      <section class="case-section sec--split" id="discovery">
-        <div class="sec-inner">
-          <div class="sec-head">
-            <p class="sec-index"><em>03</em>Discovery</p>
-            <h2 class="sec-title">Not Waiting for a Brief</h2>
-            <p class="sec-support">Proactive research surfaced four strategy questions leadership could use to shape the roadmap.</p>
-          </div>
-          <div class="sec-body">
-            <p>I ran proactive unmoderated sessions to pressure-test early interaction patterns and understand where security friction made users hesitate. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
-            <p>In a B2B2C model, the enterprise buyer and the end user are different people. I translated session observations into four strategy questions that leadership could use to shape the roadmap.</p>
-
-            <div class="media-plain">
-              <img src="https://framerusercontent.com/images/L5XvfQ9DuvH3aehqPEiqHB2cBUU.png?width=2276&amp;height=740" alt="Research observations translated into product strategy questions." />
-            </div>
-            <p class="media-caption">Fig: Observations turned into strategic product questions</p>
-          </div>
+      <section class="case-section" id="discovery">
+        <div class="sec-head">
+          <p class="sec-index"><em>03</em>Discovery</p>
+          <h2 class="sec-title">Not Waiting for a Brief</h2>
+          <p class="sec-support">Proactive research surfaced four strategy questions leadership could use to shape the roadmap.</p>
         </div>
+        <div class="sec-body">
+          <p>I ran proactive unmoderated sessions to pressure-test early interaction patterns and understand where security friction made users hesitate. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
+          <p>In a B2B2C model, the enterprise buyer and the end user are different people. I translated session observations into four strategy questions that leadership could use to shape the roadmap.</p>
+        </div>
+
+        <div class="media-plain">
+          <img src="https://framerusercontent.com/images/L5XvfQ9DuvH3aehqPEiqHB2cBUU.png?width=2276&amp;height=740" alt="Research observations translated into product strategy questions." />
+        </div>
+        <p class="media-caption">Fig: Observations turned into strategic product questions</p>
       </section>
 
       <section class="case-section sec--major" id="architecture">
@@ -202,17 +202,15 @@
         <p class="media-caption">Fig: Brief insights from testing</p>
       </section>
 
-      <section class="case-section sec--split" id="impact">
-        <div class="sec-inner">
-          <div class="sec-head">
-            <p class="sec-index"><em>06</em>Impact</p>
-            <h2 class="sec-title">Built to Scale Trust</h2>
-            <p class="sec-support">Research and prototypes shaped the roadmap, the testing strategy, and the story told to institutional stakeholders.</p>
-          </div>
-          <div class="sec-body">
-            <p>The research, prototypes, and interaction framework did not just produce screens. They fed into the product roadmap, the formal testing strategy, and the enterprise narrative presented to institutional stakeholders.</p>
-            <p>Charlie is being positioned for a closed-to-institutional launch, and the design system I established gives the team a foundation to keep scaling privacy-first AI workflows.</p>
-          </div>
+      <section class="case-section" id="impact">
+        <div class="sec-head">
+          <p class="sec-index"><em>06</em>Impact</p>
+          <h2 class="sec-title">Built to Scale Trust</h2>
+          <p class="sec-support">Research and prototypes shaped the roadmap, the testing strategy, and the story told to institutional stakeholders.</p>
+        </div>
+        <div class="sec-body">
+          <p>The research, prototypes, and interaction framework did not just produce screens. They fed into the product roadmap, the formal testing strategy, and the enterprise narrative presented to institutional stakeholders.</p>
+          <p>Charlie is being positioned for a closed-to-institutional launch, and the design system I established gives the team a foundation to keep scaling privacy-first AI workflows.</p>
         </div>
       </section>
 
@@ -239,5 +237,22 @@
       </footer>
     </article>
   </main>
+
+  <script>
+    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
+    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+  </script>
 </body>
 </html>
