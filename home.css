@@ -236,7 +236,7 @@ img, video { max-width: 100%; display: block; }
   border: 1px solid var(--rule);
   overflow: hidden;
 }
-.work-media video { width: 100%; }
+.work-media video, .work-media img { width: 100%; }
 
 .work-meta {
   margin-top: 22px;
@@ -261,7 +261,7 @@ img, video { max-width: 100%; display: block; }
   font-weight: 700;
   letter-spacing: -.025em;
   line-height: 1.08;
-  max-width: 22ch;
+  max-width: 100%;
   transition: color .15s ease;
 }
 
@@ -273,18 +273,7 @@ img, video { max-width: 100%; display: block; }
   max-width: 52ch;
 }
 
-.work-arrow {
-  display: inline-block;
-  margin-top: 14px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: .08em;
-  color: var(--faint);
-  transition: color .15s ease, transform .2s ease;
-}
-
 .work-entry:hover .work-title { color: var(--accent); }
-.work-entry:hover .work-arrow { color: var(--accent); transform: translateX(6px); }
 
 /* ── Archive link ── */
 .archive-link {
@@ -296,7 +285,13 @@ img, video { max-width: 100%; display: block; }
 
 .archive-link .work-title { margin-top: 12px; font-size: clamp(24px, 2.6vw, 32px); }
 .archive-link:hover .work-title { color: var(--accent); }
-.archive-link:hover .work-arrow { color: var(--accent); transform: translateX(6px); }
+
+/* ── Archive page: intro + compact section spacing ── */
+.archive-intro { margin-top: 0; }
+.archive-intro .hero-headline { margin-top: 14px; max-width: 20ch; }
+
+.work-section--compact { margin-top: 90px; }
+@media (max-width: 720px) { .work-section--compact { margin-top: 64px; } }
 
 /* ── Breakpoints ── */
 @media (max-width: 720px) {

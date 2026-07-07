@@ -7,11 +7,11 @@
   <meta name="description" content="Archive collection of earlier projects that reveal my design process, decision-making, and growth as a designer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-10" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="home.css?v=1" />
 </head>
 <body>
-  <nav class="top-nav archive-nav" aria-label="Primary">
+  <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
       <a class="nav-link" href="about.html">about</a>
@@ -36,104 +36,102 @@
     </div>
   </nav>
 
-  <main class="page archive-page">
-    <header class="page-header">
-      <p class="eyebrow">Archive</p>
-      <p class="intro">Welcome to my Archive collection of earlier projects that reveal my design process, decision-making, and growth as a designer.</p>
+  <main class="home-shell">
+    <header class="archive-intro">
+      <p class="mono-label">Archive</p>
+      <h1 class="hero-headline">Other Projects</h1>
+      <p class="hero-support">Earlier work that reveals my process, decisions, and growth as a designer.</p>
     </header>
 
-    <div class="filters" role="tablist" aria-label="Project categories">
-      <button class="filter-pill active" id="tab-work" type="button" role="tab" aria-selected="true" aria-controls="panel-work" data-tab="work">Work</button>
-      <button class="filter-pill" id="tab-interviews" type="button" role="tab" aria-selected="false" aria-controls="panel-interviews" data-tab="interviews">Interview experiences</button>
-    </div>
+    <section class="work-section work-section--compact" aria-labelledby="archive-count">
+      <div class="work-header">
+        <div class="work-tabs" role="tablist" aria-label="Project categories">
+          <button class="work-tab active" id="tab-work" type="button" role="tab" aria-selected="true" aria-controls="panel-work" data-tab="work">Work</button>
+          <button class="work-tab" id="tab-interviews" type="button" role="tab" aria-selected="false" aria-controls="panel-interviews" data-tab="interviews">Interview Experiences</button>
+        </div>
+        <p class="work-count" id="archive-count">3 projects</p>
+      </div>
 
-    <section class="projects archive-projects" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
-      <a class="project-card" href="designing-clara.html">
-        <div class="project-media archive-media">
-          <img src="https://framerusercontent.com/images/qlDHK3A2kEPlhZnu8MdxdQKB4.png" alt="" />
-        </div>
-        <div class="project-meta">
-          <span class="project-year">2024 - 2025</span>
-          <div class="project-tags">
-            <span class="tag">enterprise design</span>
-            <span class="tag">nlp</span>
-            <span class="tag">chat interface</span>
-            <span class="tag">b2b</span>
+      <div class="work-panel" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
+        <a class="work-entry" href="designing-clara.html">
+          <div class="work-media">
+            <img src="https://framerusercontent.com/images/qlDHK3A2kEPlhZnu8MdxdQKB4.png" alt="" />
           </div>
-        </div>
-        <p class="project-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant, Clara</p>
-      </a>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>2024 – 2025</span>
+            <span class="work-tags">Enterprise Design / NLP / Chat Interface / B2B</span>
+          </div>
+          <p class="work-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant, Clara</p>
+          <p class="work-support">A central hub for signed leases, powered by an NLP assistant.</p>
+        </a>
 
-      <a class="project-card" href="gf-features.html">
-        <div class="project-media archive-media">
-          <img src="https://framerusercontent.com/images/6ihHiutmYDvUy8ZykSUbdpp6po.png?scale-down-to=2048" alt="" />
-        </div>
-        <div class="project-meta">
-          <span class="project-year">2024 - 2025</span>
-          <div class="project-tags">
-            <span class="tag">enterprise design</span>
-            <span class="tag">visual design</span>
-            <span class="tag">b2b</span>
+        <a class="work-entry" href="gf-features.html">
+          <div class="work-media">
+            <img src="https://framerusercontent.com/images/6ihHiutmYDvUy8ZykSUbdpp6po.png?scale-down-to=2048" alt="" />
           </div>
-        </div>
-        <p class="project-title">Beyond Site Selection: Building the Deal Management Solution</p>
-      </a>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>2024 – 2025</span>
+            <span class="work-tags">Enterprise Design / Visual Design / B2B</span>
+          </div>
+          <p class="work-title">Beyond Site Selection: Building the Deal Management Solution</p>
+          <p class="work-support">Carrying site-evaluation context through to a signed lease.</p>
+        </a>
 
-      <a class="project-card" href="website-project.html">
-        <div class="project-media archive-media short">
-          <video autoplay muted loop playsinline controls>
-            <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="project-meta">
-          <span class="project-year">Dec 2025</span>
-          <div class="project-tags">
-            <span class="tag">side project</span>
-            <span class="tag">reactjs</span>
-            <span class="tag">design engineering</span>
+        <a class="work-entry" href="website-project.html">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
+            </video>
           </div>
-        </div>
-        <p class="project-title">High-performance website builder with drag-n-drop, undo/redo, keyboard-first navigation</p>
-      </a>
-    </section>
+          <div class="work-meta">
+            <span class="work-index">03</span>
+            <span>Dec 2025</span>
+            <span class="work-tags">Side Project / ReactJS / Design Engineering</span>
+          </div>
+          <p class="work-title">High-Performance Website Builder</p>
+          <p class="work-support">Keyboard-first, instant interactions, zero friction.</p>
+        </a>
+      </div>
 
-    <section class="projects archive-projects interview-projects" id="panel-interviews" role="tabpanel" aria-labelledby="tab-interviews" hidden>
-      <a class="project-card interview-card" href="sumble.html">
-        <div class="project-media archive-media interview-media">
-          <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
-        </div>
-        <div class="interview-card-footer">
-          <p class="project-title">Sumble: Solving the 'Data Dump' with Logic-First UX</p>
-          <div class="project-tags">
-            <span class="tag">data heavy</span>
-            <span class="tag">series A</span>
-            <span class="tag">b2b</span>
+      <div class="work-panel" id="panel-interviews" role="tabpanel" aria-labelledby="tab-interviews" hidden>
+        <a class="work-entry" href="sumble.html">
+          <div class="work-media">
+            <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
           </div>
-        </div>
-      </a>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>Series A</span>
+            <span class="work-tags">Data Heavy / B2B</span>
+          </div>
+          <p class="work-title">Sumble: Solving the "Data Dump" with Logic-First UX</p>
+          <p class="work-support">A 72-hour take-home reframing a profile viewer into a decision tool.</p>
+        </a>
 
-      <a class="project-card interview-card" href="nordic.html">
-        <div class="project-media archive-media interview-media">
-          <img src="https://framerusercontent.com/images/CGyhsxixvpx8jxoPjNSu8F5AxCs.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
-        </div>
-        <div class="interview-card-footer">
-          <p class="project-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</p>
-          <div class="project-tags">
-            <span class="tag">data heavy</span>
-            <span class="tag">public</span>
-            <span class="tag">b2b</span>
+        <a class="work-entry" href="nordic.html">
+          <div class="work-media">
+            <img src="https://framerusercontent.com/images/CGyhsxixvpx8jxoPjNSu8F5AxCs.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
           </div>
-        </div>
-      </a>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>Public</span>
+            <span class="work-tags">Data Heavy / B2B</span>
+          </div>
+          <p class="work-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</p>
+          <p class="work-support">A 72-hour take-home designing trust into a multi-day onboarding wait.</p>
+        </a>
+      </div>
     </section>
   </main>
 
   <script>
-    const archiveTabs = document.querySelectorAll('[role="tab"][data-tab]');
+    const archiveTabs = document.querySelectorAll('.work-tab[data-tab]');
     const archivePanels = {
       work: document.getElementById('panel-work'),
       interviews: document.getElementById('panel-interviews')
     };
+    const archiveCount = document.getElementById('archive-count');
 
     archiveTabs.forEach((tab) => {
       tab.addEventListener('click', () => {
@@ -148,6 +146,9 @@
         Object.entries(archivePanels).forEach(([key, panel]) => {
           panel.hidden = key !== selected;
         });
+
+        const count = archivePanels[selected].querySelectorAll('.work-entry').length;
+        archiveCount.textContent = `${count} project${count === 1 ? '' : 's'}`;
       });
     });
   </script>
