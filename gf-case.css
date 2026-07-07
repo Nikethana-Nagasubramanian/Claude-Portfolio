@@ -312,6 +312,20 @@ img, video { max-width: 100%; display: block; }
 }
 .sec-body > p + p { margin-top: 16px; }
 
+/* Inline sub-headings (mono-label) used to break up a section body —
+   e.g. Clara's "Putting it in numbers perspective…" or "Roadmap" —
+   need the same rhythm as everything else around them. */
+p + .mono-label,
+.media-full + .mono-label,
+.media-plain + .mono-label,
+.sec-body > p + p.mono-label {
+  margin-top: 32px;
+}
+.mono-label + p,
+.sec-body > .mono-label + p {
+  margin-top: 12px;
+}
+
 /* Narrow header variant — same row-stack, just a tighter support measure */
 .sec--narrow .sec-support { max-width: 44ch; }
 
