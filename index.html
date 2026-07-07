@@ -7,8 +7,8 @@
   <meta name="description" content="I design and build products end to end. From strategy and user research to UI and functional prototypes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-10" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="home.css?v=1" />
 </head>
 <body>
   <nav class="top-nav" aria-label="Primary">
@@ -35,82 +35,131 @@
     </div>
   </nav>
 
-  <main class="site-shell">
+  <main class="home-shell">
     <section class="hero" aria-labelledby="intro-title">
-      <div class="profile-row">
-        <div class="avatar">
-          <img src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg?scale-down-to=512&width=3024&height=3024" alt="Nikethana (Nike)" />
-        </div>
-        <div>
-          <h1 class="name" id="intro-title">Nikethana (Nike)</h1>
-          <p class="role">Product Builder <span class="dot">•</span> Open for new opportunities</p>
-        </div>
+      <div class="hero-id">
+        <img class="hero-avatar" src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg?scale-down-to=512&width=3024&height=3024" alt="Nikethana (Nike)" />
+        <p class="hero-name">Nikethana (Nike) <span>Product Builder</span></p>
+        <p class="hero-status">Open for new opportunities</p>
       </div>
 
-      <p class="intro home-intro">
-        I <strong>design</strong> and <strong>build</strong> products end to end. From strategy and user research to UI and functional prototypes. Experienced in <strong>B2B, B2C and AI tools.</strong> Based in Boston, open to relocate.
+      <h1 class="hero-headline" id="intro-title">I design and build products end to end.</h1>
+      <p class="hero-support">
+        From strategy and user research to UI and functional prototypes. Experienced in <strong>B2B, B2C and AI tools.</strong> Based in Boston, open to relocate.
       </p>
     </section>
 
-    <section aria-labelledby="work-title">
-      <h2 class="section-title" id="work-title">Selected Work:</h2>
+    <section class="work-section" aria-labelledby="work-title">
+      <div class="work-header">
+        <div class="work-tabs" role="tablist" aria-label="Project categories">
+          <button class="work-tab active" id="tab-selected" type="button" role="tab" aria-selected="true" aria-controls="panel-selected" data-tab="selected">Selected Work</button>
+          <button class="work-tab" id="tab-personal" type="button" role="tab" aria-selected="false" aria-controls="panel-personal" data-tab="personal">Personal Projects</button>
+        </div>
+        <p class="work-count" id="work-title">2 projects</p>
+      </div>
 
-      <div class="projects">
-        <a class="project-card" href="gf.html">
-          <div class="project-media">
+      <div class="work-panel" id="panel-selected" role="tabpanel" aria-labelledby="tab-selected">
+        <a class="work-entry" href="gf.html">
+          <div class="work-media">
             <video autoplay muted loop playsinline controls>
               <source src="https://framerusercontent.com/assets/qqD1nHfeezPmLHta3mPfMuFagNg.mp4" type="video/mp4" />
             </video>
           </div>
-          <div class="project-meta">
-            <span class="project-year">2024 - 2025</span>
-            <div class="project-tags">
-              <span class="tag">shipped</span>
-              <span class="tag">enterprise design</span>
-              <span class="tag">visual design</span>
-              <span class="tag">b2b</span>
-            </div>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>2024 – 2025</span>
+            <span class="work-tags">Shipped / Enterprise Design / Visual Design / B2B</span>
           </div>
-          <p class="project-title">How I Helped Accelerate Retail Location Evaluation: From 6 hours to &lt; 1 minute</p>
+          <p class="work-title">Accelerating Retail Site Evaluation</p>
+          <p class="work-support">From 6 hours to under 1 minute.</p>
+          <span class="work-arrow">→</span>
         </a>
 
-        <a class="project-card" href="designing-charlie.html">
-          <div class="project-media">
+        <a class="work-entry" href="designing-charlie.html">
+          <div class="work-media">
             <video autoplay muted loop playsinline controls>
               <source src="https://framerusercontent.com/assets/AQcNffvkgSvuA5MhzzyetIihlaA.mp4" type="video/mp4" />
             </video>
           </div>
-          <div class="project-meta">
-            <span class="project-year">2026 - Present</span>
-            <div class="project-tags">
-              <span class="tag">shipped</span>
-              <span class="tag">enterprise design</span>
-              <span class="tag">product strategy</span>
-              <span class="tag">b2b2c</span>
-            </div>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>2026 – Present</span>
+            <span class="work-tags">Shipped / Enterprise Design / Product Strategy / B2B2C</span>
           </div>
-          <p class="project-title">Designing Trust Into a Conversational AI</p>
+          <p class="work-title">Designing Trust Into a Conversational AI</p>
+          <p class="work-support">A privacy layer between the user and the LLM.</p>
+          <span class="work-arrow">→</span>
         </a>
+      </div>
 
-        <a class="project-card" href="https://medium.com/@nike_thana/redesigning-gptzeros-advanced-scan-a-product-teardown-7234a19c4c95" target="_blank" rel="noopener">
-          <div class="project-media">
+      <div class="work-panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
+        <a class="work-entry" href="https://medium.com/@nike_thana/redesigning-gptzeros-advanced-scan-a-product-teardown-7234a19c4c95" target="_blank" rel="noopener">
+          <div class="work-media">
             <video autoplay muted loop playsinline controls>
               <source src="https://framerusercontent.com/assets/mN1CIicWpPowfEVqSN07Pf5qlUs.mp4" type="video/mp4" />
             </video>
           </div>
-          <div class="project-meta">
-            <span class="project-year">Feb 2026</span>
-            <div class="project-tags">
-              <span class="tag">medium article</span>
-              <span class="tag">product teardown</span>
-            </div>
+          <div class="work-meta">
+            <span class="work-index">01</span>
+            <span>Feb 2026</span>
+            <span class="work-tags">Medium Article / Product Teardown</span>
           </div>
-          <p class="project-title">Redesigning GPTZero's Advanced Scan: A Product Teardown</p>
+          <p class="work-title">Redesigning GPTZero's Advanced Scan</p>
+          <p class="work-support">A product teardown, published on Medium.</p>
+          <span class="work-arrow">↗</span>
+        </a>
+
+        <a class="work-entry" href="website-project.html">
+          <div class="work-media">
+            <video autoplay muted loop playsinline controls>
+              <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="work-meta">
+            <span class="work-index">02</span>
+            <span>Dec 2025</span>
+            <span class="work-tags">Side Project / ReactJS / Design Engineering</span>
+          </div>
+          <p class="work-title">High-Performance Website Builder</p>
+          <p class="work-support">Keyboard-first, instant interactions, zero friction.</p>
+          <span class="work-arrow">→</span>
         </a>
       </div>
-
-      <a class="archive-link" href="archive.html">Other Projects</a>
     </section>
+
+    <a class="archive-link" href="archive.html">
+      <p class="work-label">Archive</p>
+      <p class="work-title">Other Projects</p>
+      <span class="work-arrow">→</span>
+    </a>
   </main>
+
+  <script>
+    const workTabs = document.querySelectorAll('.work-tab[data-tab]');
+    const workPanels = {
+      selected: document.getElementById('panel-selected'),
+      personal: document.getElementById('panel-personal')
+    };
+    const workCount = document.getElementById('work-title');
+
+    workTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const selected = tab.dataset.tab;
+
+        workTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', String(isActive));
+        });
+
+        Object.entries(workPanels).forEach(([key, panel]) => {
+          panel.hidden = key !== selected;
+        });
+
+        const count = workPanels[selected].querySelectorAll('.work-entry').length;
+        workCount.textContent = `${count} project${count === 1 ? '' : 's'}`;
+      });
+    });
+  </script>
 </body>
 </html>

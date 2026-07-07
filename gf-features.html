@@ -7,11 +7,11 @@
   <meta name="description" content="A case study on designing a deal management dashboard connecting site evaluation to lease closing." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-10" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="gf-case.css?v=1" />
 </head>
 <body>
-  <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
+  <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
       <a class="nav-link" href="about.html">about</a>
@@ -48,89 +48,110 @@
 
     <article class="case-content">
       <header class="case-hero" id="overview">
+        <p class="hero-eyebrow">Deal Management — Case Study</p>
         <h1 class="case-title">Beyond Site Selection: Building the Deal Management Solution</h1>
+        <p class="hero-support">Carrying site-evaluation context all the way through to a signed lease.</p>
 
-        <div class="case-info-grid" aria-label="Project details">
-          <div class="case-info-card">
-            <p class="case-info-label">Role</p>
-            <p class="case-info-value">Founding Designer</p>
-          </div>
-          <div class="case-info-card">
-            <p class="case-info-label">Collaborated with</p>
-            <p class="case-info-value">Engineers, CPO, CEO</p>
+        <div class="spec-strip" aria-label="Project details">
+          <div class="spec-rows">
+            <p class="spec-item"><b>Role</b>Founding Designer</p>
+            <p class="spec-item"><b>With</b>Engineers, CPO, CEO</p>
           </div>
         </div>
 
-        <p class="case-info-label">Project Summary</p>
-        <p class="case-info-value">Working closely with key stakeholders, we realized that site evaluation was just the first domino in a much longer chain. I then designed a Deal Management dashboard that guides retail teams from initial analysis through to closing.</p>
-        <p class="case-info-value">I helped transform a messy, email-driven workflow into a single, streamlined hub.</p>
-        <p class="case-info-value">The result: teams can now track, advance, and revisit deals without ever losing context or momentum.</p>
+        <p class="mono-label">Project Summary</p>
+        <p>Working closely with key stakeholders, we realized that site evaluation was just the first domino in a much longer chain. I then designed a Deal Management dashboard that guides retail teams from initial analysis through to closing.</p>
+        <p>I helped transform a messy, email-driven workflow into a single, streamlined hub.</p>
+        <p>The result: teams can now track, advance, and revisit deals without ever losing context or momentum.</p>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/hCPlzzJzNibGBWE72PzM3mzyo.png" alt="Final design I shipped" />
         </div>
-        <p class="case-caption">Fig: Final design I shipped</p>
+        <p class="media-caption">Fig: Final design I shipped</p>
       </header>
 
       <section class="case-section" id="problem">
-        <p class="case-kicker">Problem</p>
-        <h2 class="case-heading">The Fragile Link from Evaluation to Execution</h2>
-        <p>Once a site was approved, retail real estate teams had no structured way to track deals. Everything lived in emails, spreadsheets, or in people's heads.</p>
-        <p>This manual, fragmented workflow meant the valuable context gathered during site evaluation was being lost, creating a messy scavenger hunt just as a deal was about to close. The lack of a unified hub meant teams were losing momentum and risking critical details.</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>01</em>Problem</p>
+          <h2 class="sec-title">Approved Isn't the Finish Line</h2>
+          <p class="sec-support">Once a site was approved, teams tracked the deal through emails, spreadsheets, or memory alone.</p>
+        </div>
+        <div class="sec-body">
+          <p>Once a site was approved, retail real estate teams had no structured way to track deals. Everything lived in emails, spreadsheets, or in people's heads.</p>
+          <p>This manual, fragmented workflow meant the valuable context gathered during site evaluation was being lost, creating a messy scavenger hunt just as a deal was about to close. The lack of a unified hub meant teams were losing momentum and risking critical details.</p>
+        </div>
       </section>
 
-      <section class="case-section" id="context">
-        <p class="case-kicker">Context</p>
-        <h2 class="case-heading">What does 'approved' mean?</h2>
-        <p>Site getting approved means, a specific location has checked off all the requirements of the business, has good predicted-returns etc. Then this site goes through a lot of stages: Analysis, Letter Of Intent, Committee Discussions, Negotiation, Closing (or Cancelled if something falls through).</p>
-        <p>Maintaining all these in the head… is menial.</p>
+      <section class="case-section sec--narrow" id="context">
+        <div class="sec-head">
+          <p class="sec-index"><em>02</em>Context</p>
+          <h2 class="sec-title">Five Stages, One Fragile Thread</h2>
+          <p class="sec-support">Analysis, LOI, Committee, Negotiation, Closing — held together by memory, not a system.</p>
+        </div>
+        <div class="sec-body">
+          <p>Site getting approved means, a specific location has checked off all the requirements of the business, has good predicted-returns etc. Then this site goes through a lot of stages: Analysis, Letter Of Intent, Committee Discussions, Negotiation, Closing (or Cancelled if something falls through).</p>
+          <p>Maintaining all these in the head… is menial.</p>
+        </div>
       </section>
 
-      <section class="case-section" id="integration">
-        <p class="case-kicker">Integration</p>
-        <h2 class="case-heading">Fitting This with the entire product</h2>
-        <p>There were 2 cases Deal Management would be used in:</p>
-        <ul class="case-list">
-          <li>Keeping track of new deals</li>
-          <li>For old deals: acts as a searchable archive, letting teams quickly reference, review, and analyze past deals</li>
-        </ul>
+      <section class="case-section sec--major" id="integration">
+        <div class="sec-head">
+          <p class="sec-index"><em>03</em>Integration</p>
+          <h2 class="sec-title">New Deals In, Old Deals Searchable</h2>
+          <p class="sec-support">One dashboard for tracking active deals and archiving closed ones for later reference.</p>
+        </div>
+        <div class="sec-body">
+          <p>There were 2 cases Deal Management would be used in:</p>
+          <ul class="case-list">
+            <li>Keeping track of new deals</li>
+            <li>For old deals: acts as a searchable archive, letting teams quickly reference, review, and analyze past deals</li>
+          </ul>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/RGPYaliTYTU9VSGIfJAUHmXn4.png" alt="For old deals, its easy to add them" />
         </div>
-        <p class="case-caption">Fig: For old deals, its easy to add them</p>
+        <p class="media-caption">Fig: For old deals, its easy to add them</p>
 
-        <div class="case-media image">
-          <img src="https://framerusercontent.com/images/hAswH1eJVFpb8PYaymvqML6eyGE.png" alt="For new deals, when they search for a site, they get an option to add to deals directly" />
+        <div class="media-inset-row">
+          <p class="media-caption">Fig: For new deals, when they search for a site, they get an option to add to deals directly</p>
+          <div class="media-inset">
+            <img src="https://framerusercontent.com/images/hAswH1eJVFpb8PYaymvqML6eyGE.png" alt="For new deals, when they search for a site, they get an option to add to deals directly" />
+          </div>
         </div>
-        <p class="case-caption">Fig: For new deals, when they search for a site, they get an option to add to deals directly</p>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/tFMBQzYGvYBK5BCvIIh158CfbU.png" alt="Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life." />
         </div>
-        <p class="case-caption">Fig: Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life.</p>
+        <p class="media-caption">Fig: Building this entire flow for GrowthFactor, literally taking it from 0 to 1, is the highlight of my life.</p>
       </section>
 
       <section class="case-section" id="conclusion">
-        <p class="case-kicker">Conclusion</p>
-        <h2 class="case-heading">Value This deal management delivered</h2>
-        <p>While this dashboard was an additive feature, its impact was transformative. By creating a single, centralized hub, we eliminated the scattered, manual workflows that were a source of constant user frustration.</p>
-        <p>The dashboard's value isn't measured in a single metric, but in the seamless, cohesive experience it delivers.</p>
-        <p>It provides users with instant clarity and control over their lease portfolio, ultimately strengthening the core solution and setting a new standard for workflow efficiency.</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>04</em>Conclusion</p>
+          <h2 class="sec-title">One Hub, Not a Scavenger Hunt</h2>
+          <p class="sec-support">Instant clarity and control over the lease portfolio, replacing scattered manual workflows.</p>
+        </div>
+        <div class="sec-body">
+          <p>While this dashboard was an additive feature, its impact was transformative. By creating a single, centralized hub, we eliminated the scattered, manual workflows that were a source of constant user frustration.</p>
+          <p>The dashboard's value isn't measured in a single metric, but in the seamless, cohesive experience it delivers.</p>
+          <p>It provides users with instant clarity and control over their lease portfolio, ultimately strengthening the core solution and setting a new standard for workflow efficiency.</p>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-plain">
           <img src="https://framerusercontent.com/images/y1NCw95P9EU65QBArNz1hAUV4.png" alt="" />
         </div>
       </section>
 
       <a class="next-case" href="https://itsmenike.com/gf-2" target="_blank" rel="noopener">
         <img class="next-case-thumb" src="https://framerusercontent.com/images/y1NCw95P9EU65QBArNz1hAUV4.png" alt="" />
-        <span>Next Case Study:</span>
-        <span>See how I designed a tool by bringing machine learning–powered confidence to benchmark new sites and predict sales performance</span>
+        <span class="mono-label">Next Case Study</span>
+        <span class="next-case-title">See how I designed a tool by bringing machine learning–powered confidence to benchmark new sites and predict sales performance</span>
+        <span class="next-case-arrow">Read →</span>
       </a>
 
       <footer class="bottom-contact">
-        <span>Reach out to me on:</span>
+        <span>Reach out to me on</span>
         <div class="social-links" aria-label="Contact links">
           <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -145,5 +166,22 @@
       </footer>
     </article>
   </main>
+
+  <script>
+    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
+    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+  </script>
 </body>
 </html>
