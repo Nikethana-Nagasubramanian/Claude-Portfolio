@@ -8,9 +8,75 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="gf-case.css?v=1" />
+  <link rel="stylesheet" href="gf-case.css?v=4" />
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    html.gate-locked .top-nav,
+    html.gate-locked main.case-shell { display: none; }
+    .case-gate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    html.gate-locked .case-gate { display: flex; }
+    .case-gate-box { width: 100%; max-width: 360px; text-align: center; }
+    .case-gate-box .mono-label { display: block; margin-bottom: 20px; color: var(--ink); }
+    .case-gate-form { display: flex; gap: 8px; }
+    .case-gate-form input {
+      flex: 1;
+      font-family: var(--sans);
+      font-size: 15px;
+      padding: 12px 14px;
+      border: 1px solid var(--rule);
+      background: #fff;
+      color: var(--ink);
+    }
+    .case-gate-form input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+    .case-gate-form button {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ink);
+      border: none;
+      padding: 0 20px;
+      cursor: pointer;
+      transition: background .15s ease;
+    }
+    .case-gate-form button:hover { background: var(--accent); }
+    .case-gate-error {
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #c0392b;
+    }
+  </style>
 </head>
 <body>
+  <script>
+    if (sessionStorage.getItem('charlie-unlocked') !== '1') {
+      document.documentElement.classList.add('gate-locked');
+    }
+  </script>
+
+  <div class="case-gate" role="dialog" aria-modal="true" aria-label="Password protected case study">
+    <div class="case-gate-box">
+      <p class="mono-label">This case study is password protected</p>
+      <form class="case-gate-form" id="gateForm">
+        <input type="password" id="gatePassword" placeholder="Enter password" autocomplete="off" />
+        <button type="submit">Unlock →</button>
+      </form>
+      <p class="case-gate-error" id="gateError" hidden>Incorrect password. Try again.</p>
+    </div>
+  </div>
+
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -67,12 +133,6 @@
           <p><b>NDA Alert —</b> mockups in this case study are illustrative, reimagined to protect sensitive product details while preserving the design approach, decisions, and outcomes that shaped the work.</p>
         </div>
 
-        <div class="media-full">
-          <video autoplay muted loop playsinline controls>
-            <source src="https://framerusercontent.com/assets/AQcNffvkgSvuA5MhzzyetIihlaA.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <p class="media-caption">Fig: Privacy-first conversational AI workflow</p>
       </header>
 
       <section class="case-section" id="context">
@@ -210,10 +270,9 @@
         </div>
       </section>
 
-      <a class="next-case" href="gf-features.html">
-        <img class="next-case-thumb" src="https://framerusercontent.com/images/hCPlzzJzNibGBWE72PzM3mzyo.png" alt="" />
+      <a class="next-case" href="designing-clara.html">
         <span class="mono-label">Next Case Study</span>
-        <span class="next-case-title">Beyond Site Selection: Building the Deal Management Solution</span>
+        <span class="next-case-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant, Clara</span>
         <span class="next-case-arrow">Read →</span>
       </a>
 
@@ -249,6 +308,23 @@
     }, { rootMargin: '-20% 0px -70% 0px' });
 
     scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+
+    const gateForm = document.getElementById('gateForm');
+    const gatePassword = document.getElementById('gatePassword');
+    const gateError = document.getElementById('gateError');
+
+    gateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (gatePassword.value === 'charlie2026') {
+        sessionStorage.setItem('charlie-unlocked', '1');
+        document.documentElement.classList.remove('gate-locked');
+        gateError.hidden = true;
+      } else {
+        gateError.hidden = false;
+        gatePassword.value = '';
+        gatePassword.focus();
+      }
+    });
   </script>
 </body>
 </html>

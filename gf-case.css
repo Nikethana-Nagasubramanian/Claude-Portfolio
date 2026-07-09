@@ -134,10 +134,10 @@ img, video { max-width: 100%; display: block; }
 /* First link (Overview) sits outside the numbered flow — sec-index
    numbering starts at 01 on the section right after it, so the nav
    counter must skip it to stay in sync. */
-.case-nav a:not(:first-child) {
+.case-nav a:not(:first-of-type) {
   counter-increment: toc;
 }
-.case-nav a:not(:first-child)::before {
+.case-nav a:not(:first-of-type)::before {
   content: counter(toc, decimal-leading-zero) "  ";
   color: var(--accent);
   opacity: .55;
@@ -476,4 +476,217 @@ p + .mono-label,
 
   .next-case { margin-top: 100px; }
   .bottom-contact { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── About page components ── */
+
+/* Rotating multilingual greeting — odometer-style vertical cycle */
+.hello-rotor {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.25em;
+  margin-bottom: 22px;
+  vertical-align: bottom;
+}
+.hello-track {
+  display: flex;
+  flex-direction: column;
+  animation: hello-cycle 10.5s cubic-bezier(.75, 0, .25, 1) infinite;
+}
+.hello-track span {
+  display: block;
+  height: 1.25em;
+  line-height: 1.25;
+}
+.hello-pink   { color: #ec4899; }
+.hello-yellow { color: #d97706; }
+.hello-orange { color: #ea580c; }
+.hello-blue   { color: #3f7ff4; }
+.hello-purple { color: #7c3aed; }
+
+@keyframes hello-cycle {
+  0%, 14%   { transform: translateY(0); }
+  20%, 34%  { transform: translateY(-1.25em); }
+  40%, 54%  { transform: translateY(-2.5em); }
+  60%, 74%  { transform: translateY(-3.75em); }
+  80%, 94%  { transform: translateY(-5em); }
+  100%      { transform: translateY(-6.25em); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hello-track { animation: none; }
+}
+
+/* Resume CTA */
+.resume-cta {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 12px 22px;
+  white-space: nowrap;
+  transition: background .15s ease;
+}
+.resume-cta:hover { background: var(--accent); }
+
+/* Process flow — top-bordered pastel steps */
+.process-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.mono-label + .process-flow,
+.mono-label + .career-list,
+.mono-label + .principles-grid { margin-top: 18px; }
+
+.process-step {
+  border-top: 3px solid var(--rule);
+  padding-top: 16px;
+}
+.process-step--pink   { border-top-color: #f9a8d4; }
+.process-step--yellow { border-top-color: #fcd34d; }
+.process-step--orange { border-top-color: #fdba74; }
+.process-step--blue   { border-top-color: #93c5fd; }
+.process-step--purple { border-top-color: #c4b5fd; }
+
+.process-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.process-step p:not(.process-title) {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #3a3a3a;
+}
+
+/* Design truths — 2x2 dashed matrix, square-bulleted heads */
+.truths-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.truth { padding: 26px 32px 26px 0; }
+.truth:nth-child(odd) { border-right: 1px dashed var(--faint); }
+.truth:nth-child(even) { padding-left: 32px; padding-right: 0; }
+.truth:nth-child(-n+2) { padding-top: 0; border-bottom: 1px dashed var(--faint); }
+.truth:nth-child(n+3) { padding-bottom: 0; }
+
+.truth-head {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.truth-head::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+.truth p:not(.truth-head) {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3a3a3a;
+}
+
+/* Career — title left, years right */
+.career-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.career-row:first-child { padding-top: 4px; }
+.career-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.career-desc {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 56ch;
+}
+.career-date {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.career-list + .mono-label,
+.principles-grid + .mono-label { margin-top: 48px; }
+
+/* Principles — quote cards, hairline borders, tinted attributions */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.principle {
+  border: 1px solid var(--rule);
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+.principle--wide3 { grid-column: span 3; }
+.principle--wide2 { grid-column: span 2; }
+.principle p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3a3a3a;
+}
+.principle--wide3 p { font-size: 19px; max-width: 56ch; }
+.principle cite {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  align-self: flex-end;
+}
+.principle--purple cite { color: #7c3aed; }
+.principle--yellow cite { color: #d97706; }
+.principle--orange cite { color: #ea580c; }
+.principle--teal cite   { color: #0d9488; }
+
+@media (max-width: 720px) {
+  .truths-matrix { grid-template-columns: 1fr; }
+  .truth,
+  .truth:nth-child(odd),
+  .truth:nth-child(even) { border-right: none; padding: 22px 0; }
+  .truth:nth-child(-n+2) { padding-top: 22px; }
+  .truth { border-bottom: 1px dashed var(--faint); }
+  .truth:first-child { padding-top: 0; }
+  .truth:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .career-row { flex-direction: column; gap: 6px; }
+
+  .principles-grid { grid-template-columns: 1fr; }
+  .principle--wide3,
+  .principle--wide2 { grid-column: auto; }
+  .principle--wide3 p { font-size: 16px; }
 }

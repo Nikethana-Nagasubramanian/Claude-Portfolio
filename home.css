@@ -84,6 +84,8 @@ img, video { max-width: 100%; display: block; }
 
 /* ── Shell: single centered column, quieter than /gf ── */
 .home-shell {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
@@ -119,6 +121,7 @@ img, video { max-width: 100%; display: block; }
   color: var(--faint);
 }
 .hero-name span::before { content: "— "; }
+
 
 .hero-status {
   margin-left: auto;
@@ -237,6 +240,17 @@ img, video { max-width: 100%; display: block; }
   overflow: hidden;
 }
 .work-media video, .work-media img { width: 100%; }
+
+.work-entry--locked .work-meta { margin-top: 0; }
+
+.work-lock-icon {
+  width: .72em;
+  height: .72em;
+  margin-right: 10px;
+  vertical-align: 4%;
+  color: var(--faint);
+  flex-shrink: 0;
+}
 
 .work-meta {
   margin-top: 22px;
