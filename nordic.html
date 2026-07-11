@@ -7,12 +7,12 @@
   <meta name="description" content="A 72-hour interview take-home designing trust and clarity into a scooter-fleet management platform's day-one empty state." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-10" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
+  <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
       <a class="nav-link" href="about.html">about</a>
@@ -56,175 +56,235 @@
 
     <article class="case-content">
       <header class="case-hero" id="overview">
+        <p class="hero-eyebrow">Interview Take-Home — 72 Hours</p>
         <h1 class="case-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</h1>
+        <p class="hero-support">Designing trust and clarity into a scooter-fleet management platform's day-one empty state.</p>
 
-        <div class="case-tags">
-          <span class="tag">data heavy</span>
-          <span class="tag">b2b</span>
+        <div class="spec-strip" aria-label="Project details">
+          <div class="spec-rows">
+            <p class="spec-item"><b>Context</b>Data Heavy, B2B</p>
+          </div>
         </div>
 
-        <p class="case-info-label">Hypothetical Product Context</p>
-        <p class="case-info-value">Mobility solution management platform focusing on scooter rental companies to track scooters in real time and also, understand business performance.</p>
+        <p class="mono-label">Hypothetical Product Context</p>
+        <p>Mobility solution management platform focusing on scooter rental companies to track scooters in real time and also, understand business performance.</p>
       </header>
 
-      <section class="case-section" id="problem">
-        <h2 class="case-heading">Problem Statement</h2>
-        <p>New users see an empty dashboard for days because scooter provisioning requires multiple technician-driven steps.</p>
-        <p>This delays time-to-value and causes users to abandon the product.</p>
+      <section class="case-section sec--major" id="problem">
+        <div class="sec-head">
+          <p class="sec-index"><em>01</em>Problem Statement</p>
+          <h2 class="sec-title">Days of Empty Dashboard</h2>
+          <p class="sec-support">Provisioning delays time-to-value and causes users to abandon the product.</p>
+        </div>
+        <div class="sec-body">
+          <p>New users see an empty dashboard for days because scooter provisioning requires multiple technician-driven steps.</p>
+          <p>This delays time-to-value and causes users to abandon the product.</p>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/rlw7m556YeB5qTZiyhimaiOXmWA.png" alt="The Issue" />
         </div>
-        <p class="case-caption">Fig: The Issue</p>
+        <p class="media-caption">Fig: The Issue</p>
       </section>
 
       <section class="case-section" id="questions">
-        <p class="case-kicker">Questions</p>
-        <h2 class="case-heading">Scope sharpening questions</h2>
-        <p>To solve for scalability and long-term utility, I audited the operational bottlenecks that usually break IoT dashboards:</p>
-
-        <div class="case-feature-grid" aria-label="Scope sharpening questions">
-          <div class="case-feature-card">
-            <h3>Operational Velocity</h3>
-            <p>What is the typical technician timeline? Setting these expectations reduces user uncertainty.</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>System Scalability</h3>
-            <p>How does the internal registry handle scooters added over time without duplicate setups?</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>Role-Based Logic</h3>
-            <p>Who handles repairs — Admin, Mechanic, or Technician? This defines the notification flows and visibility layers.</p>
-          </div>
-          <div class="case-feature-card">
-            <h3>Process Bottlenecks</h3>
-            <p>Does the platform need to support insurance approval chains before a scooter appears live?</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>02</em>Questions</p>
+          <h2 class="sec-title">Scope Sharpening Questions</h2>
+          <p class="sec-support">To solve for scalability and long-term utility, I audited the operational bottlenecks that usually break IoT dashboards.</p>
+        </div>
+        <div class="sec-body">
+          <div class="truths-matrix">
+            <div class="truth">
+              <p class="truth-head">Operational Velocity</p>
+              <p>What is the typical technician timeline? Setting these expectations reduces user uncertainty.</p>
+            </div>
+            <div class="truth">
+              <p class="truth-head">System Scalability</p>
+              <p>How does the internal registry handle scooters added over time without duplicate setups?</p>
+            </div>
+            <div class="truth">
+              <p class="truth-head">Role-Based Logic</p>
+              <p>Who handles repairs — Admin, Mechanic, or Technician? This defines the notification flows and visibility layers.</p>
+            </div>
+            <div class="truth">
+              <p class="truth-head">Process Bottlenecks</p>
+              <p>Does the platform need to support insurance approval chains before a scooter appears live?</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="case-section" id="submission">
-        <p class="case-kicker">Submission Requirements</p>
-        <h2 class="case-heading">What was asked to submit</h2>
-        <p>Describe your proposed directions. Outline an MVP (that can be put together in 1-2 months), explain what you would prioritize and leave out of the MVP.</p>
+      <section class="case-section sec--narrow" id="submission">
+        <div class="sec-head">
+          <p class="sec-index"><em>03</em>Submission Requirements</p>
+          <h2 class="sec-title">What Was Asked</h2>
+        </div>
+        <div class="sec-body">
+          <p>Describe your proposed directions. Outline an MVP (that can be put together in 1-2 months), explain what you would prioritize and leave out of the MVP.</p>
+        </div>
       </section>
 
-      <section class="case-section" id="process">
-        <p class="case-kicker">Process</p>
-        <h2 class="case-heading">Design Process &amp; Research</h2>
-        <p>I bypassed standard "onboarding tours" to look at how world-class technical platforms handle the "Cold Start" problem:</p>
-        <ul class="case-list">
-          <li><strong>Competitive Benchmarking:</strong> Analyzed Joyride and ScootAPI; found they focus on features but require lengthy hardware setup before users see value.</li>
-          <li><strong>Empty-State Architecture:</strong> Modeled the solution after Stripe's "Test Mode" and AWS's pre-filled dashboards, allowing users to simulate high-stakes transactions and usage without real-world risk.</li>
-          <li><strong>Intent-Based Pathing:</strong> Designed 2 distinct entry points - one for users ready to connect their fleet and one for those who need to explore the product first.</li>
-        </ul>
+      <section class="case-section sec--narrow" id="process">
+        <div class="sec-head">
+          <p class="sec-index"><em>04</em>Process</p>
+          <h2 class="sec-title">Design Process &amp; Research</h2>
+          <p class="sec-support">I bypassed standard "onboarding tours" to see how world-class technical platforms handle the "cold start" problem.</p>
+        </div>
+        <div class="sec-body">
+          <ul>
+            <li><strong>Competitive Benchmarking:</strong> Analyzed Joyride and ScootAPI; found they focus on features but require lengthy hardware setup before users see value.</li>
+            <li><strong>Empty-State Architecture:</strong> Modeled the solution after Stripe's "Test Mode" and AWS's pre-filled dashboards, allowing users to simulate high-stakes transactions and usage without real-world risk.</li>
+            <li><strong>Intent-Based Pathing:</strong> Designed 2 distinct entry points — one for users ready to connect their fleet and one for those who need to explore the product first.</li>
+          </ul>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/XbbtXLBDXd3hEsoeE0vPohhnIEs.png" alt="Dashboard - focusing on business and fleet management overview" />
         </div>
-        <p class="case-caption">Fig: Dashboard - focusing on business and fleet management overview</p>
+        <p class="media-caption">Fig: Dashboard — focusing on business and fleet management overview</p>
       </section>
 
-      <section class="case-section" id="provisioning">
-        <p class="case-kicker">Nice-to-Have</p>
-        <h2 class="case-heading">Provisioning Status tracker</h2>
-        <p>To bridge the "empty state" gap, I proposed a Provisioning Status Tracker designed to reduce user uncertainty during the technician-driven onboarding period. By providing a granular view of the remaining technical steps, the feature gives users assurance on exactly what needs to happen before their live fleet data appears.</p>
+      <section class="case-section sec--narrow" id="provisioning">
+        <div class="sec-head">
+          <p class="sec-index"><em>05</em>Provisioning Tracker</p>
+          <h2 class="sec-title">Provisioning Status Tracker</h2>
+          <p class="sec-support">A nice-to-have aimed at reducing uncertainty during onboarding.</p>
+        </div>
+        <div class="sec-body">
+          <p>To bridge the "empty state" gap, I proposed a Provisioning Status Tracker designed to reduce user uncertainty during the technician-driven onboarding period. By providing a granular view of the remaining technical steps, the feature gives users assurance on exactly what needs to happen before their live fleet data appears.</p>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/jkTAkgFNJJEALXXN8R4FznKwF1c.png" alt="Aimed at reducing uncertainty for the users" />
         </div>
-        <p class="case-caption">Fig: Aimed at reducing uncertainty for the users</p>
+        <p class="media-caption">Fig: Aimed at reducing uncertainty for the users</p>
       </section>
 
       <section class="case-section" id="revenue">
-        <p class="case-kicker">Revenue Management</p>
-        <h2 class="case-heading">The core focus</h2>
-        <p>Not to just show numbers, but actually give insight into the business, answer:</p>
-        <ul class="case-list">
-          <li>Am I making or bleeding money?</li>
-          <li>What is my scooter utilization rate?</li>
-          <li>How can I reduce my operational spending?</li>
-        </ul>
+        <div class="sec-head">
+          <p class="sec-index"><em>06</em>Revenue Management</p>
+          <h2 class="sec-title">The Core Focus</h2>
+          <p class="sec-support">Not just showing numbers, but giving insight into the business.</p>
+        </div>
+        <div class="sec-body">
+          <ul>
+            <li>Am I making or bleeding money?</li>
+            <li>What is my scooter utilization rate?</li>
+            <li>How can I reduce my operational spending?</li>
+          </ul>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/KDyng9zukz9CzSDprOdwiUdRY.png" alt="Revenue page 1" />
         </div>
-        <p class="case-caption">Fig: Revenue page 1</p>
+        <p class="media-caption">Fig: Revenue page 1</p>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/KMWeoyz8Qejzsz3AssYgvHDkLQ.png" alt="Revenue page 2" />
         </div>
-        <p class="case-caption">Fig: Revenue page 2</p>
+        <p class="media-caption">Fig: Revenue page 2</p>
       </section>
 
-      <section class="case-section" id="mvp">
-        <p class="case-kicker">MVP</p>
-        <h2 class="case-heading">For submission, i had to outline mVP</h2>
-        <p>I proposed to ship only the initial dashboard - because it focused on fleet management (delivering value immediately) and a bit of financial management.</p>
+      <section class="case-section sec--narrow" id="mvp">
+        <div class="sec-head">
+          <p class="sec-index"><em>07</em>MVP</p>
+          <h2 class="sec-title">Outlining the MVP</h2>
+        </div>
+        <div class="sec-body">
+          <p>I proposed to ship only the initial dashboard — because it focused on fleet management (delivering value immediately) and a bit of financial management.</p>
+        </div>
       </section>
 
       <section class="case-section" id="engineering">
-        <p class="case-kicker">MVP</p>
-        <h2 class="case-heading">Engineering Constraints</h2>
-        <p>Drawing from my previous experience in high-performance geospatial visualization, I treat system performance (speed, snappiness, and loading behavior) as a core UX pillar that is inseparable from engineering</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>08</em>Engineering Constraints</p>
+          <h2 class="sec-title">Performance as a UX Pillar</h2>
+          <p class="sec-support">Drawing from prior geospatial visualization work, treating speed and snappiness as inseparable from engineering.</p>
+        </div>
+        <div class="sec-body">
+          <div class="constraint-group">
+            <p class="truth-head">Map Stack &amp; Responsiveness</p>
+            <ul>
+              <li>Proposed using Mapbox with GeoJSON for flexible styling and custom scooter pins.</li>
+              <li>Suggested a stale-while-revalidate (SWR) caching strategy so map interactions (pan/zoom, repeated searches) feel instant by serving cached results while refreshing in the background.</li>
+            </ul>
+          </div>
 
-        <p><strong>Map stack &amp; responsiveness</strong></p>
-        <ul class="case-list">
-          <li>Proposed using Mapbox with GeoJSON for flexible styling and custom scooter pins.</li>
-          <li>Suggested a stale-while-revalidate (SWR) caching strategy so map interactions (pan/zoom, repeated searches) feel instant by serving cached results while refreshing in the background.</li>
-        </ul>
+          <div class="constraint-group">
+            <p class="truth-head">Scalability for Large Fleets (10k+ Pins)</p>
+            <ul>
+              <li>Clustering/aggregation at higher zoom levels, revealing individual pins only when zoomed in.</li>
+              <li>Keeping list + map in sync, but not rendering all 10k at once.</li>
+              <li>Lazy loading or moving to a dedicated "all scooters" page for full lists.</li>
+            </ul>
+          </div>
 
-        <p><strong>Scalability for large fleets (10k+ pins)</strong></p>
-        <ul class="case-list">
-          <li>Clustering/aggregation at higher zoom levels, revealing individual pins only when zoomed in.</li>
-          <li>Keeping list + map in sync, but not rendering all 10k at once.</li>
-          <li>Lazy loading or moving to a dedicated "all scooters" page for full lists.</li>
-        </ul>
-
-        <p><strong>Prioritizing critical data to reduce load &amp; noise</strong></p>
-        <ul class="case-list">
-          <li>Surface only scooters needing critical attention (e.g., low battery, repair needed) instead of all devices.</li>
-          <li>This lowers backend/UI load and focuses the user on urgent actions, improving both performance and usefulness.</li>
-        </ul>
+          <div class="constraint-group">
+            <p class="truth-head">Prioritizing Critical Data to Reduce Load &amp; Noise</p>
+            <ul>
+              <li>Surface only scooters needing critical attention (e.g., low battery, repair needed) instead of all devices.</li>
+              <li>This lowers backend/UI load and focuses the user on urgent actions, improving both performance and usefulness.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <section class="case-section" id="psychology">
-        <p class="case-kicker">User Psychology</p>
-        <h2 class="case-heading">Managing the 'dip' in UX</h2>
-        <ul class="case-list">
-          <li><strong>Leveraging the Endowment Effect:</strong> By populating the dashboard with a simulated fleet upon sign-up, I create an immediate sense of ownership that motivates users to complete the technician-driven onboarding required to replace "their" demo fleet with live production data.</li>
-          <li><strong>Mitigating the "Depressing Zero":</strong> To prevent the emotional dip when switching from rich demo data to initially empty real-world data, I proposed locking key metrics or displaying currency symbols alongside specific activation goals (like "Complete your first rental to unlock these metrics") to maintain momentum.</li>
-        </ul>
+      <section class="case-section sec--narrow" id="psychology">
+        <div class="sec-head">
+          <p class="sec-index"><em>09</em>User Psychology</p>
+          <h2 class="sec-title">Managing the "Dip" in UX</h2>
+        </div>
+        <div class="sec-body">
+          <ul>
+            <li><strong>Leveraging the Endowment Effect:</strong> By populating the dashboard with a simulated fleet upon sign-up, I create an immediate sense of ownership that motivates users to complete the technician-driven onboarding required to replace "their" demo fleet with live production data.</li>
+            <li><strong>Mitigating the "Depressing Zero":</strong> To prevent the emotional dip when switching from rich demo data to initially empty real-world data, I proposed locking key metrics or displaying currency symbols alongside specific activation goals (like "Complete your first rental to unlock these metrics") to maintain momentum.</li>
+          </ul>
+        </div>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/C5cBceCQiAE0KzjkOdTdnnc1GNQ.png" alt="Endowment effect - they feel they're seeing their fleet" />
         </div>
-        <p class="case-caption">Fig: Endowment effect - they feel they're seeing their fleet</p>
+        <p class="media-caption">Fig: Endowment effect — they feel they're seeing their fleet</p>
 
-        <div class="case-media image">
+        <div class="media-full">
           <img src="https://framerusercontent.com/images/Upj1nuT9A4wiAgiQ3jCxUnooLMc.png" alt="Preventing the dip when moving from mock data to real data" />
         </div>
-        <p class="case-caption">Fig: Preventing the dip when moving from mock data to real data</p>
+        <p class="media-caption">Fig: Preventing the dip when moving from mock data to real data</p>
       </section>
 
-      <section class="case-section" id="tradeoffs">
-        <p class="case-kicker">Trade-offs</p>
-        <h2 class="case-heading">Time Vs. Solution</h2>
-        <p>To ship a high-impact solution within a strict 72-hour design window, I made 2 critical trade-offs to protect velocity and project focus:</p>
-        <ul class="case-list">
-          <li><strong>Logic over breadth:</strong> I deprioritized individual scooter deep-dives and full repair request workflows to obsess over the "Mock-to-Real" state logic. Proving ROI early is the highest-leverage way to prevent "empty state" abandonment.</li>
-          <li><strong>Systemic trust over polished features:</strong> I traded a comprehensive revenue management suite for a Provisioning Status Tracker. In an IoT environment, user trust during the 1-2 week technical setup period is more significant than complex financial reporting.</li>
-        </ul>
+      <section class="case-section sec--narrow" id="tradeoffs">
+        <div class="sec-head">
+          <p class="sec-index"><em>10</em>Trade-offs</p>
+          <h2 class="sec-title">Time vs. Solution</h2>
+          <p class="sec-support">Two critical trade-offs made to protect velocity and focus in a 72-hour window.</p>
+        </div>
+        <div class="sec-body">
+          <ul>
+            <li><strong>Logic over breadth:</strong> I deprioritized individual scooter deep-dives and full repair request workflows to obsess over the "Mock-to-Real" state logic. Proving ROI early is the highest-leverage way to prevent "empty state" abandonment.</li>
+            <li><strong>Systemic trust over polished features:</strong> I traded a comprehensive revenue management suite for a Provisioning Status Tracker. In an IoT environment, user trust during the 1-2 week technical setup period is more significant than complex financial reporting.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="case-section" id="testing">
-        <p class="case-kicker">Testing</p>
-        <h2 class="case-heading">How I'd evaluate the design</h2>
-        <p>To evaluate the design, I would measure the "Time-to-Value" for users using simulated ROI data versus the original empty state. Additionally, I would load-test the geospatial clustering to ensure the 60fps "snappiness" is maintained when scaling to 10k+ enterprise-level scooters.</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>11</em>Testing</p>
+          <h2 class="sec-title">How I'd Evaluate the Design</h2>
+        </div>
+        <div class="sec-body">
+          <p>To evaluate the design, I would measure the "Time-to-Value" for users using simulated ROI data versus the original empty state. Additionally, I would load-test the geospatial clustering to ensure the 60fps "snappiness" is maintained when scaling to 10k+ enterprise-level scooters.</p>
+        </div>
       </section>
 
+      <a class="next-case" href="sumble.html">
+        <span class="mono-label">Next Interview Experience</span>
+        <span class="next-case-title">Sumble: Solving the "Data Dump" with Logic-First UX</span>
+        <span class="next-case-arrow">Read →</span>
+      </a>
+
       <footer class="bottom-contact">
-        <span>Reach out to me on:</span>
+        <span>Reach out to me on</span>
         <div class="social-links" aria-label="Contact links">
           <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -239,5 +299,22 @@
       </footer>
     </article>
   </main>
+
+  <script>
+    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
+    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+  </script>
 </body>
 </html>

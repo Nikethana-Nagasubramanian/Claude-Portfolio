@@ -312,6 +312,27 @@ img, video { max-width: 100%; display: block; }
 }
 .sec-body > p + p { margin-top: 16px; }
 
+.sec-body ul {
+  margin-top: 16px;
+  max-width: 68ch;
+  padding-left: 20px;
+}
+.sec-body ul + p, .sec-body p + ul { margin-top: 16px; }
+.sec-body li {
+  color: #3a3a3a;
+  line-height: 1.65;
+}
+.sec-body li + li { margin-top: 10px; }
+.sec-body li::marker { color: var(--accent); }
+.sec-body li strong { color: var(--ink); font-weight: 600; }
+
+/* Numbered pillar lead-ins — "1. Name: description" rows that introduce
+   their own media directly below, full-width (not list-indented). */
+.pillar-lead { max-width: 68ch; color: #3a3a3a; }
+.pillar-num { color: var(--accent); font-weight: 600; margin-right: 2px; }
+.pillar-name { color: var(--accent); font-weight: 600; }
+.media-caption + .pillar-lead { margin-top: 48px; }
+
 /* Inline sub-headings (mono-label) used to break up a section body —
    e.g. Clara's "Putting it in numbers perspective…" or "Roadmap" —
    need the same rhythm as everything else around them. */
@@ -531,6 +552,19 @@ p + .mono-label,
 }
 .resume-cta:hover { background: var(--accent); }
 
+.resume-cta--outline {
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+}
+.resume-cta--outline:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* Process flow — top-bordered pastel steps */
 .process-flow {
   display: grid;
@@ -601,6 +635,17 @@ p + .mono-label,
   line-height: 1.7;
   color: #3a3a3a;
 }
+
+/* Stacked constraint/detail groups — reuse the square-bullet mono head,
+   just full-width and separated by a hairline instead of a grid. */
+.constraint-group { max-width: 68ch; }
+.constraint-group + .constraint-group {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px dashed var(--faint);
+}
+.constraint-group .truth-head { margin-bottom: 14px; }
+.constraint-group ul { margin-top: 0; }
 
 /* Career — title left, years right */
 .career-row {

@@ -7,12 +7,12 @@
   <meta name="description" content="A keyboard-first, drag-and-drop website builder built with React, Zustand, and dnd-kit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=case-10" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-  <nav class="top-nav archive-nav case-top-nav" aria-label="Primary">
+  <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
       <a class="nav-link" href="about.html">about</a>
@@ -48,66 +48,85 @@
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <h1 class="case-title">High-performance website builder with drag-n-drop, undo/redo, keyboard-first navigation</h1>
+        <p class="hero-eyebrow">Side Project</p>
+        <h1 class="case-title">High-Performance Website Builder</h1>
+        <p class="hero-support">Drag-and-drop, undo/redo, keyboard-first navigation — built for power users, not beginners.</p>
 
-        <div class="case-tags">
-          <span class="tag">reactjs</span>
-          <span class="tag">design engineering</span>
+        <div class="spec-strip" aria-label="Project details">
+          <div class="spec-rows">
+            <p class="spec-item"><b>Stack</b>React, Zustand, dnd-kit</p>
+            <p class="spec-item"><b>Role</b>Designer &amp; Developer</p>
+          </div>
         </div>
 
-        <p class="case-info-label">Problem &amp; My Approach</p>
-        <p class="case-info-value">Most website builders optimize for beginners - visual, guided, but slow. Every action requires clicking through menus and waiting for animations. I built a website builder for power users who already know what they want: keyboard-first, instant interactions, zero friction.</p>
+        <p class="mono-label">Problem &amp; My Approach</p>
+        <p>Most website builders optimize for beginners — visual, guided, but slow. Every action requires clicking through menus and waiting for animations. I built a website builder for power users who already know what they want: keyboard-first, instant interactions, zero friction.</p>
 
-        <div class="case-media hero-video">
+        <div class="media-full">
           <video autoplay muted loop playsinline controls>
             <source src="https://framerusercontent.com/assets/b8EWHA6qxRV1kmKK22FLdpgWY.mp4" type="video/mp4" />
           </video>
         </div>
-        <p class="case-caption">Fig: Website Builder</p>
+        <p class="media-caption">Fig: Website Builder</p>
       </header>
 
-      <section class="case-section" id="roles">
-        <p class="case-kicker">Roles</p>
-        <h2 class="case-heading">a user, A designer and a developer</h2>
+      <section class="case-section sec--major" id="roles">
+        <div class="sec-head">
+          <p class="sec-index"><em>01</em>Roles</p>
+          <h2 class="sec-title">A User, a Designer, and a Developer</h2>
+          <p class="sec-support">Wearing all three hats meant every decision got checked from a different angle.</p>
+        </div>
+        <div class="sec-body">
+          <p class="mono-label">As a user, I observed myself where I —</p>
+          <ul>
+            <li>Paused</li>
+            <li>Thought something was broken</li>
+            <li>Expected performance to feel jank-free</li>
+            <li>Expected the product to feel native</li>
+          </ul>
 
-        <p><strong>As a user, I observed myself where I -</strong></p>
-        <ul class="case-list">
-          <li>Paused</li>
-          <li>Thought something was broken</li>
-          <li>Expected performance to feel jank-free</li>
-          <li>Expected the product to feel native</li>
-        </ul>
+          <p class="mono-label">As a designer, I made sure —</p>
+          <ul>
+            <li>Keyboard navigation feels intuitive</li>
+            <li>The performance stayed up to the bar</li>
+            <li>And the product is scalable</li>
+          </ul>
 
-        <p><strong>As a designer, I made sure -</strong></p>
-        <ul class="case-list">
-          <li>Keyboard navigation feels intuitive</li>
-          <li>The performance stayed up to the bar</li>
-          <li>And the product is scalable</li>
-        </ul>
-
-        <p><strong>As a developer, I made sure -</strong></p>
-        <ul class="case-list">
-          <li>The code is clean and not redundant</li>
-          <li>The stack + methodologies were scalable</li>
-          <li>The logic was easy to architect</li>
-        </ul>
+          <p class="mono-label">As a developer, I made sure —</p>
+          <ul>
+            <li>The code is clean and not redundant</li>
+            <li>The stack + methodologies were scalable</li>
+            <li>The logic was easy to architect</li>
+          </ul>
+        </div>
       </section>
 
       <section class="case-section" id="building">
-        <p class="case-kicker">Building</p>
-        <h2 class="case-heading">The Technical Execution</h2>
-        <p>Built with React and Zustand state management. Custom drag-and-drop system using dnd-kit overlays. Debouncing logic maintains 60fps during intensive updates. The result: a builder that feels as responsive as a code editor, not a toy.</p>
+        <div class="sec-head">
+          <p class="sec-index"><em>02</em>Building</p>
+          <h2 class="sec-title">The Technical Execution</h2>
+          <p class="sec-support">Responsive like a code editor, not a toy.</p>
+        </div>
+        <div class="sec-body">
+          <p>Built with React and Zustand state management. Custom drag-and-drop system using dnd-kit overlays. Debouncing logic maintains 60fps during intensive updates. The result: a builder that feels as responsive as a code editor, not a toy.</p>
+        </div>
       </section>
 
       <section class="case-section" id="try-it">
-        <div class="case-cta-group">
-          <a class="archive-link" href="https://atomicpage.vercel.app/" target="_blank" rel="noopener">See Live Site</a>
-          <a class="archive-link" href="https://github.com/Nikethana-Nagasubramanian/website-builder" target="_blank" rel="noopener">GitHub</a>
+        <div class="sec-head">
+          <p class="sec-index"><em>03</em>Try It</p>
+          <h2 class="sec-title">See It in Action</h2>
+        </div>
+        <div class="sec-body">
+          <div class="cta-row">
+            <a class="resume-cta" href="https://atomicpage.vercel.app/" target="_blank" rel="noopener">See Live Site →</a>
+            <a class="resume-cta resume-cta--outline" href="https://github.com/Nikethana-Nagasubramanian/website-builder" target="_blank" rel="noopener">View GitHub →</a>
+          </div>
         </div>
       </section>
 
       <footer class="bottom-contact">
-        <span>Reach out to me on:</span>
+        <span>Reach out to me on</span>
         <div class="social-links" aria-label="Contact links">
           <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -122,5 +141,22 @@
       </footer>
     </article>
   </main>
+
+  <script>
+    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
+    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
+          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
+  </script>
 </body>
 </html>
