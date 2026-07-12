@@ -41,6 +41,11 @@
     {
       "source": "/website-project",
       "destination": "/website-project.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "animator.itsmenike.com" }],
+      "destination": "/tools/contribution-animator.html"
     }
   ]
 }
