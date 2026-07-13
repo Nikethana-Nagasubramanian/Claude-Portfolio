@@ -473,7 +473,8 @@ p + .mono-label,
 }
 
 @media (max-width: 720px) {
-  .nav-content { padding: 0 20px; gap: 18px; }
+  .nav-content { padding: 0 20px; gap: 18px; flex-wrap: wrap; row-gap: 10px; }
+  .social-links { margin-left: auto; }
 
   .case-shell { padding: 44px 18px 80px; }
 

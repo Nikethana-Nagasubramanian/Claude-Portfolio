@@ -11,10 +11,15 @@ const LABEL_LEFT = 30;    // room for weekday labels
 const LABEL_TOP = 18;     // room for month labels
 const BG = '#ffffff';     // canvas background (also the GIF background)
 
-const DEFAULT_SPEED_MS = 2500; // in-app reveal duration (user-adjustable, see state.speedMs)
+const SPEED_SLOW_MS = 4000; // slider value 0   (left  = slow)
+const SPEED_FAST_MS = 800;  // slider value 100 (right = fast)
 const CELL_DUR = 0.18;    // fraction of the timeline a single cell's pop takes
 const GIF_FPS = 20;
 const GIF_HOLD_MS = 1000; // hold on the finished frame before the GIF loops
+
+function speedFromSlider(v) {
+  return Math.round(SPEED_SLOW_MS - (SPEED_SLOW_MS - SPEED_FAST_MS) * (v / 100));
+}
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const WEEKDAY_ROWS = { 1: 'Mon', 3: 'Wed', 5: 'Fri' };
@@ -67,7 +72,7 @@ const state = {
   rangeMonths: 12,
   paletteKey: 'green',
   styleKey: 'column',
-  speedMs: DEFAULT_SPEED_MS,
+  speedMs: speedFromSlider(50),
   weeks: [],           // [[cell|null x7] per column]
   monthLabels: [],     // [{col, label}]
   layout: null,        // {cols, width, height}
@@ -92,11 +97,19 @@ const controls = $('controls');
 const rangeGroup = $('range');
 const palettesGroup = $('palettes');
 const stylesGroup = $('styles');
-const speedGroup = $('speed');
+const speedSlider = $('speed');
+const speedValue = $('speedValue');
 const replayBtn = $('replay');
 const exportBtn = $('export');
 const exportStatus = $('exportStatus');
 const exportBar = $('exportBar');
+const bottomBar = $('bottomBar');
+const getCodeBtn = $('getCode');
+const modalOverlay = $('modalOverlay');
+const modalClose = $('modalClose');
+const modalClose2 = $('modalClose2');
+const copyCodeBtn = $('copyCode');
+const codeOutput = $('codeOutput').querySelector('code');
 
 // ---------- grid building ----------
 function ymdToUTC(ymd) {
@@ -213,7 +226,7 @@ function renderFrame(c, progress, layout, weeks, schedule, palette) {
 
   // weekday labels (left)
   c.fillStyle = '#a3a3a3';
-  c.font = '9px "JetBrains Mono", monospace';
+  c.font = '600 10px "Instrument Sans", system-ui, sans-serif';
   c.textBaseline = 'middle';
   c.textAlign = 'left';
   for (const row in WEEKDAY_ROWS) {
@@ -285,7 +298,9 @@ function hideState() { stateEl.hidden = true; canvas.hidden = false; }
 async function load(username) {
   cancelAnimationFrame(state.animId);
   controls.hidden = true;
+  bottomBar.hidden = true;
   stageTotal.textContent = '';
+  stageTitle.hidden = false;
   stageTitle.textContent = 'Loading…';
   showState('<span class="spinner"></span>Fetching contribution data…', false);
   submitBtn.disabled = true;
@@ -316,6 +331,7 @@ async function load(username) {
 
     hideState();
     controls.hidden = false;
+    bottomBar.hidden = false;
     rebuild();
     play();
   } catch (e) {
@@ -476,15 +492,55 @@ stylesGroup.addEventListener('click', (e) => {
   play();
 });
 
-speedGroup.addEventListener('click', (e) => {
-  const btn = e.target.closest('button'); if (!btn) return;
-  state.speedMs = Number(btn.dataset.speed);
-  setPressed(speedGroup, 'speed', state.speedMs);
+speedSlider.addEventListener('input', () => {
+  state.speedMs = speedFromSlider(Number(speedSlider.value));
+  speedValue.textContent = (state.speedMs / 1000).toFixed(1) + 's';
   play();
 });
 
 replayBtn.addEventListener('click', () => play());
 exportBtn.addEventListener('click', () => exportGif());
+
+// ---------- exportable embed snippet ----------
+// Two lines: one <script src> pulling the shared widget library
+// (tools/gh-contrib-widget.js, a <gh-contrib-chart> custom element), and one
+// tag configuring it with the current Range/Palette/Style/Speed selections.
+// The library itself needs no backend — it fetches from jogruber.de directly.
+function buildEmbedSnippet() {
+  const palette = PALETTES[state.paletteKey].colors.join(',');
+  const username = state.username || 'octocat';
+  const widgetUrl = `${location.origin}/tools/gh-contrib-widget.js`;
+  return `<script src="${widgetUrl}"><\/script>
+<gh-contrib-chart
+  username="${username}"
+  range="${state.rangeMonths}"
+  style="${state.styleKey}"
+  speed="${state.speedMs}"
+  palette="${palette}"
+></gh-contrib-chart>`;
+}
+
+function openCodeModal() {
+  codeOutput.textContent = buildEmbedSnippet();
+  modalOverlay.hidden = false;
+}
+function closeCodeModal() { modalOverlay.hidden = true; }
+
+getCodeBtn.addEventListener('click', openCodeModal);
+modalClose.addEventListener('click', closeCodeModal);
+modalClose2.addEventListener('click', closeCodeModal);
+modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeCodeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modalOverlay.hidden) closeCodeModal(); });
+
+copyCodeBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(codeOutput.textContent);
+    copyCodeBtn.textContent = 'Copied!';
+  } catch {
+    copyCodeBtn.textContent = 'Press Cmd/Ctrl+C';
+  }
+  setTimeout(() => { copyCodeBtn.textContent = 'Copy code'; }, 1800);
+});
 
 // wait for fonts so canvas labels render in the right typeface
 buildPaletteSwatches();

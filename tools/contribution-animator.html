@@ -29,16 +29,16 @@
     padding:16px clamp(20px,5vw,48px);
     background:rgba(250,250,248,.82); backdrop-filter:blur(10px);
     border-bottom:1px solid var(--rule);
-    font-family:var(--mono); font-size:13px;
+    font-family:var(--sans); font-weight:500; font-size:14px;
   }
   .nav a{ color:var(--ink); text-decoration:none; }
   .nav a:hover{ color:var(--accent); }
   .nav .home{ font-weight:500; }
 
-  .wrap{ max-width:1000px; margin:0 auto; padding:clamp(28px,6vw,64px) clamp(20px,5vw,48px) 96px; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:clamp(28px,6vw,64px) clamp(20px,5vw,48px) 120px; }
 
   .eyebrow{
-    font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+    font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.1em;
     text-transform:uppercase; color:var(--accent); margin:0 0 12px;
   }
   h1{ font-size:clamp(34px,5vw,46px); line-height:1.08; margin:0 0 14px; letter-spacing:-.01em; }
@@ -68,7 +68,7 @@
   .btn.ghost{ background:transparent; color:var(--ink); border-color:var(--rule); }
   .btn.ghost:hover{ border-color:var(--ink); opacity:1; }
 
-  .disclaimer{ font-family:var(--mono); font-size:11px; color:var(--faint); margin:0 0 28px; }
+  .disclaimer{ font-family:var(--sans); font-size:12px; color:var(--faint); margin:0 0 28px; }
 
   /* stage */
   .stage{
@@ -77,16 +77,17 @@
     box-shadow:0 18px 40px -30px rgba(30,40,70,.4);
   }
   .stage-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
-  .stage-title{ font-family:var(--mono); font-size:13px; color:var(--muted); }
+  .stage-title{ font-family:var(--sans); font-size:14px; color:var(--muted); }
   .stage-title b{ color:var(--ink); font-weight:600; }
-  .stage-total{ font-family:var(--mono); font-size:12px; color:var(--faint); }
+  .stage-total{ font-family:var(--sans); font-size:13px; color:var(--faint); }
   .canvas-holder{ min-height:140px; display:flex; align-items:center; }
-  canvas{ display:block; max-width:100%; }
+  canvas{ display:block; flex-shrink:0; }
+  canvas[hidden]{ display:none; }
 
   /* states */
-  .state{ font-family:var(--mono); font-size:13px; color:var(--muted); padding:40px 4px; width:100%; text-align:center; }
+  .state{ font-family:var(--sans); font-size:15px; color:var(--muted); padding:40px 4px; width:100%; text-align:center; }
   .state.error{ color:#b4442e; }
-  .state .hint{ color:var(--faint); display:block; margin-top:6px; font-size:12px; }
+  .state .hint{ color:var(--faint); display:block; margin-top:6px; font-size:13px; }
   .spinner{
     display:inline-block; width:15px; height:15px; margin-right:8px; vertical-align:-2px;
     border:2px solid var(--rule); border-top-color:var(--accent); border-radius:50%;
@@ -95,9 +96,10 @@
   @keyframes spin{ to{ transform:rotate(360deg); } }
 
   /* controls */
-  .controls{ display:flex; gap:20px 28px; flex-wrap:wrap; align-items:flex-start; }
+  .controls{ display:flex; gap:20px 28px; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; }
+  .controls[hidden]{ display:none; }
   .control{ display:flex; flex-direction:column; gap:8px; }
-  .control > label{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); }
+  .control > label{ font-family:var(--sans); font-weight:600; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); }
   .seg{ display:inline-flex; background:var(--bg); border:1px solid var(--rule); border-radius:9px; padding:3px; gap:2px; }
   .seg button{
     font-family:var(--sans); font-weight:500; font-size:13px; padding:6px 12px; border:none; border-radius:6px;
@@ -105,6 +107,16 @@
   }
   .seg button:hover{ color:var(--ink); }
   .seg button[aria-pressed="true"]{ background:var(--ink); color:var(--bg); }
+
+  .speed-control{ display:flex; align-items:center; gap:10px; }
+  .speed-control .end{ font-size:11px; color:var(--faint); font-weight:600; text-transform:uppercase; letter-spacing:.06em; }
+  .speed-control input[type="range"]{
+    width:120px; accent-color:var(--ink); cursor:pointer;
+  }
+  .speed-value{
+    font-family:var(--sans); font-weight:600; font-size:12.5px; color:var(--ink);
+    padding:4px 2px; min-width:36px; text-align:center;
+  }
 
   .swatches{ display:inline-flex; gap:7px; }
   .swatch{
@@ -115,31 +127,72 @@
   .swatch .grad{ position:absolute; inset:0; border-radius:6px; }
   .swatch[aria-pressed="true"]{ border-color:var(--ink); }
 
-  .actions-row{ display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
+  /* fixed bottom action bar */
+  .bottom-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:30;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:14px clamp(20px,5vw,48px);
+    background:rgba(250,250,248,.9); backdrop-filter:blur(10px);
+    border-top:1px solid var(--rule);
+  }
+  .bottom-bar[hidden]{ display:none; }
+  .bottom-bar-status{ flex:1; min-width:0; }
+  .bottom-bar-actions{ display:flex; gap:10px; flex-shrink:0; }
 
-  .export-status{ font-family:var(--mono); font-size:11px; color:var(--muted); min-height:14px; margin-top:8px; }
-  .export-bar{ height:4px; background:var(--rule); border-radius:2px; overflow:hidden; margin-top:6px; display:none; }
+  .export-status{ font-family:var(--sans); font-size:12px; color:var(--muted); min-height:14px; }
+  .export-bar{ height:4px; max-width:320px; background:var(--rule); border-radius:2px; overflow:hidden; margin-top:6px; display:none; }
   .export-bar > div{ height:100%; width:0; background:var(--accent); transition:width .1s; }
 
-  .foot{ font-family:var(--mono); font-size:11px; color:var(--faint); margin-top:36px; line-height:1.8; }
+  .foot{ font-family:var(--sans); font-size:12px; color:var(--faint); margin-top:36px; line-height:1.8; }
   .foot a{ color:var(--muted); }
+  .foot code{ font-family:var(--mono); font-size:11px; background:var(--rule); padding:1px 5px; border-radius:4px; }
 
   @media (max-width:640px){
-    .actions-row{ justify-content:stretch; }
-    .actions-row .btn{ flex:1; }
+    .bottom-bar{ flex-direction:column; align-items:stretch; }
+    .bottom-bar-actions{ justify-content:stretch; }
+    .bottom-bar-actions .btn{ flex:1; }
   }
+
+  /* code export modal */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(20,20,20,.5); backdrop-filter:blur(2px);
+    display:flex; align-items:center; justify-content:center; padding:24px; z-index:100;
+  }
+  .modal-overlay[hidden]{ display:none; }
+  .modal{
+    background:var(--card); border-radius:16px; max-width:720px; width:100%;
+    max-height:85vh; display:flex; flex-direction:column; overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.4);
+  }
+  .modal-head{ display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid var(--rule); }
+  .modal-head h2{ font-size:17px; margin:0; font-weight:600; }
+  .modal-close{ background:none; border:none; font-size:20px; line-height:1; color:var(--faint); cursor:pointer; padding:4px; }
+  .modal-close:hover{ color:var(--ink); }
+  .modal-body{ padding:18px 22px; overflow-y:auto; }
+  .modal-body p{ font-size:13.5px; color:var(--muted); margin:0 0 12px; }
+  .modal-body pre{
+    background:#141414; color:#e8e6e0; font-family:var(--mono); font-size:12px; line-height:1.6;
+    padding:16px; border-radius:10px; overflow-x:auto; margin:0;
+  }
+  .modal-foot{ display:flex; justify-content:flex-end; gap:10px; padding:14px 22px; border-top:1px solid var(--rule); }
 </style>
 </head>
 <body>
   <nav class="nav">
-    <a class="home" href="/">nike</a>
-    <a href="/archive">← work</a>
+    <a class="home" id="back-link" href="/playground">← Back</a>
   </nav>
+  <script>
+    if (location.hostname === 'animator.itsmenike.com') {
+      const backLink = document.getElementById('back-link');
+      backLink.href = 'https://itsmenike.com/playground';
+      backLink.textContent = '← Back to portfolio';
+    }
+  </script>
 
   <main class="wrap">
     <p class="eyebrow">Tool</p>
     <h1>Contribution Animator</h1>
-    <p class="lede">Type any public GitHub username to watch its contribution graph build itself in — then recolor it, scope the window, and export the whole thing as a GIF.</p>
+    <p class="lede">Type in your GitHub username, it'll fetch your contributions chart. Play around with the animation, color and speed — and export it as a GIF or as a code block!</p>
 
     <form id="search" class="search" autocomplete="off">
       <div class="field">
@@ -152,11 +205,11 @@
 
     <section class="stage" aria-live="polite">
       <div class="stage-head">
-        <div class="stage-title" id="stageTitle">Enter a username to begin</div>
+        <div class="stage-title" id="stageTitle" hidden></div>
         <div class="stage-total" id="stageTotal"></div>
       </div>
       <div class="canvas-holder" id="holder">
-        <div class="state" id="state">Try <b>torvalds</b>, <b>gaearon</b>, or your own handle.</div>
+        <div class="state" id="state">Enter your GitHub username to see your contributions chart.</div>
         <canvas id="canvas" hidden></canvas>
       </div>
     </section>
@@ -188,20 +241,14 @@
 
       <div class="control">
         <label>Speed</label>
-        <div class="seg" id="speed" role="group" aria-label="Animation speed">
-          <button type="button" data-speed="4000">4.0s</button>
-          <button type="button" data-speed="2500" aria-pressed="true">2.5s</button>
-          <button type="button" data-speed="1200">1.2s</button>
+        <div class="speed-control">
+          <span class="end">Slow</span>
+          <input type="range" id="speed" min="0" max="100" value="50" step="1" aria-label="Animation speed">
+          <span class="end">Fast</span>
+          <span class="speed-value" id="speedValue">2.4s</span>
         </div>
       </div>
     </section>
-
-    <div class="actions-row">
-      <button type="button" id="replay" class="btn ghost">↻ Replay</button>
-      <button type="button" id="export" class="btn">Export GIF</button>
-    </div>
-    <div class="export-status" id="exportStatus"></div>
-    <div class="export-bar" id="exportBar"><div></div></div>
 
     <p class="foot">
       Scrapes <code>github.com/users/&lt;name&gt;/contributions</code> server-side, with a
@@ -209,6 +256,35 @@
       fallback. GIF encoding runs entirely in your browser.
     </p>
   </main>
+
+  <div class="bottom-bar" id="bottomBar" hidden>
+    <div class="bottom-bar-status">
+      <div class="export-status" id="exportStatus"></div>
+      <div class="export-bar" id="exportBar"><div></div></div>
+    </div>
+    <div class="bottom-bar-actions">
+      <button type="button" id="replay" class="btn ghost">↻ Replay</button>
+      <button type="button" id="getCode" class="btn ghost">&lt;/&gt; Get Code</button>
+      <button type="button" id="export" class="btn">Export GIF</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 id="modalTitle">Embed this component</h2>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Two lines: one loads the shared chart library, the other configures it with your current Range, Palette, Style, and Speed. Drop both anywhere and swap in any GitHub username — it fetches its own data, no backend required.</p>
+        <pre id="codeOutput"><code></code></pre>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" id="modalClose2" type="button">Close</button>
+        <button class="btn" id="copyCode" type="button">Copy code</button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/tools/contribution-animator.js"></script>
 </body>

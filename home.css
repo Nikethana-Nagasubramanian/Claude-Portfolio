@@ -242,6 +242,7 @@ img, video { max-width: 100%; display: block; }
 .work-media video, .work-media img { width: 100%; }
 
 .work-entry--locked .work-meta { margin-top: 0; }
+.work-entry--no-media .work-meta { margin-top: 0; }
 
 .work-lock-icon {
   width: .72em;
@@ -300,16 +301,53 @@ img, video { max-width: 100%; display: block; }
 .archive-link .work-title { margin-top: 12px; font-size: clamp(24px, 2.6vw, 32px); }
 .archive-link:hover .work-title { color: var(--accent); }
 
+/* ── Footer links (Archive + Playground, side by side) ── */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 64px;
+  margin-top: 130px;
+  padding-top: 26px;
+  border-top: 1px solid var(--ink);
+}
+.footer-links .footer-link { display: block; }
+.footer-links .footer-link .work-title { margin-top: 12px; font-size: clamp(24px, 2.6vw, 32px); }
+.footer-links .footer-link:hover .work-title { color: var(--accent); }
+
 /* ── Archive page: intro + compact section spacing ── */
 .archive-intro { margin-top: 0; }
 .archive-intro .hero-headline { margin-top: 14px; max-width: 20ch; }
+
+/* ── Playground: bounded card grid ── */
+.playground-grid {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+.playground-card { display: block; border: 1px solid var(--rule); overflow: hidden; transition: border-color .15s ease; }
+.playground-card:hover { border-color: var(--accent); }
+.playground-card-media { aspect-ratio: 3 / 2; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.playground-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.playground-card-body { padding: 20px 22px 24px; }
+.playground-card .work-meta { margin-top: 0; }
+.playground-card-title {
+  margin-top: 10px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .15s ease;
+}
+.playground-card:hover .playground-card-title { color: var(--accent); }
+.playground-card-support {
+  margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
 
 .work-section--compact { margin-top: 90px; }
 @media (max-width: 720px) { .work-section--compact { margin-top: 64px; } }
 
 /* ── Breakpoints ── */
 @media (max-width: 720px) {
-  .nav-content { padding: 0 20px; gap: 18px; }
+  .nav-content { padding: 0 20px; gap: 18px; flex-wrap: wrap; row-gap: 10px; }
+  .social-links { margin-left: auto; }
 
   .home-shell { padding: 72px 18px 100px; }
 
@@ -326,4 +364,6 @@ img, video { max-width: 100%; display: block; }
   .work-support { font-size: 16px; }
 
   .archive-link { margin-top: 90px; }
+  .footer-links { margin-top: 90px; flex-direction: column; gap: 32px; }
+  .playground-grid { grid-template-columns: 1fr; margin-top: 48px; gap: 24px; }
 }

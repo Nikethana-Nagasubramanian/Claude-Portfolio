@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Archive — Nikethana</title>
-  <meta name="description" content="Archive collection of earlier projects that reveal my design process, decision-making, and growth as a designer." />
+  <title>Playground — Nikethana</title>
+  <meta name="description" content="Small experiments and built-for-fun tools — a break from client work." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -16,7 +16,6 @@
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
       <a class="nav-link" href="about.html">about</a>
-      <a class="nav-link" href="playground.html">playground</a>
       <span class="nav-separator" aria-hidden="true"></span>
       <div class="social-links" aria-label="Social links">
         <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
@@ -40,91 +39,40 @@
 
   <main class="home-shell">
     <header class="archive-intro">
-      <p class="mono-label">Archive</p>
-      <h1 class="hero-headline">Other Projects</h1>
-      <p class="hero-support">Earlier work that reveals my process, decisions, and growth as a designer.</p>
+      <p class="mono-label">Playground</p>
+      <h1 class="hero-headline">Built for fun</h1>
+      <p class="hero-support">Small experiments outside client work — tools, toys, and interface ideas I wanted to build just to build them.</p>
     </header>
 
-    <section class="work-section work-section--compact" aria-labelledby="archive-count">
-      <div class="work-header">
-        <div class="work-tabs" role="tablist" aria-label="Project categories">
-          <button class="work-tab active" id="tab-work" type="button" role="tab" aria-selected="true" aria-controls="panel-work" data-tab="work">Work</button>
-          <button class="work-tab" id="tab-interviews" type="button" role="tab" aria-selected="false" aria-controls="panel-interviews" data-tab="interviews">Interview Experiences</button>
+    <section class="playground-grid" aria-label="Experiments">
+      <a class="playground-card" href="tools/contribution-animator.html">
+        <div class="playground-card-media">
+          <img src="assets/playground/contribution-animator.png" alt="Contribution Animator tool interface showing an animated, recolorable GitHub contribution graph" loading="lazy" width="1200" height="800" />
         </div>
-        <p class="work-count" id="archive-count">1 project</p>
-      </div>
-
-      <div class="work-panel" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
-        <a class="work-entry" href="gf-features.html">
-          <div class="work-media">
-            <img src="https://framerusercontent.com/images/6ihHiutmYDvUy8ZykSUbdpp6po.png?scale-down-to=2048" alt="" />
-          </div>
+        <div class="playground-card-body">
           <div class="work-meta">
             <span class="work-index">01</span>
-            <span>2024 – 2025</span>
-            <span class="work-tags">Enterprise Design / Visual Design / B2B</span>
+            <span class="work-tags">Canvas / Animation / GIF Export</span>
           </div>
-          <p class="work-title">Beyond Site Selection: Building the Deal Management Solution</p>
-          <p class="work-support">Carrying site-evaluation context through to a signed lease.</p>
-        </a>
-      </div>
+          <p class="playground-card-title">Contribution Animator</p>
+          <p class="playground-card-support">Turn any public GitHub contribution graph into an animated, recolorable chart — export as a GIF or an embeddable widget.</p>
+        </div>
+      </a>
 
-      <div class="work-panel" id="panel-interviews" role="tabpanel" aria-labelledby="tab-interviews" hidden>
-        <a class="work-entry" href="sumble.html">
-          <div class="work-media">
-            <img src="https://framerusercontent.com/images/Md3e1fQozPlnwfihwKC5NNcVKw.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
-          </div>
-          <div class="work-meta">
-            <span class="work-index">01</span>
-            <span>Series A</span>
-            <span class="work-tags">Data Heavy / B2B</span>
-          </div>
-          <p class="work-title">Sumble: Solving the "Data Dump" with Logic-First UX</p>
-          <p class="work-support">A 72-hour take-home reframing a profile viewer into a decision tool.</p>
-        </a>
-
-        <a class="work-entry" href="nordic.html">
-          <div class="work-media">
-            <img src="https://framerusercontent.com/images/CGyhsxixvpx8jxoPjNSu8F5AxCs.png?scale-down-to=2048&amp;width=2955&amp;height=2110" alt="" />
-          </div>
+      <a class="playground-card" href="toggle.html">
+        <div class="playground-card-media">
+          <img src="assets/playground/toggle.png" alt="Day/Night toggle switch with hand-drawn clouds, foliage, and a moon" loading="lazy" width="1200" height="800" />
+        </div>
+        <div class="playground-card-body">
           <div class="work-meta">
             <span class="work-index">02</span>
-            <span>Public</span>
-            <span class="work-tags">Data Heavy / B2B</span>
+            <span class="work-tags">SVG / Micro-interaction</span>
           </div>
-          <p class="work-title">Nordic Semiconductor: Bridging the "Empty State" Trust Gap</p>
-          <p class="work-support">A 72-hour take-home designing trust into a multi-day onboarding wait.</p>
-        </a>
-      </div>
+          <p class="playground-card-title">Day / Night Toggle</p>
+          <p class="playground-card-support">A painterly, Ghibli-inspired take on a light/dark toggle switch — hand-drawn clouds, foliage, and a moon with real crater shading.</p>
+        </div>
+      </a>
     </section>
   </main>
-
-  <script>
-    const archiveTabs = document.querySelectorAll('.work-tab[data-tab]');
-    const archivePanels = {
-      work: document.getElementById('panel-work'),
-      interviews: document.getElementById('panel-interviews')
-    };
-    const archiveCount = document.getElementById('archive-count');
-
-    archiveTabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const selected = tab.dataset.tab;
-
-        archiveTabs.forEach((item) => {
-          const isActive = item === tab;
-          item.classList.toggle('active', isActive);
-          item.setAttribute('aria-selected', String(isActive));
-        });
-
-        Object.entries(archivePanels).forEach(([key, panel]) => {
-          panel.hidden = key !== selected;
-        });
-
-        const count = archivePanels[selected].querySelectorAll('.work-entry').length;
-        archiveCount.textContent = `${count} project${count === 1 ? '' : 's'}`;
-      });
-    });
-  </script>
 </body>
 </html>

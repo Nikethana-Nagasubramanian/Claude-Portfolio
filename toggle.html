@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day / Night Toggle</title>
+<style>
+  :root{ --page-bg:#eeeeec; }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--page-bg);
+  }
+
+  .back-nav{
+    position:fixed; top:20px; left:20px;
+    font-family:-apple-system,BlinkMacSystemFont,"Instrument Sans",sans-serif;
+    font-weight:500; font-size:14px; color:#141414; text-decoration:none;
+  }
+  .back-nav:hover{ opacity:.7; }
+
+  .dn-toggle{ position:relative; display:inline-block; }
+  .dn-toggle::after{
+    content:"";
+    position:absolute;
+    left:8%;
+    right:8%;
+    bottom:-22px;
+    height:22px;
+    border-radius:50%;
+    background:radial-gradient(ellipse at center, rgba(40,50,70,.28) 0%, rgba(40,50,70,0) 70%);
+    filter:blur(4px);
+    z-index:-1;
+  }
+
+  .dn-input{
+    position:absolute;
+    opacity:0;
+    width:1px; height:1px;
+    pointer-events:none;
+  }
+
+  .dn-track{
+    --w: 300px;
+    --h: 132px;
+    --inset: 13px;
+    --thumb: 106px;
+    position:relative;
+    display:block;
+    width:var(--w);
+    height:var(--h);
+    border-radius:999px;
+    cursor:pointer;
+    overflow:hidden;
+    border:2px solid #e0a93c;
+    box-shadow:
+      0 18px 36px -14px rgba(30,40,70,.45),
+      inset 0 2px 5px rgba(255,255,255,.55),
+      inset 0 -4px 10px rgba(80,110,145,.28);
+    transition: border-color .6s ease, box-shadow .6s ease;
+  }
+  .dn-input:focus-visible + .dn-track{
+    outline:3px solid #6b8fd6;
+    outline-offset:4px;
+  }
+  .dn-input:checked + .dn-track{
+    border-color:#6a58c4;
+    box-shadow:
+      0 18px 40px -12px rgba(12,8,45,.6),
+      inset 0 2px 5px rgba(255,255,255,.08),
+      inset 0 -4px 12px rgba(0,0,0,.45);
+  }
+
+  .dn-scene{
+    position:absolute;
+    inset:0;
+    transition:opacity .65s ease;
+  }
+  .dn-scene svg{ display:block; width:100%; height:100%; }
+  .dn-scene--night{ opacity:0; }
+  .dn-input:checked + .dn-track .dn-scene--day{ opacity:0; }
+  .dn-input:checked + .dn-track .dn-scene--night{ opacity:1; }
+
+  .dn-thumb{
+    position:absolute;
+    top:50%;
+    left:var(--inset);
+    width:var(--thumb);
+    height:var(--thumb);
+    border-radius:50%;
+    transform:translate(0,-50%);
+    transition: transform .65s cubic-bezier(.65,.05,.36,1);
+  }
+  .dn-input:checked + .dn-track .dn-thumb{
+    transform:translate(calc(var(--w) - var(--thumb) - 2 * var(--inset) - 4px), -50%);
+  }
+
+  .dn-face{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    transition:opacity .5s ease;
+  }
+  .dn-face svg{ display:block; width:100%; height:100%; }
+
+  .dn-face--sun{
+    box-shadow:
+      0 0 0 7px rgba(255,205,90,.16),
+      0 0 30px 8px rgba(255,190,60,.32),
+      0 12px 22px -6px rgba(150,90,10,.5);
+  }
+  .dn-face--moon{
+    opacity:0;
+    box-shadow:
+      0 0 0 7px rgba(190,180,255,.14),
+      0 0 26px 6px rgba(222,214,255,.28),
+      0 12px 24px -6px rgba(5,3,30,.65);
+  }
+  .dn-input:checked + .dn-track .dn-face--sun{ opacity:0; }
+  .dn-input:checked + .dn-track .dn-face--moon{ opacity:1; }
+</style>
+</head>
+<body>
+  <a class="back-nav" href="/playground">← Back</a>
+  <div class="dn-toggle">
+    <input type="checkbox" id="dnToggle" class="dn-input" aria-label="Toggle day and night">
+    <label for="dnToggle" class="dn-track">
+
+      <!-- ============ DAY: painterly sky, cumulus, foliage ============ -->
+      <span class="dn-scene dn-scene--day" aria-hidden="true">
+        <svg viewBox="0 0 300 132" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="d-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6fb5e0"/>
+              <stop offset=".45" stop-color="#9ccfec"/>
+              <stop offset=".8" stop-color="#c8e6f6"/>
+              <stop offset="1" stop-color="#e6f3fa"/>
+            </linearGradient>
+            <radialGradient id="d-warm" cx="0" cy=".5" r="1">
+              <stop offset="0" stop-color="rgba(255,236,190,.6)"/>
+              <stop offset=".55" stop-color="rgba(255,236,190,.18)"/>
+              <stop offset="1" stop-color="rgba(255,236,190,0)"/>
+            </radialGradient>
+            <linearGradient id="d-cg" gradientUnits="userSpaceOnUse" x1="0" y1="12" x2="0" y2="64">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset=".62" stop-color="#f1f7fc"/>
+              <stop offset="1" stop-color="#c9dcee"/>
+            </linearGradient>
+            <linearGradient id="d-cg2" gradientUnits="userSpaceOnUse" x1="0" y1="64" x2="0" y2="92">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#d2e2f0"/>
+            </linearGradient>
+            <!-- organic edge roughening -->
+            <filter id="d-rough" x="-15%" y="-15%" width="130%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.045 0.07" numOctaves="3" seed="9" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+            </filter>
+            <filter id="d-rough2" x="-15%" y="-15%" width="130%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.06 0.09" numOctaves="3" seed="4" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="4"/>
+            </filter>
+            <!-- atmospheric mottle -->
+            <filter id="d-mot" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="3" seed="5"/>
+              <feColorMatrix type="saturate" values="0"/>
+              <feGaussianBlur stdDeviation="1.2"/>
+            </filter>
+            <filter id="d-b05"><feGaussianBlur stdDeviation=".5"/></filter>
+            <filter id="d-b1"><feGaussianBlur stdDeviation="1.2"/></filter>
+            <filter id="d-b2"><feGaussianBlur stdDeviation="2.4"/></filter>
+            <filter id="d-b3"><feGaussianBlur stdDeviation="3.5"/></filter>
+            <!-- leafy ragged-edge displacement -->
+            <filter id="d-leaf" x="-15%" y="-15%" width="130%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.16 0.16" numOctaves="2" seed="14" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="6.5"/>
+            </filter>
+            <!-- fine leaf-mass speckle -->
+            <filter id="d-lfn" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="21"/>
+              <feColorMatrix type="saturate" values="0"/>
+              <feGaussianBlur stdDeviation=".25"/>
+            </filter>
+            <!-- canopy masses (referenced for paint + texture clip) -->
+            <path id="d-can1" d="M208,132 C206,118 214,108 224,107 C222,96 232,87 243,90 C245,79 260,76 268,84 C278,79 290,85 291,94 C300,97 303,108 297,116 C302,122 300,129 294,132 Z"/>
+            <path id="d-can2" d="M214,132 C212,122 220,115 230,117 C233,108 246,105 254,110 C258,102 272,102 277,109 C286,107 294,113 293,121 C297,125 296,130 292,132 Z"/>
+            <path id="d-can3" d="M234,132 C235,124 244,119 252,121 C256,114 268,114 273,119 C281,116 289,121 290,128 L290,132 Z"/>
+            <path id="d-can4" d="M284,132 C284,122 292,116 300,118 C308,116 314,122 313,130 L312,132 Z"/>
+            <clipPath id="d-folclip">
+              <use href="#d-can1"/><use href="#d-can2"/><use href="#d-can3"/><use href="#d-can4"/>
+            </clipPath>
+          </defs>
+
+          <rect width="300" height="132" fill="url(#d-sky)"/>
+          <!-- warm light spilling from the sun side -->
+          <ellipse cx="58" cy="70" rx="150" ry="100" fill="url(#d-warm)"/>
+          <!-- hazy horizon light -->
+          <rect x="0" y="88" width="300" height="44" fill="#ffffff" opacity=".16" filter="url(#d-b3)"/>
+          <!-- painterly tonal variation across the sky -->
+          <rect width="300" height="132" filter="url(#d-mot)" opacity=".2" style="mix-blend-mode:soft-light"/>
+
+          <!-- big cumulus -->
+          <g filter="url(#d-rough)">
+            <ellipse cx="231" cy="63" rx="42" ry="6" fill="#8fb0d0" opacity=".32" filter="url(#d-b3)"/>
+            <path fill="url(#d-cg)" d="M190,57 C182,52 183,43 192,40 C190,31 200,25 209,28 C211,18 226,14 236,20 C242,14 254,16 257,25 C266,23 273,29 271,37 C278,40 277,50 269,54 C262,59 250,57 244,58 C230,62 210,61 200,59 Z"/>
+            <path fill="#aac3db" opacity=".5" filter="url(#d-b2)" d="M198,55 C214,59 244,58 263,52 C267,48 266,45 262,44 C247,51 219,53 203,49 Z"/>
+            <g fill="#ffffff" opacity=".9" filter="url(#d-b1)">
+              <ellipse cx="215" cy="26" rx="11" ry="7"/>
+              <ellipse cx="235" cy="21" rx="10" ry="6"/>
+              <ellipse cx="252" cy="27" rx="7" ry="5"/>
+              <ellipse cx="200" cy="38" rx="8" ry="5"/>
+            </g>
+          </g>
+
+          <!-- mid cloud -->
+          <g filter="url(#d-rough2)">
+            <path fill="url(#d-cg2)" d="M143,86 C138,81 142,74 150,74 C152,68 162,66 167,70 C172,65 181,68 181,74 C187,76 186,83 179,85 C170,89 152,89 143,86 Z"/>
+            <ellipse cx="164" cy="84" rx="17" ry="4" fill="#aac3db" opacity=".45" filter="url(#d-b1)"/>
+            <ellipse cx="158" cy="72" rx="7" ry="4" fill="#ffffff" opacity=".85" filter="url(#d-b1)"/>
+          </g>
+
+          <!-- thin drifting wisp -->
+          <g filter="url(#d-rough2)" opacity=".8">
+            <path fill="#eef5fb" d="M120,103 C135,99 160,99 172,102 C180,101 190,102 193,105 C185,109 130,109 122,106 Z" filter="url(#d-b1)"/>
+            <path fill="#e2eef7" d="M150,108 C162,106 180,106 188,108 C182,111 156,111 150,108 Z" filter="url(#d-b1)"/>
+          </g>
+
+          <!-- layered leafy foliage, bottom right -->
+          <ellipse cx="234" cy="133" rx="56" ry="7" fill="#2c4f2a" opacity=".45" filter="url(#d-b3)"/>
+          <g transform="translate(-28,0)" filter="url(#d-leaf)">
+            <!-- back canopy: sunlit rounded treetops -->
+            <use href="#d-can1" fill="#7fae5c"/>
+            <!-- interior shadow, low in the canopy -->
+            <g fill="#47713a" opacity=".65" filter="url(#d-b2)">
+              <ellipse cx="232" cy="118" rx="14" ry="9"/>
+              <ellipse cx="258" cy="115" rx="16" ry="10"/>
+              <ellipse cx="283" cy="120" rx="12" ry="8"/>
+            </g>
+            <!-- branches peeking between clumps -->
+            <path d="M247,131 C246,122 244,112 241,103 M247,124 C250,116 254,110 259,105" stroke="#6b4a2f" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M282,131 C281,124 280,118 278,111" stroke="#5d4128" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <!-- mid clumps -->
+            <use href="#d-can2" fill="#5f9048"/>
+            <!-- sunlit leaf-cluster dabs (light from the left) -->
+            <g fill="#a9cc70" filter="url(#d-b05)">
+              <ellipse cx="222" cy="103" rx="7" ry="5"/>
+              <ellipse cx="236" cy="92" rx="8" ry="5.5"/>
+              <ellipse cx="250" cy="84" rx="7" ry="4.5"/>
+              <ellipse cx="263" cy="82" rx="6" ry="4"/>
+              <ellipse cx="240" cy="101" rx="5" ry="3.5"/>
+              <ellipse cx="256" cy="95" rx="6" ry="4"/>
+              <ellipse cx="228" cy="112" rx="5" ry="3.5"/>
+              <ellipse cx="272" cy="90" rx="5" ry="3.5"/>
+              <ellipse cx="215" cy="115" rx="4" ry="3"/>
+            </g>
+            <g fill="#c1da84" filter="url(#d-b05)">
+              <ellipse cx="233" cy="89" rx="4" ry="2.5"/>
+              <ellipse cx="248" cy="81" rx="4" ry="2.5"/>
+              <ellipse cx="261" cy="79" rx="3.5" ry="2"/>
+              <ellipse cx="219" cy="100" rx="3.5" ry="2"/>
+            </g>
+            <!-- front dark shrubs -->
+            <use href="#d-can3" fill="#3f6b35"/>
+            <g fill="#6f9c52" filter="url(#d-b05)">
+              <ellipse cx="249" cy="122" rx="5" ry="3.5"/>
+              <ellipse cx="268" cy="119" rx="5" ry="3"/>
+              <ellipse cx="240" cy="126" rx="4" ry="2.5"/>
+            </g>
+            <!-- golden accent bush, far corner -->
+            <use href="#d-can4" fill="#cfbf5e"/>
+            <g filter="url(#d-b05)">
+              <ellipse cx="295" cy="118" rx="6" ry="4" fill="#e6da82"/>
+              <ellipse cx="305" cy="120" rx="5" ry="3" fill="#e6da82"/>
+              <ellipse cx="300" cy="128" rx="8" ry="4" fill="#a89a45" opacity=".7"/>
+            </g>
+            <!-- leaf-mass speckle across all foliage -->
+            <g clip-path="url(#d-folclip)">
+              <rect x="200" y="70" width="120" height="62" filter="url(#d-lfn)" opacity=".32" style="mix-blend-mode:soft-light"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+
+      <!-- ============ NIGHT: painterly indigo sky, hills, stars ============ -->
+      <span class="dn-scene dn-scene--night" aria-hidden="true">
+        <svg viewBox="0 0 300 132" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="n-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#251b70"/>
+              <stop offset=".5" stop-color="#1b1257"/>
+              <stop offset="1" stop-color="#130d40"/>
+            </linearGradient>
+            <radialGradient id="n-moonhaze" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="rgba(205,195,255,.32)"/>
+              <stop offset="1" stop-color="rgba(205,195,255,0)"/>
+            </radialGradient>
+            <linearGradient id="n-g1" gradientUnits="userSpaceOnUse" x1="0" y1="60" x2="0" y2="132">
+              <stop offset="0" stop-color="#3d2da0"/>
+              <stop offset="1" stop-color="#241a6b"/>
+            </linearGradient>
+            <linearGradient id="n-g2" gradientUnits="userSpaceOnUse" x1="0" y1="72" x2="0" y2="132">
+              <stop offset="0" stop-color="#6a53e2"/>
+              <stop offset="1" stop-color="#4530b5"/>
+            </linearGradient>
+            <linearGradient id="n-g3" gradientUnits="userSpaceOnUse" x1="0" y1="88" x2="0" y2="132">
+              <stop offset="0" stop-color="#9a7ff5"/>
+              <stop offset="1" stop-color="#7c5fe8"/>
+            </linearGradient>
+            <linearGradient id="n-horizon" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="rgba(110,90,220,0)"/>
+              <stop offset="1" stop-color="rgba(110,90,220,.3)"/>
+            </linearGradient>
+            <filter id="n-mot" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="3" seed="11"/>
+              <feColorMatrix type="saturate" values="0"/>
+              <feGaussianBlur stdDeviation="1.2"/>
+            </filter>
+            <filter id="n-rough" x="-15%" y="-15%" width="130%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.05 0.08" numOctaves="3" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+            </filter>
+            <filter id="n-b1"><feGaussianBlur stdDeviation="1"/></filter>
+            <filter id="n-b2"><feGaussianBlur stdDeviation="2"/></filter>
+            <filter id="n-b4"><feGaussianBlur stdDeviation="4"/></filter>
+            <!-- curved 4-point sparkle -->
+            <path id="n-st" d="M0,-6 C0.8,-1.6 1.6,-0.8 6,0 C1.6,0.8 0.8,1.6 0,6 C-0.8,1.6 -1.6,0.8 -6,0 C-1.6,-0.8 -0.8,-1.6 0,-6 Z"/>
+          </defs>
+
+          <rect width="300" height="132" fill="url(#n-sky)"/>
+          <!-- moonlight haze where the moon rests -->
+          <ellipse cx="242" cy="60" rx="105" ry="80" fill="url(#n-moonhaze)"/>
+          <!-- atmospheric mottle -->
+          <rect width="300" height="132" filter="url(#n-mot)" opacity=".22" style="mix-blend-mode:soft-light"/>
+
+          <!-- night clouds drifting near the moon -->
+          <g filter="url(#n-rough)">
+            <path fill="#8d82cc" opacity=".32" filter="url(#n-b2)"
+              d="M172,40 C168,33 175,26 184,27 C187,20 199,18 205,23 C211,18 221,21 222,28 C230,29 232,37 225,41 C214,46 182,45 172,40 Z"/>
+            <path fill="#6f63b8" opacity=".26" filter="url(#n-b2)"
+              d="M196,52 C200,47 214,46 222,49 C228,46 237,48 238,53 C232,58 203,58 196,52 Z"/>
+            <path fill="#7d72c2" opacity=".2" filter="url(#n-b2)"
+              d="M52,62 C50,55 58,50 66,52 C70,46 81,46 85,51 C92,50 96,56 91,61 C82,66 58,66 52,62 Z"/>
+          </g>
+
+          <!-- stars: varied size, brightness, some glowing -->
+          <g fill="#f6f3ff">
+            <circle cx="32" cy="20" r="4.5" fill="#cfc4ff" opacity=".45" filter="url(#n-b2)"/>
+            <use href="#n-st" transform="translate(32,20) scale(1.1)"/>
+            <circle cx="72" cy="40" r="6" fill="#cfc4ff" opacity=".5" filter="url(#n-b2)"/>
+            <use href="#n-st" transform="translate(72,40) scale(1.5)"/>
+            <use href="#n-st" transform="translate(46,68) scale(.9)" opacity=".75"/>
+            <circle cx="112" cy="24" r="4" fill="#cfc4ff" opacity=".4" filter="url(#n-b2)"/>
+            <use href="#n-st" transform="translate(112,24) scale(1)" opacity=".95"/>
+            <use href="#n-st" transform="translate(98,80) scale(.8)" fill="#cfc0f5" opacity=".6"/>
+            <use href="#n-st" transform="translate(140,50) scale(.85)" opacity=".8"/>
+            <use href="#n-st" transform="translate(160,16) scale(.7)" opacity=".6"/>
+            <use href="#n-st" transform="translate(62,98) scale(.7)" fill="#cfc0f5" opacity=".5"/>
+            <use href="#n-st" transform="translate(128,92) scale(.6)" opacity=".5"/>
+            <use href="#n-st" transform="translate(180,34) scale(.8)" opacity=".7"/>
+          </g>
+
+          <!-- rolling hills with atmospheric haze -->
+          <rect x="0" y="60" width="300" height="72" fill="url(#n-horizon)"/>
+          <path fill="#8f7df0" opacity=".18" filter="url(#n-b4)"
+            d="M-10,134 C55,81 75,121 130,91 C185,56 205,111 310,41 L310,146 L-10,146 Z"/>
+          <path fill="url(#n-g1)" filter="url(#n-b1)"
+            d="M-10,138 C55,85 75,125 130,95 C185,60 205,115 310,45 L310,150 L-10,150 Z"/>
+          <path fill="#a794ff" opacity=".2" filter="url(#n-b4)"
+            d="M20,146 C80,96 115,128 160,88 C205,54 235,92 315,26 L315,146 Z"/>
+          <path fill="url(#n-g2)" filter="url(#n-b1)"
+            d="M20,150 C80,100 115,132 160,92 C205,58 235,96 315,30 L315,150 L20,150 Z"/>
+          <path fill="url(#n-g3)" opacity=".55" filter="url(#n-b1)"
+            d="M95,155 C135,120 160,132 195,100 C222,76 245,96 315,50 L315,155 L95,155 Z"/>
+        </svg>
+      </span>
+
+      <!-- ============ thumb: painterly sun / moon ============ -->
+      <span class="dn-thumb" aria-hidden="true">
+        <span class="dn-face dn-face--sun">
+          <svg viewBox="0 0 106 106">
+            <defs>
+              <radialGradient id="s-g" cx="36%" cy="30%" r="75%">
+                <stop offset="0" stop-color="#fff8d9"/>
+                <stop offset=".45" stop-color="#ffd45e"/>
+                <stop offset=".88" stop-color="#f0a01d"/>
+                <stop offset=".96" stop-color="#eb9714"/>
+                <stop offset="1" stop-color="rgba(235,150,18,0)"/>
+              </radialGradient>
+              <filter id="s-grain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="3"/>
+                <feColorMatrix type="saturate" values="0"/>
+                <feGaussianBlur stdDeviation=".4"/>
+              </filter>
+              <filter id="s-b2"><feGaussianBlur stdDeviation="2.2"/></filter>
+              <filter id="s-b4"><feGaussianBlur stdDeviation="4"/></filter>
+              <clipPath id="s-clip"><circle cx="53" cy="53" r="51"/></clipPath>
+            </defs>
+            <!-- soft diffused halo just inside the edge -->
+            <circle cx="53" cy="53" r="50" fill="#f7b53a" opacity=".55" filter="url(#s-b4)"/>
+            <circle cx="53" cy="53" r="52" fill="url(#s-g)"/>
+            <!-- painterly warm blotches -->
+            <g clip-path="url(#s-clip)">
+              <ellipse cx="38" cy="34" rx="20" ry="15" fill="#fff3c0" opacity=".7" filter="url(#s-b4)"/>
+              <ellipse cx="76" cy="82" rx="24" ry="16" fill="#eda428" opacity=".38" filter="url(#s-b4)"/>
+              <ellipse cx="60" cy="42" rx="12" ry="9" fill="#ffe58e" opacity=".5" filter="url(#s-b2)"/>
+              <rect width="106" height="106" filter="url(#s-grain)" opacity=".18" style="mix-blend-mode:soft-light"/>
+            </g>
+          </svg>
+        </span>
+        <span class="dn-face dn-face--moon">
+          <svg viewBox="0 0 106 106">
+            <defs>
+              <radialGradient id="m-g" cx="38%" cy="32%" r="78%">
+                <stop offset="0" stop-color="#fffdf4"/>
+                <stop offset=".55" stop-color="#f0ebd8"/>
+                <stop offset=".95" stop-color="#cfc8ae"/>
+                <stop offset="1" stop-color="rgba(200,192,165,0)"/>
+              </radialGradient>
+              <radialGradient id="m-shade" cx="38%" cy="32%" r="85%">
+                <stop offset=".66" stop-color="rgba(90,80,60,0)"/>
+                <stop offset="1" stop-color="rgba(90,80,60,.34)"/>
+              </radialGradient>
+              <filter id="m-grain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="2" seed="6"/>
+                <feColorMatrix type="saturate" values="0"/>
+                <feGaussianBlur stdDeviation=".4"/>
+              </filter>
+              <filter id="m-b07"><feGaussianBlur stdDeviation=".7"/></filter>
+              <filter id="m-b15"><feGaussianBlur stdDeviation="1.5"/></filter>
+              <filter id="m-b25"><feGaussianBlur stdDeviation="2.5"/></filter>
+              <clipPath id="m-clip"><circle cx="53" cy="53" r="51.5"/></clipPath>
+            </defs>
+            <circle cx="53" cy="53" r="52" fill="url(#m-g)"/>
+            <g clip-path="url(#m-clip)">
+              <!-- soft mare regions -->
+              <g fill="rgba(140,130,100,.15)" filter="url(#m-b25)">
+                <ellipse cx="62" cy="42" rx="21" ry="14"/>
+                <ellipse cx="36" cy="68" rx="16" ry="12"/>
+                <ellipse cx="74" cy="72" rx="12" ry="9"/>
+              </g>
+              <!-- craters: blurred rim shadow + offset floor + under-rim light -->
+              <g filter="url(#m-b07)">
+                <circle cx="30" cy="36" r="10" fill="#b0a789"/>
+                <circle cx="31.5" cy="37.5" r="8.4" fill="#ddd5ba"/>
+                <ellipse cx="33" cy="44.5" rx="6" ry="1.8" fill="rgba(255,252,240,.6)"/>
+                <circle cx="58" cy="63" r="7.5" fill="#b0a789"/>
+                <circle cx="59.2" cy="64.2" r="6.2" fill="#dbd3b8"/>
+                <ellipse cx="60" cy="69.5" rx="4.5" ry="1.4" fill="rgba(255,252,240,.55)"/>
+                <circle cx="68" cy="28" r="5.5" fill="#b5ac8e"/>
+                <circle cx="68.9" cy="28.9" r="4.5" fill="#ded6bc"/>
+                <circle cx="42" cy="80" r="5" fill="#b5ac8e"/>
+                <circle cx="42.9" cy="80.9" r="4.1" fill="#d8d0b5"/>
+                <circle cx="80" cy="52" r="4" fill="#b9b092"/>
+                <circle cx="80.7" cy="52.7" r="3.2" fill="#ddd5ba"/>
+                <circle cx="22" cy="58" r="3.5" fill="#b9b092"/>
+                <circle cx="22.7" cy="58.7" r="2.8" fill="#dbd3b8"/>
+              </g>
+              <!-- painterly grain -->
+              <rect width="106" height="106" filter="url(#m-grain)" opacity=".3" style="mix-blend-mode:soft-light"/>
+              <!-- rim light, upper-left -->
+              <circle cx="49" cy="48" r="51" fill="none" stroke="rgba(255,255,248,.35)" stroke-width="2.5" filter="url(#m-b15)"/>
+            </g>
+            <!-- sphere edge shading -->
+            <circle cx="53" cy="53" r="52" fill="url(#m-shade)"/>
+          </svg>
+        </span>
+      </span>
+    </label>
+  </div>
+</body>
+</html>
