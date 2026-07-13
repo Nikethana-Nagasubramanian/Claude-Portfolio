@@ -1,11 +1,19 @@
 // Pulse Grid — canvas rendering, animation, and client-side GIF export.
 // No build step: plain ES module. Data comes from /api/contributions.
 
-// Vercel Web Analytics custom event — window.va is queued by the inline shim
-// in pulse-grid.html before the beacon script loads, so this is safe to call
-// immediately even before the script has actually loaded.
+// Click tracking — logs to our own /api/track endpoint (shows up in Vercel's
+// free Logs tab / `vercel logs` CLI) instead of Vercel Web Analytics' custom
+// Events, which requires a paid plan. Fire-and-forget: never blocks the UI,
+// never throws if the request fails.
 function trackEvent(name, data) {
-  if (typeof window.va === 'function') window.va('event', { name, data });
+  try {
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, data }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {}
 }
 
 // ---------- config ----------

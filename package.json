@@ -1,0 +1,9 @@
+{
+  "name": "claude-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio site. This package.json exists only so Vercel installs dependencies for the /api serverless functions — the site itself has no build step.",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}
