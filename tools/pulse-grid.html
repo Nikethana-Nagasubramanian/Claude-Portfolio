@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contribution Animator — Nike</title>
+<title>Pulse Grid — Nike</title>
 <meta name="description" content="Turn any GitHub contribution graph into an animated, exportable GIF.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -191,7 +191,7 @@
 
   <main class="wrap">
     <p class="eyebrow">Tool</p>
-    <h1>Contribution Animator</h1>
+    <h1>Pulse Grid</h1>
     <p class="lede">Type in your GitHub username, it'll fetch your contributions chart. Play around with the animation, color and speed — and export it as a GIF or as a code block!</p>
 
     <form id="search" class="search" autocomplete="off">
@@ -286,6 +286,10 @@
     </div>
   </div>
 
-  <script type="module" src="/tools/contribution-animator.js"></script>
+  <script type="module" src="/tools/pulse-grid.js"></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

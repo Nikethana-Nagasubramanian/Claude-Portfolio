@@ -1,5 +1,12 @@
-// Contribution Animator — canvas rendering, animation, and client-side GIF export.
+// Pulse Grid — canvas rendering, animation, and client-side GIF export.
 // No build step: plain ES module. Data comes from /api/contributions.
+
+// Vercel Web Analytics custom event — window.va is queued by the inline shim
+// in pulse-grid.html before the beacon script loads, so this is safe to call
+// immediately even before the script has actually loaded.
+function trackEvent(name, data) {
+  if (typeof window.va === 'function') window.va('event', { name, data });
+}
 
 // ---------- config ----------
 const CELL = 11;          // square size in CSS px
@@ -499,7 +506,10 @@ speedSlider.addEventListener('input', () => {
 });
 
 replayBtn.addEventListener('click', () => play());
-exportBtn.addEventListener('click', () => exportGif());
+exportBtn.addEventListener('click', () => {
+  trackEvent('export_gif_click', { username: state.username, palette: state.paletteKey, style: state.styleKey });
+  exportGif();
+});
 
 // ---------- exportable embed snippet ----------
 // Two lines: one <script src> pulling the shared widget library
@@ -526,7 +536,10 @@ function openCodeModal() {
 }
 function closeCodeModal() { modalOverlay.hidden = true; }
 
-getCodeBtn.addEventListener('click', openCodeModal);
+getCodeBtn.addEventListener('click', () => {
+  trackEvent('get_code_click', { username: state.username, palette: state.paletteKey, style: state.styleKey });
+  openCodeModal();
+});
 modalClose.addEventListener('click', closeCodeModal);
 modalClose2.addEventListener('click', closeCodeModal);
 modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeCodeModal(); });

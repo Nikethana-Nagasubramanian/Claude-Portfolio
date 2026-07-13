@@ -1,6 +1,6 @@
 /*!
  * gh-contrib-chart — animated GitHub contribution graph, as a custom element.
- * https://itsmenike.com/tools/contribution-animator
+ * https://itsmenike.com/tools/pulse-grid
  *
  * Usage:
  *   <script src="https://itsmenike.com/tools/gh-contrib-widget.js"></script>
