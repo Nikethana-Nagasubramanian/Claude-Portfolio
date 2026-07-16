@@ -48,7 +48,7 @@
       "destination": "/tools/pulse-grid.html"
     },
     {
-      "source": "/blur-lab",
+      "source": "/tools/blur-lab",
       "destination": "/tools/blur-lab/dist/index.html"
     }
   ]

@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// base: './' so the built index.html resolves assets relatively —
-// this app is deployed nested under /tools/blur-lab/dist/, not site root.
+// Absolute base matching the deployed path. This page is reached via a
+// vercel.json rewrite to /tools/blur-lab/dist/index.html while the browser's
+// address bar stays at /tools/blur-lab (no trailing slash, per this site's
+// global trailingSlash:false) — a relative base would resolve assets against
+// /tools/ instead of /tools/blur-lab/dist/, so it has to be absolute.
 export default defineConfig({
-  base: './',
+  base: '/tools/blur-lab/dist/',
   plugins: [react()],
 });
