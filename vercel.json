@@ -46,6 +46,10 @@
       "source": "/",
       "has": [{ "type": "host", "value": "animator.itsmenike.com" }],
       "destination": "/tools/pulse-grid.html"
+    },
+    {
+      "source": "/blur-lab",
+      "destination": "/tools/blur-lab/dist/index.html"
     }
   ]
 }
