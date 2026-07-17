@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Clera — Redesign Prototype</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -194,6 +194,7 @@
   .lrow-text{ flex:1; min-width:0; }
   .lrow-text b{ display:block; font-size:13.5px; font-weight:600; }
   .lrow-text span{ font-size:12px; color:var(--muted); }
+  .lrow-why{ display:block; font-size:12px; color:var(--accent-dark); margin-top:3px; font-style:italic; }
   .lrow-right{ display:flex; align-items:center; gap:10px; flex:none; }
   .lrow-chev{ color:var(--muted); font-size:16px; }
   .status-pill{ font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:999px; letter-spacing:.02em; white-space:nowrap; }
@@ -549,6 +550,7 @@
       <div>
         <h2 id="modalTitle">Role title</h2>
         <div class="tag-row" id="modalTags"></div>
+        <div class="why" id="modalWhyWrap" style="display:none;"><b>Why?</b><span id="modalWhyText"></span></div>
         <h4>About this role</h4>
         <p id="modalAbout"></p>
         <div id="modalRespWrap">
@@ -652,6 +654,7 @@
   let matches = [
     { id:'retell', company:'Retell AI (YC W24)', openRoles:7, title:'Senior Product Designer', loc:'Redwood City · On-site', comp:'$180k – $230k + Equity', visa:'Visa Sponsorship Available',
       group:'intro', status:'sent', statusLabel:'Intro sent',
+      why:"Founding designer-style role shaping AI voice agent UX",
       about:"We are looking for a Senior Product Designer with 5+ years of experience to own our product experience from end-to-end. You will be our first product designer, shaping how users interact with our cutting-edge AI voice agents and building a beautiful, intuitive product from the ground up.",
       responsibilities:["Own the product experience end-to-end, from early concepts to polished, shipped features.","Shape how users interact with AI voice agents, turning complex workflows into intuitive experiences.","Work side-by-side with engineers and founders to define, refine, and ship features.","Conduct customer interviews and translate user pain points into thoughtful design solutions.","Build and evolve Retell's design system, setting the standard for consistency and craftsmanship."],
       blurb:"Retell is a leading voice AI agent platform serving healthcare, insurance, financial services, and logistics; after a $4.7M seed round, it reached $5M annualized revenue in 10 months and is backed by Alt Capital, Y Combinator, and other investors.",
@@ -659,6 +662,7 @@
       receiptText:"Email sent to the hiring team", receiptDate:"Jul 6, 9:14 AM", waitNote:"Waiting to hear back — typically 3–5 business days." },
     { id:'porter', company:'Porter', openRoles:3, title:'Design Engineer', loc:'New York · On-site', comp:'$200k – $280k', visa:'—',
       group:'intro', status:'reaching', statusLabel:'Reaching out',
+      why:"AI-native design engineering role owning dev tooling interfaces",
       about:"Porter is building the operating system for AI-native dev tooling. We're hiring a design engineer to own the interfaces our users touch every day — someone equally comfortable in Figma and in the codebase.",
       responsibilities:["Design and ship UI for core developer workflows.","Prototype directly in code, not just in Figma.","Partner directly with the founding team on product direction."],
       blurb:"Porter builds dev tooling for AI-native teams and is backed by Venrock.",
@@ -666,6 +670,7 @@
       receiptText:"Clera is coordinating outreach with the hiring team", receiptDate:"", waitNote:"Expect an update within 2 days." },
     { id:'paraform', company:'Paraform', openRoles:5, title:'Senior Product Designer', loc:'San Francisco · Hybrid', comp:'$180k – $280k + Equity', visa:'—',
       group:'intro', status:'viewed', statusLabel:'Viewed',
+      why:"Series A senior design role owning marketplace hiring workflows",
       about:"Paraform is the marketplace connecting recruiters with startups. We're looking for a senior product designer to own the end-to-end hiring workflow experience for both sides of the marketplace.",
       responsibilities:["Own marketplace hiring workflows end-to-end.","Design for two distinct user types: recruiters and hiring teams.","Drive both quantitative and qualitative research."],
       blurb:"Paraform is scaling its recruiter marketplace and is backed by Scale Venture Partners.",
@@ -673,6 +678,7 @@
       receiptText:"Hiring manager opened the intro", receiptDate:"Jul 5", waitNote:"Replies typically follow within a week." },
     { id:'ladder', company:'Ladder', openRoles:2, title:'Lead Product Designer', loc:'Los Angeles · Remote +2', comp:'$200k – $250k + Equity', visa:'—',
       group:'intro', status:'sent', statusLabel:'Intro sent',
+      why:"Lead design role owning consumer fitness app experience",
       about:"Ladder helps people get stronger with expert-built training programs. We're looking for a lead product designer to own the end-to-end consumer app experience.",
       responsibilities:["Lead design for the consumer fitness app.","Mentor and grow the design team.","Partner with product and engineering on roadmap."],
       blurb:"Ladder serves a fast-growing base of fitness consumers and is backed by Point72 Ventures.",
@@ -706,6 +712,7 @@
 
   const newMatchTemplate = { id:'cove', company:'Cove (YC S25)', openRoles:2, title:'Product Designer', loc:'Remote · US', comp:'$190k – $260k + Equity', visa:'—',
     group:'pending',
+    why:"Early design hire shaping onboarding for an AI-native expense platform",
     about:"Cove is building AI-powered expense management for finance teams. As an early design hire, you'll shape onboarding and the core product experience from the ground up.",
     responsibilities:["Design core onboarding and reporting flows.","Partner directly with the founding team.","Establish early design patterns and system."],
     blurb:"Cove is backed by General Catalyst and is building AI-native financial operations tooling.",
@@ -747,9 +754,10 @@
   }
 
   function rowHtml(m, hidden){
+    const whyLine = (m.group === 'pending' && m.why) ? `<span class="lrow-why">Why? ${m.why}</span>` : '';
     return `<div class="lrow ${hidden?'hidden-extra':''} ${m._new?'new-pulse':''}" onclick="openModal('${m.id}')">
       <div class="lrow-avatar" style="background:${avatarColor(m.id)};">${initial(m.company)}</div>
-      <div class="lrow-text"><b>${m.company} · ${m.title}</b><span>${m.loc} · ${m.comp}</span></div>
+      <div class="lrow-text"><b>${m.company} · ${m.title}</b><span>${m.loc} · ${m.comp}</span>${whyLine}</div>
       <div class="lrow-right">${statusPillHtml(m)}<span class="lrow-chev">›</span></div>
     </div>`;
   }
@@ -829,6 +837,13 @@
     document.getElementById('modalOpenRoles').textContent = `${m.openRoles} open role${m.openRoles===1?'':'s'} on Clera`;
     document.getElementById('modalTitle').textContent = m.title;
     document.getElementById('modalTags').innerHTML = `<span class="tag">${m.loc}</span><span class="tag">${m.comp}</span>${m.visa && m.visa!=='—' ? `<span class="tag">${m.visa}</span>` : ''}`;
+    const whyWrap = document.getElementById('modalWhyWrap');
+    if(m.why){
+      whyWrap.style.display = '';
+      document.getElementById('modalWhyText').textContent = m.why;
+    } else {
+      whyWrap.style.display = 'none';
+    }
     document.getElementById('modalAbout').textContent = m.about || '';
     const respWrap = document.getElementById('modalRespWrap');
     if(m.responsibilities && m.responsibilities.length){
