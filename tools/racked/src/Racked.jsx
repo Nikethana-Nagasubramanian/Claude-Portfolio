@@ -182,6 +182,13 @@ export default function Racked() {
         <div className="disc">demo · not affiliated with WHOOP</div>
       </header>
 
+      <p className="intro">
+        Gym notes are rarely more than reps and weight scrawled between sets — this turns
+        that into a structured session, matched against WHOOP's exercise names, and
+        formatted for a single paste into Strength Trainer. Edit the pre-loaded demo below,
+        or clear it and log your own.
+      </p>
+
       <div className="grid">
         {/* session */}
         <section className="col-main">
@@ -294,6 +301,8 @@ const CSS = `
 .word{font-family:'Archivo';font-weight:800;letter-spacing:2px;font-size:20px}
 .tag{font-size:11px;color:var(--muted);letter-spacing:.5px;margin-top:1px}
 .disc{font-size:10.5px;color:var(--muted2);letter-spacing:.4px;font-family:'JetBrains Mono';text-transform:uppercase}
+
+.intro{font-size:13px;line-height:1.6;color:var(--muted);max-width:640px;margin:0 0 22px}
 
 .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.col-side{order:-1}}
