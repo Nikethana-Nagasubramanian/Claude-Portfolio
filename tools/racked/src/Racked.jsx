@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 
-// RACKED — structured strength session, WHOOP-ready export.
+// RACKED — photo of gym notes → structured strength session, WHOOP-ready export.
 // Demo tool. Not affiliated with WHOOP.
-// Pre-loaded with a real "Legs" session so it's alive on open; everything
-// is editable by hand (no external API calls of any kind).
+// Pre-loaded with a real "Legs" session so it's alive on open. Photo upload
+// posts to /api/parse-workout, a serverless proxy that holds the Anthropic
+// key server-side — the browser never sees it. Everything is also editable
+// by hand.
 
 const SEED = {
   title: 'Legs',
@@ -92,7 +94,10 @@ function useCountUp(target, ms = 650) {
 
 export default function Racked() {
   const [session, setSession] = useState(SEED);
+  const [status, setStatus] = useState('idle'); // idle | reading | parsing | ok | error
+  const [errMsg, setErrMsg] = useState('');
   const [copied, setCopied] = useState(false);
+  const fileRef = useRef(null);
 
   const totals = useMemo(() => {
     let sets = 0, reps = 0, vol = 0;
@@ -106,6 +111,44 @@ export default function Racked() {
   }, [session]);
 
   const animVol = useCountUp(totals.vol);
+
+  // ---- photo upload, parsed server-side at /api/parse-workout ----
+  async function handleFile(file) {
+    if (!file) return;
+    setErrMsg('');
+    setStatus('reading');
+    try {
+      const b64 = await new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = () => res(String(r.result).split(',')[1]);
+        r.onerror = () => rej(new Error('Could not read that file.'));
+        r.readAsDataURL(file);
+      });
+      setStatus('parsing');
+      const resp = await fetch('/api/parse-workout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: b64, media: file.type || 'image/png' }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.message || "Couldn't parse that photo.");
+      const next = {
+        title: data.title || 'Session',
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        exercises: data.exercises.map((e) => ({
+          id: nid(),
+          name: e.name || 'Exercise',
+          sets: e.sets.map((s) => ({ r: s.r ?? null, w: s.w ?? null })),
+        })),
+      };
+      setSession(next);
+      setStatus('ok');
+      setTimeout(() => setStatus('idle'), 1800);
+    } catch (e) {
+      setStatus('error');
+      setErrMsg(e.message || "Couldn't parse that one. Try a clearer, straight-on photo.");
+    }
+  }
 
   // ---- editing ----
   const patchSet = (ei, si, k, val) => setSession((p) => {
@@ -165,6 +208,8 @@ export default function Racked() {
     a.click(); URL.revokeObjectURL(url);
   };
 
+  const busy = status === 'reading' || status === 'parsing';
+
   return (
     <div className="rk">
       <style>{CSS}</style>
@@ -176,7 +221,7 @@ export default function Racked() {
           <span className="mark" aria-hidden>▚</span>
           <div>
             <div className="word">RACKED</div>
-            <div className="tag">strength session, WHOOP-ready</div>
+            <div className="tag">photo → strength session</div>
           </div>
         </div>
         <div className="disc">demo · not affiliated with WHOOP</div>
@@ -184,10 +229,33 @@ export default function Racked() {
 
       <p className="intro">
         Gym notes are rarely more than reps and weight scrawled between sets — this turns
-        that into a structured session, matched against WHOOP's exercise names, and
-        formatted for a single paste into Strength Trainer. Edit the pre-loaded demo below,
-        or clear it and log your own.
+        a photo of them into a structured session, matched against WHOOP's exercise names,
+        and formatted for a single paste into Strength Trainer. Upload a photo below, or
+        edit the pre-loaded demo by hand.
       </p>
+
+      <div className="uploader">
+        <label className={`drop ${busy ? 'busy' : ''}`}>
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/*"
+            disabled={busy}
+            onChange={(e) => handleFile(e.target.files?.[0])}
+          />
+          <span className="drop-ico" aria-hidden>{busy ? '◔' : '＋'}</span>
+          <span className="drop-main">
+            {status === 'reading' && 'Reading photo…'}
+            {status === 'parsing' && 'Racked is reading your sets…'}
+            {status === 'ok' && 'Parsed. Check the numbers below.'}
+            {status === 'error' && "Couldn't parse that photo"}
+            {status === 'idle' && 'Drop a photo of your gym notes'}
+          </span>
+          <span className="drop-sub">
+            {status === 'error' ? errMsg : 'or tap to choose — reps first, then weight'}
+          </span>
+        </label>
+      </div>
 
       <div className="grid">
         {/* session */}
@@ -302,7 +370,20 @@ const CSS = `
 .tag{font-size:11px;color:var(--muted);letter-spacing:.5px;margin-top:1px}
 .disc{font-size:10.5px;color:var(--muted2);letter-spacing:.4px;font-family:'JetBrains Mono';text-transform:uppercase}
 
-.intro{font-size:13px;line-height:1.6;color:var(--muted);max-width:640px;margin:0 0 22px}
+.intro{font-size:13px;line-height:1.6;color:var(--muted);max-width:640px;margin:0 0 18px}
+
+.uploader{margin-bottom:20px}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  border:1.5px dashed var(--line2);border-radius:14px;padding:22px 16px;cursor:pointer;
+  background:linear-gradient(180deg,var(--surface),#0e1013);transition:border-color .2s,background .2s;text-align:center}
+.drop:hover{border-color:var(--indigo);background:linear-gradient(180deg,#171a2b,#0e1013)}
+.drop.busy{border-color:var(--indigo);cursor:progress}
+.drop input{display:none}
+.drop-ico{font-size:22px;color:var(--indigo);font-weight:700}
+.drop.busy .drop-ico{animation:spin 1s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.drop-main{font-weight:600;font-size:14.5px}
+.drop-sub{font-size:12px;color:var(--muted)}
 
 .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.col-side{order:-1}}
