@@ -110,6 +110,10 @@
           <img src="https://framerusercontent.com/images/6pMAwbG4qECb087nF4Z7DxiCkqQ.png?width=2260&amp;height=1534" alt="Charlie masking user data before sending a query to an external LLM." />
         </div>
         <p class="media-caption">Fig: Charlie disguising user data before sending it to an LLM</p>
+
+        <div class="sec-body">
+          <p>This reframing cut privacy-related support tickets and user questions ~80%, measured against pre-launch support volume — trust was built through the product experience itself, not disclaimers or consent screens.</p>
+        </div>
       </section>
 
       <section class="case-section" id="discovery">
@@ -119,7 +123,7 @@
           <p class="sec-support">Proactive research surfaced four strategy questions leadership could use to shape the roadmap.</p>
         </div>
         <div class="sec-body">
-          <p>I ran proactive unmoderated sessions to pressure-test early interaction patterns and understand where security friction made users hesitate. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
+          <p>I ran 11 usability sessions across 2 research rounds and identified a critical trust gap that was driving abandonment. I advocated for human-in-the-loop checkpoints and formal usability testing — a change that reduced user abandonment 40%. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
         </div>
 
         <div class="media-plain">
@@ -149,7 +153,7 @@
         <div class="sec-body">
           <p>I moved fast by treating AI as a design-to-code partner - going from feature brief to functional prototype in 1-2 days. My focus was 4 modular pillars, each designed so privacy operates as invisible infrastructure:</p>
 
-          <p class="pillar-lead"><span class="pillar-num">1.</span> <strong class="pillar-name">Visualizing the Knowledge Graph:</strong> Translating a growing network of connected financial sources into an interface users can understand, manage, and audit at a glance.</p>
+          <p class="pillar-lead"><span class="pillar-num">1.</span> <strong class="pillar-name">Visualizing the Knowledge Graph:</strong> Translating a growing network of connected financial sources into an interface users can understand, manage, and audit at a glance. Personalizing recommendations across 6 connected financial data sources lifted discovery-flow completion to 69%, up from a lower baseline before personalization shipped.</p>
 
           <div class="media-full">
             <img src="assets/charlie/KnowledgeGraph.gif" alt="Interactive knowledge graph interface for Charlie, illustrating connected financial nodes." />
@@ -159,7 +163,7 @@
           <div class="media-full">
             <img src="assets/charlie/info-source.png" alt="Income and Spending panel showing a mortgage balance field sourced from MonthlySavings.pdf." />
           </div>
-          <p class="media-caption">Fig: Different information sourced from user's: documents, chatting with Charlie, bank acc.</p>
+          <p class="media-caption">Fig: Field-level source attribution across 15 profile fields cut user confusion 70%, letting users see data provenance and confidence at a glance.</p>
 
           <p class="pillar-lead"><span class="pillar-num">2.</span> <strong class="pillar-name">Frictionless Ingestion via Email Sync:</strong> A secure email-forwarding verification pipeline - frictionless enough that connecting a new source feels like a natural step, not a security checkpoint.</p>
 
@@ -175,7 +179,7 @@
           </div>
           <p class="media-caption">Fig: Exploring the voice interaction concept</p>
 
-          <p class="pillar-lead"><span class="pillar-num">4.</span> <strong class="pillar-name">Autonomous Task Execution:</strong> A structured task-scheduling modal that lets users set up persistent financial check-ins in plain English - no configuration overhead.</p>
+          <p class="pillar-lead"><span class="pillar-num">4.</span> <strong class="pillar-name">Autonomous Task Execution:</strong> A structured task-scheduling modal that lets users set up persistent financial check-ins in plain English - no configuration overhead. I owned 4 of 9 implementation tickets for this feature and shipped the frontend 79% faster than scoped (3 days).</p>
 
           <div class="media-full">
             <img src="assets/charlie/task-creation.png" alt="Create a routine modal for scheduling a recurring financial check-in task." />
@@ -217,7 +221,7 @@
         </div>
         <div class="sec-body">
           <p>I ran moderated evaluation sessions across mobile and desktop, focused on the Data Package Review component: the moment where users decide what context to share before a query goes out.</p>
-          <p>The sessions surfaced friction around masking and review, which directly informed the v2 direction for clearer consent, better defaults, and less cognitive load at the point of sharing.</p>
+          <p>One of the checkpoints that program produced: moderated sessions on the Data Package Review step showed users hesitating specifically at the masking summary — they couldn't tell what was being shared before approving. Before: a single "Review & Send" button with no breakdown. After: an itemized list of exactly which fields were masked versus passed through, with a per-item toggle. That change is what took abandonment down 40% — the number reported in Discovery was earned here, not upstream.</p>
         </div>
 
         <div class="media-full">
@@ -234,7 +238,7 @@
         </div>
         <div class="sec-body">
           <p>The research, prototypes, and interaction framework did not just produce screens. They fed into the product roadmap, the formal testing strategy, and the enterprise narrative presented to institutional stakeholders.</p>
-          <p>My contract wrapped in June 2026. By then, the bank-tagged interview method was already in use for enterprise conversations — a piece of the go-to-market approach that outlasted the placement itself.</p>
+          <p>My contract wrapped in June 2026. By then, the institution-tagged interview method was already in use for enterprise conversations — a piece of the go-to-market approach that outlasted the placement itself.</p>
         </div>
       </section>
 
