@@ -10,73 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
-  <style>
-    html.gate-locked .top-nav,
-    html.gate-locked main.case-shell { display: none; }
-    .case-gate {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: var(--bg);
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    html.gate-locked .case-gate { display: flex; }
-    .case-gate-box { width: 100%; max-width: 360px; text-align: center; }
-    .case-gate-box .mono-label { display: block; margin-bottom: 20px; color: var(--ink); }
-    .case-gate-form { display: flex; gap: 8px; }
-    .case-gate-form input {
-      flex: 1;
-      font-family: var(--sans);
-      font-size: 15px;
-      padding: 12px 14px;
-      border: 1px solid var(--rule);
-      background: #fff;
-      color: var(--ink);
-    }
-    .case-gate-form input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-    .case-gate-form button {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--ink);
-      border: none;
-      padding: 0 20px;
-      cursor: pointer;
-      transition: background .15s ease;
-    }
-    .case-gate-form button:hover { background: var(--accent); }
-    .case-gate-error {
-      margin-top: 14px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: #c0392b;
-    }
-  </style>
 </head>
 <body>
-  <script>
-    if (sessionStorage.getItem('charlie-unlocked') !== '1') {
-      document.documentElement.classList.add('gate-locked');
-    }
-  </script>
-
-  <div class="case-gate" role="dialog" aria-modal="true" aria-label="Password protected case study">
-    <div class="case-gate-box">
-      <p class="mono-label">This case study is password protected</p>
-      <form class="case-gate-form" id="gateForm">
-        <input type="password" id="gatePassword" placeholder="Enter password" autocomplete="off" />
-        <button type="submit">Unlock →</button>
-      </form>
-      <p class="case-gate-error" id="gateError" hidden>Incorrect password. Try again.</p>
-    </div>
-  </div>
-
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -111,6 +46,7 @@
       <a href="#problem">Problem</a>
       <a href="#discovery">Discovery</a>
       <a href="#architecture">Architecture</a>
+      <a href="#agent-ux">Agent UX</a>
       <a href="#testing">Testing</a>
       <a href="#impact">Impact</a>
     </aside>
@@ -182,14 +118,25 @@
         </div>
         <div class="sec-body">
           <p>I ran proactive unmoderated sessions to pressure-test early interaction patterns and understand where security friction made users hesitate. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
-          <p>In a B2B2C model, the enterprise buyer and the end user are different people. I translated session observations into four strategy questions that leadership could use to shape the roadmap.</p>
-          <p>The team's early focus was B2B sales — reasonable, but it risked treating end-user trust as secondary. I flagged that if the product didn't hold up for real users, it would eventually undermine the enterprise pitch itself. The team agreed, and I took the initiative to lead the UX work directly. As part of that, I restructured interviews to capture which financial institution each participant's data already ran through, so a positive session could be tied back to a specific bank relationship. I pitched using that as an enterprise sales tactic: pair outreach to a bank with evidence that its own customers had already used and liked the product. Leadership adopted it.</p>
         </div>
 
         <div class="media-plain">
           <img src="https://framerusercontent.com/images/L5XvfQ9DuvH3aehqPEiqHB2cBUU.png?width=2276&amp;height=740" alt="Research observations translated into product strategy questions." />
         </div>
         <p class="media-caption">Fig: Observations turned into strategic product questions</p>
+
+        <div class="sec-body">
+          <p>In a B2B2C model, the enterprise buyer and the end user are different people. I translated session observations into four strategy questions that leadership could use to shape the roadmap.</p>
+          <p>The team's early focus was B2B sales — reasonable, but it risked treating end-user trust as secondary.</p>
+        </div>
+
+        <div class="media-plain">
+          <img src="assets/charlie/b2b2c-bridge.png" alt="Diagram titled One research method, two audiences: unmoderated sessions become institution-tagged interviews, which become evidence for enterprise outreach and get adopted into go-to-market." />
+        </div>
+
+        <div class="sec-body">
+          <p>I flagged that if the product didn't hold up for real users, it would eventually undermine the enterprise pitch itself. The team agreed, and I took the initiative to lead the UX work directly.</p>
+        </div>
       </section>
 
       <section class="case-section sec--major" id="architecture">
@@ -235,9 +182,34 @@
         </div>
       </section>
 
+      <section class="case-section sec--narrow" id="agent-ux">
+        <div class="sec-head">
+          <p class="sec-index"><em>05</em>Agent UX</p>
+          <h2 class="sec-title">Designing What the Agent Says While It Thinks</h2>
+          <p class="sec-support">From generic filler to a live readout of what the agent is actually doing.</p>
+        </div>
+        <div class="sec-body">
+          <p>One of the first things I noticed after joining was the assistant's loading state: it cycled through generic filler — "Thinking...", "Pondering...", "Frolicking..." — copy that didn't match a security-first product handling sensitive data. I rewrote the phrases to be event-based instead, mapped to the actual backend action underway: a data lookup, a permissions check, a model handoff, each with its own phrase. Now, when the agent is working through something, users know exactly what it's doing, because the UI is telling the truth.</p>
+        </div>
+
+        <div class="media-full">
+          <img src="assets/charlie/thinking-phrases-before-after.png" alt="Code diff showing generic thinking phrases like Thinking and Pondering replaced with phrases describing the actual action, like searching records and retrieving permissions" />
+        </div>
+        <p class="media-caption">Fig: Generic filler replaced with phrases tied to what the agent is actually doing (illustrative reconstruction)</p>
+
+        <div class="media-full">
+          <img src="assets/charlie/thinking-phrases-event-mapped.png" alt="Code showing thinking phrases mapped one-to-one with backend tool and event names, grouped by data lookup, derivation, external model handoff, workflows, and saving" />
+        </div>
+        <p class="media-caption">Fig: Every backend event mapped to its own phrase, so the copy tracks what's actually happening (illustrative reconstruction)</p>
+
+        <div class="notice">
+          <p><b>Takeaway —</b> for an agent, thinking phrases aren't decoration, they're a live status readout. Static UX is designed around states; agent UX has to be designed around events. The backend is design material.</p>
+        </div>
+      </section>
+
       <section class="case-section sec--narrow" id="testing">
         <div class="sec-head">
-          <p class="sec-index"><em>05</em>Testing</p>
+          <p class="sec-index"><em>06</em>Testing</p>
           <h2 class="sec-title">One Thread, Four Sessions</h2>
           <p class="sec-support">Moderated testing on the Data Package Review step shaped the v2 direction for consent and trust.</p>
         </div>
@@ -254,7 +226,7 @@
 
       <section class="case-section" id="impact">
         <div class="sec-head">
-          <p class="sec-index"><em>06</em>Impact</p>
+          <p class="sec-index"><em>07</em>Impact</p>
           <h2 class="sec-title">Built to Scale Trust</h2>
           <p class="sec-support">Research and prototypes shaped the roadmap, the testing strategy, and the story told to institutional stakeholders.</p>
         </div>
@@ -302,23 +274,6 @@
     }, { rootMargin: '-20% 0px -70% 0px' });
 
     scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
-
-    const gateForm = document.getElementById('gateForm');
-    const gatePassword = document.getElementById('gatePassword');
-    const gateError = document.getElementById('gateError');
-
-    gateForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (gatePassword.value === 'charlie2026') {
-        sessionStorage.setItem('charlie-unlocked', '1');
-        document.documentElement.classList.remove('gate-locked');
-        gateError.hidden = true;
-      } else {
-        gateError.hidden = false;
-        gatePassword.value = '';
-        gatePassword.focus();
-      }
-    });
   </script>
 </body>
 </html>
