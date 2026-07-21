@@ -63,7 +63,7 @@
   </nav>
 
   <main class="home-shell">
-    <section class="hero" aria-labelledby="intro-title">
+    <section class="hero hero--appear" aria-labelledby="intro-title">
       <div class="hero-id">
         <img class="hero-avatar" src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg?scale-down-to=512&width=3024&height=3024" alt="Nikethana (Nike)" />
         <p class="hero-name">Nikethana (Nike) <span>Product Builder</span></p>
@@ -83,7 +83,7 @@
       </div>
     </section>
 
-    <section class="work-section" aria-labelledby="work-title">
+    <section class="work-section reveal" aria-labelledby="work-title">
       <div class="work-header">
         <div class="work-tabs" role="tablist" aria-label="Project categories">
           <button class="work-tab active" id="tab-selected" type="button" role="tab" aria-selected="true" aria-controls="panel-selected" data-tab="selected">Selected Work</button>
@@ -221,6 +221,10 @@
         workCount.textContent = `${count} project${count === 1 ? '' : 's'}`;
       });
     });
+
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    }, 3000);
   </script>
 </body>
 </html>
