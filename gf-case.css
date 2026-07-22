@@ -771,11 +771,11 @@ p + .mono-label,
 
 @media (max-width: 720px) {
   .summary-matrix { grid-template-columns: 1fr; }
-  .summary-item {
+  .summary-matrix .summary-item {
     padding: 22px 0;
     border-right: none;
     border-bottom: 1px dashed var(--faint);
   }
   .summary-item:first-child { padding-top: 0; }
-  .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .summary-matrix .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
 }
