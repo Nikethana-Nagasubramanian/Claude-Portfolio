@@ -1,0 +1,32 @@
+<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Before: users dropped straight into chat with no explanation</title>
+  <desc>User signs up, then is dropped straight into the chat window with no explanation, leaving four unanswered questions: what is Charlie, what should I even ask, is this an LLM, and why is it asking for my personal info.</desc>
+
+  <rect x="0" y="0" width="900" height="300" fill="#FAFAF8"/>
+  <text x="30" y="30" font-family="JetBrains Mono, monospace" font-size="12" font-weight="500" letter-spacing="1.5" fill="#b91c1c">BEFORE</text>
+
+  <rect x="30" y="55" width="170" height="64" rx="6" fill="#ffffff" stroke="#e4e2dc" stroke-width="1.5"/>
+  <text x="115" y="92" font-family="Instrument Sans, sans-serif" font-size="15" fill="#141414" text-anchor="middle">User signs up</text>
+
+  <line x1="200" y1="87" x2="248" y2="87" stroke="#141414" stroke-width="1.5"/>
+  <polygon points="248,87 238,82 238,92" fill="#141414"/>
+
+  <rect x="250" y="45" width="300" height="84" rx="6" fill="#ffffff" stroke="#e4e2dc" stroke-width="1.5"/>
+  <text x="400" y="82" font-family="Instrument Sans, sans-serif" font-size="15" fill="#141414" text-anchor="middle">Dropped straight into</text>
+  <text x="400" y="103" font-family="Instrument Sans, sans-serif" font-size="15" fill="#141414" text-anchor="middle">the chat window</text>
+
+  <line x1="400" y1="129" x2="400" y2="150" stroke="#c98a86" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <rect x="220" y="158" width="230" height="52" rx="8" fill="#b91c1c" fill-opacity="0.05" stroke="#b91c1c" stroke-opacity="0.35" stroke-width="1.25" stroke-dasharray="4 3"/>
+  <text x="335" y="189" font-family="Instrument Sans, sans-serif" font-size="14" fill="#86342c" text-anchor="middle">"But what is Charlie?"</text>
+
+  <rect x="470" y="158" width="230" height="52" rx="8" fill="#b91c1c" fill-opacity="0.05" stroke="#b91c1c" stroke-opacity="0.35" stroke-width="1.25" stroke-dasharray="4 3"/>
+  <text x="585" y="189" font-family="Instrument Sans, sans-serif" font-size="14" fill="#86342c" text-anchor="middle">"What should I even ask?"</text>
+
+  <rect x="220" y="222" width="230" height="52" rx="8" fill="#b91c1c" fill-opacity="0.05" stroke="#b91c1c" stroke-opacity="0.35" stroke-width="1.25" stroke-dasharray="4 3"/>
+  <text x="335" y="253" font-family="Instrument Sans, sans-serif" font-size="14" fill="#86342c" text-anchor="middle">"Is this an LLM?"</text>
+
+  <rect x="470" y="222" width="230" height="52" rx="8" fill="#b91c1c" fill-opacity="0.05" stroke="#b91c1c" stroke-opacity="0.35" stroke-width="1.25" stroke-dasharray="4 3"/>
+  <text x="585" y="246" font-family="Instrument Sans, sans-serif" font-size="14" fill="#86342c" text-anchor="middle">"Why is it asking for</text>
+  <text x="585" y="264" font-family="Instrument Sans, sans-serif" font-size="14" fill="#86342c" text-anchor="middle">my personal info?"</text>
+</svg>

@@ -389,11 +389,27 @@ p + .mono-label,
 /* ── Media treatments ── */
 .media-full {
   margin-top: 48px;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid var(--rule);
 }
 .media-full img, .media-full video { width: 100%; }
 
-.media-plain { margin-top: 48px; }
+/* Narrow variants — e.g. dense code screenshots that get unreadable at full width */
+.media-full--narrow { max-width: 40%; }
+.media-full--60 { max-width: 60%; }
+.media-full--70 { max-width: 70%; }
+@media (max-width: 720px) {
+  .media-full--narrow,
+  .media-full--60,
+  .media-full--70 { max-width: 100%; }
+}
+
+.media-plain {
+  margin-top: 48px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .media-plain img { width: 100%; }
 
 /* Every image sits above its caption; caption is centered under it. */
@@ -735,4 +751,31 @@ p + .mono-label,
   .principle--wide3,
   .principle--wide2 { grid-column: auto; }
   .principle--wide3 p { font-size: 16px; }
+}
+
+/* Hero summary — 3-col row reusing the truth-head square-bullet label */
+.summary-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 44px;
+}
+.summary-item { padding: 0 32px; }
+.summary-item:first-child { padding-left: 0; }
+.summary-item:last-child { padding-right: 0; }
+.summary-item:not(:last-child) { border-right: 1px dashed var(--faint); }
+.summary-item p:not(.truth-head) {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3a3a3a;
+}
+
+@media (max-width: 720px) {
+  .summary-matrix { grid-template-columns: 1fr; }
+  .summary-item {
+    padding: 22px 0;
+    border-right: none;
+    border-bottom: 1px dashed var(--faint);
+  }
+  .summary-item:first-child { padding-top: 0; }
+  .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
 }

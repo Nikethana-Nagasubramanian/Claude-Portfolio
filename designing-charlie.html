@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="gf-case.css?v=7" />
+  <link rel="stylesheet" href="gf-case.css?v=11" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
@@ -67,6 +67,21 @@
           </div>
         </div>
 
+        <div class="summary-matrix" aria-label="Project summary">
+          <div class="summary-item">
+            <p class="truth-head">What</p>
+            <p>Redesigned Charlie's core trust surfaces for an AI handling financial data: onboarding, data masking, and the pre-send review step.</p>
+          </div>
+          <div class="summary-item">
+            <p class="truth-head">How</p>
+            <p>User research turned directly into shipped screens — feature brief to functional prototype in 1-2 days, AI-assisted.</p>
+          </div>
+          <div class="summary-item">
+            <p class="truth-head">Impact</p>
+            <p>Cut privacy-related support tickets ~80% and user abandonment 40%; shaped the company's enterprise go-to-market strategy.</p>
+          </div>
+        </div>
+
         <div class="notice">
           <p><b>NDA Alert —</b> mockups in this case study are illustrative, reimagined to protect sensitive product details while preserving the design approach, decisions, and outcomes that shaped the work.</p>
         </div>
@@ -104,12 +119,30 @@
         <div class="media-full">
           <img src="https://framerusercontent.com/images/SuqdsTdOVA5noGJeGwfFP0lEM.png?width=3016&amp;height=1706" alt="Illustrative Charlie onboarding screens for a privacy-first assistant." />
         </div>
-        <p class="media-caption">Fig: Onboarding designed to build trust before asking for deeper context</p>
+        <p class="media-caption">Fig: Onboarding flow</p>
 
-        <div class="media-full">
+        <div class="sec-body">
+          <p class="mono-label">Decision: explain before you ask</p>
+          <p>Early builds dropped users straight into chat with no explanation of what Charlie was — not the model itself, but a privacy layer in front of one. I pushed to front-load that explanation. In interviews, users who saw it upfront understood the mechanism before their first query, and were already positive about Charlie by the time they reached the chat.</p>
+        </div>
+
+        <div class="media-full media-full--70">
+          <img src="assets/charlie/onboarding-before.svg" alt="Diagram: user signs up and is dropped straight into chat, leaving four unanswered questions about what Charlie is" />
+        </div>
+        <div class="media-full media-full--70">
+          <img src="assets/charlie/onboarding-after.svg" alt="Diagram: user signs up, goes through onboarding explaining what Charlie is, then reaches the chat window confident" />
+        </div>
+        <p class="media-caption">Fig: 4 unanswered questions at first contact, down to 0 — dramatic improvement in trust when users understood what was going on before being asked for anything</p>
+
+        <div class="media-full media-full--70">
           <img src="https://framerusercontent.com/images/6pMAwbG4qECb087nF4Z7DxiCkqQ.png?width=2260&amp;height=1534" alt="Charlie masking user data before sending a query to an external LLM." />
         </div>
-        <p class="media-caption">Fig: Charlie disguising user data before sending it to an LLM</p>
+        <p class="media-caption">Fig: Masking a query before it leaves the product</p>
+
+        <div class="sec-body">
+          <p class="mono-label">Decision: choice over coercion</p>
+          <p>Early versions pushed users to connect a bank account the moment they landed. I pushed back — some users weren't comfortable linking an account, dummy or real, and preferred typing raw numbers. We replaced the push with a real choice: "You can connect bank accounts or give me raw numbers, whichever you're comfortable with."</p>
+        </div>
 
         <div class="sec-body">
           <p>This reframing cut privacy-related support tickets and user questions ~80%, measured against pre-launch support volume — trust was built through the product experience itself, not disclaimers or consent screens.</p>
@@ -163,7 +196,11 @@
           <div class="media-full">
             <img src="assets/charlie/info-source.png" alt="Income and Spending panel showing a mortgage balance field sourced from MonthlySavings.pdf." />
           </div>
-          <p class="media-caption">Fig: Field-level source attribution across 15 profile fields cut user confusion 70%, letting users see data provenance and confidence at a glance.</p>
+          <p class="media-caption">Fig: Source attribution shown in the user's profile</p>
+
+          <div class="notice">
+            <p><b>Takeaway —</b> testing showed provenance mattered more to users than the masking itself — knowing where a number came from built more trust than hiding it did. Field-level source attribution across 15 profile fields cut user confusion 70%.</p>
+          </div>
 
           <p class="pillar-lead"><span class="pillar-num">2.</span> <strong class="pillar-name">Frictionless Ingestion via Email Sync:</strong> A secure email-forwarding verification pipeline - frictionless enough that connecting a new source feels like a natural step, not a security checkpoint.</p>
 
@@ -172,7 +209,7 @@
           </div>
           <p class="media-caption">Fig: A way to connect through emails seamlessly</p>
 
-          <p class="pillar-lead"><span class="pillar-num">3.</span> <strong class="pillar-name">Local-First Voice Architecture:</strong> Protected sensitive user input while preserving the speed and naturalness of voice interaction.</p>
+          <p class="pillar-lead"><span class="pillar-num">3.</span> <strong class="pillar-name">Local-First Voice Architecture:</strong> Protected sensitive user input while preserving the speed and naturalness of voice interaction. Aimed at users increasingly comfortable speaking to an assistant over typing; I began scoping a voice-first onboarding flow before the contract ended.</p>
 
           <div class="media-full">
             <img src="assets/charlie/claude-ideation.png" alt="Early ideation concept for Charlie's local-first voice architecture." />
@@ -198,12 +235,12 @@
           <p>One of the first things I noticed after joining was the assistant's loading state: it cycled through generic filler — "Thinking...", "Pondering...", "Frolicking..." — copy that didn't match a security-first product handling sensitive data. I rewrote the phrases to be event-based instead, mapped to the actual backend action underway: a data lookup, a permissions check, a model handoff, each with its own phrase. Now, when the agent is working through something, users know exactly what it's doing, because the UI is telling the truth.</p>
         </div>
 
-        <div class="media-full">
+        <div class="media-full media-full--narrow">
           <img src="assets/charlie/thinking-phrases-before-after.png" alt="Code diff showing generic thinking phrases like Thinking and Pondering replaced with phrases describing the actual action, like searching records and retrieving permissions" />
         </div>
         <p class="media-caption">Fig: Generic filler replaced with phrases tied to what the agent is actually doing (illustrative reconstruction)</p>
 
-        <div class="media-full">
+        <div class="media-full media-full--narrow">
           <img src="assets/charlie/thinking-phrases-event-mapped.png" alt="Code showing thinking phrases mapped one-to-one with backend tool and event names, grouped by data lookup, derivation, external model handoff, workflows, and saving" />
         </div>
         <p class="media-caption">Fig: Every backend event mapped to its own phrase, so the copy tracks what's actually happening (illustrative reconstruction)</p>
@@ -221,10 +258,10 @@
         </div>
         <div class="sec-body">
           <p>I ran moderated evaluation sessions across mobile and desktop, focused on the Data Package Review component: the moment where users decide what context to share before a query goes out.</p>
-          <p>One of the checkpoints that program produced: moderated sessions on the Data Package Review step showed users hesitating specifically at the masking summary — they couldn't tell what was being shared before approving. Before: a single "Review & Send" button with no breakdown. After: an itemized list of exactly which fields were masked versus passed through, with a per-item toggle. That change is what took abandonment down 40% — the number reported in Discovery was earned here, not upstream.</p>
+          <p>The early version of this screen surfaced every raw field being pulled — full transaction logs, unfiltered. Users asked the exact question you don't want at a trust checkpoint: "why does Charlie have this, and why is it about to leave?" I rebuilt the review UI around what needed to be shown, not everything that could be — which is what took abandonment down 40%.</p>
         </div>
 
-        <div class="media-full">
+        <div class="media-full media-full--60">
           <img src="https://framerusercontent.com/images/w8eUXRGkszaqYu03NBrmPqJC6k.png?width=739&amp;height=276" alt="Brief insights from Charlie user testing sessions." />
         </div>
         <p class="media-caption">Fig: Brief insights from testing</p>
