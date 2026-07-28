@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Shy Type preview</title><desc id="desc">A white card with black letters escaping from a blue cursor point.</desc>
+  <rect width="1200" height="800" fill="#fafaf8"/>
+  <rect x="94" y="84" width="1012" height="632" rx="20" fill="#fff" stroke="#e4e2dc" stroke-width="3"/>
+  <text x="158" y="158" fill="#a3a3a3" font-family="monospace" font-size="20" letter-spacing="3">CURSOR PROXIMITY EXPERIMENT</text>
+  <line x1="158" y1="190" x2="1042" y2="190" stroke="#e4e2dc" stroke-width="3"/>
+  <g fill="#141414" font-family="Georgia, serif" font-size="43">
+    <text x="158" y="276">Some words prefer</text><text x="158" y="334">a little distance.</text>
+    <text x="158" y="452">They arrange themselves</text><text x="158" y="510">when nobody is looking.</text>
+    <text x="690" y="276">Bring a hand close</text><text x="710" y="350">and the alphabet</text><text x="748" y="424">remembers</text><text x="794" y="498">it has feet.</text>
+  </g>
+  <circle cx="588" cy="370" r="11" fill="#3f7ff4"/><circle cx="588" cy="370" r="33" fill="none" stroke="#3f7ff4" stroke-width="3" opacity=".5"/><path d="M615 414 638 476l15-32 30 15z" fill="#3f7ff4"/>
+  <text x="158" y="654" fill="#a3a3a3" font-family="monospace" font-size="18" letter-spacing="2">TYPE THAT MAKES ROOM FOR YOU</text>
+</svg>

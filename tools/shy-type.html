@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shy Type — Nike</title>
+  <meta name="description" content="A small type experiment where letters move away from your cursor and return home when it leaves.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#fafaf8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3; --rule:#e4e2dc; --accent:#3f7ff4; --card:#fff; --sans:"Instrument Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace; }
+    * { box-sizing:border-box; }
+    html, body { margin:0; }
+    body { min-height:100vh; background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+    .nav { position:sticky; top:0; z-index:10; padding:16px clamp(20px,5vw,48px); border-bottom:1px solid var(--rule); background:rgba(250,250,248,.82); backdrop-filter:blur(10px); font-size:14px; font-weight:500; }
+    .nav a { color:var(--ink); text-decoration:none; }
+    .nav a:hover { color:var(--accent); }
+    .wrap { max-width:1000px; margin:0 auto; padding:clamp(38px,7vw,76px) clamp(20px,5vw,48px) 80px; }
+    .eyebrow { margin:0 0 12px; color:var(--accent); font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { max-width:12ch; margin:0 0 14px; font-size:clamp(38px,5vw,52px); letter-spacing:-.045em; line-height:1.02; }
+    .lede { max-width:62ch; margin:0; color:var(--muted); font-size:17px; line-height:1.7; }
+    .explainer { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin:52px 0 42px; }
+    .explain-label { margin:0 0 7px; color:var(--faint); font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    .explain-copy { margin:0; color:var(--muted); font-size:14px; line-height:1.65; }
+    .stage { position:relative; overflow:hidden; min-height:400px; padding:clamp(30px,6vw,70px); border:1px solid var(--rule); border-radius:16px; background:var(--card); box-shadow:0 18px 40px -30px rgba(30,40,70,.35); }
+    .stage-meta { display:flex; justify-content:space-between; gap:12px; margin-bottom:clamp(38px,7vw,70px); color:var(--faint); font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+    .story { column-count:2; column-gap:clamp(30px,7vw,74px); font-family:Georgia,serif; font-size:clamp(20px,2.7vw,28px); line-height:1.22; }
+    .story p { margin:0; text-align:justify; }
+    .letter { display:inline-block; position:relative; will-change:transform; }
+    .letter.space { width:.25em; }
+    .hint { margin:18px 2px 0; color:var(--faint); font-family:var(--mono); font-size:12px; }
+    @media (max-width:640px) { .explainer { grid-template-columns:1fr; gap:18px; margin:38px 0; } .story { column-gap:26px; font-size:19px; } .stage { min-height:350px; } }
+    @media (prefers-reduced-motion:reduce) { .letter { transition:none; } }
+  </style>
+</head>
+<body>
+  <nav class="nav"><a href="/playground">← Back to playground</a></nav>
+  <main class="wrap">
+    <p class="eyebrow">Tool</p>
+    <h1>Shy Type</h1>
+    <p class="lede">A little type experiment where the letters are afraid of your cursor. Move near the story and watch it quietly make room for you.</p>
+
+    <section class="explainer" aria-label="How Shy Type works">
+      <div><p class="explain-label">The pointer</p><p class="explain-copy">Every letter measures how close your cursor is. The closer it gets, the more that letter wants to move away.</p></div>
+      <div><p class="explain-label">The push</p><p class="explain-copy">That distance becomes a tiny directional force, so the response feels local: nearby type scatters while the rest stays readable.</p></div>
+      <div><p class="explain-label">The return</p><p class="explain-copy">A gentle spring always pulls each character back to where it began. Leave the page alone and the paragraph gathers itself again.</p></div>
+    </section>
+
+    <section class="stage" aria-label="Interactive text experiment">
+      <div class="stage-meta"><span>Cursor proximity experiment</span><span>Move slowly</span></div>
+      <article class="story" aria-label="Some words prefer a little distance. They arrange themselves neatly when nobody is looking, standing shoulder to shoulder like they have somewhere important to be. But bring a hand too close and the alphabet remembers it has feet. A modest nudge becomes a small evacuation; a sentence leans, loosens, forgets its posture. Nothing is broken. The letters are simply making room for the possibility of you. Keep still for a moment. Watch how quickly a paragraph gathers its nerve and returns to its old shape. Read it again, if you can.">
+        <p id="copy">Some words prefer a little distance. They arrange themselves neatly when nobody is looking, standing shoulder to shoulder like they have somewhere important to be. But bring a hand too close and the alphabet remembers it has feet. A modest nudge becomes a small evacuation; a sentence leans, loosens, forgets its posture. Nothing is broken. The letters are simply making room for the possibility of you. Keep still for a moment. Watch how quickly a paragraph gathers its nerve and returns to its old shape. Read it again, if you can.</p>
+      </article>
+    </section>
+    <p class="hint">Tip: move the cursor close to the copy, then leave it still to watch the words come back together.</p>
+  </main>
+  <script>
+    const copy = document.getElementById('copy');
+    const letters = [];
+    for (const char of copy.textContent) {
+      const el = document.createElement('span');
+      el.className = char === ' ' ? 'letter space' : 'letter';
+      el.textContent = char === ' ' ? '' : char;
+      el.setAttribute('aria-hidden', 'true');
+      copy.append(el);
+      letters.push({ el, x:0, y:0, vx:0, vy:0 });
+    }
+    copy.textContent = '';
+    letters.forEach(({ el }) => copy.append(el));
+    let pointer = { x:-9999, y:-9999, active:false };
+    document.addEventListener('pointermove', event => { pointer = { x:event.clientX, y:event.clientY, active:true }; }, { passive:true });
+    window.addEventListener('blur', () => { pointer.active = false; });
+    function animate() {
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      letters.forEach(letter => {
+        const rect = letter.el.getBoundingClientRect();
+        const dx = rect.left + rect.width / 2 - pointer.x;
+        const dy = rect.top + rect.height / 2 - pointer.y;
+        const distance = Math.hypot(dx, dy) || 1;
+        let pushX = 0, pushY = 0;
+        if (pointer.active && !reducedMotion && distance < 155) {
+          const force = Math.pow(1 - distance / 155, 1.9) * 4.5;
+          pushX = dx / distance * force;
+          pushY = dy / distance * force;
+        }
+        letter.vx = (letter.vx + pushX - letter.x * .105) * .77;
+        letter.vy = (letter.vy + pushY - letter.y * .105) * .77;
+        letter.x += letter.vx; letter.y += letter.vy;
+        letter.el.style.transform = `translate(${letter.x.toFixed(2)}px, ${letter.y.toFixed(2)}px)`;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
