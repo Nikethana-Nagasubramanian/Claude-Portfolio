@@ -39,6 +39,10 @@
       "destination": "/gf-features.html"
     },
     {
+      "source": "/huskyhomes",
+      "destination": "/huskyhomes.html"
+    },
+    {
       "source": "/website-project",
       "destination": "/website-project.html"
     },

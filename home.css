@@ -342,6 +342,7 @@ img, video { max-width: 100%; display: block; }
 .work-entry:first-of-type { margin-top: 72px; }
 
 .work-media {
+  margin-top: 28px;
   border: 1px solid var(--rule);
   overflow: hidden;
 }
@@ -360,7 +361,6 @@ img, video { max-width: 100%; display: block; }
 }
 
 .work-meta {
-  margin-top: 22px;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
