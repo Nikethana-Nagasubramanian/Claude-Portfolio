@@ -5,6 +5,19 @@ html { background: #211a16; }
 body { margin: 0; color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
 button { font: inherit; }
 
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 16px clamp(20px, 5vw, 48px);
+  border-bottom: 1px solid #e4e2dc;
+  background: rgba(250, 250, 248, .82);
+  backdrop-filter: blur(10px);
+  font: 500 14px/1.2 Arial, sans-serif;
+}
+.nav a { color: #141414; text-decoration: none; }
+.nav a:hover { color: #3f7ff4; }
+
 .tapestry-shell {
   min-height: 100vh;
   overflow: hidden;
