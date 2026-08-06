@@ -324,6 +324,53 @@ footer span { color: var(--red); }
   object-fit: cover;
   border-radius: 50%;
 }
+.badge-actions {
+  min-height: 52px;
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+}
+.badge-actions button {
+  padding: 9px 13px;
+  border: 1px solid rgba(118, 35, 31, .55);
+  background: rgba(250, 250, 248, .72);
+  color: #76231f;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font: 700 9px/1 Arial, sans-serif;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.badge-actions button:hover {
+  border-color: #76231f;
+  background: #76231f;
+  color: #fafaf8;
+}
+.badge-actions button:focus-visible {
+  outline: 2px solid #3f7ff4;
+  outline-offset: 2px;
+}
+#badge-action-status {
+  flex-basis: 100%;
+  min-height: 14px;
+  margin: 0;
+  color: #5c493d;
+  text-align: center;
+  font: 10px/1.4 Arial, sans-serif;
+}
+#badge-action-status.error { color: #8d211d; }
+.badge-credit {
+  flex-basis: 100%;
+  margin: -2px 0 0;
+  color: #7d6a5d;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  font: 8px/1.4 Arial, sans-serif;
+}
 .badge-display figcaption {
   width: min(610px, 65vw);
   margin-top: 18px;
@@ -434,6 +481,7 @@ footer span { color: var(--red); }
   .badge-display { padding: 16px 12px 20px; justify-content: flex-start; }
   .mobile-identity { display: block; margin-bottom: 10px; }
   .badge-shadow { width: min(68vw, 560px); }
+  .badge-actions { margin-top: 12px; }
   .badge-display figcaption { display: none; }
   .mobile-details { display: block; }
   .badge-details { width: min(88vw, 680px); margin-top: 14px; padding: 14px 16px; }
