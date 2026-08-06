@@ -8,7 +8,16 @@
   <link rel="stylesheet" href="threads-of-fire.css" />
 </head>
 <body>
-  <nav class="nav"><a href="/playground">← Back to playground</a></nav>
+  <nav class="nav">
+    <a class="home" id="back-link" href="/playground">← Back</a>
+  </nav>
+  <script>
+    if (location.hostname === 'animator.itsmenike.com') {
+      const backLink = document.getElementById('back-link');
+      backLink.href = 'https://itsmenike.com/playground';
+      backLink.textContent = '← Back to portfolio';
+    }
+  </script>
   <main class="caraxes-page">
     <header class="caraxes-header">
       <div class="archive-mark" aria-hidden="true"><span>III</span></div>
@@ -80,7 +89,8 @@
       { name:"Syrax", title:"The Golden Queen", valyrian:"Syrax · Qeldlie Zaldrīzes", image:"syrax-thread-badge.png", color:"Golden ochre", form:"Compact & sturdy", rider:"Rhaenyra Targaryen", quote:"A golden she-dragon with a broad brow and a strong, sure neck.", palette:[["Honey gold","#c38a19"],["Aged flax","#cab894"],["Umber thread","#76501f"]] },
       { name:"Dreamfyre", title:"The Pale Blue Queen", valyrian:"Dreamfyre · Ēdruta Zaldrīzes", image:"dreamfyre-thread-badge.png", color:"Silver-blue", form:"Graceful & finned", rider:"Helaena Targaryen", quote:"Pale as moonlit ice, with a quiet and otherworldly bearing.", palette:[["Ice blue","#9fb7c3"],["Aged flax","#cab894"],["Pearl thread","#e2ded0"]] },
       { name:"Tessarion", title:"The Blue Queen", valyrian:"Tessarion · Kasta Zaldrīzes", image:"tessarion-thread-badge.png", color:"Cobalt blue", form:"Regal & horned", rider:"Daeron Targaryen", quote:"A young cobalt queen, bright-eyed and edged in warm copper.", palette:[["Cobalt silk","#154c9a"],["Aged flax","#cab894"],["Copper thread","#a96f3f"]] },
-      { name:"Meleys", title:"The Red Queen", valyrian:"Meleys · Zaldrīzes Aeksio", image:"meleys-thread-badge.png", color:"Scarlet crimson", form:"Crowned in spikes", rider:"Rhaenys Targaryen", quote:"Swift, fearsome, and crowned with a mane of copper-bright horns.", palette:[["Ruby silk","#a92727"],["Aged flax","#cab894"],["Garnet thread","#5d1718"]] }
+      { name:"Meleys", title:"The Red Queen", valyrian:"Meleys · Zaldrīzes Aeksio", image:"meleys-thread-badge.png", color:"Scarlet crimson", form:"Crowned in spikes", rider:"Rhaenys Targaryen", quote:"Swift, fearsome, and crowned with a mane of copper-bright horns.", palette:[["Ruby silk","#a92727"],["Aged flax","#cab894"],["Garnet thread","#5d1718"]] },
+      { name:"Sunfyre", title:"The Golden", valyrian:"Sunfyre · Ōrenta Zaldrīzes", image:"sunfyre-thread-badge.png", color:"Burnished gold", form:"Slender & sun-crowned", rider:"Aegon II Targaryen", quote:"The most beautiful dragon ever to grace the skies, scaled in beaten gold and dying flame.", palette:[["Sun gold","#c9932c"],["Aged flax","#cab894"],["Rose-gold thread","#c9836a"]] }
     ];
 
     const tabs = document.getElementById("dragon-tabs");
