@@ -42,6 +42,7 @@
         </div>
         <div class="badge-shadow">
           <img id="dragon-badge" alt="" crossorigin="anonymous" />
+          <span class="badge-monogram" aria-hidden="true">NN</span>
         </div>
         <div class="badge-actions" aria-label="Badge actions">
           <button id="copy-badge" type="button">Copy badge</button>
@@ -139,6 +140,27 @@
       context.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
       context.clip();
       context.drawImage(image, sourceX, sourceY, size, size, 0, 0, size, size);
+
+      context.save();
+      context.translate(size * .82, size * .84);
+      context.rotate(-Math.PI / 4);
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.font = `700 ${Math.round(size * .038)}px Georgia, serif`;
+      context.lineJoin = "round";
+      context.shadowColor = "rgba(35, 18, 13, .65)";
+      context.shadowBlur = size * .004;
+      context.shadowOffsetX = size * .002;
+      context.shadowOffsetY = size * .003;
+      context.lineWidth = size * .007;
+      context.strokeStyle = "rgba(49, 25, 19, .92)";
+      context.strokeText("NN", 0, 0);
+      context.fillStyle = "#d8c69d";
+      context.fillText("NN", 0, 0);
+      context.lineWidth = size * .0015;
+      context.strokeStyle = "rgba(255, 239, 198, .7)";
+      context.strokeText("NN", 0, -size * .001);
+      context.restore();
 
       return new Promise((resolve, reject) => {
         canvas.toBlob(

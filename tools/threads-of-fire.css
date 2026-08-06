@@ -314,6 +314,7 @@ footer span { color: var(--red); }
 .badge-shadow {
   width: min(610px, 69vh, 65vw);
   aspect-ratio: 1;
+  position: relative;
   border-radius: 50%;
   filter: drop-shadow(0 30px 25px rgba(52, 26, 18, .33));
 }
@@ -323,6 +324,20 @@ footer span { color: var(--red); }
   display: block;
   object-fit: cover;
   border-radius: 50%;
+}
+.badge-monogram {
+  position: absolute;
+  right: 14.5%;
+  bottom: 13.5%;
+  color: #d8c69d;
+  pointer-events: none;
+  transform: rotate(-45deg);
+  text-shadow:
+    1px 1px 0 #3d211b,
+    -1px 0 0 rgba(255, 239, 198, .7),
+    0 2px 3px rgba(35, 18, 13, .7);
+  font: 700 clamp(12px, 1.6vw, 20px)/1 Georgia, serif;
+  letter-spacing: -.08em;
 }
 .badge-actions {
   min-height: 52px;
