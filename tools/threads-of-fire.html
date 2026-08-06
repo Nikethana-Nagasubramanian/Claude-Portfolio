@@ -3,12 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threads of Fire</title>
-  <meta name="description" content="A tactile archive of dragons reimagined as embroidered badges." />
-  <meta http-equiv="refresh" content="0; url=https://threads-of-fire.soradei.chatgpt.site" />
-  <link rel="canonical" href="https://threads-of-fire.soradei.chatgpt.site" />
+  <title>Threads of Fire — The Dragon Archives</title>
+  <meta name="description" content="Ten dragons reimagined as collectible works of dense raised embroidery." />
+  <link rel="stylesheet" href="threads-of-fire.css" />
 </head>
 <body>
-  <p>Opening <a href="https://threads-of-fire.soradei.chatgpt.site">Threads of Fire</a>…</p>
+  <main class="caraxes-page">
+    <header class="caraxes-header">
+      <div class="archive-mark" aria-hidden="true"><span>III</span></div>
+      <div>
+        <p class="kicker">The Dragon Archives · Folio I</p>
+        <h1>Threads of Fire</h1>
+      </div>
+      <p class="edition">A study in fire &amp; form<br />Ten specimens</p>
+    </header>
+
+    <div class="ornament"><span>✦</span></div>
+
+    <section class="caraxes-layout">
+      <aside class="caraxes-notes">
+        <div class="specimen-tabs" id="dragon-tabs" aria-label="Choose a dragon"></div>
+        <p class="chapter" data-field="title"></p>
+        <h2 data-field="name"></h2>
+        <p class="high-valyrian" data-field="valyrian"></p>
+        <div class="note-rule"></div>
+        <div class="desktop-details">
+          <dl class="metadata"></dl>
+          <div class="fiber-key"></div>
+        </div>
+        <blockquote class="desktop-quote"></blockquote>
+      </aside>
+
+      <figure class="badge-display">
+        <div class="mobile-identity">
+          <p class="chapter" data-field="title"></p>
+          <h2 data-field="name"></h2>
+        </div>
+        <div class="badge-shadow">
+          <img id="dragon-badge" alt="" />
+        </div>
+        <figcaption>
+          <span>Handworked study</span>
+          <b id="badge-caption"></b>
+          <span>Dense crewel embroidery</span>
+        </figcaption>
+        <div class="badge-details mobile-details">
+          <dl class="metadata"></dl>
+          <div class="fiber-key"></div>
+          <blockquote class="mobile-quote"></blockquote>
+        </div>
+      </figure>
+    </section>
+
+    <footer class="caraxes-footer">
+      <span>Stem stitch outline</span><b>✦</b>
+      <span>Laid &amp; couched fill</span><b>✦</b>
+      <span>Raised thread relief</span>
+    </footer>
+  </main>
+
+  <script>
+    const assetBase = "https://threads-of-fire.soradei.chatgpt.site";
+    const dragons = [
+      { name:"Balerion", title:"The Black Dread", valyrian:"Balerion · Zōbrie Gryves", image:"balerion-thread-badge.png", color:"Obsidian black", form:"Colossal & horned", rider:"Aegon the Conqueror", quote:"His shadow could swallow towns whole—the greatest dragon ever ridden.", palette:[["Obsidian silk","#151416"],["Aged flax","#cab894"],["Ember thread","#801f20"]] },
+      { name:"Vhagar", title:"Queen of All Dragons", valyrian:"Vhagar · Zaldrīzes Uēpa", image:"vhagar-thread-badge.png", color:"Blackish green", form:"Massive & heavy", rider:"Aemond Targaryen", quote:"Ancient, battle-worn, and the largest living dragon of her age.", palette:[["Peat green","#25281a"],["Aged flax","#cab894"],["Lichen thread","#746f4e"]] },
+      { name:"Vermithor", title:"The Bronze Fury", valyrian:"Vermithor · Brāedion Urnēptre", image:"vermithor-thread-badge.png", color:"Aged bronze", form:"Massive & armored", rider:"Hugh Hammer", quote:"Bronze, ancient, and terrible—the second-largest dragon of his age.", palette:[["Old bronze","#6f4c20"],["Aged flax","#cab894"],["Ember thread","#b16b27"]] },
+      { name:"Seasmoke", title:"The Silver Sea Dragon", valyrian:"Seasmoke · Embar Zaldrīzes", image:"seasmoke-thread-badge.png", color:"Smoke silver", form:"Lean & jagged", rider:"Addam of Hull", quote:"Pale as sea mist, quick in the air, and crowned in silver spines.", palette:[["Smoke silver","#858889"],["Aged flax","#cab894"],["Pearl thread","#ddd8c9"]] },
+      { name:"Caraxes", title:"The Blood Wyrm", valyrian:"Caraxes · Zaldrīzes Qēlos", image:"caraxes-thread-badge.png", color:"Blood red", form:"Serpentine", rider:"Daemon Targaryen", quote:"A fierce, lean thing—half the size of Vhagar, but twice as fearsome.", palette:[["Oxblood silk","#751f20"],["Aged flax","#cab894"],["Bone thread","#d8c69d"]] },
+      { name:"Sheepstealer", title:"The Wild Dragon", valyrian:"Sheepstealer · Dārys Zaldrīzes", image:"sheepstealer-thread-badge.png", color:"Muddy charcoal", form:"Long & rugged", rider:"Nettles", quote:"A wild and weathered hunter with a taste for mutton and freedom.", palette:[["Peat brown","#403228"],["Aged flax","#cab894"],["Soot thread","#211c19"]] },
+      { name:"Syrax", title:"The Golden Queen", valyrian:"Syrax · Qeldlie Zaldrīzes", image:"syrax-thread-badge.png", color:"Golden ochre", form:"Compact & sturdy", rider:"Rhaenyra Targaryen", quote:"A golden she-dragon with a broad brow and a strong, sure neck.", palette:[["Honey gold","#c38a19"],["Aged flax","#cab894"],["Umber thread","#76501f"]] },
+      { name:"Dreamfyre", title:"The Pale Blue Queen", valyrian:"Dreamfyre · Ēdruta Zaldrīzes", image:"dreamfyre-thread-badge.png", color:"Silver-blue", form:"Graceful & finned", rider:"Helaena Targaryen", quote:"Pale as moonlit ice, with a quiet and otherworldly bearing.", palette:[["Ice blue","#9fb7c3"],["Aged flax","#cab894"],["Pearl thread","#e2ded0"]] },
+      { name:"Tessarion", title:"The Blue Queen", valyrian:"Tessarion · Kasta Zaldrīzes", image:"tessarion-thread-badge.png", color:"Cobalt blue", form:"Regal & horned", rider:"Daeron Targaryen", quote:"A young cobalt queen, bright-eyed and edged in warm copper.", palette:[["Cobalt silk","#154c9a"],["Aged flax","#cab894"],["Copper thread","#a96f3f"]] },
+      { name:"Meleys", title:"The Red Queen", valyrian:"Meleys · Zaldrīzes Aeksio", image:"meleys-thread-badge.png", color:"Scarlet crimson", form:"Crowned in spikes", rider:"Rhaenys Targaryen", quote:"Swift, fearsome, and crowned with a mane of copper-bright horns.", palette:[["Ruby silk","#a92727"],["Aged flax","#cab894"],["Garnet thread","#5d1718"]] }
+    ];
+
+    const tabs = document.getElementById("dragon-tabs");
+    let selected = 0;
+
+    function metadata(dragon) {
+      return [
+        ["Color", dragon.color],
+        ["Form", dragon.form],
+        ["Rider", dragon.rider],
+        ["Technique", "Laid & couched work"]
+      ].map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
+    }
+
+    function fibers(dragon) {
+      return dragon.palette.map(([label, color]) =>
+        `<span><i class="swatch" style="background:${color}"></i>${label}</span>`
+      ).join("");
+    }
+
+    function render(index) {
+      selected = index;
+      const dragon = dragons[index];
+      document.querySelectorAll("[data-field=name]").forEach((el) => el.textContent = dragon.name);
+      document.querySelectorAll("[data-field=title]").forEach((el) => el.textContent = dragon.title);
+      document.querySelectorAll("[data-field=valyrian]").forEach((el) => el.textContent = dragon.valyrian);
+      document.querySelectorAll(".metadata").forEach((el) => el.innerHTML = metadata(dragon));
+      document.querySelectorAll(".fiber-key").forEach((el) => el.innerHTML = fibers(dragon));
+      document.querySelector(".desktop-quote").textContent = `“${dragon.quote}”`;
+      document.querySelector(".mobile-quote").textContent = `“${dragon.quote}”`;
+      document.getElementById("badge-caption").textContent = `${dragon.name}, ${dragon.title}`;
+      const image = document.getElementById("dragon-badge");
+      image.src = `${assetBase}/${dragon.image}`;
+      image.alt = `${dragon.name} rendered as a circular high-relief embroidered badge`;
+      tabs.querySelectorAll("button").forEach((button, buttonIndex) => {
+        button.classList.toggle("selected", buttonIndex === index);
+        button.setAttribute("aria-pressed", String(buttonIndex === index));
+      });
+    }
+
+    dragons.forEach((dragon, index) => {
+      const button = document.createElement("button");
+      button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span>${dragon.name}`;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", () => render(index));
+      tabs.appendChild(button);
+    });
+
+    render(selected);
+  </script>
 </body>
 </html>
