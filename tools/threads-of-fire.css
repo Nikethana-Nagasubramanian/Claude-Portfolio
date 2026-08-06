@@ -410,14 +410,6 @@ footer span { color: var(--red); }
   font: 10px/1.4 Arial, sans-serif;
 }
 #badge-action-status.error { color: #8d211d; }
-.badge-credit {
-  margin: 10px 0 0;
-  color: #7d6a5d;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: .11em;
-  font: 8px/1.4 Arial, sans-serif;
-}
 .badge-display figcaption {
   width: min(610px, 65vw);
   margin-top: 18px;
