@@ -243,6 +243,62 @@ img, video { max-width: 100%; display: block; }
   color: var(--ink);
 }
 
+/* Playground teaser — live GitHub graph + a dragon badge, both linking out */
+.playground-teaser { margin-top: 44px; }
+.playground-teaser .mono-label { display: block; margin-bottom: 12px; }
+.playground-teaser-row {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.teaser-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  transition: border-color .15s ease;
+}
+.teaser-tile:hover { border-color: var(--accent); }
+
+.teaser-tile--widget {
+  flex: 1 1 340px;
+  padding: 18px 20px;
+}
+.teaser-tile--widget gh-contrib-chart { width: 100%; }
+
+.teaser-tile--badge {
+  flex: 0 0 140px;
+  aspect-ratio: 1 / 1;
+}
+.teaser-tile--badge img { width: 100%; height: 100%; object-fit: cover; }
+
+.teaser-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(20, 20, 20, .72);
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.teaser-tile:hover .teaser-tile-overlay { opacity: 1; }
+
+@media (max-width: 640px) {
+  .playground-teaser-row { flex-direction: column; }
+  .teaser-tile--badge { align-self: flex-start; }
+}
+
 /* Notice / callout — e.g. NDA disclosures, constraints */
 .notice {
   margin-top: 36px;
@@ -411,6 +467,17 @@ p + .mono-label,
   margin-right: auto;
 }
 .media-plain img { width: 100%; }
+
+.media-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.media-duo img, .media-duo video { width: 100%; display: block; }
+@media (max-width: 720px) {
+  .media-duo { grid-template-columns: 1fr; }
+}
 
 /* Every image sits above its caption; caption is centered under it. */
 .media-caption {
