@@ -11,6 +11,10 @@
       "destination": "/gf.html"
     },
     {
+      "source": "/scout",
+      "destination": "/scout.html"
+    },
+    {
       "source": "/designing-charlie",
       "destination": "/designing-charlie.html"
     },
