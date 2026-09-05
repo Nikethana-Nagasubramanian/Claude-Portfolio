@@ -88,7 +88,13 @@ img, video { max-width: 100%; display: block; }
   transition: color .15s ease;
 }
 .social-links a:hover { color: var(--accent); }
-.social-links svg { width: 15px; height: 15px; fill: currentColor; }
+.social-links .ph {
+  display: block;
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+  line-height: 17px;
+}
 
 /* ── Shell: sidebar + fill content, centered, max 1440 ── */
 .case-shell {
@@ -697,7 +703,7 @@ p + .mono-label,
   color: var(--faint);
 }
 .bottom-contact .social-links { margin-left: 0; }
-.bottom-contact .social-links svg { width: 16px; height: 16px; }
+.bottom-contact .social-links .ph { width: 17px; height: 17px; font-size: 17px; line-height: 17px; }
 
 /* ── Breakpoints ── */
 @media (max-width: 1144px) {

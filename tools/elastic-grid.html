@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elastic — Nike</title>
+<meta name="description" content="One spring, two shapes: a mesh of dots that wobbles and settles, and a swipeable carousel that snaps and flicks — same physics underneath.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3;
+    --rule:#e4e2dc; --accent:#3f7ff4; --card:#ffffff;
+    --sans:"Instrument Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+    min-height:100vh;
+  }
+
+  .nav{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px clamp(20px,5vw,48px);
+    background:rgba(250,250,248,.82); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans); font-weight:500; font-size:14px;
+  }
+  .nav a{ color:var(--ink); text-decoration:none; }
+  .nav a:hover{ color:var(--accent); }
+  .nav .home{ font-weight:500; }
+
+  .wrap{ max-width:1160px; margin:0 auto; padding:clamp(28px,6vw,64px) clamp(20px,5vw,48px) 80px; }
+
+  .eyebrow{
+    font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 12px;
+  }
+  h1{ font-size:clamp(34px,5vw,46px); line-height:1.08; margin:0 0 14px; letter-spacing:-.01em; }
+  .lede{ font-size:17px; color:var(--muted); max-width:60ch; margin:0 0 28px; }
+
+  .stage{
+    background:var(--card); border:1px solid var(--rule); border-radius:16px;
+    padding:4px; margin-bottom:14px; overflow:hidden;
+    box-shadow:0 18px 40px -30px rgba(30,40,70,.4);
+  }
+  .stage-inner{ position:relative; height:min(48vh,380px); }
+  canvas{ display:block; width:100%; height:100%; touch-action:none; cursor:grab; }
+  canvas:active{ cursor:grabbing; }
+
+  .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:8px; }
+  .hint{ font-family:var(--mono); font-size:12.5px; color:var(--faint); }
+  .btn{
+    font-family:var(--sans); font-weight:600; font-size:14px; padding:11px 18px; border-radius:10px;
+    border:1px solid var(--ink); background:var(--ink); color:var(--bg); cursor:pointer;
+    transition:opacity .2s, transform .05s; white-space:nowrap;
+  }
+  .btn:hover{ opacity:.88; }
+  .btn:active{ transform:translateY(1px); }
+  .btn--ghost{ background:transparent; color:var(--ink); }
+
+  .pair{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; align-items:start; }
+  @media (max-width:860px){ .pair{ grid-template-columns:1fr; } }
+
+  .demo-h{ font-size:18px; font-weight:700; margin:0; letter-spacing:-.01em; }
+  .demo-note{ font-family:var(--mono); font-size:12.5px; color:var(--faint); margin:0 0 8px; line-height:1.6; }
+
+  .dots{ display:flex; gap:8px; }
+  .dot{
+    width:8px; height:8px; border-radius:50%; padding:0; border:none;
+    background:var(--rule); cursor:pointer; transition:background .2s, transform .2s;
+  }
+  .dot.active{ background:var(--accent); transform:scale(1.3); }
+
+  .car-inner{ height:min(48vh,380px); overflow:hidden; touch-action:pan-y; }
+  .car-viewport{ position:relative; width:100%; height:100%; }
+  .car-track{
+    display:flex; align-items:stretch; gap:16px; height:100%; width:max-content;
+    will-change:transform; cursor:grab;
+  }
+  #carousel.dragging .car-track{ cursor:grabbing; }
+  .car-slide{
+    flex:none; height:100%; border-radius:12px; display:flex; flex-direction:column;
+    justify-content:flex-end; padding:20px; color:#fff; user-select:none;
+    background:var(--c,var(--accent)); transition:opacity .1s linear;
+  }
+  .car-num{ font-family:var(--mono); font-size:13px; opacity:.75; margin:0 0 6px; }
+  .car-label{ font-family:var(--sans); font-weight:600; font-size:19px; margin:0; line-height:1.25; }
+
+  .foot{ font-family:var(--sans); font-size:12px; color:var(--faint); margin-top:36px; line-height:1.8; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="home" id="back-link" href="/playground">← Back</a>
+  </nav>
+  <script>
+    if (location.hostname === 'animator.itsmenike.com') {
+      const backLink = document.getElementById('back-link');
+      backLink.href = 'https://itsmenike.com/playground';
+      backLink.textContent = '← Back to portfolio';
+    }
+  </script>
+
+  <main class="wrap">
+    <p class="eyebrow">Tool</p>
+    <h1>Elastic</h1>
+    <p class="lede">One spring: displace a value, and it eases back toward home with a little overshoot before settling. Below, the same three lines of physics drive two different things — a mesh of dots, and a carousel you can swipe.</p>
+
+    <div class="pair">
+      <section class="demo">
+        <div class="row">
+          <h2 class="demo-h">Mesh</h2>
+          <button id="poke" class="btn btn--ghost" type="button">Poke it</button>
+        </div>
+        <p class="demo-note">click + drag anywhere on the grid</p>
+        <div class="stage">
+          <div class="stage-inner">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo">
+        <div class="row">
+          <h2 class="demo-h">Carousel</h2>
+          <div class="dots" id="carDots"></div>
+        </div>
+        <p class="demo-note">drag to swipe · flick for momentum</p>
+        <div class="stage">
+          <div class="stage-inner car-inner" id="carousel" tabindex="0">
+            <div class="car-viewport">
+              <div class="car-track" id="carTrack">
+                <div class="car-slide" style="--c:#3f7ff4"><p class="car-num">01</p><p class="car-label">Same spring</p></div>
+                <div class="car-slide" style="--c:#141414"><p class="car-num">02</p><p class="car-label">Different shape</p></div>
+                <div class="car-slide" style="--c:#6b6b6b"><p class="car-num">03</p><p class="car-label">Drag to feel it</p></div>
+                <div class="car-slide" style="--c:#3f7ff4"><p class="car-num">04</p><p class="car-label">Release to settle</p></div>
+                <div class="car-slide" style="--c:#141414"><p class="car-num">05</p><p class="car-label">Flick for momentum</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="foot">Both demos share <code>spring.js</code> — position-based integration where a value's own momentum carries over each frame (damped) and a pull term eases it toward a target. The mesh runs one spring per axis per point, targeting each point's home position; the carousel runs one spring for the track offset, targeting the resting position of the nearest slide. Dragging pins the value directly to the pointer; releasing hands it back to the spring, momentum included.</p>
+  </main>
+
+  <script type="module" src="/tools/elastic-grid.js"></script>
+  <script type="module" src="/tools/elastic-carousel.js"></script>
+</body>
+</html>

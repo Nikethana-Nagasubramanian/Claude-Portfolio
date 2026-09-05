@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Golden Gate watercolor reveal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #181a1b;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px clamp(20px, 5vw, 48px);
+        background: rgba(250, 250, 248, .82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #e4e2dc;
+        font: 500 14px/1.2 "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      .nav a { color: #141414; text-decoration: none; }
+      .nav a:hover { color: #3f7ff4; }
+      .nav .home { font-weight: 500; }
+      .frame {
+        position: relative;
+        width: min(1200px, 94vw);
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #f8f4eb;
+        box-shadow: 0 28px 70px #0009;
+      }
+      .paint { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .paint { z-index: 1; }
+      .scene-image { filter: saturate(.78) sepia(.07); }
+      .controls {
+        position: fixed;
+        bottom: 22px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #c4c8ca;
+        font-size: 12px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      button {
+        border: 1px solid #687177;
+        border-radius: 99px;
+        padding: 8px 12px;
+        color: inherit;
+        background: transparent;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:hover { background: #ffffff12; }
+      .scene-primary, .scene-secondary { transform-box: fill-box; transform-origin: 12% 11%; }
+      .scene-primary { animation: main-bloom 12s cubic-bezier(.16,.84,.22,1) infinite both; }
+      .scene-secondary { animation: second-bloom 12s cubic-bezier(.16,.84,.22,1) infinite both; }
+      @keyframes main-bloom {
+        0%, 7% { opacity: 0; transform: scale(.11); }
+        14% { opacity: 1; }
+        70%, 82% { opacity: 1; transform: scale(1); }
+        96%, 100% { opacity: 0; transform: scale(1.04); }
+      }
+      @keyframes second-bloom {
+        0%, 14% { opacity: 0; transform: scale(.1); }
+        22% { opacity: 1; }
+        74%, 82% { opacity: 1; transform: scale(1); }
+        96%, 100% { opacity: 0; transform: scale(1.04); }
+      }
+      .paused .scene-primary, .paused .scene-secondary { animation-play-state: paused; }
+      @media (prefers-reduced-motion: reduce) {
+        .scene-primary, .scene-secondary { animation: none; opacity: 1; transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="home" id="back-link" href="/playground">← Back</a>
+    </nav>
+    <script>
+      if (location.hostname === 'animator.itsmenike.com') {
+        const backLink = document.getElementById('back-link');
+        backLink.href = 'https://itsmenike.com/playground';
+        backLink.textContent = '← Back to portfolio';
+      }
+    </script>
+    <main class="frame" id="frame" aria-label="Golden Gate Bridge pencil sketch becoming watercolor">
+      <svg class="paint" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="stain-colors" x1="0" y1=".8" x2="1" y2=".15">
+            <stop offset="0" stop-color="#6a3d66" />
+            <stop offset=".38" stop-color="#715078" />
+            <stop offset=".7" stop-color="#a978b2" />
+            <stop offset="1" stop-color="#ed807b" />
+          </linearGradient>
+          <filter id="stain-grain" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="3" seed="24" result="grain" />
+            <feColorMatrix in="grain" type="saturate" values="0" result="grayGrain" />
+            <feBlend in="SourceGraphic" in2="grayGrain" mode="soft-light" />
+          </filter>
+          <mask id="stain-outline" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="900">
+            <rect width="1200" height="900" fill="black" />
+            <!-- Two real stains sampled from the reference pack form the persistent paint boundary. -->
+            <g>
+              <image href="../assets/watercolor-reveal/stain-primary.png" x="-150" y="-120" width="1450" height="1220" preserveAspectRatio="none" />
+            </g>
+            <g>
+              <image href="../assets/watercolor-reveal/stain-secondary.png" x="-60" y="-100" width="1420" height="1150" preserveAspectRatio="none" />
+            </g>
+          </mask>
+          <mask id="scene-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="900">
+            <rect width="1200" height="900" fill="black" />
+            <g class="scene-primary">
+              <image href="../assets/watercolor-reveal/stain-primary.png" x="-150" y="-120" width="1450" height="1220" preserveAspectRatio="none" />
+            </g>
+            <g class="scene-secondary">
+              <image href="../assets/watercolor-reveal/stain-secondary.png" x="-60" y="-100" width="1420" height="1150" preserveAspectRatio="none" />
+            </g>
+          </mask>
+        </defs>
+        <g mask="url(#stain-outline)" filter="url(#stain-grain)">
+          <rect width="1200" height="900" fill="url(#stain-colors)" />
+          <rect width="1200" height="900" fill="#2d233c" opacity=".15" />
+        </g>
+        <image class="scene-image" href="../assets/watercolor-reveal/golden-gate-watercolor.png" width="1200" height="900" preserveAspectRatio="xMidYMid slice" mask="url(#scene-mask)" />
+      </svg>
+    </main>
+    <div class="controls"><button id="toggle" type="button">Pause</button><span>pencil → watercolor</span></div>
+    <script>
+      const frame = document.querySelector('#frame');
+      const button = document.querySelector('#toggle');
+      button.addEventListener('click', () => {
+        const paused = frame.classList.toggle('paused');
+        button.textContent = paused ? 'Play' : 'Pause';
+      });
+    </script>
+  </body>
+</html>

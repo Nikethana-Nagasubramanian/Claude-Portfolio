@@ -1,7 +1,7 @@
 
 :root { --ink: #251a15; --red: #7a201d; --linen: #cdbb95; --gold: #a88142; }
 * { box-sizing: border-box; }
-html { background: #211a16; }
+html { background: #fafaf8; }
 body { margin: 0; color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
 button { font: inherit; }
 
@@ -16,7 +16,7 @@ button { font: inherit; }
   border-bottom: 1px solid #e4e2dc;
   background: rgba(250, 250, 248, .82);
   backdrop-filter: blur(10px);
-  font: 500 14px/1.2 Arial, sans-serif;
+  font: 500 14px/1.2 "Instrument Sans", system-ui, sans-serif;
 }
 .nav a { color: #141414; text-decoration: none; }
 .nav a:hover { color: #3f7ff4; }

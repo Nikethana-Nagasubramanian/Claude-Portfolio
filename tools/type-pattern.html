@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Type Pattern — Nike</title>
+<meta name="description" content="Type anywhere and watch a generative pattern build itself, one keystroke at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3;
+    --rule:#e4e2dc; --accent:#3f7ff4; --card:#ffffff;
+    --sans:"Instrument Sans",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+    min-height:100vh;
+  }
+
+  .nav{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px clamp(20px,5vw,48px);
+    background:rgba(250,250,248,.82); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans); font-weight:500; font-size:14px;
+  }
+  .nav a{ color:var(--ink); text-decoration:none; }
+  .nav a:hover{ color:var(--accent); }
+  .nav .home{ font-weight:500; }
+
+  .wrap{ max-width:1000px; margin:0 auto; padding:clamp(28px,6vw,64px) clamp(20px,5vw,48px) 80px; }
+
+  .eyebrow{
+    font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 12px;
+  }
+  h1{ font-size:clamp(34px,5vw,46px); line-height:1.08; margin:0 0 14px; letter-spacing:-.01em; }
+  .lede{ font-size:17px; color:var(--muted); max-width:60ch; margin:0 0 28px; }
+
+  .stage{
+    background:var(--card); border:1px solid var(--rule); border-radius:16px;
+    padding:4px; margin-bottom:18px; overflow:hidden; position:relative;
+    box-shadow:0 18px 40px -30px rgba(30,40,70,.4);
+  }
+  .stage-inner{ position:relative; height:min(55vh,420px); }
+  canvas{ display:block; width:100%; height:100%; }
+
+  .placeholder{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:14px; color:var(--faint); text-align:center;
+    pointer-events:none; padding:20px; transition:opacity .25s;
+  }
+  .placeholder[hidden]{ display:none; }
+
+  .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:8px; }
+  .hint{ font-family:var(--mono); font-size:12.5px; color:var(--faint); }
+  .btn{
+    font-family:var(--sans); font-weight:600; font-size:14px; padding:11px 18px; border-radius:10px;
+    border:1px solid var(--rule); background:transparent; color:var(--ink); cursor:pointer;
+    transition:border-color .2s, opacity .2s; white-space:nowrap;
+  }
+  .btn:hover{ border-color:var(--ink); }
+
+  .foot{ font-family:var(--sans); font-size:12px; color:var(--faint); margin-top:36px; line-height:1.8; }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="home" id="back-link" href="/playground">← Back</a>
+  </nav>
+  <script>
+    if (location.hostname === 'animator.itsmenike.com') {
+      const backLink = document.getElementById('back-link');
+      backLink.href = 'https://itsmenike.com/playground';
+      backLink.textContent = '← Back to portfolio';
+    }
+  </script>
+
+  <main class="wrap">
+    <p class="eyebrow">Tool</p>
+    <h1>Type Pattern</h1>
+    <p class="lede">No input box, no enter key — just start typing anywhere on this page. Every letter, number, and symbol drops into a grid as a little shape, colour keyed to the character. Backspace erases the last one, same as any editor.</p>
+
+    <div class="row">
+      <span class="hint">just start typing</span>
+      <button id="clear" class="btn" type="button">Clear</button>
+    </div>
+
+    <div class="stage">
+      <div class="stage-inner">
+        <canvas id="canvas"></canvas>
+        <p class="placeholder" id="placeholder">start typing anywhere — letters, numbers, punctuation all render differently</p>
+      </div>
+    </div>
+
+    <p class="foot">Each key maps to a shape (letters → circles, numbers → triangles, symbols → diamonds) and a colour from a fixed palette keyed to the character code. The grid wraps and loops once it fills, so the pattern keeps evolving the longer you type.</p>
+  </main>
+
+  <script type="module" src="/tools/type-pattern.js"></script>
+</body>
+</html>

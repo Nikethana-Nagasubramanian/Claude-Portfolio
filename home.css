@@ -186,7 +186,13 @@ img, video { max-width: 100%; display: block; }
   transition: color .15s ease;
 }
 .social-links a:hover { color: var(--accent); }
-.social-links svg { width: 15px; height: 15px; fill: currentColor; }
+.social-links .ph {
+  display: block;
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+  line-height: 17px;
+}
 
 /* ── Shell: single centered column, quieter than /gf ── */
 .home-shell {

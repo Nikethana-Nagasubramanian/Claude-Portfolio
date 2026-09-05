@@ -4,9 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Racked — Nike</title>
+    <style>
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px clamp(20px, 5vw, 48px);
+        background: rgba(250, 250, 248, .82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #e4e2dc;
+        font: 500 14px/1.2 "Instrument Sans", system-ui, sans-serif;
+      }
+      .nav a { color: #141414; text-decoration: none; }
+      .nav a:hover { color: #3f7ff4; }
+      .nav .home { font-weight: 500; }
+    </style>
     <script type="module" crossorigin src="/tools/racked/dist/assets/index-Bu8C8R83.js"></script>
   </head>
   <body>
+    <nav class="nav">
+      <a class="home" id="back-link" href="/playground">← Back</a>
+    </nav>
+    <script>
+      if (location.hostname === 'animator.itsmenike.com') {
+        const backLink = document.getElementById('back-link');
+        backLink.href = 'https://itsmenike.com/playground';
+        backLink.textContent = '← Back to portfolio';
+      }
+    </script>
     <div id="root"></div>
   </body>
 </html>

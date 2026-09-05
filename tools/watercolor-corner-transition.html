@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Watercolor corner transition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #17191b;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px clamp(20px, 5vw, 48px);
+        background: rgba(250, 250, 248, .82);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #e4e2dc;
+        font: 500 14px/1.2 "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      .nav a { color: #141414; text-decoration: none; }
+      .nav a:hover { color: #3f7ff4; }
+      .nav .home { font-weight: 500; }
+      .frame {
+        position: relative;
+        width: min(1200px, 94vw);
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        isolation: isolate;
+        background: #fff;
+        box-shadow: 0 30px 80px #0008;
+      }
+      .paper {
+        position: absolute;
+        inset: 0;
+        opacity: .13;
+        mix-blend-mode: multiply;
+        background: #fff;
+        filter: url(#paper-fibers);
+        pointer-events: none;
+        z-index: 5;
+      }
+      .paper::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        opacity: .16;
+        background:
+          linear-gradient(104deg, transparent 31%, #b99a7518 35%, transparent 38%),
+          linear-gradient(78deg, transparent 68%, #c3a17b12 71%, transparent 75%),
+          radial-gradient(ellipse at 24% 70%, #bda37a14, transparent 42%);
+        mix-blend-mode: multiply;
+      }
+      .caption {
+        position: absolute;
+        right: 7%; bottom: 8%;
+        z-index: 1;
+        max-width: 32rem;
+        color: #a38178;
+        font-family: Georgia, serif;
+        font-size: clamp(22px, 3vw, 46px);
+        font-style: italic;
+        line-height: 1.08;
+        text-align: right;
+      }
+      .cloud-field {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+      }
+      .cloudlet {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--w);
+        aspect-ratio: var(--ratio, 1.08);
+        border-radius: 49% 51% 44% 56% / 58% 42% 58% 42%;
+        background:
+          radial-gradient(ellipse at 42% 40%, var(--core) 0 22%, var(--color) 51%, transparent 74%);
+        filter: url(#rough-edge) blur(.5px);
+        mix-blend-mode: multiply;
+        opacity: 0;
+        transform: scale(.12) rotate(var(--tilt, 0deg));
+        transform-origin: 20% 20%;
+        will-change: transform, opacity;
+        animation: cloud-grow 7.6s var(--delay) cubic-bezier(.16,.84,.22,1) infinite both;
+      }
+      .cloudlet::after {
+        position: absolute;
+        inset: 4%;
+        content: "";
+        border-radius: inherit;
+        background: radial-gradient(ellipse at 52% 47%, transparent 0 39%, var(--edge) 56%, transparent 70%);
+        filter: url(#soft-bleed);
+        opacity: .7;
+      }
+      @keyframes cloud-grow {
+        0%, 5% { opacity: 0; transform: scale(.12) rotate(var(--tilt, 0deg)); }
+        16% { opacity: .52; }
+        58%, 76% { opacity: .47; transform: scale(1) rotate(var(--tilt, 0deg)); }
+        94%, 100% { opacity: 0; transform: scale(1.12) rotate(var(--tilt, 0deg)); }
+      }
+      .controls {
+        position: fixed;
+        bottom: 22px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #b9c0c4;
+        font-size: 12px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      button {
+        border: 1px solid #687177;
+        border-radius: 99px;
+        padding: 8px 12px;
+        color: inherit;
+        background: transparent;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:hover { background: #ffffff12; }
+      .paused .cloudlet { animation-play-state: paused; }
+      @media (prefers-reduced-motion: reduce) { .cloudlet { animation: none; opacity: .35; transform: scale(1) rotate(var(--tilt, 0deg)); } }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="home" id="back-link" href="/playground">← Back</a>
+    </nav>
+    <script>
+      if (location.hostname === 'animator.itsmenike.com') {
+        const backLink = document.getElementById('back-link');
+        backLink.href = 'https://itsmenike.com/playground';
+        backLink.textContent = '← Back to portfolio';
+      }
+    </script>
+    <main class="frame" id="frame" aria-label="Watercolor corner transition demo">
+      <div class="caption">some moments arrive softly</div>
+      <div class="cloud-field" aria-hidden="true">
+        <i class="cloudlet" style="--x:-25%; --y:-24%; --w:164%; --ratio:.9; --delay:0s; --tilt:-11deg; --core:#fff6c5a8; --color:#edbd7480; --edge:#b974684c"></i>
+        <i class="cloudlet" style="--x:-10%; --y:-10%; --w:151%; --ratio:1.06; --delay:.9s; --tilt:10deg; --core:#ffe5e6a0; --color:#e99da77a; --edge:#b95e704b"></i>
+      </div>
+      <div class="paper"></div>
+    </main>
+    <div class="controls"><button id="toggle" type="button">Pause</button><span>1200 × 900</span></div>
+
+    <svg width="0" height="0" aria-hidden="true">
+      <filter id="rough-edge" x="-35%" y="-35%" width="170%" height="170%">
+        <feTurbulence type="fractalNoise" baseFrequency=".012 .028" numOctaves="3" seed="19" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="44" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="soft-bleed" x="-25%" y="-25%" width="150%" height="150%">
+        <feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="2" seed="8" result="grain" />
+        <feDisplacementMap in="SourceGraphic" in2="grain" scale="25" />
+        <feGaussianBlur stdDeviation="5" />
+      </filter>
+      <filter id="paper-fibers" x="-5%" y="-5%" width="110%" height="110%">
+        <!-- Fine, directionally stretched grain: paper fiber rather than a repeating pattern. -->
+        <feTurbulence type="fractalNoise" baseFrequency=".42 .075" numOctaves="3" seed="58" result="fiber" />
+        <feColorMatrix in="fiber" type="saturate" values="0" result="monoFiber" />
+        <feComponentTransfer in="monoFiber" result="fineFiber">
+          <feFuncR type="gamma" amplitude="1" exponent="1.8" offset="0" />
+          <feFuncG type="gamma" amplitude="1" exponent="1.8" offset="0" />
+          <feFuncB type="gamma" amplitude="1" exponent="1.8" offset="0" />
+        </feComponentTransfer>
+        <feTurbulence type="fractalNoise" baseFrequency=".012 .018" numOctaves="2" seed="12" result="crumple" />
+        <feBlend in="fineFiber" in2="crumple" mode="multiply" />
+      </filter>
+    </svg>
+    <script>
+      const frame = document.querySelector('#frame');
+      const button = document.querySelector('#toggle');
+      button.addEventListener('click', () => {
+        const paused = frame.classList.toggle('paused');
+        button.textContent = paused ? 'Play' : 'Pause';
+      });
+    </script>
+  </body>
+</html>

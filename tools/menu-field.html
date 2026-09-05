@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Field — Nike</title>
+  <meta name="description" content="A hover-preview menu with a visible pointer force field.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#fafaf8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3; --rule:#e4e2dc; --accent:#3f7ff4; --card:#fff; --sans:"Instrument Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace; }
+    * { box-sizing:border-box; } html,body { margin:0; } body { min-height:100vh; background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+    .nav { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:16px clamp(20px,5vw,48px); border-bottom:1px solid var(--rule); background:rgba(250,250,248,.82); backdrop-filter:blur(10px); font-family:var(--sans); font-size:14px; font-weight:500; }
+    .nav a { color:var(--ink); text-decoration:none; } .nav a:hover { color:var(--accent); }
+    .nav .home { font-weight:500; }
+    .wrap { width:min(1000px, calc(100% - 40px)); margin:0 auto; padding:clamp(38px,7vw,76px) 0 80px; }
+    .eyebrow { margin:0 0 12px; color:var(--accent); font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { margin:0 0 14px; font-size:clamp(38px,5vw,52px); letter-spacing:-.045em; line-height:1.02; } .lede { max-width:62ch; margin:0; color:var(--muted); font-size:17px; line-height:1.7; }
+    .explainer { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin:52px 0 42px; } .label { margin:0 0 7px; color:var(--faint); font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; } .copy { margin:0; color:var(--muted); font-size:14px; line-height:1.65; }
+    .controls { display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin:0 0 14px; } .switch { display:inline-flex; align-items:center; gap:8px; color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; cursor:pointer; } .switch input { width:14px; height:14px; margin:0; accent-color:var(--accent); cursor:pointer; }
+    .range-control { display:flex; align-items:center; gap:10px; color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; } input[type="range"] { width:150px; accent-color:var(--accent); } output { min-width:38px; color:var(--ink); text-align:right; }
+    .stage { position:relative; isolation:isolate; min-height:500px; overflow:hidden; border:1px solid var(--rule); border-radius:16px; background:var(--card); box-shadow:0 18px 40px -30px rgba(30,40,70,.35); }
+    .stage { background:linear-gradient(90deg, #fff 0 82px, #f7f7f5 82px 100%); }
+    .section-rail { position:absolute; z-index:4; inset:0 auto 0 0; display:flex; flex-direction:column; justify-content:center; gap:10px; width:82px; padding:28px 0; border-right:1px solid var(--rule); background:rgba(255,255,255,.8); }
+    .section-rail button { width:100%; height:10px; padding:0 0 0 24px; border:0; background:transparent; cursor:pointer; text-align:left; } .section-rail button::after { content:""; display:block; width:var(--line-width); height:4px; background:#d2d2cf; transition:width .18s ease, background .18s ease, transform .18s ease; } .section-rail button:hover::after, .section-rail button[aria-current="true"]::after { width:calc(var(--line-width) + 12px); background:#20201e; transform:translateX(2px); }
+    .canvas-label { position:absolute; top:26px; right:28px; z-index:2; color:var(--faint); font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; }
+    .preview { position:absolute; z-index:3; top:0; left:0; width:min(430px, calc(100% - 122px)); padding:28px 30px; border:1px solid #dededb; border-radius:20px; background:rgba(255,255,255,.94); box-shadow:0 22px 48px -28px rgba(24,34,48,.28); transform:translate3d(0,0,0); will-change:transform; } .preview::before { content:""; display:block; width:32px; height:4px; margin-bottom:50px; border-radius:999px; background:var(--accent); } .preview-meta { margin:0 0 8px; color:var(--faint); font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; } .preview h2 { margin:0 0 10px; font-size:clamp(25px,3vw,34px); letter-spacing:-.045em; line-height:1.05; } .preview p { margin:0; color:var(--muted); font-size:15px; line-height:1.55; }
+    .field { position:absolute; inset:0; z-index:1; width:100%; height:100%; pointer-events:none; opacity:0; transition:opacity .18s ease; } .field.is-visible { opacity:1; } .field line { stroke:var(--accent); stroke-width:1.15; stroke-linecap:round; opacity:.48; } .field .ring { fill:rgba(63,127,244,.055); stroke:var(--accent); stroke-width:1; opacity:.72; } .field .dot { fill:var(--accent); stroke:none; opacity:1; }
+    .legend { display:flex; justify-content:space-between; gap:18px; margin:15px 2px 0; color:var(--faint); font-family:var(--mono); font-size:11px; } .legend b { color:var(--muted); font-weight:500; }
+    @media (max-width:650px) { .wrap { width:min(100% - 28px, 1000px); } .explainer { grid-template-columns:1fr; gap:18px; margin:38px 0; } .stage { min-height:480px; background:#f7f7f5; } .section-rail { width:58px; } .section-rail button { padding-left:17px; } .preview { width:calc(100% - 84px); } .preview::before { margin-bottom:42px; } .canvas-label { display:none; } }
+    @media (prefers-reduced-motion:reduce) { .preview { transform:none !important; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="home" id="back-link" href="/playground">← Back</a>
+  </nav>
+  <script>
+    if (location.hostname === 'animator.itsmenike.com') {
+      const backLink = document.getElementById('back-link');
+      backLink.href = 'https://itsmenike.com/playground';
+      backLink.textContent = '← Back to portfolio';
+    }
+  </script>
+  <main class="wrap">
+    <p class="eyebrow">Tool</p>
+    <h1>Menu Field</h1>
+    <p class="lede">The cousin to Shy Type: approach a section line to reveal its preview. Turn on the field to see the cursor’s influence as 30 small force vectors.</p>
+    <section class="explainer" aria-label="How Menu Field works">
+      <div><p class="label">Section rail</p><p class="copy">Each line is a segment of the page. Bring your pointer near one to reveal the preview for that section.</p></div>
+      <div><p class="label">Fluid handoff</p><p class="copy">The preview follows the pointer’s current position with a gentle spring, so changing direction never snaps or waits for an old animation to finish.</p></div>
+      <div><p class="label">Visible field</p><p class="copy">The optional field exposes the invisible math: exactly 30 vectors appear around the pointer, and their spacing is yours to tune.</p></div>
+    </section>
+
+    <div class="controls" aria-label="Field controls">
+      <label class="switch"><input id="field-toggle" type="checkbox"> Show force field</label>
+      <label class="range-control" for="spacing">Line spacing <input id="spacing" type="range" min="10" max="28" value="18" step="1"><output id="spacing-value" for="spacing">18px</output></label>
+    </div>
+
+    <section class="stage" id="stage" aria-label="Section rail hover experiment">
+      <svg class="field" id="field" aria-hidden="true"><circle class="ring" id="field-ring" r="126"></circle><g id="vectors"></g><circle class="dot" id="field-dot" r="4"></circle></svg>
+      <aside class="section-rail" aria-label="Page sections">
+        <button type="button" aria-current="true" style="--line-width:27px" data-meta="01 / OVERVIEW" data-title="A line can be a section." data-body="The rail compresses page navigation into a calm visual index. Each line is a readable, reachable segment—not decoration."></button>
+        <button type="button" style="--line-width:16px" data-meta="02 / CONTEXT" data-title="Proximity is the invitation." data-body="You do not need to click first. Moving near a segment surfaces context before you commit to a destination."></button>
+        <button type="button" style="--line-width:24px" data-meta="03 / MOTION" data-title="The preview stays interruptible." data-body="The card follows the current pointer state with a spring, so a quick change of mind stays continuous instead of snapping."></button>
+        <button type="button" style="--line-width:18px" data-meta="04 / INTERACTION" data-title="Short lines make scanning physical." data-body="Their different lengths give the rail rhythm while retaining a generous target around each segment."></button>
+        <button type="button" style="--line-width:34px" data-meta="05 / FORCE FIELD" data-title="Thirty vectors expose the field." data-body="Turn on the teaching layer to see 30 nearby vectors. Adjust their spacing to make distance visible."></button>
+        <button type="button" style="--line-width:21px" data-meta="06 / RETURN" data-title="The page remains quiet at rest." data-body="When the pointer leaves, the interface keeps its place. Motion is there to explain, not to ask for attention."></button>
+        <button type="button" style="--line-width:28px" data-meta="07 / NOTES" data-title="The rail can map a whole article." data-body="Use this pattern for case-study chapters, a long page, or a set of ideas that benefit from spatial wayfinding."></button>
+      </aside>
+      <p class="canvas-label">Section rail / force field</p>
+      <article class="preview" id="preview" aria-live="polite"><p class="preview-meta" id="preview-meta">01 / OVERVIEW</p><h2 id="preview-title">A line can be a section.</h2><p id="preview-body">The rail compresses page navigation into a calm visual index. Each line is a readable, reachable segment—not decoration.</p></article>
+    </section>
+    <p class="legend"><span><b>30</b> force vectors</span><span>Hover the menu or move across the canvas</span></p>
+  </main>
+  <script>
+    const stage = document.getElementById('stage');
+    const preview = document.getElementById('preview');
+    const field = document.getElementById('field');
+    const toggle = document.getElementById('field-toggle');
+    const spacing = document.getElementById('spacing');
+    const spacingValue = document.getElementById('spacing-value');
+    const vectors = document.getElementById('vectors');
+    const ring = document.getElementById('field-ring');
+    const dot = document.getElementById('field-dot');
+    const buttons = [...document.querySelectorAll('.section-rail button')];
+    const previewMeta = document.getElementById('preview-meta');
+    const previewTitle = document.getElementById('preview-title');
+    const previewBody = document.getElementById('preview-body');
+    const vectorCount = 30;
+    let pointer = { x: 0, y: 0, inside: false };
+    let position = { x: 0, y: 0 };
+    let velocity = { x: 0, y: 0 };
+
+    function setPreview(button) {
+      buttons.forEach(item => item.setAttribute('aria-current', String(item === button)));
+      previewMeta.textContent = button.dataset.meta;
+      previewTitle.textContent = button.dataset.title;
+      previewBody.textContent = button.dataset.body;
+    }
+    function activateNearbyLine(clientX, clientY) {
+      const closest = buttons.reduce((best, button) => {
+        const rect = button.getBoundingClientRect();
+        const dx = Math.max(rect.left - clientX, 0, clientX - rect.right);
+        const dy = Math.max(rect.top - clientY, 0, clientY - rect.bottom);
+        const distance = Math.hypot(dx, dy);
+        return !best || distance < best.distance ? { button, distance } : best;
+      }, null);
+      if (closest && closest.distance < 56) setPreview(closest.button);
+    }
+
+    function drawField() {
+      if (!toggle.checked || !pointer.inside) { vectors.replaceChildren(); return; }
+      const bounds = stage.getBoundingClientRect();
+      const x = pointer.x - bounds.left, y = pointer.y - bounds.top;
+      const gap = Number(spacing.value);
+      ring.setAttribute('cx', x); ring.setAttribute('cy', y); ring.setAttribute('r', String(gap * 6.5));
+      dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+      const fragment = document.createDocumentFragment();
+      for (let i = 0; i < vectorCount; i += 1) {
+        const angle = (i / vectorCount) * Math.PI * 2;
+        const band = Math.floor(i / 6) + 1;
+        const start = 12 + (band - 1) * gap;
+        const end = start + Math.max(8, gap - 5);
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', x + Math.cos(angle) * start); line.setAttribute('y1', y + Math.sin(angle) * start);
+        line.setAttribute('x2', x + Math.cos(angle) * end); line.setAttribute('y2', y + Math.sin(angle) * end);
+        fragment.append(line);
+      }
+      vectors.replaceChildren(fragment);
+    }
+
+    stage.addEventListener('pointermove', event => { pointer = { x:event.clientX, y:event.clientY, inside:true }; activateNearbyLine(event.clientX, event.clientY); });
+    stage.addEventListener('pointerleave', () => { pointer.inside = false; });
+    toggle.addEventListener('change', () => field.classList.toggle('is-visible', toggle.checked));
+    spacing.addEventListener('input', () => { spacingValue.value = `${spacing.value}px`; spacingValue.textContent = `${spacing.value}px`; });
+
+    function animate() {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const bounds = stage.getBoundingClientRect();
+      const active = document.querySelector('.section-rail button[aria-current="true"]');
+      const activeRect = active.getBoundingClientRect();
+      const targetX = Math.min(116, bounds.width - preview.offsetWidth - 18);
+      const targetY = Math.min(Math.max(activeRect.top - bounds.top - preview.offsetHeight / 2 + activeRect.height / 2, 24), bounds.height - preview.offsetHeight - 24);
+      if (!position.x && !position.y) { position.x = targetX; position.y = targetY; }
+      if (!reduce) {
+        velocity.x = (velocity.x + (targetX - position.x) * .12) * .74;
+        velocity.y = (velocity.y + (targetY - position.y) * .12) * .74;
+        position.x += velocity.x; position.y += velocity.y;
+      } else { position.x = targetX; position.y = targetY; }
+      preview.style.transform = `translate3d(${position.x}px, ${position.y}px, 0)`;
+      drawField();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
