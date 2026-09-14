@@ -104,7 +104,13 @@
   const nikePreview = document.querySelector('.nike-preview');
   const nikeButton = nikePreview.querySelector('button');
   const nikePhoto = nikePreview.querySelector('.nike-photo');
-  function showNike(show) { nikePhoto.hidden = !show; nikeButton.setAttribute('aria-expanded', String(show)); }
+  nikePhoto.hidden = false;
+  nikePhoto.setAttribute('aria-hidden', 'true');
+  function showNike(show) {
+    nikePhoto.classList.toggle('is-visible', show);
+    nikePhoto.setAttribute('aria-hidden', String(!show));
+    nikeButton.setAttribute('aria-expanded', String(show));
+  }
   nikePreview.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') showNike(true); });
   nikePreview.addEventListener('pointerleave', () => { if (document.activeElement !== nikeButton) showNike(false); });
   nikeButton.addEventListener('focus', () => showNike(true));

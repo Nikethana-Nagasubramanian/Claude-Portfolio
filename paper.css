@@ -52,6 +52,8 @@ p { margin: 0; text-wrap: pretty; }
 .nike-photo { position: absolute; left: -24px; bottom: calc(100% + 12px); width: 208px; height: 208px; padding: 4px; background: #fffefe; border: 1px solid #e9e7e3; box-shadow: 0 8px 24px #0002; z-index: 20; }
 .nike-photo::after { content: ""; position: absolute; top: 100%; left: 0; width: 100%; height: 14px; }
 .nike-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+.nike-photo { opacity: 0; visibility: hidden; transform: translateY(5px) scale(.98); transform-origin: 24px bottom; transition: opacity 140ms ease-out, transform 180ms cubic-bezier(.23,1,.32,1), visibility 0s linear 180ms; }
+.nike-photo.is-visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); transition-delay: 0s; transition-duration: 180ms, 220ms, 0s; }
 .details-toggle { position: fixed; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); z-index: 40; display: flex; align-items: center; gap: 8px; border: 1px solid #e9e7e3; border-radius: 24px; background: #fffefef5; box-shadow: 0 2px 12px #00000009; padding: 8px 12px; font-size: 12px; line-height: 24px; cursor: pointer; }
 .details-toggle[hidden] { display: none; }
 .details-track { width: 28px; height: 17px; border-radius: 20px; background: #c9c6cc; position: relative; }
@@ -129,7 +131,12 @@ button:focus-visible { outline: 2px solid #5183cd; outline-offset: 4px; }
   .projects { gap: var(--space-group); }
 }
 @media (prefers-reduced-motion: reduce) {
+  .nike-photo, .nike-photo.is-visible { transform: none; transition: none; }
   .header-variant, .change-header { transition: none; }
   .change-header:active { transform: none; }
   a.project-preview, .icon-link { transition: none; transform: none !important; }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 1021px) {
+  .project { grid-template-columns: minmax(0, 1fr); }
+  .project-preview { display: none; }
 }
