@@ -3,6 +3,10 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/paper",
+      "destination": "/paper.html"
+    },
+    {
       "source": "/archive",
       "destination": "/archive.html"
     },

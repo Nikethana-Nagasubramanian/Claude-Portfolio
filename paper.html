@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffefe">
+  <title>For the love of design — Nike × Paper</title>
+  <meta name="description" content="A letter to the Paper team, from Nike: an invitation to design, build, and ship together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/paper.css">
+  <script src="/paper.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <img class="hero-art" src="/assets/paper/header-drafting.svg" alt="" fetchpriority="high">
+    <img class="header-variant" data-header="1" src="/assets/paper/header-aurora.png" alt="" decoding="async">
+    <img class="header-variant" data-header="2" src="/assets/paper/header-sky.png" alt="" decoding="async">
+    <h1>For the love of design</h1>
+    <button class="change-header" type="button" hidden><span aria-hidden="true">↻</span> Change header <span class="header-count" aria-hidden="true">1 / 3</span></button>
+    <span class="header-status" role="status" aria-live="polite"></span>
+  </header>
+  <nav class="section-nav" aria-label="On this page">
+    <a href="#hello" aria-current="location">Who I am</a>
+    <a href="#experience">My experience</a>
+    <a href="#pitch">The pitch</a>
+    <a href="#work">Selected work</a>
+  </nav>
+  <button class="details-toggle" type="button" role="switch" aria-checked="false" hidden><span>Details</span><span class="details-track" aria-hidden="true"></span></button>
+  <div class="padding-overlay" aria-hidden="true" hidden></div>
+  <main class="letter">
+    <section id="hello" class="prose" aria-label="Hi Paper team">
+      <p>Hi Paper team!</p>
+      <p>I’m <span class="nike-preview"><button type="button" class="nike-name" aria-expanded="false" aria-controls="nike-photo">Nike</button><span id="nike-photo" class="nike-photo" hidden><img src="/assets/paper/nike-portrait.png" alt="A painted portrait of Nike" width="200" height="200"></span></span> - I saw the Product Designer and Design Engineer openings at Paper. I want to start by saying something that probably isn't great application strategy: I'm not principal-level yet.</p>
+      <p>So I'm not going to pretend that I meet the bar you've described. <a class="paper-link" href="https://paper.design/blog/design" target="_blank" rel="noopener"><img src="/assets/paper/paper-icon.png" alt="" width="20" height="20">Design at Paper</a></p>
+      <p>But Paper is very close to the direction I've been deliberately trying to move my career toward - somewhere between product design and engineering, where designers understand the medium they're designing for and can actually build what <span id="imagining-type">they're imagining.</span></p>
+    </section>
+    <section id="experience" class="prose divided" aria-labelledby="experience-title">
+      <h2 class="section-label" id="experience-title">My path here</h2>
+      <p>My path here has been a little unusual. I started my career in SRE, moved closer to frontend engineering, then into product design — and over the last couple of years I've increasingly been bringing those disciplines back together.</p>
+      <p>I design products, build React/TypeScript interfaces, prototype with code and agents, and still carry some of the systems and performance thinking I learned as an SRE.</p>
+      <p>That's actually why I'm writing.</p>
+    </section>
+    <h2 id="pitch" class="invitation">Would Paper consider an 8–12 week paid design-engineering residency?</h2>
+    <section class="prose" aria-label="How I could contribute">
+      <p>Not a ceremonial internship where I shadow the team. Give me actual work.<br>Let me design, build, fix things, take feedback, and ship alongside you.</p>
+      <p>I think I could contribute immediately in a few places:</p>
+      <ul class="contributions">
+        <li>Product design + implementation — I can take an interface from problem → interaction → working frontend.</li>
+        <li>Rapid coded prototyping — I've increasingly been using agents as part of my design/build workflow rather than treating design and engineering as separate phases.</li>
+        <li>Product thinking — I've worked on 0→1 products and I'm comfortable with ambiguity, user research, and figuring out what actually needs to be built.</li>
+        <li>Performance + systems thinking — I started in SRE, so performance and reliability aren't abstract engineering concerns to me. That foundation still influences how I think about the interfaces and frontend systems I build.</li>
+      </ul>
+    </section>
+    <section class="prose aspirations" aria-label="What I want">
+      <p>What I want:<br>The opportunity to work alongside people with an unusually high bar for interface craft and become better by shipping real work with them.</p>
+      <div class="portraits" role="group" aria-label="People whose craft inspires me">
+        <a class="portrait" style="--angle:-8deg;--stack:6" href="https://x.com/vladmoroz" target="_blank" rel="noopener" aria-label="Vlad Moroz on X"><img src="/assets/paper/portrait-1.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@vladmoroz ↗</span></a>
+        <a class="portrait" style="--angle:8deg;--stack:5" href="https://x.com/hugosaintemarie" target="_blank" rel="noopener" aria-label="Hugo Sainte-Marie on X"><img src="/assets/paper/portrait-2.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@hugosaintemarie ↗</span></a>
+        <a class="portrait" style="--angle:-7.58deg;--stack:4" href="https://x.com/stephenhaney" target="_blank" rel="noopener" aria-label="Stephen Haney on X"><img src="/assets/paper/portrait-3.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@stephenhaney ↗</span></a>
+        <a class="portrait" style="--angle:8deg;--stack:3" href="https://x.com/alexharri_" target="_blank" rel="noopener" aria-label="Alex Harri on X"><img src="/assets/paper/portrait-4.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@alexharri_ ↗</span></a>
+        <a class="portrait" style="--angle:-7.58deg;--stack:2" href="https://x.com/agusegui" target="_blank" rel="noopener" aria-label="Agu Seguí on X"><img src="/assets/paper/portrait-5.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@agusegui ↗</span></a>
+        <a class="portrait" style="--angle:8deg;--stack:1" href="https://x.com/harcourttt" target="_blank" rel="noopener" aria-label="Harcourt on X"><img src="/assets/paper/portrait-6.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@harcourttt ↗</span></a>
+      </div>
+    </section>
+    <section class="prose" aria-label="A real problem">
+      <p>Give me 8–12 weeks and a real problem.</p>
+      <p>We can define one meaningful project, what success looks like, and what I own. If I earn the right to continue, we can discuss what comes next. If not, Paper still gets something thoughtful, tested, and shipped.</p>
+    </section>
+    <section id="work" class="work divided" aria-labelledby="work-title">
+      <h2 id="work-title">A few things I've built:</h2>
+      <div class="projects">
+        <article class="project">
+          <button class="project-preview" type="button" aria-label="Preview GrowthFactor" data-title="GrowthFactor" data-image="/assets/paper/growthfactor.png"><img src="/assets/paper/growthfactor.png" alt="GrowthFactor’s map and site evaluation interface" width="3418" height="1956" loading="lazy"><span>Preview ↗</span></button>
+          <div class="project-copy"><h3><a href="/gf">GrowthFactor <span aria-hidden="true">↗</span></a></h3><p>From six hours of site evaluation to roughly one minute.</p><p class="project-meta">Solo designer · Product design &amp; implementation</p></div>
+        </article>
+        <article class="project">
+          <button class="project-preview" type="button" aria-label="Preview Scout" data-title="Scout" data-image="/assets/paper/scout.png"><img class="scout-preview" src="/assets/paper/scout.png" alt="Scout’s role review and application workspace" width="7200" height="5120" loading="lazy"><span>Preview ↗</span></button>
+          <div class="project-copy"><h3><a href="/scout">Scout <span aria-hidden="true">↗</span></a></h3><p>A job-search tool I designed and built to discover roles, evaluate fit, and prepare applications.</p><p class="project-meta">Building a self-serve product · <a href="https://github.com/Nikethana-Nagasubramanian/scout" target="_blank" rel="noopener">GitHub ↗</a></p></div>
+        </article>
+        <article class="project">
+          <button class="project-preview" type="button" aria-label="Preview Paper’s canvas" data-title="Beneath Paper’s canvas" data-image="/assets/paper/canvas.png"><img src="/assets/paper/canvas.png" alt="An ocean composition in Paper’s HTML and CSS canvas" width="1600" height="804" loading="lazy"><span>Preview ↗</span></button>
+          <div class="project-copy"><h3><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Beneath Paper’s canvas <span aria-hidden="true">↗</span></a></h3><p>An exploration of how Paper connects design, the browser, and code.</p><p class="project-meta"><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Read on Medium ↗</a></p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <div class="hover-preview" hidden aria-hidden="true"><img alt=""><span></span></div>
+  <dialog class="image-dialog" aria-labelledby="preview-title">
+    <div class="dialog-heading"><h2 id="preview-title"></h2><button type="button" class="close-preview" aria-label="Close preview">Close <span aria-hidden="true">×</span></button></div>
+    <img class="dialog-image" alt="">
+  </dialog>
+</body>
+</html>
