@@ -76,7 +76,7 @@
     note.textContent = 'Kinda digging the violet for gap indicators';
     Object.assign(note.style, { left: `${experience.left + scrollX}px`, top: `${experience.top + scrollY + 5}px`, width: `${experience.width}px` });
     paddingOverlay.append(note);
-    ['#experience-title', '#imagining-type'].forEach(selector => {
+    ['#experience-title'].forEach(selector => {
       const target = document.querySelector(selector);
       const range = document.createRange();
       range.selectNodeContents(target);
