@@ -32,8 +32,11 @@
       const style = getComputedStyle(element);
       const top = parseFloat(style.paddingTop), right = parseFloat(style.paddingRight);
       const bottom = parseFloat(style.paddingBottom), left = parseFloat(style.paddingLeft);
-      [[0, 0, rect.width, top], [0, rect.height - bottom, rect.width, bottom],
-        [0, top, left, rect.height - top - bottom], [rect.width - right, top, right, rect.height - top - bottom]].forEach(([x, y, width, height], side) => {
+      const borderTop = parseFloat(style.borderTopWidth), borderLeft = parseFloat(style.borderLeftWidth);
+      const innerWidth = rect.width - borderLeft - parseFloat(style.borderRightWidth);
+      const innerHeight = rect.height - borderTop - parseFloat(style.borderBottomWidth);
+      [[borderLeft, borderTop, innerWidth, top], [borderLeft, borderTop + innerHeight - bottom, innerWidth, bottom],
+        [borderLeft, borderTop + top, left, innerHeight - top - bottom], [borderLeft + innerWidth - right, borderTop + top, right, innerHeight - top - bottom]].forEach(([x, y, width, height], side) => {
         if (width <= 0 || height <= 0) return;
         const px = rect.left + scrollX + x, py = rect.top + scrollY + y;
         paths[element.matches('.invitation') ? 'grey' : 'violet'].push(`M${px} ${py}h${width}v${height}h${-width}Z`);

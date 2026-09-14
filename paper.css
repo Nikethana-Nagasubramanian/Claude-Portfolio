@@ -1,5 +1,6 @@
 :root { color-scheme: light; font-family: "Geist", system-ui, sans-serif; color: #55534f; background: #fffefe; font-synthesis: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 * { box-sizing: border-box; }
+:root { --space-paragraph: 24px; --space-group: 32px; --space-section: 48px; }
 body { margin: 0; font-size: 16px; line-height: 26px; letter-spacing: -.012em; }
 button { font: inherit; color: inherit; }
 [id] { scroll-margin-top: 96px; }
@@ -24,10 +25,10 @@ h1 { margin: 0; font: 400 clamp(42px, 7.92vw, 100px)/1.5 "Cedarville Cursive", c
 .change-header:disabled { cursor: wait; }
 .header-count { color: #777; font-variant-numeric: tabular-nums; }
 .header-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.letter { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 56px 24px 96px; }
+.letter { display: flex; flex-direction: column; align-items: center; gap: var(--space-section); padding: 56px 24px 96px; }
 .prose, .invitation, .work { width: 100%; max-width: 586px; }
 p { margin: 0; text-wrap: pretty; }
-.prose p + p { margin-top: 24px; }
+.prose p + p { margin-top: var(--space-paragraph); }
 .paper-link { display: inline-flex; align-items: center; gap: 4px; margin-left: 3px; font: inherit; color: #416fb2; white-space: nowrap; vertical-align: baseline; }
 .paper-link img { object-fit: contain; }
 .invitation { margin: 0; padding: 44px 32px; background: #098ffd; border-radius: 12px; color: #fff; font-size: 29px; font-weight: 500; line-height: 38px; letter-spacing: -.035em; text-align: center; text-wrap: balance; }
@@ -35,8 +36,8 @@ p { margin: 0; text-wrap: pretty; }
 .contributions li { text-wrap: pretty; }
 .contributions li::before { content: ""; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; background: #b7b3ac; border-radius: 50%; }
 .contributions li { position: relative; padding-left: 16px; }
-.contributions li + li { margin-top: 24px; }
-.aspirations { display: flex; flex-direction: column; gap: 28px; }
+.contributions li + li { margin-top: var(--space-paragraph); }
+.aspirations { display: flex; flex-direction: column; gap: var(--space-group); }
 .portraits { display: flex; align-self: center; padding: 3px 8px; }
 .portrait { display: block; position: relative; padding: 2px; border-radius: 8px; background: #fff; outline: .5px solid #e3e3e3; box-shadow: 1px 1px 0 #e2e2e2; transform: rotate(var(--angle)); }
 .portrait + .portrait { margin-left: -12px; }
@@ -72,8 +73,8 @@ p { margin: 0; text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   .portrait, .portrait-handle { transition: none; }
 }
-.work > h2 { margin: 0 0 32px; font-size: 20px; line-height: 28px; letter-spacing: -.025em; font-weight: 500; color: #252522; }
-.projects { display: grid; gap: 32px; }
+.work > h2 { margin: 0 0 var(--space-group); font-size: 20px; line-height: 28px; letter-spacing: -.025em; font-weight: 500; color: #252522; }
+.projects { display: grid; gap: var(--space-group); }
 .project { display: grid; grid-template-columns: minmax(0, 1fr) 104px; gap: 24px; align-items: start; }
 .project-preview { grid-column: 2; grid-row: 1; position: relative; display: block; padding: 3px; width: 104px; height: 82px; background: #fff; border: 1px solid #e9e7e3; border-radius: 8px; overflow: hidden; cursor: zoom-in; }
 .project-preview img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 65% center; border-radius: 4px; }
@@ -119,13 +120,13 @@ button:focus-visible { outline: 2px solid #5183cd; outline-offset: 4px; }
   .hero { height: 168px; }
   h1 { max-width: 100%; padding: 0 16px; font-size: clamp(32px, 8.2vw, 46px); }
   .hero-art { object-position: 55% center; }
-  .letter { padding: 32px 24px 48px; gap: 32px; }
+  .letter { padding: 32px 24px 48px; gap: var(--space-group); }
   .invitation { padding: 32px 20px; font-size: 27px; line-height: 35px; }
-  .project { grid-template-columns: minmax(0, 1fr) 80px; gap: 14px; }
+  .project { grid-template-columns: minmax(0, 1fr) 80px; gap: 16px; }
   .project-preview { width: 80px; height: 76px; }
   .project-copy { gap: 6px; }
-  .work > h2 { margin-bottom: 28px; }
-  .projects { gap: 34px; }
+  .work > h2 { margin-bottom: var(--space-group); }
+  .projects { gap: var(--space-group); }
 }
 @media (prefers-reduced-motion: reduce) {
   .header-variant, .change-header { transition: none; }
