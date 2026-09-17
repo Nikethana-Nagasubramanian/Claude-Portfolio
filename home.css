@@ -276,7 +276,7 @@ img, video { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding-bottom: 22px;
+  padding-bottom: 16px;
 }
 
 .work-label {
@@ -332,7 +332,7 @@ img, video { max-width: 100%; display: block; }
 /* Project entries — editorial rows, not boxed cards */
 .work-entry {
   display: block;
-  margin-top: 92px;
+  margin-top: 68px;
 }
 .work-entry:first-of-type { margin-top: 72px; }
 
@@ -458,9 +458,9 @@ img, video { max-width: 100%; display: block; }
 
   .work-section { margin-top: 110px; }
   .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .work-tab { padding: 8px 14px; font-size: 10px; }
+  .work-tab { padding: 6px 10px; font-size: 10px; }
   .work-entry { margin-top: 70px; }
-  .work-entry:first-of-type { margin-top: 54px; }
+  .work-entry:first-of-type { margin-top: 32px; }
   .work-tags { margin-left: 0; text-align: left; flex-basis: 100%; }
   .work-support { font-size: 16px; }
 
@@ -562,11 +562,12 @@ img, video { max-width: 100%; display: block; }
 .home-social-links svg { width: 20px; height: 20px; fill: currentColor; }
 .home-work { min-width: 0; padding: clamp(44px, 6vw, 88px) clamp(32px, 7vw, 120px) 120px; }
 .home-work .work-section { max-width: 1120px; margin: 0 auto; }
-.home-work .work-entry:first-of-type { margin-top: 72px; }
+.home-work .work-entry:first-of-type { margin-top: 40px; }
 .home-page .work-tab,
 .home-page .work-count,
 .home-page .work-meta { font-family: var(--mono); font-size: 12px; }
-.home-page .work-title { font: 500 clamp(27px, 2.4vw, 32px)/1.3 var(--sans); letter-spacing: -.035em; }
+/* Same voice as the rail headline: 500 weight, -.035em, 1.3 line-height. */
+.home-page .work-title { font: 500 24px/1.3 var(--sans); letter-spacing: -.035em; }
 .home-page .work-support { font: 400 16px/1.625 var(--sans); }
 
 @media (max-width: 979px) {
@@ -581,11 +582,12 @@ img, video { max-width: 100%; display: block; }
   .home-rail .nike-photo { display: none; }
   .home-rail { overflow: visible; }
   .rail-top { display: none; }
-  .home-rail .hero-headline { margin-top: 40px; max-width: 20ch; font-size: 28px; }
+  .home-rail .hero-headline { margin-top: 40px; max-width: 20ch; font-size: 22px; }
+  .home-page .work-title { font-size: 22px; }
   .home-rail .hero-support { font-size: 16px; }
   .home-rail__footer { display: none; }
   .home-work { padding: 0; }
-  .home-work .work-section { margin-top: 110px; }
+  .home-work .work-section { margin-top: 72px; }
 }
 
 @media (max-height: 860px) {
