@@ -92,8 +92,10 @@ body.has-rail { padding-left: var(--rail-w); }
   .site-rail { display: none; }
 }
 
-/* Nothing may push the page sideways. */
-html, body { max-width: 100%; overflow-x: hidden; }
+/* The portrait is a desktop affordance; on a phone it would hang off the page. */
+@media (max-width: 979px) {
+  .nike-photo { display: none; }
+}
 
 /* The rail never scrolls; on a short screen it tightens instead. */
 @media (max-height: 860px) {
