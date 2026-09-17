@@ -26,7 +26,7 @@
     rail.innerHTML = [
       '<div class="rail-top"></div>',
       '<div class="hero-id">',
-      '<p class="hero-name"><span class="hero-name-text">I\'m Nike</span><span class="hero-status">Open to work</span></p>',
+      '<p class="hero-name"><span class="nike-preview"><span class="hero-name-text">I\'m Nike</span><span class="nike-photo" aria-hidden="true"><img src="assets/nike-portrait.jpg" alt="" width="520" height="693" loading="lazy" /></span></span><span class="hero-status">Open to work</span></p>',
       '<p class="hero-role">Product Designer who codes</p>',
       "</div>",
       '<div class="site-rail__footer">',

@@ -16,16 +16,15 @@ body.has-rail { padding-left: 288px; }
 }
 .site-rail .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .site-rail .hero-name { display: flex; align-items: center; gap: 10px; }
-.site-rail .hero-name-text::before { content: none; }
 .site-rail .hero-name-text {
   color: var(--ink);
   font: 500 20px/1.25 var(--sans);
-  letter-spacing: -.5px;
+  letter-spacing: normal;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
-.site-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: -.5px; }
+.site-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: normal; }
 .site-rail .hero-status {
   display: inline-flex;
   align-items: center;
@@ -46,7 +45,7 @@ body.has-rail { padding-left: 288px; }
 .site-rail__ai { display: grid; gap: 10px; }
 .site-rail__nav a,
 .site-rail__ai a,
-.site-rail__email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: -.5px; transition: color .15s ease; }
+.site-rail__email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: normal; transition: color .15s ease; }
 .site-rail__nav a { position: relative; }
 .site-rail__nav a[aria-current='page'] { padding-left: 18px; color: var(--ink); font-weight: 500; }
 .site-rail__nav a[aria-current='page']::before {
@@ -96,4 +95,37 @@ body.has-rail { padding-left: 288px; }
    details would be worse than letting the rail scroll. */
 @media (max-height: 860px) {
   .site-rail { overflow-y: auto; }
+}
+
+/* Hovering the name brings the portrait in: a short fade with a small rise,
+   the same easing the rest of the site uses. Focus shows it for keyboards. */
+.nike-preview { position: relative; display: inline-block; }
+.nike-photo {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -4px;
+  z-index: 30;
+  width: 208px;
+  padding: 4px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  box-shadow: 0 10px 28px #00000014;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px) scale(.98);
+  transform-origin: 24px top;
+  transition: opacity 140ms ease-out, transform 180ms var(--ease-out), visibility 0s linear 180ms;
+}
+.nike-photo img { display: block; width: 100%; height: auto; }
+.nike-preview:hover .nike-photo,
+.nike-preview:focus-within .nike-photo {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+  transition-duration: 200ms, 240ms, 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nike-photo, .nike-preview:hover .nike-photo { transition: none; transform: none; }
 }
