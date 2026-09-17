@@ -487,6 +487,7 @@ img, video { max-width: 100%; display: block; }
 }
 .home-rail {
   position: sticky;
+  z-index: 5;
   top: 0;
   height: 100dvh;
   padding: 24px 28px 28px;
@@ -494,7 +495,7 @@ img, video { max-width: 100%; display: block; }
   background: color-mix(in srgb, var(--bg) 96%, var(--surface));
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .home-rail .hero { margin: 0; }
@@ -502,19 +503,19 @@ img, video { max-width: 100%; display: block; }
 .home-rail .hero-name { display: flex; align-items: center; gap: 10px; }
 .home-rail .hero-name-text {
   color: var(--ink);
-  font: 500 20px/1.25 var(--sans);
-  letter-spacing: normal;
+  font: 550 20px/1.4 var(--sans);
+  letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
-.home-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: normal; }
+.home-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; }
 .home-rail .hero-status {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0;
   margin: 0;
-  padding: 3px 9px;
+  padding: 4px 8px;
   border: 1px solid var(--rule);
   border-radius: 999px;
   background: var(--surface);
@@ -524,14 +525,14 @@ img, video { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 .home-rail .hero-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--available); }
-.home-rail .hero-headline { margin-top: var(--rail-headline-top, 129px); max-width: 21ch; font: 500 20px/1.25 var(--sans); letter-spacing: normal; }
-.home-rail .hero-support { margin-top: 14px; max-width: 34ch; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: normal; }
+.home-rail .hero-headline { margin-top: var(--rail-headline-top, 123px); max-width: 21ch; font: 550 20px/1.4 var(--sans); letter-spacing: -0.02em; }
+.home-rail .hero-support { margin-top: 14px; max-width: 34ch; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; }
 .home-rail__footer { margin-top: auto; padding-top: 32px; }
 .home-rail__nav,
 .home-ai-links { display: grid; gap: 8px; }
 .home-rail__nav a,
 .home-ai-links a,
-.home-email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: normal; transition: color .15s ease; }
+.home-email { width: fit-content; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; transition: color .15s ease; }
 .home-rail__nav a { position: relative; }
 .home-rail__nav a[aria-current='page'] { padding-left: 18px; }
 .home-rail__nav a[aria-current='page']::before {
@@ -586,3 +587,26 @@ img, video { max-width: 100%; display: block; }
   .home-rail { overflow-y: auto; }
   .home-rail .hero-headline { margin-top: var(--rail-headline-top-short, 56px); }
 }
+
+/* Two ways to ask about the work: ChatGPT outlined, Claude filled. */
+.home-ai-links .ai-button {
+  justify-content: center;
+  padding: 11px 12px;
+  border-radius: 8px;
+  background: var(--paper);
+  font-weight: 500;
+}
+.home-ai-links .ai-button:hover { border-color: var(--ink); }
+.home-ai-links .ai-button--claude {
+  border-color: var(--claude);
+  background: var(--claude);
+  color: #fff;
+}
+.home-ai-links .ai-button--claude:hover {
+  border-color: #b8634a;
+  background: #b8634a;
+  color: #fff;
+}
+:root[data-theme='dark'] .home-ai-links .ai-button--claude img { filter: none; }
+
+.home-ai-links .ai-icon { width: 16px; height: 16px; flex: 0 0 16px; }
