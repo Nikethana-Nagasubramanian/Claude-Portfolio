@@ -15,27 +15,49 @@ body.has-rail { padding-left: 288px; }
   overflow: hidden;
 }
 .site-rail .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
-.site-rail .hero-id { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.site-rail .hero-avatar { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
-.site-rail .hero-name { flex-basis: 100%; color: var(--ink); font: 500 12px/1.5 var(--mono); }
-.site-rail .hero-name span { color: var(--muted); }
-.site-rail .hero-status { flex-basis: 100%; color: var(--accent); font: 400 12px/1.5 var(--mono); }
-.site-rail .hero-status::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 7px;
-  border-radius: 50%;
-  background: currentColor;
+.site-rail .hero-name { display: flex; align-items: center; gap: 10px; }
+.site-rail .hero-name-text::before { content: none; }
+.site-rail .hero-name-text {
+  color: var(--ink);
+  font: 500 20px/1.25 var(--sans);
+  letter-spacing: -.5px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
+.site-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: -.5px; }
+.site-rail .hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 3px 9px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font: 400 12px/1.4 var(--sans);
+  letter-spacing: -.2px;
+  white-space: nowrap;
+}
+.site-rail .hero-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--available); }
 .site-rail__footer { margin-top: auto; padding-top: 32px; }
 .site-rail__nav,
 .site-rail__ai { display: grid; gap: 10px; }
 .site-rail__nav a,
 .site-rail__ai a,
-.site-rail__email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); transition: color .15s ease; }
-.site-rail__nav a[aria-current='page'] { color: var(--ink); font-weight: 600; }
+.site-rail__email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); letter-spacing: -.5px; transition: color .15s ease; }
+.site-rail__nav a { position: relative; }
+.site-rail__nav a[aria-current='page'] { padding-left: 18px; color: var(--ink); font-weight: 500; }
+.site-rail__nav a[aria-current='page']::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
 .site-rail__nav a:hover,
 .site-rail__ai a:hover,
 .site-rail__email:hover { color: var(--accent); }

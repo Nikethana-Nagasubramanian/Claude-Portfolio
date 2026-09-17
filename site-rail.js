@@ -26,9 +26,8 @@
     rail.innerHTML = [
       '<div class="rail-top"></div>',
       '<div class="hero-id">',
-      '<img class="hero-avatar" src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg?scale-down-to=512&width=3024&height=3024" alt="Nikethana (Nike)" />',
-      '<p class="hero-name">Nikethana (Nike) <span>Product Builder</span></p>',
-      '<p class="hero-status">Open for new opportunities</p>',
+      '<p class="hero-name"><span class="hero-name-text">I\'m Nike</span><span class="hero-status">Open to work</span></p>',
+      '<p class="hero-role">Product Designer who codes</p>',
       "</div>",
       '<div class="site-rail__footer">',
       '<nav class="site-rail__nav" aria-label="Site links">',
