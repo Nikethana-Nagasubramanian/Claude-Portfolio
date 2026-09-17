@@ -1,18 +1,18 @@
 /* The left rail the home page uses, shared with About, Playground and Archive.
    It replaces the top navigation on wide screens; below 980px the top nav
    returns and the rail is hidden. */
-body.has-rail { padding-left: 288px; }
+body.has-rail { padding-left: var(--rail-w); }
 .site-rail {
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 20;
   display: flex;
   flex-direction: column;
-  width: 288px;
+  width: var(--rail-w);
   padding: 24px 28px 28px;
   border-right: 1px solid var(--rule);
   background: color-mix(in srgb, var(--paper) 96%, var(--surface));
-  overflow: visible;
+  overflow: hidden;
 }
 .site-rail .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .site-rail .hero-name { display: flex; align-items: center; gap: 10px; }
@@ -95,10 +95,14 @@ body.has-rail { padding-left: 288px; }
 /* Nothing may push the page sideways. */
 html, body { max-width: 100%; overflow-x: hidden; }
 
-/* No scrolling on a normal screen. On a short one, clipping the contact
-   details would be worse than letting the rail scroll. */
+/* The rail never scrolls; on a short screen it tightens instead. */
 @media (max-height: 860px) {
-  .site-rail { overflow-y: auto; }
+  .site-rail { padding-top: 16px; }
+  .site-rail__footer { padding-top: 20px; }
+  .site-rail__ai { margin-top: 14px; padding-top: 14px; }
+  .site-rail__ai .ai-button { padding: 8px 10px; }
+  .site-rail__email { margin-top: 12px; }
+  .site-rail__social { margin-top: 10px; }
 }
 
 /* Hovering the name brings the portrait in: a short fade with a small rise,
@@ -106,9 +110,9 @@ html, body { max-width: 100%; overflow-x: hidden; }
 /* Anchored to the rail, not the name, so it sits clear of the rail's edge. */
 .nike-preview { display: inline-block; }
 .nike-photo {
-  position: absolute;
-  top: 68px;
-  left: calc(100% + 20px);
+  position: fixed;
+  top: 76px;
+  left: calc(var(--rail-w) + 20px);
   z-index: 200;
   width: 300px;
   padding: 4px;

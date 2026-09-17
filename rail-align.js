@@ -48,12 +48,25 @@
     // Apply, then check the result and correct the remainder: one pass can be
     // measured while the page is still settling.
     headline.style.marginTop = "0px";
+    // Free space in the rail, measured with the footer unpinned from the bottom.
+    var footer = rail.querySelector(".home-rail__footer, .site-rail__footer");
+    var slack = Infinity;
+    if (footer) {
+      var pinned = footer.style.marginTop;
+      footer.style.marginTop = "0px";
+      var railBox = rail.getBoundingClientRect();
+      var padBottom = parseFloat(getComputedStyle(rail).paddingBottom) || 0;
+      var used = footer.getBoundingClientRect().bottom - railBox.top + padBottom;
+      slack = Math.max(0, Math.round(rail.clientHeight - used));
+      footer.style.marginTop = pinned || "";
+    }
     var margin = Math.max(0, Math.round(capTop(target) - capTop(headline)));
+    margin = Math.min(margin, slack);
     headline.style.marginTop = margin + "px";
     for (var pass = 0; pass < 3; pass += 1) {
       var residual = Math.round(capTop(target) - capTop(headline));
       if (residual === 0) break;
-      margin = Math.max(0, margin + residual);
+      margin = Math.min(Math.max(0, margin + residual), slack);
       headline.style.marginTop = margin + "px";
     }
   }

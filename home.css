@@ -482,7 +482,7 @@ img, video { max-width: 100%; display: block; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: minmax(248px, 300px) minmax(0, 1fr);
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
   align-items: start;
 }
 .home-rail {
@@ -495,7 +495,7 @@ img, video { max-width: 100%; display: block; }
   background: color-mix(in srgb, var(--bg) 96%, var(--surface));
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
 }
 .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .home-rail .hero { margin: 0; }
@@ -588,8 +588,13 @@ img, video { max-width: 100%; display: block; }
 }
 
 @media (max-height: 860px) {
-  .home-rail { overflow-y: auto; }
-  .home-rail .hero-headline { margin-top: var(--rail-headline-top-short, 56px); }
+  .home-rail { padding-top: 16px; }
+  .home-rail .hero-marquee { display: none; }
+  .home-rail__footer { padding-top: 20px; }
+  .home-ai-links { margin-top: 14px; padding-top: 14px; }
+  .home-ai-links .ai-button { padding: 8px 10px; }
+  .home-email { margin-top: 12px; }
+  .home-social-links { margin-top: 10px; }
 }
 
 /* Two ways to ask about the work: ChatGPT outlined, Claude filled. */
