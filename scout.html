@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scout: From 230 Roles Across 5 Sources to 3 Worth My Time — Nikethana</title>
   <meta name="description" content="Scout is a source-directed job-search copilot that narrows 230 roles across five sources to three worth my time, then helps prepare each application." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=9" />
+  <link rel="stylesheet" href="case-typography.css" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
+  <link rel="stylesheet" href="case-reading.css" />
+  <link rel="stylesheet" href="site-theme.css" />
 </head>
-<body>
+<body class="case-type scout-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -41,43 +45,47 @@
     </div>
   </nav>
 
+  <div class="scout-hero" aria-label="Scout role review interface">
+    <img src="assets/scout/scout-header.png" alt="Scout role review interface showing matched jobs and application actions" fetchpriority="high" />
+  </div>
+
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
       <p class="case-nav-label">Contents</p>
       <a href="#overview">Overview</a>
-      <a href="#idea">The Idea</a>
-      <a href="#features">Sneak Peek</a>
+      <a href="#idea">The Bet</a>
+      <a href="#decisions">Decisions</a>
+      <a href="#features">What It Looks Like</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <p class="hero-eyebrow">Scout — Work in Progress</p>
-        <h1 class="case-title">From 230 Roles Across 5 Sources to 3 Worth My Time</h1>
-        <p class="hero-support">Scout looks beyond one job board, surfaces roles worth your time, and helps you prepare each application in one place.</p>
-
+        <p class="hero-eyebrow">Scout — Open Source</p>
+        <h1 class="case-title case-display">From 230 Roles Across 5 Sources to 3 Worth My Time</h1>
+        <p class="hero-support">I built Scout after realizing that job searching was not a discovery problem. It was a continuity problem. The role was in one place, the resume in another, and the reasoning behind each application disappeared between them.</p>
         <div class="spec-strip" aria-label="Project details">
           <div class="spec-rows">
             <p class="spec-item"><b>Role</b>Solo Product Designer &amp; Builder</p>
-            <p class="spec-item"><b>Status</b>Actively Building</p>
-            <p class="spec-item"><b>Scope</b>Product Strategy, UX, Visual Design, Prototype</p>
+            <p class="spec-item"><b>Status</b>Free &amp; Open Source</p>
+            <p class="spec-item"><b>Scope</b>Product Strategy, UX, Visual Design, React/TypeScript Implementation</p>
           </div>
         </div>
 
-        <div class="hero-duo">
+        <div class="hero-duo case-copy">
           <div>
             <p class="mono-label">Problem Statement</p>
             <p>Job searching is scattered across job boards, company sites, inbox alerts, resume files, and application trackers. Finding the role is only the beginning; the work required to decide, tailor, and apply is fragmented too.</p>
           </div>
           <div>
-            <p class="mono-label">What I Did</p>
-            <p>I designed and built a source-directed copilot that searches the resources I choose, identifies roles worth reviewing, and carries the same job context through resume editing and cover-letter generation.</p>
+            <p class="mono-label">The Product Thesis</p>
+            <p>Scout is an open-source workspace that keeps the job, the fit assessment, the resume edits, and the application connected from discovery through submission.</p>
           </div>
         </div>
       </header>
 
       <section class="case-section sec--narrow" id="idea">
         <div class="sec-head">
-          <p class="sec-index"><em>01</em>The Idea</p>
+          <p class="sec-index"><em>01</em>The Bet</p>
           <h2 class="sec-title">Go Beyond the Traditional LinkedIn Search</h2>
           <p class="sec-support">Tell Scout where to look, then let it bring the worthwhile opportunities together.</p>
         </div>
@@ -87,9 +95,23 @@
         </div>
       </section>
 
+      <section class="case-section sec--narrow" id="decisions">
+        <div class="sec-head">
+          <p class="sec-index"><em>02</em>Design-Engineering Decisions</p>
+          <h2 class="sec-title">Make uncertainty visible, then keep context intact</h2>
+          <p class="sec-support">The product is shaped around the moments where a job-search copilot could quietly make the wrong call.</p>
+        </div>
+        <div class="sec-body">
+          <p><strong>Source-directed discovery.</strong> Users choose where Scout looks — from Gmail alerts and public feeds to curated pages and company boards — so the search has a clear boundary.</p>
+          <p><strong>Eligibility is not a guess.</strong> Duplicate roles are consolidated, while fit and eligibility checks are surfaced as signals that may need verification rather than presented as fact.</p>
+          <p><strong>Approval stays human.</strong> Resume suggestions show the original line, the proposed revision, and the evidence behind it. Scout can help prepare the application, but it does not silently rewrite or submit one.</p>
+          <p><strong>One role, one thread of context.</strong> The selected role carries through profile matching, resume edits, and cover-letter generation so each step builds on the last.</p>
+        </div>
+      </section>
+
       <section class="case-section sec--major" id="features">
         <div class="sec-head">
-          <p class="sec-index"><em>02</em>Sneak Peek</p>
+          <p class="sec-index"><em>03</em>What It Looks Like</p>
           <h2 class="sec-title">From Finding the Role to Preparing the Application</h2>
           <p class="sec-support">Five screens from the workflow taking shape.</p>
         </div>
@@ -152,16 +174,27 @@
           </div>
         </div>
 
-        <div class="build-note">
-          <p class="mono-label">Still Building</p>
-          <p>Scout is an active work in progress. I am continuing to connect more sources, tighten the application workflow, and build out the features that take a role from discovery through submission.</p>
+        <div class="build-note open-source-note">
+          <p class="mono-label">Open Source</p>
+          <p>Scout is free and open-source. Use it, adapt it, or build on top of it.</p>
+          <a class="github-link" href="https://github.com/Nikethana-Nagasubramanian/scout" target="_blank" rel="noopener">View Scout on GitHub</a>
+        </div>
+        <div class="scout-limitations">
+          <p class="mono-label">What Scout does not automate</p>
+          <p>Scout is deliberately not an auto-apply tool. Eligibility checks can be incomplete, job data can become stale, and AI suggestions still need human approval. The product is designed to make those uncertainties visible rather than hide them.</p>
         </div>
       </section>
 
       <a class="next-case" href="nutricopilot.html">
-        <span class="mono-label">Next Case Study</span>
-        <span class="next-case-title">NutriCopilot: A Nutrition Coach That Talks Like I Do</span>
-        <span class="next-case-arrow">Read →</span>
+        <div class="next-case-preview">
+          <img src="assets/covers/nutri-cover.png" alt="NutriCopilot macro-tracking interface" />
+        </div>
+        <div class="next-case-copy">
+          <span class="mono-label">Next Case Study</span>
+          <span class="next-case-title">NutriCopilot: A Nutrition Coach That Talks Like I Do</span>
+          <span class="next-case-support">Designing a nutrition companion that makes healthy decisions feel more personal.</span>
+          <span class="next-case-arrow">Read case study</span>
+        </div>
       </a>
 
       <footer class="bottom-contact">
@@ -182,6 +215,13 @@
   </main>
 
   <script>
+    const scoutNav = document.querySelector('.case-nav');
+    const updateScoutNav = () => {
+      document.body.classList.toggle('scout-nav-visible', window.scrollY > 16);
+    };
+    window.addEventListener('scroll', updateScoutNav, { passive: true });
+    updateScoutNav();
+
     const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
     const scrollSpyLinks = document.querySelectorAll('.case-nav a');
 

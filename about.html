@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Nikethana</title>
   <meta name="description" content="A little about Nikethana (Nike) — product designer, her journey, and how she works." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=8" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
   <script defer src="https://www.itsmenike.com/tools/gh-contrib-widget.js"></script>
+  <link rel="stylesheet" href="site-theme.css" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css" />
+  <link rel="stylesheet" href="about-playground.css" />
 </head>
-<body>
+<body class="case-type gf-case about-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -61,14 +66,14 @@
           I'm Nikethana — call me Nike.
         </h1>
         <p class="hero-support">Ni-kay-tha-na means Goddess of Victory in Greek. I design and build products end to end, and I ask a lot of "why."</p>
+        <a class="resume-cta hero-resume" href="https://docs.google.com/document/d/1aWXR3U98yh4VY9gF1RPq-lIz_Kmo1BjMQ04dx9SKnlA/edit?usp=sharing" target="_blank" rel="noopener">View Resume →</a>
 
         <div class="spec-strip" aria-label="Quick facts">
           <div class="spec-rows">
-            <p class="spec-item"><b>Based</b>Boston, MA — originally from India</p>
+            <p class="spec-item"><b>Based</b>New Orleans — open to relocation</p>
             <p class="spec-item"><b>Focus</b>Product design, 0→1 problems</p>
             <p class="spec-item"><b>Status</b>Open for new opportunities</p>
           </div>
-          <a class="resume-cta" href="https://docs.google.com/document/d/1aWXR3U98yh4VY9gF1RPq-lIz_Kmo1BjMQ04dx9SKnlA/edit?usp=sharing" target="_blank" rel="noopener">View Resume →</a>
         </div>
 
         <div class="hero-duo">
@@ -269,6 +274,11 @@
   </main>
 
   <script>
+    const aboutNav = document.querySelector('.case-nav');
+    const updateAboutNav = () => document.body.classList.toggle('gf-nav-visible', window.scrollY > 120);
+    window.addEventListener('scroll', updateAboutNav, { passive: true });
+    updateAboutNav();
+
     const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
     const scrollSpyLinks = document.querySelectorAll('.case-nav a');
 

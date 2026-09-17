@@ -1,0 +1,55 @@
+/* Reading depth shares the case study's paper, ink, mono type and blue rule. */
+.reading-control[hidden], .case-summary[hidden], #case-detail[hidden],
+.case-section[hidden] { display: none; }
+.reading-control {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+  margin: 8px 0 28px;
+}
+.reading-control::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: var(--accent);
+  transform: translateX(0);
+  transition: transform 160ms cubic-bezier(.23, 1, .32, 1);
+}
+.reading-control[data-mode="full"]::after { transform: translateX(100%); }
+.reading-control button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 500 11px var(--mono);
+  letter-spacing: .02em;
+  padding: 14px 20px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.reading-control button[aria-pressed="true"] { color: var(--ink); }
+.reading-control button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.reading-control button:active { transform: scale(.98); }
+@media (hover: hover) and (pointer: fine) {
+  .reading-control button:hover { color: var(--ink); }
+}
+.reading-control[data-keyboard]::after { transition: none; }
+.case-summary { max-width: 780px; }
+body[data-reading="short"] .case-nav { visibility: hidden; }
+@media (max-width:600px) { .reading-control { margin-bottom:12px; } }
+@media (prefers-reduced-motion: reduce) {
+  .reading-control::after { transition: none; }
+  .reading-control button:active { transform: none; }
+}
+@media print {
+  .reading-control, .case-summary { display: none !important; }
+  #case-detail[hidden], .case-section[hidden] { display: block; }
+}

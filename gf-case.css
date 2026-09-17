@@ -35,7 +35,7 @@ img, video { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #616060;
+  color: var(--muted);
 }
 
 /* ── Top nav: flat editorial bar ── */
@@ -370,7 +370,7 @@ img, video { max-width: 100%; display: block; }
 .sec-body { margin-top: 34px; }
 .sec-body > p {
   max-width: 68ch;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 .sec-body > p + p { margin-top: 16px; }
 
@@ -381,7 +381,7 @@ img, video { max-width: 100%; display: block; }
 }
 .sec-body ul + p, .sec-body p + ul { margin-top: 16px; }
 .sec-body li {
-  color: #3a3a3a;
+  color: var(--ink);
   line-height: 1.65;
 }
 .sec-body li + li { margin-top: 10px; }
@@ -390,7 +390,7 @@ img, video { max-width: 100%; display: block; }
 
 /* Numbered pillar lead-ins — "1. Name: description" rows that introduce
    their own media directly below, full-width (not list-indented). */
-.pillar-lead { max-width: 68ch; color: #3a3a3a; }
+.pillar-lead { max-width: 68ch; color: var(--ink); }
 .pillar-num { color: var(--accent); font-weight: 600; margin-right: 2px; }
 .pillar-name { color: var(--accent); font-weight: 600; }
 .media-caption + .pillar-lead { margin-top: 48px; }
@@ -495,7 +495,7 @@ p + .mono-label,
   font-weight: 500;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #616060;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 60ch;
   text-align: center;
@@ -564,13 +564,13 @@ p + .mono-label,
   min-width: 0;
   padding: 28px;
   border: 1px solid var(--rule);
-  background: #f7f7f4;
+  background: var(--surface);
   scroll-snap-align: start;
 }
 
 .feature-gallery-slide--image {
   padding: 0;
-  background: #fff;
+  background: var(--surface);
 }
 
 .feature-gallery-slide--image .feature-gallery-frame {
@@ -621,7 +621,7 @@ p + .mono-label,
 .feature-gallery-frame {
   min-width: 0;
   border: 1px solid var(--rule);
-  background: #fff;
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -643,7 +643,7 @@ p + .mono-label,
 
 .build-note p:not(.mono-label) {
   max-width: 62ch;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 
 @media (max-width: 720px) {
@@ -841,7 +841,7 @@ p + .mono-label,
 .process-step p:not(.process-title) {
   font-size: 14px;
   line-height: 1.65;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 
 /* Design truths — 2x2 dashed matrix, square-bulleted heads */
@@ -877,7 +877,7 @@ p + .mono-label,
 .truth p:not(.truth-head) {
   font-size: 15px;
   line-height: 1.7;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 
 /* Stacked constraint/detail groups — reuse the square-bullet mono head,
@@ -944,7 +944,7 @@ p + .mono-label,
 .principle p {
   font-size: 16px;
   line-height: 1.6;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 .principle--wide3 p { font-size: 19px; max-width: 56ch; }
 .principle cite {
@@ -993,7 +993,7 @@ p + .mono-label,
 .summary-item p:not(.truth-head) {
   font-size: 15px;
   line-height: 1.7;
-  color: #3a3a3a;
+  color: var(--ink);
 }
 
 @media (max-width: 720px) {

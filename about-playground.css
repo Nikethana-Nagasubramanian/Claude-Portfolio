@@ -1,0 +1,59 @@
+/* Scout-aligned presentation layer for the About and Playground pages. */
+.about-case,
+.playground-case {
+  --ap-paper: #fffefe;
+  --ap-ink: #20201e;
+  --ap-muted: #55534f;
+  --ap-subtle: #76736f;
+  --ap-rule: #eeece9;
+  --ap-surface: #f7f7f5;
+  --ap-accent: #416fb2;
+  background: var(--ap-paper);
+  color: var(--ap-ink);
+}
+
+.about-case .case-title { max-width: 18ch; }
+.about-case .hello-rotor { color: var(--ap-accent); }
+.about-case .resume-cta { border-radius: 7px; background: var(--ap-ink); color: #fff; font-family: "Geist", sans-serif; letter-spacing: 0; text-transform: none; }
+.about-case .resume-cta:hover { background: #000; color: #fff; }
+.about-case .hero-resume { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 20px; padding: 13px 18px; }
+.about-case .playground-teaser { margin-top: 32px; }
+.about-case .truths-matrix { border-color: var(--ap-rule); }
+.about-case .truth { border-color: var(--ap-rule); }
+.about-case .career-row { border-color: var(--ap-rule); }
+.about-case .principle { border-color: var(--ap-rule); background: var(--ap-surface); box-shadow: none; }
+
+.playground-case { min-height: 100vh; font-family: "Geist", system-ui, sans-serif; }
+.playground-case .top-nav { background: color-mix(in srgb, var(--ap-paper) 94%, transparent); border-color: var(--ap-rule); }
+.playground-case .nav-content { max-width: 1120px; height: 64px; padding: 0 24px; }
+.playground-case .nav-link { font: 400 14px/20px "Geist", sans-serif; letter-spacing: 0; text-transform: none; color: var(--ap-subtle); }
+.playground-case .nav-link:hover { color: var(--ap-accent); }
+.playground-case .nav-separator { background: var(--ap-rule); }
+.playground-case .social-links a { color: var(--ap-subtle); }
+.playground-case .social-links a:hover { color: var(--ap-accent); }
+.playground-case .home-shell { width: 100%; max-width: 1120px; padding: 72px 24px 96px; }
+.playground-case .archive-intro { max-width: 586px; }
+.playground-case .mono-label { font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--ap-accent); }
+.playground-case .hero-headline { margin-top: 12px; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: var(--ap-ink); }
+.playground-case .hero-support { max-width: 586px; margin-top: 24px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--ap-muted); }
+.playground-case .playground-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.playground-case .playground-card { border: 1px solid #e9e7e3; border-radius: 10px; background: var(--ap-surface); transition: border-color 160ms ease, transform 160ms ease; }
+.playground-case .playground-card:hover { border-color: #c9c6c0; transform: translateY(-2px); }
+.playground-case .playground-card-media { border-bottom-color: #e9e7e3; background: #e9eee4; }
+.playground-case .playground-card-body { padding: 18px 20px 22px; }
+.playground-case .work-meta { font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; color: var(--ap-subtle); }
+.playground-case .playground-card-title { margin-top: 12px; font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; white-space: normal; color: var(--ap-ink); }
+.playground-case .playground-card:hover .playground-card-title { color: var(--ap-accent); }
+.playground-case .playground-card-support { margin-top: 10px; font: 400 14px/1.5 "Geist", sans-serif; color: var(--ap-muted); }
+
+:root[data-theme='dark'] .about-case,
+:root[data-theme='dark'] .playground-case { --ap-paper: #201f1d; --ap-ink: #ede9df; --ap-muted: #b6b2a9; --ap-subtle: #b6b2a9; --ap-rule: #45423c; --ap-surface: #2b2925; --ap-accent: #86a9dd; }
+:root[data-theme='dark'] .about-case .resume-cta { background: #ede9df; color: #201f1d; }
+:root[data-theme='dark'] .playground-case .playground-card { border-color: var(--ap-rule); }
+:root[data-theme='dark'] .playground-case .playground-card-media { border-color: var(--ap-rule); background: #242b24; }
+
+@media (max-width: 720px) {
+  .playground-case .nav-content { height: 56px; padding: 0 16px; }
+  .playground-case .home-shell { padding: 44px 16px 80px; }
+  .playground-case .playground-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 44px; }
+}

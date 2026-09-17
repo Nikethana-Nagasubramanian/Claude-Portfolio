@@ -1,0 +1,40 @@
+/* Charlie inherits the shared case frame while retaining a quieter violet
+   trust-and-privacy accent. */
+.charlie-case { --gf-accent: #7160ae; }
+.charlie-case .spec-item { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 18px; }
+.charlie-case .spec-item b { width: auto; }
+.charlie-case .summary-matrix { display: grid; grid-template-columns: 1fr; gap: 0; width: min(var(--case-copy-width), calc(100vw - 48px)); margin: 32px auto 0; padding: 0; transform: none; border-top: 1px solid var(--gf-rule); border-bottom: 1px solid var(--gf-rule); }
+.charlie-case .summary-item, .charlie-case .summary-item:first-child { min-width: 0; padding: 24px 0; }
+.charlie-case .summary-item:not(:last-child) { border-right: 0; }
+.charlie-case .summary-item + .summary-item { border: 0; }
+.charlie-case .summary-item .truth-head { margin-bottom: 10px; font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
+.charlie-case .summary-item .truth-head::before { display: none; }
+.charlie-case .summary-item p:not(.truth-head) { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
+.charlie-case .notice { max-width: var(--case-copy-width); margin-top: 32px; padding: 16px 18px; border-left-color: var(--gf-accent); background: color-mix(in srgb, var(--gf-accent) 7%, transparent); }
+.charlie-case .notice p { font: 400 12px/1.65 "Geist Mono", monospace; letter-spacing: 0; color: var(--gf-muted); text-transform: none; }
+.charlie-case .notice p b { font-weight: 400; color: var(--gf-ink); letter-spacing: 0; text-transform: none; }
+.charlie-case .pillar-lead { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
+.charlie-case .pillar-num, .charlie-case .pillar-name { color: var(--gf-accent); font-weight: 500; }
+.charlie-case .media-full, .charlie-case .media-plain { width: min(1000px, calc(100vw - 48px)); }
+.charlie-case .media-full, .charlie-case .media-plain { border: 1px solid var(--gf-rule); }
+.charlie-case .media-caption { width: min(1000px, calc(100vw - 48px)); max-width: min(1000px, calc(100vw - 48px)); margin-left: 50%; margin-right: 0; transform: translateX(-50%); display: flex; justify-content: center; text-align: center; font: 400 12px/1.65 "Geist Mono", monospace; letter-spacing: 0; }
+.charlie-case .media-full--716 { width: min(716px, calc(100vw - 48px)); }
+.charlie-case .media-full--434 { width: min(434px, calc(100vw - 48px)); }
+.charlie-case .media-full--652 { width: min(652px, calc(100vw - 48px)); }
+.charlie-case .media-full--716 + .media-caption { width: min(716px, calc(100vw - 48px)); max-width: min(716px, calc(100vw - 48px)); }
+.charlie-case .media-full--434 + .media-caption { width: min(434px, calc(100vw - 48px)); max-width: min(434px, calc(100vw - 48px)); }
+.charlie-case .media-full--652 + .media-caption { width: min(652px, calc(100vw - 48px)); max-width: min(652px, calc(100vw - 48px)); }
+.charlie-case #architecture .media-caption { max-width: min(1000px, calc(100vw - 48px)); margin-top: 12px; font: 400 12px/1.65 "Geist Mono", ui-monospace, monospace; letter-spacing: 0; text-align: center; color: var(--gf-subtle); }
+.charlie-case #architecture .notice { padding-bottom: 24px; }
+.charlie-case[data-reading="short"] .case-nav { visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
+.charlie-case .next-case-preview video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+:root[data-theme='dark'] .charlie-case { --gf-accent: #a99be1; }
+@media (max-width: 720px) {
+  .charlie-case .spec-item { grid-template-columns: 112px minmax(0, 1fr); gap: 10px; }
+  .charlie-case .summary-matrix { grid-template-columns: 1fr; width: calc(100vw - 32px); margin-top: 28px; }
+  .charlie-case .summary-item, .charlie-case .summary-item:first-child { padding: 20px 0; }
+  .charlie-case .summary-item + .summary-item { border: 0; }
+  .charlie-case .media-full, .charlie-case .media-plain, .charlie-case .media-caption, .charlie-case .media-full--716, .charlie-case .media-full--434, .charlie-case .media-full--652 { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
+  .charlie-case .media-caption { margin-top: 10px; padding: 0 4px; font: 400 12px/1.65 "Geist Mono", monospace; text-align: center; }
+  .charlie-case .notice { margin-top: 28px; padding: 16px; }
+}

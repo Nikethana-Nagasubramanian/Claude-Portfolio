@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accelerate Retail Location Evaluation: From 6 hours to &lt; 1 minute — Nikethana</title>
   <meta name="description" content="A case study on accelerating retail location evaluation from six hours to under one minute." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
+  <link rel="stylesheet" href="site-theme.css?v=5" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css?v=1" />
 </head>
-<body>
+<body class="case-type gf-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -41,6 +45,10 @@
     </div>
   </nav>
 
+  <div class="case-cover" aria-label="GrowthFactor retail location evaluation interface">
+    <img src="assets/covers/growthfactor-cover.png" alt="GrowthFactor map showing site evaluation signals, retail trade areas, and nearby businesses" fetchpriority="high" />
+  </div>
+
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
       <p class="case-nav-label">Contents</p>
@@ -57,15 +65,14 @@
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <p class="hero-eyebrow">GrowthFactor — Case Study</p>
-        <h1 class="case-title">Accelerate Retail Location Evaluation: From 6 hours to &lt; 1 minute</h1>
-        <p class="hero-support">From gut-feel spreadsheets to a repeatable decision system.</p>
-
+        <p class="hero-eyebrow">GrowthFactor — Retail intelligence platform</p>
+        <h1 class="case-title case-display">Accelerate Retail Location Evaluation: From 6 hours to &lt; 1 minute</h1>
+        <p class="hero-support">I helped turn a high-stakes, gut-feel research workflow into a repeatable way for retail teams to decide which locations deserved a closer look.</p>
         <div class="spec-strip" aria-label="Project details">
           <div class="spec-rows">
             <p class="spec-item"><b>Role</b>Founding Designer</p>
             <p class="spec-item"><b>Timeline</b>2024–2025</p>
-            <p class="spec-item"><b>With</b>Real Estate Managers, VPs of Real Estate, CPO, CEO, Engineers</p>
+            <p class="spec-item"><b>Implementation</b>Research, information architecture, interaction design, and shipped product UI</p>
           </div>
         </div>
 
@@ -75,8 +82,8 @@
             <p>Retailers struggled with slow, manual site selection processes and lacked a unified tool to make data-driven expansion decisions.</p>
           </div>
           <div>
-            <p class="mono-label">What I Did</p>
-            <p>I led user interviews, sketched the first wireframes, and owned the information architecture from the ground up.</p>
+            <p class="mono-label">Design Bet</p>
+            <p>Make the map the stable source of spatial truth, then reveal the signals behind a recommendation in the order analysts need them to make a decision.</p>
           </div>
         </div>
 
@@ -234,9 +241,15 @@
       </section>
 
       <a class="next-case" href="designing-charlie.html">
-        <span class="mono-label">Next Case Study</span>
-        <span class="next-case-title">Designing Trust Into a Conversational AI, Charlie</span>
-        <span class="next-case-arrow">Read →</span>
+        <div class="next-case-preview">
+          <img src="assets/covers/charlie-cover.png" alt="Charlie preparing a privacy-protected retirement financial-readiness assessment" />
+        </div>
+        <div class="next-case-copy">
+          <span class="mono-label">Next Case Study</span>
+          <span class="next-case-title">Designing Trust Into a Conversational AI, Charlie</span>
+          <span class="next-case-support">Making an enterprise AI assistant feel clear, private, and under the user's control.</span>
+          <span class="next-case-arrow">Read case study</span>
+        </div>
       </a>
 
       <footer class="bottom-contact">
@@ -257,6 +270,13 @@
   </main>
 
   <script>
+    const growthFactorNav = document.querySelector('.case-nav');
+    const updateGrowthFactorNav = () => {
+      document.body.classList.toggle('gf-nav-visible', window.scrollY > 16);
+    };
+    window.addEventListener('scroll', updateGrowthFactorNav, { passive: true });
+    updateGrowthFactorNav();
+
     const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
     const scrollSpyLinks = document.querySelectorAll('.case-nav a');
 

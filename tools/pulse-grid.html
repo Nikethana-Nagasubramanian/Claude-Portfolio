@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script src="/site-theme.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pulse Grid — Nike</title>
 <meta name="description" content="Turn any GitHub contribution graph into an animated, exportable GIF.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAFAF8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3;
@@ -176,9 +177,11 @@
   }
   .modal-foot{ display:flex; justify-content:flex-end; gap:10px; padding:14px 22px; border-top:1px solid var(--rule); }
 </style>
+<link rel="stylesheet" href="/playground-tools.css">
+<link rel="stylesheet" href="/site-theme.css">
 </head>
-<body>
-  <nav class="nav">
+<body class="tool-page">
+  <nav class="nav nav-content">
     <a class="home" id="back-link" href="/playground">← Back</a>
   </nav>
   <script>

@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Designing Clara — Nikethana</title>
   <meta name="description" content="A case study on solving fragmented lease workflows with a unified system and intelligent NLP assistant, Clara." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
+  <link rel="stylesheet" href="site-theme.css" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css?v=1" />
+  <link rel="stylesheet" href="clara-revamp.css?v=1" />
 </head>
-<body>
+<body class="case-type gf-case clara-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -50,20 +55,19 @@
       <a href="#solution-2">Solution 2</a>
       <a href="#process">Process</a>
       <a href="#reflection">Reflection</a>
-      <a href="#product-roadmap">Product Roadmap</a>
+      <a href="#roadmap">Roadmap</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
-        <p class="hero-eyebrow">Clara — Case Study</p>
-        <h1 class="case-title">Solving Fragmented Lease Workflows: Designing a Unified System &amp; Intelligent (NLP) Assistant</h1>
-        <p class="hero-support">A central hub for signed leases, where NLP turns static documents into answers agents can act on.</p>
-
+        <p class="hero-eyebrow">Clara — Lease intelligence workspace</p>
+        <h1 class="case-title case-display">Solving Fragmented Lease Workflows With a Unified System &amp; Intelligent Assistant</h1>
+        <p class="hero-support">I designed Clara around a simple premise: AI answers only become useful in lease work when people can locate, understand, and verify the source behind them.</p>
         <div class="spec-strip" aria-label="Project details">
           <div class="spec-rows">
             <p class="spec-item"><b>Role</b>Founding Designer</p>
             <p class="spec-item"><b>Timeline</b>Mar 2025 – Apr 2025</p>
-            <p class="spec-item"><b>With</b>Engineers, CPO, CEO</p>
+            <p class="spec-item"><b>Implementation</b>Research, product strategy, interaction design, and functional prototype design</p>
           </div>
         </div>
 
@@ -91,7 +95,7 @@
         </div>
         <p class="media-caption">Fig: The grim reality of manually searching 160+ documents and storing them locally.</p>
 
-        <p class="mono-label">Putting it in numbers perspective…</p>
+        <p class="clara-inline-heading">Putting it in numbers perspective…</p>
         <p>"If I have 10 questions per lease document, and each document is 80+ pages, and I have 160+ lease documents... can I quit right now?" was our user's journey.</p>
 
         <div class="media-plain">
@@ -172,19 +176,18 @@
           <p>This project has been an invaluable learning experience, reinforcing my belief that the most impactful products are those that not only solve a user's problem but also empower them with trust and control.</p>
           <p>During my time on the team, we successfully designed and validated Clara, defining its core functionality and states to handle a variety of user needs, including complex queries and system errors. The project has been handed off for engineering.</p>
 
-          <p class="mono-label">Roadmap</p>
-          <p>Looking ahead, our next steps will involve monitoring user adoption and collecting feedback to inform future iterations.</p>
-          <p>We plan to expand Clara's capabilities to include automatic alerts for contract renewals and to integrate with a company-wide knowledge base.</p>
         </div>
       </section>
 
-      <section class="case-section" id="product-roadmap">
+      <section class="case-section" id="roadmap">
         <div class="sec-head">
-          <p class="sec-index"><em>06</em>Product's Big Picture</p>
+          <p class="sec-index"><em>06</em>Roadmap</p>
           <h2 class="sec-title">Built as Infrastructure, Not a Feature</h2>
           <p class="sec-support">Clara is designed to grow from a single chat into a proactive, scalable part of the workflow.</p>
         </div>
         <div class="sec-body">
+          <p>Looking ahead, our next steps will involve monitoring user adoption and collecting feedback to inform future iterations.</p>
+          <p>We plan to expand Clara's capabilities to include automatic alerts for contract renewals and to integrate with a company-wide knowledge base.</p>
           <p>I designed Clara not as a one-off feature, but as a strategic component for the product's future. By ensuring a cohesive integration with the dashboard and other tools, this approach guarantees the product can evolve seamlessly.</p>
           <p>The goal was to transform a single-use chat into an indispensable part of the user's workflow, ready to support future capabilities like automated alerts and proactive insights.</p>
         </div>
@@ -196,9 +199,13 @@
       </section>
 
       <a class="next-case" href="gf-features.html">
-        <span class="mono-label">Next Case Study</span>
-        <span class="next-case-title">See how I designed the Deal Management &amp; Lease Engines That Power Retail Growth</span>
-        <span class="next-case-arrow">Read →</span>
+        <div class="next-case-preview"><img src="https://framerusercontent.com/images/hCPlzzJzNibGBWE72PzM3mzyo.png" alt="Deal Management final design" /></div>
+        <div class="next-case-copy">
+          <span class="mono-label">Next Case Study</span>
+          <span class="next-case-title">The Deal Management &amp; Lease Engines That Power Retail Growth</span>
+          <span class="next-case-support">Extending the retail workflow from site evaluation into action.</span>
+          <span class="next-case-arrow">Read case study</span>
+        </div>
       </a>
 
       <footer class="bottom-contact">
@@ -219,6 +226,11 @@
   </main>
 
   <script>
+    const claraNav = document.querySelector('.case-nav');
+    const updateClaraNav = () => document.body.classList.toggle('gf-nav-visible', window.scrollY > 120);
+    window.addEventListener('scroll', updateClaraNav, { passive: true });
+    updateClaraNav();
+
     const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
     const scrollSpyLinks = document.querySelectorAll('.case-nav a');
 

@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="/site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shy Type — Nike</title>
   <meta name="description" content="A small type experiment where letters move away from your cursor and return home when it leaves.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     :root { --bg:#fafaf8; --ink:#141414; --muted:#6b6b6b; --faint:#a3a3a3; --rule:#e4e2dc; --accent:#3f7ff4; --card:#fff; --sans:"Instrument Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace; }
     * { box-sizing:border-box; }
@@ -69,9 +70,11 @@
     @media (max-width:640px) { .explainer, .code-notes { grid-template-columns:1fr; gap:18px; margin:38px 0; } .stage { min-height:350px; padding:22px; } .paper-header { grid-template-columns:1fr auto; } .paper-edition { display:none; } .paper-title { text-align:right; } .paper-notice span:last-child { display:none; } .story { column-gap:24px; font-size:19px; } .code-section { margin-top:46px; } .code-block { padding:20px; font-size:12px; } }
     @media (prefers-reduced-motion:reduce) { .letter { transition:none; } }
   </style>
+  <link rel="stylesheet" href="/playground-tools.css">
+  <link rel="stylesheet" href="/site-theme.css">
 </head>
-<body>
-  <nav class="nav">
+<body class="tool-page">
+  <nav class="nav nav-content">
     <a class="home" id="back-link" href="/playground">← Back</a>
   </nav>
   <script>

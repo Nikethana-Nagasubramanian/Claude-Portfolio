@@ -1,7 +1,10 @@
+@import url('../../../../site-theme.css');
+@import url('../../../../playground-tools.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: 'Geist', system-ui, sans-serif;
 }

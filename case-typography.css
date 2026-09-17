@@ -1,0 +1,150 @@
+/* Shared paper-like typography for case studies. */
+.case-type {
+  --case-copy-width: 586px;
+  --case-copy-gap: 28px;
+  --case-link: #3f7ff4;
+  font-family: "Geist", "Instrument Sans", system-ui, -apple-system, sans-serif;
+}
+.case-type .case-reading-width { max-width: var(--case-copy-width); }
+.case-type .case-copy { font-size: 16px; line-height: 1.625; letter-spacing: -0.01em; }
+.case-type .case-copy p + p { margin-top: var(--case-copy-gap); }
+.case-type .case-section-heading { font-size: 20px; line-height: 1.4; font-weight: 550; letter-spacing: -0.02em; }
+.case-type .case-display { font-size: 29px; line-height: 1.31; font-weight: 550; letter-spacing: -0.035em; }
+.case-type .case-project-title { font-size: 16px; line-height: 1.5; font-weight: 550; }
+.case-type .case-meta { font-size: 12px; line-height: 1.67; color: var(--muted); }
+.case-type .case-mono { font-family: "Geist Mono", "JetBrains Mono", ui-monospace, monospace; font-size: 12px; line-height: 1.67; }
+.case-type a:hover { color: var(--case-link); }
+
+/* Scout pilot: more air around the writing, lighter utility chrome, and a
+   readable measure that echoes Paper without flattening the visual gallery. */
+.scout-case .case-title { max-width: 18ch; }
+.scout-case .hero-support { max-width: 38ch; font-size: 18px; line-height: 1.5; }
+.scout-case .spec-strip { margin-top: 56px; padding: 18px 0; }
+.scout-case .spec-item { font-size: 12px; line-height: 1.55; }
+.scout-case .hero-duo { max-width: 860px; margin-top: 64px; gap: 76px; }
+.scout-case .hero-duo p:not(.mono-label) { max-width: 34ch; font-size: 16px; line-height: 1.625; }
+.scout-case .case-section { margin-top: 132px; }
+.scout-case .case-section.sec--major { margin-top: 176px; }
+.scout-case .sec-head { max-width: 680px; }
+.scout-case .sec-title { max-width: 19ch; font-size: clamp(29px, 4vw, 36px); font-weight: 550; line-height: 1.12; }
+.scout-case .sec-support { max-width: 42ch; font-size: 18px; line-height: 1.5; }
+.scout-case .sec-body { margin-top: 30px; }
+.scout-case .sec-body > p { max-width: var(--case-copy-width); font-size: 16px; line-height: 1.625; }
+.scout-case .feature-gallery { margin-top: 64px; }
+.scout-case .feature-gallery-slide { background: #f2f0eb; }
+.scout-case .build-note { margin-top: 72px; }
+
+/* Match Paper's actual canvas: white, single-column, Geist-led, and calm. */
+body.scout-case { background: #fffefe !important; color: #20201e; }
+.scout-case .top-nav { background: color-mix(in srgb, #fffefe 94%, transparent); border-color: #eeece9; }
+.scout-case .nav-content { width: min(1120px, calc(100% - 48px)); max-width: none; height: 64px; padding: 0 24px; margin: 0 auto; }
+.scout-case .nav-link { font-family: "Geist", sans-serif; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.scout-case .nav-separator { background: #eeece9; }
+.scout-case .social-links a { color: #76736f; }
+.scout-case .social-links a:hover { color: #416fb2; }
+.scout-case .scout-hero { width: 100%; height: clamp(300px, 28vw, 400px); margin: 0; overflow: hidden; background: #aab2a3; }
+.scout-case .scout-hero img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; }
+.scout-case .case-shell { display: block; max-width: 1120px; padding: 72px 24px 96px; }
+.scout-case .case-nav { position: fixed; left: 32px; top: 50%; transform: translate(-12px, -50%); display: grid; gap: 3px; z-index: 10; width: 130px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 180ms ease, transform 220ms ease, visibility 0s linear 220ms; }
+.scout-case.scout-nav-visible .case-nav { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(0, -50%); transition-delay: 0s; }
+.scout-case .case-section { padding-bottom: 56px; border-bottom: 1px solid #eeece9; }
+.scout-case .case-nav-label { display: none; }
+.scout-case .case-nav a { padding: 7px 12px; font: 400 12px/18px "Geist", sans-serif; color: #76736f; }
+.scout-case .case-nav a.active { color: #20201e; font-weight: 500; }
+.scout-case .case-nav a.active::before { content: ""; display: block; position: absolute; margin-left: -12px; margin-top: 7px; width: 4px; height: 4px; border-radius: 50%; background: #5183cd; }
+.scout-case .case-content { width: 100%; max-width: var(--case-copy-width); margin: 0 auto; }
+.scout-case .hero-eyebrow, .scout-case .mono-label, .scout-case .sec-index, .scout-case .feature-gallery-status { font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: 0; text-transform: none; color: #76736f; }
+.scout-case .hero-eyebrow { margin-bottom: 32px; color: #5183cd; }
+.scout-case .case-title { max-width: 100%; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: #20201e; }
+.scout-case .hero-support { margin-top: 24px; max-width: 100%; font: 400 16px/1.625 "Geist", sans-serif; color: #55534f; }
+.scout-case .spec-strip { margin-top: 40px; padding: 24px 0; border-top: 1px solid #eeece9; border-bottom: 1px solid #eeece9; }
+.scout-case .spec-item { font: 400 12px/20px "Geist Mono", monospace; color: #76736f; }
+.scout-case .spec-item b { color: #55534f; font-weight: 400; }
+.scout-case .hero-duo { display: block; margin-top: 32px; }
+.scout-case .hero-duo > div + div { margin-top: 32px; }
+.scout-case .hero-duo .mono-label { margin-bottom: 10px; }
+.scout-case .hero-duo p:not(.mono-label) { margin-top: 0; }
+.scout-case .hero-duo p:not(.mono-label), .scout-case .sec-body > p { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: #20201e; }
+.scout-case .case-section, .scout-case .case-section.sec--major { margin-top: 56px; padding-top: 0; border-top: 0; }
+.scout-case .sec-index { margin-bottom: 12px; }
+.scout-case .sec-title { max-width: 100%; font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; color: #20201e; }
+.scout-case .sec-support { margin-top: 12px; max-width: 100%; font: 400 16px/1.625 "Geist", sans-serif; color: #55534f; }
+.scout-case .sec-body { margin-top: 28px; }
+.scout-case .sec-body strong { font-weight: 500; color: #20201e; }
+.scout-case .feature-gallery { width: min(900px, calc(100vw - 48px)); margin: 24px 0 0 50%; transform: translateX(-50%); }
+.scout-case .feature-gallery-head { padding-bottom: 16px; border-bottom: 0; }
+.scout-case .feature-gallery-slide { flex-basis: 100%; border: 1px solid #e9e7e3; background: #f7f7f5; }
+.scout-case .build-note { display: block; margin-top: 32px; padding: 24px 0; border: 0; }
+.scout-case .build-note p:not(.mono-label) { margin-top: 24px; font: 400 16px/1.625 "Geist", sans-serif; }
+.scout-case .github-link { display: inline-flex; margin-top: 20px; padding: 11px 16px; border-radius: 7px; background: #20201e; color: #fff; font: 500 14px/20px "Geist", sans-serif; text-decoration: none; transition: background-color 160ms ease, transform 160ms ease; }
+.scout-case .github-link:hover { background: #000; color: #fff; }
+.scout-case .github-link:active { transform: scale(.98); }
+.scout-case .scout-limitations { margin-top: 48px; padding-top: 24px; border-top: 1px solid #eeece9; }
+.scout-case .scout-limitations p:not(.mono-label) { margin-top: 16px; font: 400 15px/1.6 "Geist", sans-serif; color: #55534f; }
+.scout-case .next-case { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr); gap: 28px; margin-top: 72px; padding: 16px; border: 1px solid #e9e7e3; border-radius: 10px; background: #f7f7f5; transition: border-color 160ms ease, transform 160ms ease; }
+.scout-case .next-case:hover { border-color: #c9c6c0; color: #20201e; transform: translateY(-2px); }
+.scout-case .next-case-preview { min-height: 190px; overflow: hidden; border-radius: 6px; background: #e9eee4; }
+.scout-case .next-case-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.scout-case .next-case-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 12px 12px 12px 0; }
+.scout-case .next-case-title { font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; }
+.scout-case .next-case-support { margin-top: 12px; color: #55534f; font: 400 14px/1.5 "Geist", sans-serif; }
+.scout-case .next-case-arrow { margin-top: 20px; color: #416fb2; font: 500 14px/20px "Geist", sans-serif; }
+.scout-case .bottom-contact { margin-top: 72px; padding-top: 32px; border-top: 1px solid #eeece9; }
+
+/* Scout follows the site's existing theme toggle without changing the light
+   Paper treatment above. */
+:root[data-theme='dark'] body.scout-case { background: #201f1d !important; color: #ede9df; }
+html[data-theme='dark'] body.scout-case { background: #201f1d !important; color: #ede9df; }
+:root[data-theme='dark'] .scout-case .top-nav { background: color-mix(in srgb, #201f1d 94%, transparent); border-color: #45423c; }
+:root[data-theme='dark'] .scout-case .hero-eyebrow,
+:root[data-theme='dark'] .scout-case .mono-label,
+:root[data-theme='dark'] .scout-case .sec-index,
+:root[data-theme='dark'] .scout-case .feature-gallery-status { color: #b6b2a9; }
+:root[data-theme='dark'] .scout-case .case-title,
+:root[data-theme='dark'] .scout-case .sec-title,
+:root[data-theme='dark'] .scout-case .process-title,
+:root[data-theme='dark'] .scout-case .spec-item b,
+:root[data-theme='dark'] .scout-case .sec-body strong { color: #ede9df; }
+:root[data-theme='dark'] .scout-case .hero-support,
+:root[data-theme='dark'] .scout-case .sec-support,
+:root[data-theme='dark'] .scout-case .hero-duo p:not(.mono-label),
+:root[data-theme='dark'] .scout-case .sec-body > p,
+:root[data-theme='dark'] .scout-case .next-case-support,
+:root[data-theme='dark'] .scout-case .scout-limitations p:not(.mono-label) { color: #b6b2a9; }
+:root[data-theme='dark'] .scout-case .spec-strip,
+:root[data-theme='dark'] .scout-case .case-section,
+:root[data-theme='dark'] .scout-case .scout-limitations,
+:root[data-theme='dark'] .scout-case .bottom-contact { border-color: #45423c; }
+:root[data-theme='dark'] .scout-case .feature-gallery-slide,
+:root[data-theme='dark'] .scout-case .next-case { border-color: #45423c; background: #2b2925; }
+:root[data-theme='dark'] .scout-case .next-case:hover { border-color: #68645c; color: #ede9df; }
+:root[data-theme='dark'] .scout-case .next-case-preview { background: #242b24; }
+:root[data-theme='dark'] .scout-case .github-link { background: #ede9df; color: #201f1d; }
+:root[data-theme='dark'] .scout-case .github-link:hover { background: #fff; color: #201f1d; }
+
+@media (max-width: 1020px) {
+  .scout-case .case-nav { display: none; }
+}
+
+@media (min-width: 1021px) {
+  .scout-case .case-nav { display: grid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scout-case .case-nav { transition: none; }
+}
+
+@media (max-width: 720px) {
+  .scout-case .scout-hero { height: 240px; }
+  .scout-case .feature-gallery { width: calc(100vw - 32px); }
+  .scout-case .next-case { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+  .scout-case .next-case-preview { min-height: 150px; }
+  .scout-case .next-case-copy { padding: 12px 4px 8px; }
+}
+
+@media (max-width: 720px) {
+  .scout-case .case-title { max-width: 100%; }
+  .scout-case .hero-duo { margin-top: 44px; gap: 32px; }
+  .scout-case .case-section { margin-top: 64px; }
+  .scout-case .case-section.sec--major { margin-top: 80px; }
+}

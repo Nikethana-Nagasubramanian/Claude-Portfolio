@@ -9,10 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/case-typography.css">
   <link rel="stylesheet" href="/paper.css">
   <script src="/paper.js" defer></script>
 </head>
-<body>
+<body class="case-type">
   <header class="hero">
     <img class="hero-art" src="/assets/paper/header-drafting.svg" alt="" fetchpriority="high">
     <img class="header-variant" data-header="1" src="/assets/paper/header-aurora.png" alt="" decoding="async">
@@ -30,19 +31,19 @@
   <button class="details-toggle" type="button" role="switch" aria-checked="false" hidden><span>Details</span><span class="details-track" aria-hidden="true"></span></button>
   <div class="padding-overlay" aria-hidden="true" hidden></div>
   <main class="letter">
-    <section id="hello" class="prose" aria-label="Hi Paper team">
+    <section id="hello" class="prose case-copy" aria-label="Hi Paper team">
       <p>Hi Paper team!</p>
       <p>I’m <span class="nike-preview"><button type="button" class="nike-name" aria-expanded="false" aria-controls="nike-photo">Nike</button><span id="nike-photo" class="nike-photo" hidden><img src="/assets/paper/nike-portrait.png" alt="A painted portrait of Nike" width="200" height="200"></span></span>. I saw the Product Designer and Design Engineer openings, and I know my experience is not yet at the principal-level bar you described.</p>
       <p>Rather than pretend otherwise, I wanted to propose a different kind of conversation: could Paper consider a short, paid project residency for someone who can design, build, and ship alongside the team? <a class="paper-link" href="https://paper.design/blog/design" target="_blank" rel="noopener"><img src="/assets/paper/paper-icon.png" alt="" width="20" height="20">Design at Paper</a></p>
     </section>
-    <section id="experience" class="prose divided" aria-labelledby="experience-title">
-      <h2 class="section-label" id="experience-title">My path here</h2>
+    <section id="experience" class="prose case-copy divided" aria-labelledby="experience-title">
+      <h2 class="section-label case-section-heading" id="experience-title">My path here</h2>
       <p>My path here has been a little unusual. I started my career in SRE, moved closer to frontend engineering, then into product design — and over the last couple of years I've increasingly been bringing those disciplines back together.</p>
       <p>I design products, build React/TypeScript interfaces, prototype with code and agents, and still carry some of the systems and performance thinking I learned as an SRE.</p>
       <p>I’m a design engineer in transition with unusually strong systems, product, and performance instincts. I can give Paper a lower-risk way to evaluate how I work by taking ownership of a real feature and shipping it.</p>
     </section>
-    <h2 id="pitch" class="invitation">Would Paper consider an 8–12 week paid design-engineering residency?</h2>
-    <section class="prose" aria-label="How I could contribute">
+    <h2 id="pitch" class="invitation case-display">Would Paper consider an 8–12 week paid design-engineering residency?</h2>
+    <section class="prose case-copy" aria-label="How I could contribute">
       <p>Not a ceremonial internship where I shadow the team. Give me actual work.<br>Let me design, build, fix things, take feedback, and ship alongside you.</p>
       <p>I think I could contribute immediately in a few places:</p>
       <ul class="contributions">
@@ -53,7 +54,7 @@
         <li>I’d be especially interested in taking one production-facing surface, such as code components, themes and tokens, or the layout panel, from interaction design through a polished, performant implementation.</li>
       </ul>
     </section>
-    <section class="prose aspirations" aria-label="What I want">
+    <section class="prose case-copy aspirations" aria-label="What I want">
       <p>What I want:<br>The opportunity to work alongside people with an unusually high bar for interface craft and become better by shipping real work with them.</p>
       <div class="portraits" role="group" aria-label="People whose craft inspires me">
         <a class="portrait" style="--angle:-8deg;--stack:6" href="https://x.com/vladmoroz" target="_blank" rel="noopener" aria-label="Vlad Moroz on X"><img src="/assets/paper/portrait-1.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@vladmoroz ↗</span></a>
@@ -64,24 +65,24 @@
         <a class="portrait" style="--angle:8deg;--stack:1" href="https://x.com/harcourttt" target="_blank" rel="noopener" aria-label="Harcourt on X"><img src="/assets/paper/portrait-6.png" alt="" width="39" height="39" loading="lazy"><span class="portrait-handle">@harcourttt ↗</span></a>
       </div>
     </section>
-    <section class="prose" aria-label="A real problem">
+    <section class="prose case-copy" aria-label="A real problem">
       <p>Give me a defined problem, clear ownership, and a short window to prove what I can ship.</p>
       <p>We can define one meaningful project, what success looks like, and what I own. If I earn the right to continue, we can discuss what comes next. If not, Paper still gets something thoughtful, tested, and shipped.</p>
     </section>
     <section id="work" class="work divided" aria-labelledby="work-title">
-      <h2 id="work-title">A few things I've built:</h2>
+      <h2 id="work-title" class="case-section-heading">A few things I've built:</h2>
       <div class="projects">
         <article class="project">
           <button class="project-preview" type="button" aria-label="Preview GrowthFactor" data-title="GrowthFactor" data-image="/assets/paper/growthfactor.png"><img src="/assets/paper/growthfactor.png" alt="GrowthFactor’s map and site evaluation interface" width="3418" height="1956" loading="lazy"><span>Preview ↗</span></button>
-          <div class="project-copy"><h3><a href="/gf">GrowthFactor <span aria-hidden="true">↗</span></a></h3><p>Designed and implemented a workflow that reduced site evaluation from roughly six hours to one minute.</p><p class="project-meta">Solo designer · Product design &amp; implementation</p></div>
+          <div class="project-copy"><h3 class="case-project-title"><a href="/gf">GrowthFactor <span aria-hidden="true">↗</span></a></h3><p>Designed and implemented a workflow that reduced site evaluation from roughly six hours to one minute.</p><p class="project-meta case-meta">Solo designer · Product design &amp; implementation</p></div>
         </article>
         <article class="project">
           <button class="project-preview" type="button" aria-label="Preview Scout" data-title="Scout" data-image="/assets/paper/scout.png"><img class="scout-preview" src="/assets/paper/scout.png" alt="Scout’s role review and application workspace" width="7200" height="5120" loading="lazy"><span>Preview ↗</span></button>
-          <div class="project-copy"><h3><a href="/scout">Scout <span aria-hidden="true">↗</span></a></h3><p>A job-search tool I designed and built to discover roles, evaluate fit, and prepare applications.</p><p class="project-meta">Building a self-serve product · <a href="https://github.com/Nikethana-Nagasubramanian/scout" target="_blank" rel="noopener">GitHub ↗</a></p></div>
+          <div class="project-copy"><h3 class="case-project-title"><a href="/scout">Scout <span aria-hidden="true">↗</span></a></h3><p>A job-search tool I designed and built to discover roles, evaluate fit, and prepare applications.</p><p class="project-meta case-meta">Building a self-serve product · <a href="https://github.com/Nikethana-Nagasubramanian/scout" target="_blank" rel="noopener">GitHub ↗</a></p></div>
         </article>
         <article class="project">
           <button class="project-preview" type="button" aria-label="Preview Paper’s canvas" data-title="Beneath Paper’s canvas" data-image="/assets/paper/canvas.png"><img src="/assets/paper/canvas.png" alt="An ocean composition in Paper’s HTML and CSS canvas" width="1600" height="804" loading="lazy"><span>Preview ↗</span></button>
-          <div class="project-copy"><h3><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Beneath Paper’s canvas <span aria-hidden="true">↗</span></a></h3><p>An exploration of how Paper connects design, the browser, and code.</p><p class="project-meta"><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Read on Medium ↗</a></p></div>
+          <div class="project-copy"><h3 class="case-project-title"><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Beneath Paper’s canvas <span aria-hidden="true">↗</span></a></h3><p>An exploration of how Paper connects design, the browser, and code.</p><p class="project-meta case-meta"><a href="https://medium.com/@nike_thana/paper-the-canvas-that-speaks-the-web-168b7a0523af" target="_blank" rel="noopener">Read on Medium ↗</a></p></div>
         </article>
       </div>
     </section>

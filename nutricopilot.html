@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NutriCopilot: A Nutrition Coach That Talks Like I Do — Nikethana</title>
   <meta name="description" content="A case study on building NutriCopilot, a rough-language calorie and macro tracker that hooks into WHOOP." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=7" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
+  <link rel="stylesheet" href="site-theme.css" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css?v=1" />
 </head>
-<body>
+<body class="case-type gf-case nutri-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -41,6 +45,10 @@
     </div>
   </nav>
 
+  <div class="case-cover" aria-label="NutriCopilot macro-tracking interface">
+    <img src="assets/covers/nutri-cover.png" alt="NutriCopilot macro-tracking interface with a daily food log" fetchpriority="high" />
+  </div>
+
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
       <p class="case-nav-label">Contents</p>
@@ -56,7 +64,6 @@
         <p class="hero-eyebrow">NutriCopilot — Case Study</p>
         <h1 class="case-title">NutriCopilot: A Nutrition Coach That Talks Like I Do</h1>
         <p class="hero-support">Rough-language calorie tracking, built for the way I actually eat and talk.</p>
-
         <div class="spec-strip" aria-label="Project details">
           <div class="spec-rows">
             <p class="spec-item"><b>Role</b>Solo Designer &amp; Builder</p>
@@ -188,6 +195,10 @@
   </main>
 
   <script>
+    const updateNutriNav = () => document.body.classList.toggle('gf-nav-visible', window.scrollY > 16);
+    window.addEventListener('scroll', updateNutriNav, { passive: true });
+    updateNutriNav();
+
     const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
     const scrollSpyLinks = document.querySelectorAll('.case-nav a');
 

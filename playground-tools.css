@@ -1,0 +1,37 @@
+/* Shared Scout-derived chrome for Playground tools. The experiment canvases
+   retain their individual visual languages and interaction code. */
+body.tool-page {
+  --bg: #fffefe;
+  --ink: #20201e;
+  --muted: #55534f;
+  --faint: #76736f;
+  --rule: #eeece9;
+  --card: #f7f7f5;
+  --accent: #416fb2;
+  --sans: "Geist", "Instrument Sans", system-ui, sans-serif;
+  --mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+body.tool-page .nav { min-height: 64px; padding: 0 clamp(16px, 4vw, 48px); background: color-mix(in srgb, var(--bg) 94%, transparent); border-color: var(--rule); font: 400 14px/20px var(--sans); }
+body.tool-page .nav .home { color: var(--muted); }
+body.tool-page .nav .home:hover { color: var(--accent); }
+body.tool-page .wrap { max-width: 1120px; padding-top: clamp(44px, 7vw, 72px); }
+body.tool-page .eyebrow { font: 400 12px/20px var(--mono); letter-spacing: 0; text-transform: none; color: var(--accent); }
+body.tool-page h1 { font: 500 29px/1.31 var(--sans); letter-spacing: -.035em; color: var(--ink); }
+body.tool-page .lede { max-width: 586px; font: 400 16px/1.625 var(--sans); color: var(--muted); }
+body.tool-page .explainer { border-color: var(--rule); }
+body.tool-page .explainer p:not(.explain-label):not(.label) { font-family: var(--sans); }
+body.tool-page .explain-label,
+body.tool-page .label,
+body.tool-page .tool-nav-label { font-family: var(--mono); letter-spacing: 0; text-transform: none; }
+body.tool-page .btn { border-radius: 7px; font-family: var(--sans); }
+
+:root[data-theme='dark'] body.tool-page { --bg: #201f1d; --ink: #ede9df; --muted: #b6b2a9; --faint: #b6b2a9; --rule: #45423c; --card: #2b2925; --accent: #86a9dd; }
+:root[data-theme='dark'] body.tool-page .nav { background: color-mix(in srgb, var(--bg) 94%, transparent); }
+
+@media (max-width: 720px) {
+  body.tool-page .nav { min-height: 56px; }
+  body.tool-page .wrap { padding-top: 44px; }
+}

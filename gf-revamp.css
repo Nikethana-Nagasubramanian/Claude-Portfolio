@@ -1,0 +1,119 @@
+/* GrowthFactor's Scout-aligned presentation layer. It deliberately keeps the
+   map-first product imagery and blue decision-support accent distinct. */
+.gf-case {
+  --gf-paper: #fffefe;
+  --gf-ink: #20201e;
+  --gf-muted: #55534f;
+  --gf-subtle: #76736f;
+  --gf-rule: #eeece9;
+  --gf-surface: #f7f7f5;
+  --gf-accent: #416fb2;
+  background: var(--gf-paper);
+  color: var(--gf-ink);
+  font-family: "Geist", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+.gf-case .top-nav { background: color-mix(in srgb, var(--gf-paper) 94%, transparent); border-color: var(--gf-rule); }
+.gf-case .nav-content { max-width: 1120px; height: 64px; padding: 0 24px; }
+.gf-case .nav-link { font-family: "Geist", sans-serif; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.gf-case .nav-separator { background: var(--gf-rule); }
+.gf-case .social-links a { color: var(--gf-subtle); }
+.gf-case .social-links a:hover { color: var(--gf-accent); }
+
+/* Cover-led case studies use Scout's full-bleed opening treatment. The image
+   is never transformed: the top navigation stays separate and the artwork is
+   presented straight. */
+.gf-case .case-cover { width: 100%; height: clamp(300px, 28vw, 400px); margin: 0; overflow: hidden; background: var(--gf-surface); border-bottom: 1px solid var(--gf-rule); }
+.gf-case .case-cover img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; transform: none; }
+
+.gf-case .case-shell { display: block; max-width: 1120px; padding: 72px 24px 96px; }
+.gf-case .case-content { width: 100%; max-width: var(--case-copy-width); margin: 0 auto; }
+.gf-case .case-hero { scroll-margin-top: 96px; }
+.gf-case .hero-eyebrow,
+.gf-case .mono-label,
+.gf-case .sec-index,
+.gf-case .media-caption,
+.gf-case .stat-label { font-family: "Geist Mono", ui-monospace, monospace; font-weight: 400; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
+.gf-case .hero-eyebrow { margin-bottom: 32px; color: var(--gf-accent); }
+.gf-case .case-title { max-width: 100%; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: var(--gf-ink); }
+.gf-case .hero-support { max-width: 100%; margin-top: 24px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
+.gf-case .spec-strip { display: block; margin-top: 40px; padding: 24px 0; border-color: var(--gf-rule); }
+.gf-case .spec-rows { gap: 8px; }
+.gf-case .spec-item { display: block; font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
+.gf-case .spec-item b { display: inline-block; width: 110px; font-weight: 400; color: var(--gf-muted); }
+.gf-case .hero-duo { display: block; margin-top: 32px; }
+.gf-case .hero-duo > div + div { margin-top: 32px; }
+.gf-case .hero-duo .mono-label { margin-bottom: 10px; }
+.gf-case .hero-duo p:not(.mono-label) { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
+
+.gf-case .case-section,
+.gf-case .case-section.sec--major { margin-top: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--gf-rule); scroll-margin-top: 96px; }
+.gf-case .sec-index { margin-bottom: 12px; }
+.gf-case .sec-index em { margin-right: 8px; }
+.gf-case .sec-title { max-width: 100%; font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; color: var(--gf-ink); }
+.gf-case .sec-support { max-width: 100%; margin-top: 12px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
+.gf-case .sec-body { margin-top: 28px; }
+.gf-case .sec-body > p { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
+.gf-case .sec-body > p + p { margin-top: 16px; }
+
+.gf-case .media-full,
+.gf-case .media-plain { width: min(900px, calc(100vw - 48px)); margin: 32px 0 0 50%; transform: translateX(-50%); }
+.gf-case .media-full { border-color: #e9e7e3; background: var(--gf-surface); }
+.gf-case .media-plain { overflow: hidden; }
+.gf-case .media-caption { max-width: min(900px, calc(100vw - 48px)); margin-top: 12px; text-align: left; }
+.nutri-case .media-caption { width: min(900px, calc(100vw - 48px)); margin-left: 50%; margin-right: 0; transform: translateX(-50%); text-align: center; }
+
+.gf-case .stats-band { margin-top: 32px; border-color: var(--gf-rule); }
+.gf-case .stat { padding: 20px 16px 20px 0; }
+.gf-case .stat + .stat { padding-left: 16px; border-color: var(--gf-rule); }
+.gf-case .stat-value { font: 500 clamp(32px, 4vw, 42px)/1 "Geist", sans-serif; color: var(--gf-accent); }
+.gf-case .stat-label { margin-top: 10px; line-height: 1.55; }
+
+.gf-case .case-nav { position: fixed; left: 32px; top: 50%; width: 130px; transform: translate(-12px, -50%); gap: 3px; z-index: 10; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 180ms ease, transform 220ms ease, visibility 0s linear 220ms; }
+.gf-case.gf-nav-visible .case-nav { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(0, -50%); transition-delay: 0s; }
+.gf-case .case-nav-label { display: none; }
+.gf-case .case-nav a { position: relative; padding: 7px 12px; font: 400 12px/18px "Geist", sans-serif; letter-spacing: 0; color: var(--gf-subtle); }
+.gf-case .case-nav a:not(:first-of-type)::before { content: none; }
+.gf-case .case-nav a.active { font-weight: 500; color: var(--gf-ink); }
+.gf-case .case-nav a.active::after { content: ""; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; border-radius: 50%; background: var(--gf-accent); transform: translateX(-12px); }
+
+.gf-case .next-case { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr); gap: 28px; margin-top: 72px; padding: 16px; border: 1px solid #e9e7e3; border-radius: 10px; background: var(--gf-surface); }
+.gf-case .next-case:hover { border-color: #c9c6c0; color: var(--gf-ink); }
+.gf-case .next-case-preview { min-height: 190px; overflow: hidden; border-radius: 6px; background: #e9eee4; }
+.gf-case .next-case-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.gf-case .next-case-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 12px 12px 12px 0; }
+.gf-case .next-case .mono-label { margin-bottom: 12px; }
+.gf-case .next-case-title { max-width: none; font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; }
+.gf-case .next-case-support { display: block; margin-top: 12px; color: var(--gf-muted); font: 400 14px/1.5 "Geist", sans-serif; }
+.gf-case .next-case-arrow { margin-top: 20px; color: var(--gf-accent); font: 500 14px/20px "Geist", sans-serif; letter-spacing: 0; }
+.gf-case .bottom-contact { margin-top: 72px; padding-top: 32px; border-color: var(--gf-rule); }
+.gf-case .bottom-contact > span { font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
+
+:root[data-theme='dark'] .gf-case { --gf-paper: #201f1d; --gf-ink: #ede9df; --gf-muted: #b6b2a9; --gf-subtle: #b6b2a9; --gf-rule: #45423c; --gf-surface: #2b2925; --gf-accent: #86a9dd; }
+:root[data-theme='dark'] .gf-case .top-nav { background: color-mix(in srgb, #201f1d 94%, transparent); }
+:root[data-theme='dark'] .gf-case .case-cover { border-color: var(--gf-rule); }
+:root[data-theme='dark'] .gf-case .media-full { border-color: var(--gf-rule); }
+:root[data-theme='dark'] .gf-case .next-case { border-color: var(--gf-rule); }
+:root[data-theme='dark'] .gf-case .next-case:hover { border-color: #68645c; }
+:root[data-theme='dark'] .gf-case .next-case-preview { background: #242b24; }
+
+@media (max-width: 1020px) { .gf-case .case-nav { display: none; } }
+@media (max-width: 720px) {
+  .gf-case .case-cover { height: 240px; }
+  .gf-case .case-shell { padding: 44px 16px 80px; }
+  .gf-case .case-title { font-size: 29px; }
+  .gf-case .spec-item b { width: 96px; }
+  .gf-case .media-full,
+  .gf-case .media-plain,
+  .gf-case .media-caption { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
+  .nutri-case .media-caption { margin-left: 50%; }
+  .gf-case .stats-band { grid-template-columns: 1fr 1fr; }
+  .gf-case .stat { padding: 20px 12px 20px 0; }
+  .gf-case .stat + .stat { padding-left: 12px; }
+  .gf-case .next-case { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+  .gf-case .next-case-preview { min-height: 150px; }
+  .gf-case .next-case-copy { padding: 12px 4px 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .gf-case .case-nav { transition: none; } }
