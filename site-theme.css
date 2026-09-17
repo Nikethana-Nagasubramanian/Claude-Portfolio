@@ -1,29 +1,5 @@
 /* One quiet type family, warm paper, and a second voice in the margins. */
-:root {
-  --sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
-  --mono: var(--sans);
-  --pen: 'Caveat', 'Segoe Print', cursive;
-  --bg: #faf8f3;
-  --ink: #292722;
-  --muted: #68665f;
-  --faint: #77746d;
-  --rule: #e2ded5;
-  --accent: #3f7ff4;
-  --surface: #f0ece4;
-  --nav-bg: rgb(250 248 243 / 94%);
-  color-scheme: light;
-}
-:root[data-theme='dark'] {
-  --bg: #201f1d;
-  --ink: #ede9df;
-  --muted: #b6b2a9;
-  --faint: #aaa69e;
-  --rule: #45423c;
-  --accent: #3f7ff4;
-  --surface: #2b2925;
-  --nav-bg: rgb(32 31 29 / 94%);
-  color-scheme: dark;
-}
+/* Colour, type, measure and rhythm all come from tokens.css. */
 body { background: var(--bg); }
 .top-nav { background:var(--nav-bg); }
 .watercolor { opacity:.13; }

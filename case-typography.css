@@ -1,9 +1,6 @@
 /* Shared paper-like typography for case studies. */
 .case-type {
-  --case-copy-width: 586px;
-  --case-copy-gap: 28px;
-  --case-link: #3f7ff4;
-  font-family: "Geist", "Instrument Sans", system-ui, -apple-system, sans-serif;
+  font-family: var(--sans);
 }
 .case-type .case-reading-width { max-width: var(--case-copy-width); }
 .case-type .case-copy { font-size: 16px; line-height: 1.625; letter-spacing: -0.01em; }
@@ -11,7 +8,7 @@
 .case-type .case-section-heading { font-size: 20px; line-height: 1.4; font-weight: 550; letter-spacing: -0.02em; }
 .case-type .case-display { font-size: 29px; line-height: 1.31; font-weight: 550; letter-spacing: -0.035em; }
 .case-type .case-project-title { font-size: 16px; line-height: 1.5; font-weight: 550; }
-.case-type .case-meta { font-size: 12px; line-height: 1.67; color: var(--muted); }
+.case-type .case-meta { font-size: 12px; line-height: 1.67; color: var(--subtle); }
 .case-type .case-mono { font-family: "Geist Mono", "JetBrains Mono", ui-monospace, monospace; font-size: 12px; line-height: 1.67; }
 .case-type a:hover { color: var(--case-link); }
 
@@ -19,8 +16,6 @@
    readable measure that echoes Paper without flattening the visual gallery. */
 .scout-case .case-title { max-width: 18ch; }
 .scout-case .hero-support { max-width: 38ch; font-size: 18px; line-height: 1.5; }
-.scout-case .spec-strip { margin-top: 56px; padding: 18px 0; }
-.scout-case .spec-item { font-size: 12px; line-height: 1.55; }
 .scout-case .hero-duo { max-width: 860px; margin-top: 64px; gap: 76px; }
 .scout-case .hero-duo p:not(.mono-label) { max-width: 34ch; font-size: 16px; line-height: 1.625; }
 .scout-case .case-section { margin-top: 132px; }
@@ -57,9 +52,6 @@ body.scout-case { background: #fffefe !important; color: #20201e; }
 .scout-case .hero-eyebrow { margin-bottom: 32px; color: #5183cd; }
 .scout-case .case-title { max-width: 100%; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: #20201e; }
 .scout-case .hero-support { margin-top: 24px; max-width: 100%; font: 400 16px/1.625 "Geist", sans-serif; color: #55534f; }
-.scout-case .spec-strip { margin-top: 40px; padding: 24px 0; border-top: 1px solid #eeece9; border-bottom: 1px solid #eeece9; }
-.scout-case .spec-item { font: 400 12px/20px "Geist Mono", monospace; color: #76736f; }
-.scout-case .spec-item b { color: #55534f; font-weight: 400; }
 .scout-case .hero-duo { display: block; margin-top: 32px; }
 .scout-case .hero-duo > div + div { margin-top: 32px; }
 .scout-case .hero-duo .mono-label { margin-bottom: 10px; }

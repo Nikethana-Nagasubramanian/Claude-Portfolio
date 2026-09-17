@@ -1,13 +1,6 @@
 /* Scout-aligned presentation layer for the About and Playground pages. */
 .about-case,
 .playground-case {
-  --ap-paper: #fffefe;
-  --ap-ink: #20201e;
-  --ap-muted: #55534f;
-  --ap-subtle: #76736f;
-  --ap-rule: #eeece9;
-  --ap-surface: #f7f7f5;
-  --ap-accent: #416fb2;
   background: var(--ap-paper);
   color: var(--ap-ink);
 }

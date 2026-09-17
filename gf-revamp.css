@@ -1,18 +1,11 @@
 /* GrowthFactor's Scout-aligned presentation layer. It deliberately keeps the
    map-first product imagery and blue decision-support accent distinct. */
 .gf-case {
-  --gf-paper: #fffefe;
-  --gf-ink: #20201e;
-  --gf-muted: #55534f;
-  --gf-subtle: #76736f;
-  --gf-rule: #eeece9;
-  --gf-surface: #f7f7f5;
-  --gf-accent: #416fb2;
   background: var(--gf-paper);
   color: var(--gf-ink);
-  font-family: "Geist", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.625;
+  font-family: var(--sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
 }
 
 .gf-case .top-nav { background: color-mix(in srgb, var(--gf-paper) 94%, transparent); border-color: var(--gf-rule); }
@@ -40,9 +33,6 @@
 .gf-case .case-title { max-width: 100%; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: var(--gf-ink); }
 .gf-case .hero-support { max-width: 100%; margin-top: 24px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
 .gf-case .spec-strip { display: block; margin-top: 40px; padding: 24px 0; border-color: var(--gf-rule); }
-.gf-case .spec-rows { gap: 8px; }
-.gf-case .spec-item { display: block; font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
-.gf-case .spec-item b { display: inline-block; width: 110px; font-weight: 400; color: var(--gf-muted); }
 .gf-case .hero-duo { display: block; margin-top: 32px; }
 .gf-case .hero-duo > div + div { margin-top: 32px; }
 .gf-case .hero-duo .mono-label { margin-bottom: 10px; }
@@ -56,7 +46,6 @@
 .gf-case .sec-support { max-width: 100%; margin-top: 12px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
 .gf-case .sec-body { margin-top: 28px; }
 .gf-case .sec-body > p { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
-.gf-case .sec-body > p + p { margin-top: 16px; }
 
 .gf-case .media-full,
 .gf-case .media-plain { width: min(900px, calc(100vw - 48px)); margin: 32px 0 0 50%; transform: translateX(-50%); }
@@ -104,7 +93,6 @@
   .gf-case .case-cover { height: 240px; }
   .gf-case .case-shell { padding: 44px 16px 80px; }
   .gf-case .case-title { font-size: 29px; }
-  .gf-case .spec-item b { width: 96px; }
   .gf-case .media-full,
   .gf-case .media-plain,
   .gf-case .media-caption { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }

@@ -1,0 +1,50 @@
+/* Components that every page shares, written once. Anything defined here must
+   not be redefined in a page stylesheet: change it here and every page follows.
+   Loaded after tokens.css and before the page sheets. */
+
+/* Spec sheet: label column, then value. The label column is fixed so a long
+   value wraps under itself rather than under the label. */
+.spec-strip {
+  margin-top: 40px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.spec-rows { display: grid; gap: 12px; }
+.spec-item {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  font: 400 12px/20px var(--mono);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--subtle);
+}
+.spec-item b { width: auto; font-weight: 400; color: var(--muted); }
+
+/* Body copy rhythm: the paragraph gap is the token, everywhere. */
+.sec-body > p + p,
+.case-copy p + p,
+.prose p + p { margin-top: var(--copy-gap); }
+
+/* Reading measure: one width, not a mix of ch values. */
+.sec-body > p,
+.sec-body ul,
+.sec-body li,
+.pillar-lead { max-width: var(--copy-width); }
+
+/* The floating section navigation, shared by case studies and the letter. */
+.case-nav a,
+.section-nav a {
+  padding: 7px 12px;
+  font: 400 12px/18px var(--sans);
+  color: var(--subtle);
+  text-decoration: none;
+}
+.case-nav a.active,
+.section-nav a[aria-current] { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 720px) {
+  .spec-item { grid-template-columns: 112px minmax(0, 1fr); gap: 10px; }
+}

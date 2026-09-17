@@ -1,6 +1,5 @@
 :root { color-scheme: light; background: #fffefe; }
 * { box-sizing: border-box; }
-:root { --space-paragraph: 24px; --space-group: 32px; --space-section: 48px; }
 body { margin: 0; }
 button { font: inherit; color: inherit; }
 [id] { scroll-margin-top: 96px; }
@@ -10,7 +9,6 @@ button { font: inherit; color: inherit; }
 .section-nav a[aria-current]::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: #5183cd; position: absolute; left: 0; top: 14px; }
 .section-label { margin: 0 0 var(--case-copy-gap); }
 .divided { border-top: 1px solid #eeece9; padding-top: 32px; }
-::selection { background: #dbeaff; color: #111; }
 a { color: inherit; text-underline-offset: 3px; }
 a:focus-visible { outline: 2px solid #5183cd; outline-offset: 5px; border-radius: 3px; }
 .hero { height: 228px; position: relative; overflow: hidden; display: grid; place-items: center; background: linear-gradient(#fff, #dcecff); isolation: isolate; }

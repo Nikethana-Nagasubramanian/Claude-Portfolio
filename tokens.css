@@ -1,0 +1,88 @@
+/* The single source of truth for the site's look, taken from the Paper page.
+   Every other stylesheet reads these; none of them redefine the values.
+   Legacy names (--bg, --faint, --gf-*, --ap-*, --case-*) are kept as aliases so
+   existing rules keep working while pages move over. */
+:root {
+  /* Colour */
+  --paper: #fffefe;
+  --ink: #20201e;
+  --muted: #55534f;
+  --subtle: #76736f;
+  --rule: #eeece9;
+  --surface: #f7f7f5;
+  --accent: #416fb2;
+  --link: #416fb2;
+  --link-hover: #214f93;
+  --marker: #5183cd;
+  --cta: #098ffd;
+  --selection: #dbeaff;
+  --selection-ink: #111;
+
+  /* Type */
+  --sans: "Geist", "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --mono: "Geist Mono", "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --pen: "Caveat", "Segoe Print", cursive;
+  --text-body: 16px;
+  --leading-body: 1.625;
+  --tracking-body: -0.01em;
+
+  /* Measure and rhythm */
+  --copy-width: 586px;
+  --copy-gap: 28px;
+  --shell-max: 1120px;
+  --space-paragraph: 24px;
+  --space-group: 32px;
+  --space-section: 48px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --speed: 160ms;
+
+  /* Aliases kept for existing rules */
+  --bg: var(--paper);
+  --faint: var(--subtle);
+  --card: var(--surface);
+  --nav-bg: color-mix(in srgb, var(--paper) 94%, transparent);
+  --case-copy-width: var(--copy-width);
+  --case-copy-gap: var(--copy-gap);
+  --case-link: var(--link);
+  --gf-paper: var(--paper);
+  --gf-ink: var(--ink);
+  --gf-muted: var(--muted);
+  --gf-subtle: var(--subtle);
+  --gf-rule: var(--rule);
+  --gf-surface: var(--surface);
+  --gf-accent: var(--accent);
+  --ap-paper: var(--paper);
+  --ap-ink: var(--ink);
+  --ap-muted: var(--muted);
+  --ap-subtle: var(--subtle);
+  --ap-rule: var(--rule);
+  --ap-surface: var(--surface);
+  --ap-accent: var(--accent);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --paper: #201f1d;
+  --ink: #ede9df;
+  --muted: #b6b2a9;
+  --subtle: #aaa69e;
+  --rule: #45423c;
+  --surface: #2b2925;
+  --accent: #86a9dd;
+  --link: #86a9dd;
+  --link-hover: #b9cdea;
+  --marker: #86a9dd;
+  --selection: #2f4a6d;
+  --selection-ink: #f4f1e8;
+  color-scheme: dark;
+}
+
+/* Interactive states, defined once for every page. */
+::selection { background: var(--selection); color: var(--selection-ink); }
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible { outline: 2px solid var(--marker); outline-offset: 4px; border-radius: 3px; }

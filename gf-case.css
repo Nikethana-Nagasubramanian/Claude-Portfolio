@@ -3,16 +3,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --bg: #FAFAF8;
-  --ink: #141414;
-  --muted: #6b6b6b;
-  --faint: #a3a3a3;
-  --rule: #e4e2dc;
-  --accent: #3f7ff4;
-  --sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
-}
+/* Colour, type, measure and rhythm all come from tokens.css. */
 
 html { scroll-behavior: smooth; }
 
@@ -20,8 +11,8 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -187,42 +178,9 @@ img, video { max-width: 100%; display: block; }
   font-size: 21px;
   font-weight: 400;
   color: var(--muted);
-  max-width: 52ch;
+  max-width: var(--copy-width);
 }
 
-/* Spec sheet strip — rows stack column-wise; each row is itself
-   label + value arranged row-wise via the grid below. */
-.spec-strip {
-  margin-top: 48px;
-  padding: 20px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.spec-rows {
-  display: grid;
-  gap: 12px;
-}
-
-.spec-item {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 20px;
-  font-family: var(--mono);
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.spec-item b {
-  font-weight: 500;
-  color: var(--faint);
-}
 
 .spec-badge {
   font-family: var(--mono);
@@ -311,7 +269,7 @@ img, video { max-width: 100%; display: block; }
   padding: 16px 20px;
   border-left: 2px solid var(--accent);
   background: rgba(63, 127, 244, .05);
-  max-width: 68ch;
+  max-width: var(--copy-width);
 }
 .notice p {
   font-family: var(--mono);
@@ -364,19 +322,18 @@ img, video { max-width: 100%; display: block; }
   font-weight: 400;
   letter-spacing: 0;
   color: var(--muted);
-  max-width: 58ch;
+  max-width: var(--copy-width);
 }
 
 .sec-body { margin-top: 34px; }
 .sec-body > p {
-  max-width: 68ch;
+  max-width: var(--copy-width);
   color: var(--ink);
 }
-.sec-body > p + p { margin-top: 16px; }
 
 .sec-body ul {
   margin-top: 16px;
-  max-width: 68ch;
+  max-width: var(--copy-width);
   padding-left: 20px;
 }
 .sec-body ul + p, .sec-body p + ul { margin-top: 16px; }
@@ -390,7 +347,7 @@ img, video { max-width: 100%; display: block; }
 
 /* Numbered pillar lead-ins — "1. Name: description" rows that introduce
    their own media directly below, full-width (not list-indented). */
-.pillar-lead { max-width: 68ch; color: var(--ink); }
+.pillar-lead { max-width: var(--copy-width); color: var(--ink); }
 .pillar-num { color: var(--accent); font-weight: 600; margin-right: 2px; }
 .pillar-name { color: var(--accent); font-weight: 600; }
 .media-caption + .pillar-lead { margin-top: 48px; }
@@ -642,7 +599,7 @@ p + .mono-label,
 }
 
 .build-note p:not(.mono-label) {
-  max-width: 62ch;
+  max-width: var(--copy-width);
   color: var(--ink);
 }
 
@@ -724,8 +681,6 @@ p + .mono-label,
   .case-title { font-size: clamp(34px, 10vw, 44px); }
   .hero-support { font-size: 18px; }
 
-  .spec-strip { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .spec-item { grid-template-columns: 90px 1fr; font-size: 13px; }
 
   .hero-duo { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; }
 
@@ -882,7 +837,7 @@ p + .mono-label,
 
 /* Stacked constraint/detail groups — reuse the square-bullet mono head,
    just full-width and separated by a hairline instead of a grid. */
-.constraint-group { max-width: 68ch; }
+.constraint-group { max-width: var(--copy-width); }
 .constraint-group + .constraint-group {
   margin-top: 30px;
   padding-top: 26px;
@@ -911,7 +866,7 @@ p + .mono-label,
   font-size: 15px;
   line-height: 1.65;
   color: var(--muted);
-  max-width: 56ch;
+  max-width: var(--copy-width);
 }
 .career-date {
   font-family: var(--mono);
@@ -946,7 +901,7 @@ p + .mono-label,
   line-height: 1.6;
   color: var(--ink);
 }
-.principle--wide3 p { font-size: 19px; max-width: 56ch; }
+.principle--wide3 p { font-size: 19px; max-width: var(--copy-width); }
 .principle cite {
   font-style: normal;
   font-family: var(--mono);

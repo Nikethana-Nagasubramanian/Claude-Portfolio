@@ -1,15 +1,6 @@
 /* Shared Scout-derived chrome for Playground tools. The experiment canvases
    retain their individual visual languages and interaction code. */
 body.tool-page {
-  --bg: #fffefe;
-  --ink: #20201e;
-  --muted: #55534f;
-  --faint: #76736f;
-  --rule: #eeece9;
-  --card: #f7f7f5;
-  --accent: #416fb2;
-  --sans: "Geist", "Instrument Sans", system-ui, sans-serif;
-  --mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -28,7 +19,6 @@ body.tool-page .label,
 body.tool-page .tool-nav-label { font-family: var(--mono); letter-spacing: 0; text-transform: none; }
 body.tool-page .btn { border-radius: 7px; font-family: var(--sans); }
 
-:root[data-theme='dark'] body.tool-page { --bg: #201f1d; --ink: #ede9df; --muted: #b6b2a9; --faint: #b6b2a9; --rule: #45423c; --card: #2b2925; --accent: #86a9dd; }
 :root[data-theme='dark'] body.tool-page .nav { background: color-mix(in srgb, var(--bg) 94%, transparent); }
 
 @media (max-width: 720px) {
