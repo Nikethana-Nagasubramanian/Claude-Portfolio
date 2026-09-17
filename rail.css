@@ -18,7 +18,7 @@ body.has-rail { padding-left: 288px; }
 .site-rail .hero-name { display: flex; align-items: center; gap: 10px; }
 .site-rail .hero-name-text {
   color: var(--ink);
-  font: 550 20px/1.4 var(--sans);
+  font: 500 20px/1.4 var(--sans);
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -39,7 +39,8 @@ body.has-rail { padding-left: 288px; }
   letter-spacing: -.2px;
   white-space: nowrap;
 }
-.site-rail .hero-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--available); }
+.site-rail .hero-name .hero-status { font-size: 12px; }
+.site-rail .hero-status::before { content: ""; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--available); }
 .site-rail__footer { margin-top: auto; padding-top: 32px; }
 .site-rail__nav,
 .site-rail__ai { display: grid; gap: 10px; }
@@ -91,6 +92,9 @@ body.has-rail { padding-left: 288px; }
   .site-rail { display: none; }
 }
 
+/* Nothing may push the page sideways. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
 /* No scrolling on a normal screen. On a short one, clipping the contact
    details would be worse than letting the rail scroll. */
 @media (max-height: 860px) {
@@ -105,7 +109,7 @@ body.has-rail { padding-left: 288px; }
   position: absolute;
   top: 68px;
   left: calc(100% + 20px);
-  z-index: 30;
+  z-index: 200;
   width: 300px;
   padding: 4px;
   border: 1px solid var(--rule);

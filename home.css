@@ -487,7 +487,7 @@ img, video { max-width: 100%; display: block; }
 }
 .home-rail {
   position: sticky;
-  z-index: 5;
+  z-index: 60;
   top: 0;
   height: 100dvh;
   padding: 24px 28px 28px;
@@ -503,7 +503,7 @@ img, video { max-width: 100%; display: block; }
 .home-rail .hero-name { display: flex; align-items: center; gap: 10px; }
 .home-rail .hero-name-text {
   color: var(--ink);
-  font: 550 20px/1.4 var(--sans);
+  font: 500 20px/1.4 var(--sans);
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -524,8 +524,9 @@ img, video { max-width: 100%; display: block; }
   letter-spacing: -.2px;
   white-space: nowrap;
 }
-.home-rail .hero-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--available); }
-.home-rail .hero-headline { margin-top: var(--rail-headline-top, 123px); max-width: 21ch; font: 550 20px/1.4 var(--sans); letter-spacing: -0.02em; }
+.home-rail .hero-name .hero-status { font-size: 12px; }
+.home-rail .hero-status::before { content: ""; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--available); }
+.home-rail .hero-headline { margin-top: var(--rail-headline-top, 123px); max-width: 21ch; font: 500 20px/1.4 var(--sans); letter-spacing: -0.02em; }
 .home-rail .hero-support { margin-top: 14px; max-width: 34ch; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; }
 .home-rail__footer { margin-top: auto; padding-top: 32px; }
 .home-rail__nav,
@@ -573,7 +574,10 @@ img, video { max-width: 100%; display: block; }
   .home-page .home-mobile-nav .social-links { display: flex; margin-left: 0; gap: 15px; }
   .home-page .home-mobile-nav .site-controls { display: none; }
   .home-page .home-shell { display: block; min-height: 0; padding: 0 18px 100px; }
-  .home-rail { position: relative; height: auto; padding: 56px 0 0; border-right: 0; background: transparent; overflow: visible; }
+  .home-rail { position: relative; height: auto; padding: 40px 0 0; border-right: 0; background: transparent; overflow: visible; }
+  .home-rail .hero-name { flex-wrap: wrap; }
+  .home-rail .hero-status { flex-basis: auto; }
+  .home-rail .nike-photo { display: none; }
   .home-rail { overflow: visible; }
   .rail-top { display: none; }
   .home-rail .hero-headline { margin-top: 40px; max-width: 20ch; font-size: 28px; }
