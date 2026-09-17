@@ -419,6 +419,29 @@ img, video { max-width: 100%; display: block; }
 .archive-intro { margin-top: 0; }
 .archive-intro .hero-headline { margin-top: 14px; max-width: 20ch; }
 
+/* Archive runs on the same type scale and rhythm as the home work list. */
+.archive-page .archive-intro .hero-headline {
+  font: 500 24px/1.3 var(--sans);
+  letter-spacing: -.035em;
+}
+.archive-page .archive-intro .hero-support {
+  margin-top: 12px;
+  font: 400 16px/1.625 var(--sans);
+  max-width: 52ch;
+}
+.archive-page .work-tab,
+.archive-page .work-meta { font-family: var(--mono); font-size: 12px; }
+.archive-page .work-title { font: 500 24px/1.3 var(--sans); letter-spacing: -.035em; }
+.archive-page .work-support { font: 400 16px/1.625 var(--sans); }
+.archive-page .work-entry { margin-top: 68px; }
+.archive-page .work-entry:first-of-type { margin-top: 40px; }
+
+@media (max-width: 979px) {
+  .archive-page .archive-intro .hero-headline,
+  .archive-page .work-title { font-size: 22px; }
+  .archive-page .work-entry:first-of-type { margin-top: 32px; }
+}
+
 /* ── Playground: bounded card grid ── */
 .playground-grid {
   margin-top: 72px;
@@ -442,8 +465,8 @@ img, video { max-width: 100%; display: block; }
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 
-.work-section--compact { margin-top: 90px; }
-@media (max-width: 720px) { .work-section--compact { margin-top: 64px; } }
+.work-section--compact { margin-top: 56px; }
+@media (max-width: 720px) { .work-section--compact { margin-top: 40px; } }
 
 /* ── Breakpoints ── */
 @media (max-width: 720px) {
