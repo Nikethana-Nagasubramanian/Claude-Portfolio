@@ -1,0 +1,70 @@
+/* The left rail the home page uses, shared with About, Playground and Archive.
+   It replaces the top navigation on wide screens; below 980px the top nav
+   returns and the rail is hidden. */
+body.has-rail { padding-left: 288px; }
+.site-rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+  padding: 36px 28px 28px;
+  border-right: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 96%, var(--surface));
+  overflow-y: auto;
+}
+.site-rail .hero-id { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.site-rail .hero-avatar { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+.site-rail .hero-name { flex-basis: 100%; color: var(--ink); font: 500 12px/1.5 var(--mono); }
+.site-rail .hero-name span { color: var(--muted); }
+.site-rail .hero-status { flex-basis: 100%; color: var(--accent); font: 400 12px/1.5 var(--mono); }
+.site-rail .hero-status::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.site-rail__footer { margin-top: auto; padding-top: 48px; }
+.site-rail__nav,
+.site-rail__ai { display: grid; gap: 10px; }
+.site-rail__nav a,
+.site-rail__ai a,
+.site-rail__email { width: fit-content; color: var(--muted); font: 400 14px/1.4 var(--sans); transition: color .15s ease; }
+.site-rail__nav a[aria-current='page'] { color: var(--ink); font-weight: 600; }
+.site-rail__nav a:hover,
+.site-rail__ai a:hover,
+.site-rail__email:hover { color: var(--accent); }
+.site-rail__ai { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--rule); gap: 8px; }
+.site-rail__ai .ai-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 13px/1.25 var(--sans);
+}
+.site-rail__ai .ai-button:hover { border-color: var(--ink); color: var(--ink); }
+.site-rail__ai .ai-button img { width: 16px; height: 16px; flex: 0 0 16px; }
+:root[data-theme='dark'] .site-rail__ai .ai-button img { filter: invert(1); }
+.site-rail__email { display: block; margin-top: 30px; }
+.site-rail__social { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.site-rail__social a { display: grid; place-items: center; color: var(--muted); transition: color .15s ease; }
+.site-rail__social a:hover { color: var(--accent); }
+.site-rail__social svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* The rail carries the site links, so the top bar would just repeat them. */
+@media (min-width: 980px) {
+  body.has-rail .top-nav { display: none; }
+}
+@media (max-width: 979px) {
+  body.has-rail { padding-left: 0; }
+  .site-rail { display: none; }
+}

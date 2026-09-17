@@ -406,12 +406,7 @@ p + .mono-label,
 }
 
 /* ── Media treatments ── */
-.media-full {
-  margin-top: 48px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid var(--rule);
-}
+.media-full { border: 1px solid var(--rule); }
 .media-full img, .media-full video { width: 100%; }
 
 /* Narrow variants — e.g. dense code screenshots that get unreadable at full width */
@@ -424,11 +419,6 @@ p + .mono-label,
   .media-full--70 { max-width: 100%; }
 }
 
-.media-plain {
-  margin-top: 48px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .media-plain img { width: 100%; }
 
 .media-duo {
@@ -442,21 +432,6 @@ p + .mono-label,
   .media-duo { grid-template-columns: 1fr; }
 }
 
-/* Every image sits above its caption; caption is centered under it. */
-.media-caption {
-  margin-top: 14px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 60ch;
-  text-align: center;
-}
 
 /* ── Scout feature carousel ── */
 .feature-gallery {

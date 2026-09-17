@@ -2,11 +2,9 @@
 .clara-case { --gf-accent: #416fb2; }
 .clara-case .case-hero > .mono-label + p { max-width: var(--case-copy-width); margin-top: 10px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
 .clara-case .case-hero > .mono-label { display: block; margin-top: 32px; }
-.clara-case .media-caption { width: min(900px, calc(100vw - 48px)); max-width: min(900px, calc(100vw - 48px)); margin-left: 50%; margin-right: 0; transform: translateX(-50%); display: flex; justify-content: center; text-align: center; }
 .clara-case .clara-inline-heading { max-width: var(--case-copy-width); margin-top: 32px; font: 500 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
 .clara-case .case-section,
 .clara-case .case-section.sec--major { margin-top: 56px; padding-bottom: 56px; }
 :root[data-theme='dark'] .clara-case { --gf-accent: #86a9dd; }
 @media (max-width: 720px) {
-  .clara-case .media-caption { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
 }

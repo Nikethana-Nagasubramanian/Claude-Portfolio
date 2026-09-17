@@ -45,6 +45,35 @@
 .case-nav a.active,
 .section-nav a[aria-current] { color: var(--ink); font-weight: 500; }
 
+/* Media: every image and its caption is centred on the page, and the caption
+   is never wider than the image it belongs to. */
+.media-full,
+.media-plain,
+.media-duo {
+  width: min(900px, calc(100vw - 48px));
+  margin: 32px 0 0 50%;
+  transform: translateX(-50%);
+}
+.media-full img,
+.media-plain img,
+.media-full video,
+.media-plain video { display: block; width: 100%; margin: 0 auto; }
+.media-caption {
+  width: min(900px, calc(100vw - 48px));
+  max-width: min(900px, calc(100vw - 48px));
+  margin: 12px 0 0 50%;
+  transform: translateX(-50%);
+  font: 400 12px/1.65 var(--mono);
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: center;
+  color: var(--muted);
+}
+
 @media (max-width: 720px) {
   .spec-item { grid-template-columns: 112px minmax(0, 1fr); gap: 10px; }
+  .media-full,
+  .media-plain,
+  .media-duo,
+  .media-caption { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
 }

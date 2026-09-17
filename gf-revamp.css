@@ -47,12 +47,8 @@
 .gf-case .sec-body { margin-top: 28px; }
 .gf-case .sec-body > p { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
 
-.gf-case .media-full,
-.gf-case .media-plain { width: min(900px, calc(100vw - 48px)); margin: 32px 0 0 50%; transform: translateX(-50%); }
 .gf-case .media-full { border-color: #e9e7e3; background: var(--gf-surface); }
 .gf-case .media-plain { overflow: hidden; }
-.gf-case .media-caption { max-width: min(900px, calc(100vw - 48px)); margin-top: 12px; text-align: left; }
-.nutri-case .media-caption { width: min(900px, calc(100vw - 48px)); margin-left: 50%; margin-right: 0; transform: translateX(-50%); text-align: center; }
 
 .gf-case .stats-band { margin-top: 32px; border-color: var(--gf-rule); }
 .gf-case .stat { padding: 20px 16px 20px 0; }
@@ -95,8 +91,6 @@
   .gf-case .case-title { font-size: 29px; }
   .gf-case .media-full,
   .gf-case .media-plain,
-  .gf-case .media-caption { width: calc(100vw - 32px); max-width: calc(100vw - 32px); }
-  .nutri-case .media-caption { margin-left: 50%; }
   .gf-case .stats-band { grid-template-columns: 1fr 1fr; }
   .gf-case .stat { padding: 20px 12px 20px 0; }
   .gf-case .stat + .stat { padding-left: 12px; }
