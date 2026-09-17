@@ -18,11 +18,13 @@
 
     var page = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "") || "index";
     var social = document.querySelector(".top-nav .social-links");
+    var controls = document.querySelector(".top-nav .site-controls");
 
     var rail = document.createElement("aside");
     rail.className = "site-rail";
     rail.setAttribute("aria-label", "Introduction and contact");
     rail.innerHTML = [
+      '<div class="rail-top"></div>',
       '<div class="hero-id">',
       '<img class="hero-avatar" src="https://framerusercontent.com/images/XShv5eucGw4h4i1NiLpatnvhZU.jpg?scale-down-to=512&width=3024&height=3024" alt="Nikethana (Nike)" />',
       '<p class="hero-name">Nikethana (Nike) <span>Product Builder</span></p>',
@@ -45,12 +47,17 @@
     ].join("");
 
     if (social) rail.querySelector(".site-rail__social").innerHTML = social.innerHTML;
+    // The toggle moves rather than being copied, so only one control exists.
+    if (controls) rail.querySelector(".rail-top").appendChild(controls);
     body.insertBefore(rail, body.firstChild);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", build);
-  } else {
+  // The theme script adds the toggle on DOMContentLoaded, so the rail has to be
+  // built after that event rather than as soon as this deferred script runs.
+  if (document.readyState === "complete") {
     build();
+  } else {
+    document.addEventListener("DOMContentLoaded", build);
+    window.addEventListener("load", build);
   }
 })();

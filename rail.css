@@ -9,11 +9,12 @@ body.has-rail { padding-left: 288px; }
   display: flex;
   flex-direction: column;
   width: 288px;
-  padding: 36px 28px 28px;
+  padding: 24px 28px 28px;
   border-right: 1px solid var(--rule);
   background: color-mix(in srgb, var(--paper) 96%, var(--surface));
-  overflow-y: auto;
+  overflow: hidden;
 }
+.site-rail .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
 .site-rail .hero-id { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .site-rail .hero-avatar { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
 .site-rail .hero-name { flex-basis: 100%; color: var(--ink); font: 500 12px/1.5 var(--mono); }
@@ -28,7 +29,7 @@ body.has-rail { padding-left: 288px; }
   border-radius: 50%;
   background: currentColor;
 }
-.site-rail__footer { margin-top: auto; padding-top: 48px; }
+.site-rail__footer { margin-top: auto; padding-top: 32px; }
 .site-rail__nav,
 .site-rail__ai { display: grid; gap: 10px; }
 .site-rail__nav a,
@@ -38,7 +39,7 @@ body.has-rail { padding-left: 288px; }
 .site-rail__nav a:hover,
 .site-rail__ai a:hover,
 .site-rail__email:hover { color: var(--accent); }
-.site-rail__ai { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--rule); gap: 8px; }
+.site-rail__ai { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); gap: 8px; }
 .site-rail__ai .ai-button {
   display: inline-flex;
   align-items: center;
@@ -54,8 +55,8 @@ body.has-rail { padding-left: 288px; }
 .site-rail__ai .ai-button:hover { border-color: var(--ink); color: var(--ink); }
 .site-rail__ai .ai-button img { width: 16px; height: 16px; flex: 0 0 16px; }
 :root[data-theme='dark'] .site-rail__ai .ai-button img { filter: invert(1); }
-.site-rail__email { display: block; margin-top: 30px; }
-.site-rail__social { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+.site-rail__email { display: block; margin-top: 18px; }
+.site-rail__social { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
 .site-rail__social a { display: grid; place-items: center; color: var(--muted); transition: color .15s ease; }
 .site-rail__social a:hover { color: var(--accent); }
 .site-rail__social svg { width: 20px; height: 20px; fill: currentColor; }
@@ -67,4 +68,10 @@ body.has-rail { padding-left: 288px; }
 @media (max-width: 979px) {
   body.has-rail { padding-left: 0; }
   .site-rail { display: none; }
+}
+
+/* No scrolling on a normal screen. On a short one, clipping the contact
+   details would be worse than letting the rail scroll. */
+@media (max-height: 860px) {
+  .site-rail { overflow-y: auto; }
 }
