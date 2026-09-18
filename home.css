@@ -504,8 +504,7 @@ img, video { max-width: 100%; display: block; }
   min-height: 100dvh;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  display: block;
   align-items: start;
 }
 .home-rail {

@@ -1,6 +1,7 @@
 /* Renders the left rail on every page that opts in with <body class="has-rail">.
-   The home page keeps its own rail markup (it carries the headline too), so this
-   script leaves a page alone when a rail is already present. */
+   Every page gets the same rail; the home page additionally hands over its
+   <section class="hero">, which this script moves into the rail so the two
+   layouts are structurally identical. */
 (function () {
   var LINKS = [
     { href: "index.html", label: "Home" },
@@ -14,7 +15,7 @@
   function build() {
     var body = document.body;
     if (!body || !body.classList.contains("has-rail")) return;
-    if (document.querySelector(".site-rail, .home-rail")) return;
+    if (document.querySelector(".site-rail")) return;
 
     var page = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "") || "index";
     var social = document.querySelector(".top-nav .social-links");
@@ -44,6 +45,9 @@
       '<div class="site-rail__social" aria-label="Social links"></div>',
       "</div>",
     ].join("");
+
+    var hero = document.querySelector("main .hero");
+    if (hero) rail.insertBefore(hero, rail.querySelector(".site-rail__footer"));
 
     if (social) rail.querySelector(".site-rail__social").innerHTML = social.innerHTML;
     // The toggle moves rather than being copied, so only one control exists.

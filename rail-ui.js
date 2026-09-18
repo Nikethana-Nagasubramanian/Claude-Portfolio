@@ -111,7 +111,7 @@
   /* ── 2. Socials belong at the end of the page, not in the rail ───── */
   function moveSocial() {
     var social = one(".home-social-links", ".site-rail__social");
-    var pane = one(".home-work", "main.home-shell");
+    var pane = one(".home-work", "main.home-shell", "main");
     if (!social || !pane || document.querySelector(".site-footer")) return;
 
     var labels = {
