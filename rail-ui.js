@@ -80,7 +80,7 @@
       var openTimer;
       cta.addEventListener("mouseenter", function () {
         clearTimeout(openTimer);
-        openTimer = setTimeout(function () { open(true); }, 140);
+        openTimer = setTimeout(function () { open(true); }, 90);
       });
       cta.addEventListener("mouseleave", function () {
         clearTimeout(openTimer);
@@ -224,6 +224,16 @@
     navMarker();
     drawer();
   }
+
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest("a[href]");
+    if (!link || link.target || link.hasAttribute("download") || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var url;
+    try { url = new URL(link.href, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin || url.pathname === location.pathname || !document.startViewTransition) return;
+    e.preventDefault();
+    document.startViewTransition(function () { location.href = url.href; });
+  });
 
   if (document.readyState === "complete") init();
   else window.addEventListener("load", init);
