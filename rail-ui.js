@@ -162,10 +162,67 @@
     nav.__placeMarker = place;
   }
 
+
+  /* ── 4. Mobile: the rail is a drawer behind a floating hamburger ─── */
+  function drawer() {
+    var rail = document.querySelector(".site-rail");
+    if (!rail || document.querySelector(".rail-toggle")) return;
+    var small = window.matchMedia("(max-width: 979px)");
+
+    var toggle = document.createElement("button");
+    toggle.className = "rail-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-label", "Menu");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", "site-rail");
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+
+    var scrim = document.createElement("div");
+    scrim.className = "rail-scrim";
+    rail.id = rail.id || "site-rail";
+    document.body.appendChild(scrim);
+    document.body.appendChild(toggle);
+
+    function setOpen(state) {
+      document.body.classList.toggle("rail-open", state);
+      toggle.setAttribute("aria-expanded", String(state));
+    }
+    toggle.addEventListener("click", function () {
+      setOpen(!document.body.classList.contains("rail-open"));
+    });
+    scrim.addEventListener("click", function () { setOpen(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+    rail.addEventListener("click", function (e) {
+      if (e.target.closest("a") && small.matches) setOpen(false);
+    });
+
+    /* Home's headline sits in the rail on desktop; on mobile that would bury
+       it in the drawer, so it moves into the page instead. */
+    var hero = document.querySelector(".hero");
+    function placeHero() {
+      if (!hero) return;
+      var main = document.querySelector("main");
+      if (!main) return;
+      if (small.matches) {
+        if (hero.parentNode !== main) main.insertBefore(hero, main.firstChild);
+      } else if (hero.parentNode !== rail) {
+        rail.insertBefore(hero, rail.querySelector(".site-rail__footer"));
+      }
+    }
+    placeHero();
+    small.addEventListener("change", function () {
+      placeHero();
+      if (!small.matches) setOpen(false);
+    });
+  }
+
   function init() {
     buildCta();
     moveSocial();
     navMarker();
+    drawer();
   }
 
   if (document.readyState === "complete") init();
