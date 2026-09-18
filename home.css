@@ -608,7 +608,10 @@ img, video { max-width: 100%; display: block; }
   .home-rail .hero-headline { margin-top: 40px; max-width: 20ch; font-size: 22px; }
   .home-page .work-title { font-size: 22px; }
   .home-rail .hero-support { font-size: 16px; }
-  .home-rail__footer { display: none; }
+  /* The CTA and email follow the intro on mobile instead of being dropped. */
+  .home-rail__footer { display: block; margin-top: 28px; }
+  .home-rail__nav { display: none; }
+  .home-page .home-mobile-nav .social-links { display: none; }
   .home-work { padding: 0; }
   .home-work .work-section { margin-top: 72px; }
 }
