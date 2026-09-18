@@ -1,7 +1,6 @@
-/* The left rail the home page uses, shared with About, Playground and Archive.
-   It replaces the top navigation on wide screens; below 980px the top nav
-   returns and the rail is hidden. */
+/* Shared desktop rail; below 980px it becomes an accessible drawer. */
 body.has-rail { padding-left: var(--rail-w); }
+
 .site-rail {
   position: fixed;
   inset: 0 auto 0 0;
@@ -15,8 +14,8 @@ body.has-rail { padding-left: var(--rail-w); }
   overflow: hidden;
 }
 .site-rail .rail-top { display: flex; justify-content: flex-end; margin-bottom: 20px; }
-.site-rail .hero-name { display: flex; align-items: center; gap: 10px; }
-.site-rail .hero-name-text {
+:is(.site-rail, .mobile-home-intro) .hero-name { display: flex; align-items: center; gap: 10px; }
+:is(.site-rail, .mobile-home-intro) .hero-name-text {
   color: var(--ink);
   font: 500 20px/1.4 var(--sans);
   letter-spacing: -0.02em;
@@ -24,8 +23,8 @@ body.has-rail { padding-left: var(--rail-w); }
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
-.site-rail .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; }
-.site-rail .hero-status {
+:is(.site-rail, .mobile-home-intro) .hero-role { margin-top: 6px; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -0.01em; }
+:is(.site-rail, .mobile-home-intro) .hero-status {
   display: inline-flex;
   align-items: center;
   gap: 0;
@@ -39,8 +38,8 @@ body.has-rail { padding-left: var(--rail-w); }
   letter-spacing: -.2px;
   white-space: nowrap;
 }
-.site-rail .hero-name .hero-status { font-size: 12px; }
-.site-rail .hero-status::before { content: ""; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--available); }
+:is(.site-rail, .mobile-home-intro) .hero-name .hero-status { font-size: 12px; }
+:is(.site-rail, .mobile-home-intro) .hero-status::before { content: ""; width: 6px; height: 6px; margin-right: 4px; border-radius: 50%; background: var(--available); }
 .site-rail__footer { margin-top: auto; padding-top: 32px; }
 .site-rail__nav,
 .site-rail__ai { display: grid; gap: 10px; }
@@ -167,7 +166,7 @@ body.has-rail { padding-left: var(--rail-w); }
 /* The menu opens upward, so the CTA keeps a gap above it: the menu lands in
    empty space instead of covering the nav links. */
 .site-rail__ai {
-  margin-top: clamp(28px, 12vh, 108px);
+  margin-top: 108px;
   padding-top: 0;
   border-top: 0;
 }
@@ -282,16 +281,6 @@ body.has-rail { padding-left: var(--rail-w); }
 .site-rail { background: #fefdfd; }
 body.has-rail { background: var(--surface); }
 
-::view-transition-old(root),
-::view-transition-new(root) { animation-duration: 220ms; animation-timing-function: var(--ease-out); }
-::view-transition-old(root) { animation-name: rail-page-out; }
-::view-transition-new(root) { animation-name: rail-page-in; }
-@keyframes rail-page-out { to { opacity: 0; transform: translateY(-4px); } }
-@keyframes rail-page-in { from { opacity: 0; transform: translateY(8px); } }
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-}
 
 @media (max-width: 979px) {
   .site-footer { margin-top: 64px; gap: 10px 28px; }
@@ -325,7 +314,7 @@ body.has-rail { background: var(--surface); }
     border-right: 0;
     border-left: 1px solid var(--rule);
     background: var(--bg);
-    box-shadow: -18px 0 48px rgb(0 0 0 / 14%);
+    box-shadow: none;
     overflow-y: auto;
     z-index: 200;
     transform: translateX(100%);
@@ -339,27 +328,27 @@ body.has-rail { background: var(--surface); }
   body.has-rail .site-rail__footer { margin-top: 28px; padding-top: 0; }
   body.has-rail .site-rail__ai { margin-top: 28px; }
   body.has-rail .site-rail .hero-id { display: block; }
-  body.has-rail .site-rail .hero-role { margin-top: 6px; }
-  body.has-rail .site-rail .hero-name { flex-wrap: nowrap; }
-  body.has-rail .site-rail .hero-name-text { white-space: nowrap; }
-  body.has-rail .site-rail .hero-status { margin-left: 0; flex: 0 0 auto; width: auto; }
+  body.has-rail :is(.site-rail, .mobile-home-intro) .hero-role { margin-top: 6px; }
+  body.has-rail :is(.site-rail, .mobile-home-intro) .hero-name { flex-wrap: nowrap; }
+  body.has-rail :is(.site-rail, .mobile-home-intro) .hero-name-text { white-space: nowrap; }
+  body.has-rail :is(.site-rail, .mobile-home-intro) .hero-status { margin-left: 0; flex: 0 0 auto; width: auto; }
 
   /* Home's headline moves into the page on mobile (see rail-ui.js), so it
      needs the page's own scale rather than the rail's. */
-  .home-page main > .hero { padding: 76px 18px 0; }
-  .home-page main > .hero .hero-headline {
+  .home-page .mobile-home-intro > .hero { padding: 0; margin-top: 28px; }
+  .home-page .mobile-home-intro .hero-headline {
     margin-top: 0;
     max-width: none;
     font: 500 22px/1.3 var(--sans);
     letter-spacing: -.035em;
   }
-  .home-page main > .hero .hero-support {
+  .home-page .mobile-home-intro .hero-support {
     margin-top: 12px;
     max-width: none;
     color: var(--muted);
     font: 400 16px/1.625 var(--sans);
   }
-  .home-page main > .hero .hero-marquee { display: none; }
+  .home-page .mobile-home-intro .hero-marquee { display: none; }
 }
 
 /* The floating hamburger and its scrim exist only on small screens. */
@@ -383,7 +372,7 @@ body.has-rail { background: var(--surface); }
     border-radius: 12px;
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(8px);
-    box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
+    box-shadow: none;
     color: var(--ink);
     cursor: pointer;
   }
@@ -416,4 +405,66 @@ body.has-rail { background: var(--surface); }
 
 @media (prefers-reduced-motion: reduce) {
   .site-rail, .rail-toggle span, .rail-scrim { transition: none; }
+}
+
+/* Reveal once, after all shared controls have their final dimensions. */
+html.rail-pending body.has-rail > main,
+html.rail-pending .site-rail,
+html.rail-pending .rail-toggle { visibility: hidden; }
+:root { --rail-background: #fefdfd; }
+:root[data-theme='dark'] { --rail-background: var(--paper); }
+body.has-rail .site-rail { background: var(--rail-background); }
+.site-rail { overflow-y: auto; }
+.site-rail .hero { flex-shrink: 1; }
+.site-rail__footer { flex-shrink: 0; }
+.site-rail__nav a { line-height: 24px; }
+.site-rail__ai .ai-menu__item { width: 100%; }
+.ai-cta::before { pointer-events: none; }
+.ai-cta.is-open::before { pointer-events: auto; }
+.ai-menu {
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), visibility 0s linear 180ms;
+}
+.ai-cta.is-open .ai-menu { visibility: visible; pointer-events: auto; transition-delay: 0s; }
+.ai-cta.is-instant .ai-menu { transition: none; }
+.ai-cta__trigger:active { transform: scale(.97); }
+.ai-cta__trigger:focus-visible,
+.ai-menu__item:focus-visible,
+.site-rail a:focus-visible,
+.rail-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ai-menu__item:focus-visible { background: var(--surface); }
+.ai-menu__item .ai-icon { width: 16px; height: 16px; flex: 0 0 16px; }
+.nike-photo { pointer-events: none; }
+@media (max-width: 979px) {
+  body.has-rail .site-rail { transition-duration: 240ms; }
+  /* Enough space for the upward menu without covering navigation. */
+  body.has-rail .site-rail__ai { margin-top: 108px; }
+}
+@media (hover: none) {
+  .ai-cta__trigger:hover { opacity: 1; }
+  .nike-preview:hover .nike-photo { visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-menu { transform: none; transition: opacity 100ms ease, visibility 0s linear 100ms; }
+  .ai-cta.is-open .ai-menu, .ai-cta__trigger:active { transform: none; }
+  body.has-rail .site-rail, .nav-marker { transition: none !important; }
+}
+
+/* A single 18px inset aligns the introduction with all project content. */
+:root { --mobile-content-inset: 18px; }
+.mobile-home-intro { display: none; }
+.site-rail__nav { grid-auto-rows: 24px; gap: 10px; }
+.site-rail__nav a { height: 24px; padding-left: 18px; white-space: nowrap; }
+.nav-marker { transition: none; }
+.nav-marker[data-ready="true"] { opacity: 1; }
+.marker-positioned.marker-animated .nav-marker { transition: transform 300ms cubic-bezier(.23,1,.32,1); }
+@media (max-width: 979px) {
+  .home-page .mobile-home-intro { display: block; padding-top: 20px; }
+  .home-page .mobile-home-intro .rail-top { display: flex; justify-content: flex-start; min-height: 44px; margin-bottom: 28px; }
+  .mobile-home-intro .site-controls { margin-left: 0; }
+  .mobile-home-intro .hero-id { display: block; }
+  .mobile-home-intro .hero-name { flex-wrap: wrap; text-transform: none; }
+  .mobile-home-intro .hero-status { flex-basis: auto; }
+  body.has-rail .site-rail__footer { margin-top: 0; }
 }

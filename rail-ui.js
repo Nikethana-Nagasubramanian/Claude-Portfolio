@@ -7,13 +7,9 @@
    3. Draw the nav's active-page square as one element that slides between
       items instead of appearing and disappearing.
 
-   The home page and the generated rail use different class names, so every
-   lookup below accepts either. */
+   The four entry pages use the same generated rail. */
 (function () {
-  var EASE = "cubic-bezier(.32,.72,0,1)";
-  /* The Claude PNG is white art for the orange button, so it disappears on a
-     light surface. This is the same mark drawn with currentColor. */
-  var CLAUDE_ICON = '<svg class="ai-icon ai-icon--claude" viewBox="0 0 24 24" fill="#cb7c5d" aria-hidden="true"><path d="M10.50 10.00L12.00 1.40L13.50 10.00ZM11.70 9.52L17.30 2.82L14.30 11.02ZM12.98 9.70L21.18 6.70L14.48 12.30ZM14.00 10.50L22.60 12.00L14.00 13.50ZM14.48 11.70L21.18 17.30L12.98 14.30ZM14.30 12.98L17.30 21.18L11.70 14.48ZM13.50 14.00L12.00 22.60L10.50 14.00ZM12.30 14.48L6.70 21.18L9.70 12.98ZM11.02 14.30L2.82 17.30L9.52 11.70ZM10.00 13.50L1.40 12.00L10.00 10.50ZM9.52 12.30L2.82 6.70L11.02 9.70ZM9.70 11.02L6.70 2.82L12.30 9.52Z"/><circle cx="12" cy="12" r="2.1"/></svg>';
+  var CLAUDE_ICON = '<img class="ai-icon ai-icon--claude" src="assets/icons/claude-star.png" width="16" height="16" alt="" />';
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function one() {
@@ -43,7 +39,7 @@
 
     box.innerHTML =
       '<div class="ai-cta">' +
-        '<div class="ai-menu" id="ai-menu" role="menu" hidden>' +
+        '<div class="ai-menu" id="ai-menu" role="menu" aria-label="AI providers" inert>' +
           '<a class="ai-menu__item" role="menuitem" href="' + claude + '" target="_blank" rel="noopener">' + claudeIcon + "Ask with Claude</a>" +
           '<a class="ai-menu__item" role="menuitem" href="' + gpt + '" target="_blank" rel="noopener">' + gptIcon + "Ask with GPT</a>" +
         "</div>" +
@@ -57,53 +53,70 @@
     var trigger = cta.querySelector(".ai-cta__trigger");
     var menu = cta.querySelector(".ai-menu");
     var hoverable = window.matchMedia("(hover: hover) and (pointer: fine)");
-    var closeTimer;
+    var openTimer, closeTimer;
+    var pointerDown = false;
+    var suppressFocus = false;
+    var items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
 
-    function open(state) {
+    function open(state, instant) {
+      clearTimeout(openTimer);
       clearTimeout(closeTimer);
-      if (state === cta.classList.contains("is-open")) return;
+      cta.classList.toggle("is-instant", !!instant);
       cta.classList.toggle("is-open", state);
       trigger.setAttribute("aria-expanded", String(state));
-      if (state) {
-        menu.hidden = false;
-      } else if (reduced.matches) {
-        menu.hidden = true;
-      } else {
-        // Let the exit transition finish before hiding it from the tree.
-        closeTimer = setTimeout(function () {
-          if (!cta.classList.contains("is-open")) menu.hidden = true;
-        }, 180);
-      }
+      menu.inert = !state;
+      menu.setAttribute("aria-hidden", String(!state));
     }
-
-    if (hoverable.matches) {
-      var openTimer;
-      cta.addEventListener("mouseenter", function () {
-        clearTimeout(openTimer);
-        openTimer = setTimeout(function () { open(true); }, 90);
-      });
-      cta.addEventListener("mouseleave", function () {
-        clearTimeout(openTimer);
-        open(false);
-      });
-    }
+    open(false, true);
+    cta.addEventListener("pointerenter", function (e) {
+      if (!hoverable.matches || e.pointerType === "touch") return;
+      clearTimeout(closeTimer);
+      openTimer = setTimeout(function () { open(true); }, 80);
+    });
+    cta.addEventListener("pointerleave", function () {
+      clearTimeout(openTimer);
+      if (cta.contains(document.activeElement)) return;
+      closeTimer = setTimeout(function () { open(false); }, 120);
+    });
+    trigger.addEventListener("pointerdown", function () { pointerDown = true; });
+    document.addEventListener("pointerup", function () { pointerDown = false; });
+    document.addEventListener("pointercancel", function () { pointerDown = false; });
     trigger.addEventListener("click", function (e) {
-      e.preventDefault();
-      open(!cta.classList.contains("is-open"));
+      open(!cta.classList.contains("is-open"), e.detail === 0);
     });
-    cta.addEventListener("focusin", function () { open(true); });
-    cta.addEventListener("focusout", function () {
-      setTimeout(function () {
-        if (!cta.contains(document.activeElement)) open(false);
-      }, 0);
+    cta.addEventListener("focusin", function () {
+      if (!pointerDown && !suppressFocus) open(true, true);
     });
-    document.addEventListener("keydown", function (e) {
+    cta.addEventListener("focusout", function (e) {
+      if (!cta.contains(e.relatedTarget)) open(false, true);
+    });
+    cta.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && cta.classList.contains("is-open")) {
-        open(false);
+        e.preventDefault();
+        e.stopPropagation();
+        suppressFocus = true;
         trigger.focus();
+        suppressFocus = false;
+        open(false, true);
+      } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) {
+        e.preventDefault();
+        open(true, true);
+        var index = items.indexOf(document.activeElement);
+        if (e.key === "Home") index = 0;
+        else if (e.key === "End") index = items.length - 1;
+        else index = (index + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length;
+        items[index].focus();
+      } else if (e.key === "Tab" && document.activeElement === trigger && !e.shiftKey && cta.classList.contains("is-open")) {
+        e.preventDefault();
+        items[0].focus();
+      } else if (e.key === "Tab" && document.activeElement === items[items.length - 1] && !e.shiftKey) {
+        suppressFocus = true;
+        trigger.focus();
+        suppressFocus = false;
+        open(false, true);
       }
     });
-    document.addEventListener("click", function (e) {
+    document.addEventListener("pointerdown", function (e) {
       if (!cta.contains(e.target)) open(false);
     });
   }
@@ -135,33 +148,47 @@
     social.parentNode.removeChild(social);
   }
 
-  /* ── 3. A square that travels between nav items ─────────────────── */
+  /* The marker is already in the shared markup. Fixed nav rows keep its
+     geometry independent of font loading; only user clicks enable motion. */
   function navMarker() {
-    var nav = one(".home-rail__nav", ".site-rail__nav");
-    if (!nav || nav.querySelector(".nav-marker")) return;
-
-    var marker = document.createElement("span");
-    marker.className = "nav-marker";
-    marker.setAttribute("aria-hidden", "true");
-    nav.appendChild(marker);
-
-    function place(animate) {
-      var current = nav.querySelector("a[aria-current='page']");
-      if (!current) { marker.style.opacity = "0"; return; }
-      var top = current.offsetTop + (current.offsetHeight - 8) / 2;
-      marker.style.transition = animate && !reduced.matches
-        ? "transform .42s " + EASE + ", opacity .2s ease"
-        : "none";
-      marker.style.transform = "translateY(" + top + "px)";
-      marker.style.opacity = "1";
+    var nav = document.querySelector(".site-rail__nav");
+    if (!nav) return;
+    var marker = nav.querySelector(".nav-marker");
+    var frame, navigationTimer;
+    var current = nav.querySelector("a[aria-current='page']");
+    function place(link) {
+      marker.style.transform = "translateY(" + (link.offsetTop + (link.offsetHeight - 8) / 2) + "px)";
     }
-
-    place(false);
-    window.addEventListener("resize", function () { place(false); });
-    // Exposed so the navigation layer can move the square on page change.
-    nav.__placeMarker = place;
+    function settle() {
+      nav.classList.remove("marker-animated");
+      if (current) place(current);
+      marker.dataset.ready = String(!!current);
+      nav.classList.add("marker-positioned");
+      document.documentElement.classList.remove("rail-pending");
+    }
+    function schedule() {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(settle);
+    }
+    schedule();
+    window.addEventListener("resize", schedule);
+    reduced.addEventListener("change", schedule);
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) { clearTimeout(navigationTimer); schedule(); }
+    });
+    nav.addEventListener("click", function (e) {
+      var link = e.target.closest("a");
+      if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || link.target || link.hasAttribute("download")) return;
+      clearTimeout(navigationTimer);
+      if (link === current || e.detail === 0 || reduced.matches) return;
+      e.preventDefault();
+      nav.classList.add("marker-animated");
+      place(link);
+      // Finish this one short movement before the native document navigation.
+      // The destination paints its marker directly in the matching position.
+      navigationTimer = setTimeout(function () { location.assign(link.href); }, 300);
+    });
   }
-
 
   /* ── 4. Mobile: the rail is a drawer behind a floating hamburger ─── */
   function drawer() {
@@ -186,55 +213,62 @@
     function setOpen(state) {
       document.body.classList.toggle("rail-open", state);
       toggle.setAttribute("aria-expanded", String(state));
+      toggle.setAttribute("aria-label", state ? "Close menu" : "Menu");
+      rail.inert = small.matches && !state;
+      document.querySelector("main").inert = small.matches && state;
+      if (state) rail.querySelector("button, a").focus();
+      else if (rail.contains(document.activeElement)) toggle.focus();
     }
+    setOpen(false);
     toggle.addEventListener("click", function () {
       setOpen(!document.body.classList.contains("rail-open"));
     });
     scrim.addEventListener("click", function () { setOpen(false); });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") setOpen(false);
+      if (e.key === "Tab" && small.matches && document.body.classList.contains("rail-open")) {
+        var focusable = Array.from(rail.querySelectorAll('a, button')).filter(function (el) { return !el.closest('[inert]'); });
+        if (!e.shiftKey && document.activeElement === toggle) { e.preventDefault(); focusable[0].focus(); }
+        else if (e.shiftKey && document.activeElement === focusable[0]) { e.preventDefault(); toggle.focus(); }
+      }
     });
     rail.addEventListener("click", function (e) {
-      if (e.target.closest("a") && small.matches) setOpen(false);
+      if (e.target.closest("a") && !e.target.closest(".site-rail__nav") && small.matches) setOpen(false);
     });
 
-    /* Home's headline sits in the rail on desktop; on mobile that would bury
-       it in the drawer, so it moves into the page instead. */
-    var hero = document.querySelector(".hero");
-    function placeHero() {
-      if (!hero) return;
-      var main = document.querySelector("main");
-      if (!main) return;
+    var main = document.querySelector("main");
+    var hero = rail.querySelector(".hero");
+    var identity = rail.querySelector(".hero-id");
+    var top = rail.querySelector(".rail-top");
+    var intro = document.createElement("div");
+    intro.className = "mobile-home-intro";
+    main.insertBefore(intro, main.firstChild);
+    function placeIntro() {
       if (small.matches) {
-        if (hero.parentNode !== main) main.insertBefore(hero, main.firstChild);
-      } else if (hero.parentNode !== rail) {
-        rail.insertBefore(hero, rail.querySelector(".site-rail__footer"));
+        intro.appendChild(top);
+        intro.appendChild(identity);
+        if (hero) intro.appendChild(hero);
+      } else {
+        rail.insertBefore(top, rail.firstChild);
+        top.after(identity);
+        if (hero) identity.after(hero);
       }
     }
-    placeHero();
+    placeIntro();
     small.addEventListener("change", function () {
-      placeHero();
-      if (!small.matches) setOpen(false);
+      placeIntro();
+      setOpen(false);
     });
   }
 
   function init() {
     buildCta();
     moveSocial();
-    navMarker();
     drawer();
+    navMarker();
+    document.body.classList.add("rail-ready");
   }
 
-  document.addEventListener("click", function (e) {
-    var link = e.target.closest("a[href]");
-    if (!link || link.target || link.hasAttribute("download") || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    var url;
-    try { url = new URL(link.href, location.href); } catch (_) { return; }
-    if (url.origin !== location.origin || url.pathname === location.pathname || !document.startViewTransition) return;
-    e.preventDefault();
-    document.startViewTransition(function () { location.href = url.href; });
-  });
 
-  if (document.readyState === "complete") init();
-  else window.addEventListener("load", init);
+  init();
 })();

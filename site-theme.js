@@ -1,5 +1,6 @@
 (() => {
   const root = document.documentElement;
+  if (root.hasAttribute("data-shared-rail")) root.classList.add("rail-pending");
   const system = matchMedia('(prefers-color-scheme: dark)');
   let preference = null;
   try {
@@ -20,7 +21,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     // Pages may carry several toggles (mobile nav + rail); wire every one.
     themeToggles = Array.from(document.querySelectorAll('.theme-toggle'));
-    const nav = document.querySelector('.nav-content');
+    const nav = document.querySelector('.rail-top, .nav-content');
     if (!themeToggles.length) {
       if (!nav) return;
       const controls = document.createElement('div');

@@ -597,7 +597,7 @@ img, video { max-width: 100%; display: block; }
   .home-page .home-mobile-nav .nav-content { min-height: 56px; height: auto; padding: 10px 18px; gap: 10px 18px; flex-wrap: wrap; }
   .home-page .home-mobile-nav .social-links { display: flex; margin-left: 0; gap: 15px; }
   .home-page .home-mobile-nav .site-controls { display: none; }
-  .home-page .home-shell { display: block; min-height: 0; padding: 0 18px 100px; }
+  .home-page .home-shell { display: block; min-height: 0; padding: 0 var(--mobile-content-inset) 100px; }
   .home-rail { position: relative; height: auto; padding: 40px 0 0; border-right: 0; background: transparent; overflow: visible; }
   .home-rail .hero-name { flex-wrap: wrap; }
   .home-rail .hero-status { flex-basis: auto; }

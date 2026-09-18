@@ -1,0 +1,16 @@
+/* Native cross-document navigation: normal links remain the fallback. */
+@view-transition { navigation: auto; }
+main { view-transition-name: page-content; }
+.site-rail { view-transition-name: site-rail; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+::view-transition-group(site-rail) { animation-duration: 0s; }
+::view-transition-old(site-rail) { animation: none; opacity: 0; }
+::view-transition-new(site-rail) { animation: none; }
+::view-transition-old(page-content) { animation: content-out 140ms cubic-bezier(.23,1,.32,1) both; }
+::view-transition-new(page-content) { animation: content-in 200ms cubic-bezier(.23,1,.32,1) both; }
+@keyframes content-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes content-in { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
