@@ -13,7 +13,7 @@
   var EASE = "cubic-bezier(.32,.72,0,1)";
   /* The Claude PNG is white art for the orange button, so it disappears on a
      light surface. This is the same mark drawn with currentColor. */
-  var CLAUDE_ICON = '<svg class="ai-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.50 10.00L12.00 1.40L13.50 10.00ZM11.70 9.52L17.30 2.82L14.30 11.02ZM12.98 9.70L21.18 6.70L14.48 12.30ZM14.00 10.50L22.60 12.00L14.00 13.50ZM14.48 11.70L21.18 17.30L12.98 14.30ZM14.30 12.98L17.30 21.18L11.70 14.48ZM13.50 14.00L12.00 22.60L10.50 14.00ZM12.30 14.48L6.70 21.18L9.70 12.98ZM11.02 14.30L2.82 17.30L9.52 11.70ZM10.00 13.50L1.40 12.00L10.00 10.50ZM9.52 12.30L2.82 6.70L11.02 9.70ZM9.70 11.02L6.70 2.82L12.30 9.52Z"/><circle cx="12" cy="12" r="2.1"/></svg>';
+  var CLAUDE_ICON = '<svg class="ai-icon ai-icon--claude" viewBox="0 0 24 24" fill="#cb7c5d" aria-hidden="true"><path d="M10.50 10.00L12.00 1.40L13.50 10.00ZM11.70 9.52L17.30 2.82L14.30 11.02ZM12.98 9.70L21.18 6.70L14.48 12.30ZM14.00 10.50L22.60 12.00L14.00 13.50ZM14.48 11.70L21.18 17.30L12.98 14.30ZM14.30 12.98L17.30 21.18L11.70 14.48ZM13.50 14.00L12.00 22.60L10.50 14.00ZM12.30 14.48L6.70 21.18L9.70 12.98ZM11.02 14.30L2.82 17.30L9.52 11.70ZM10.00 13.50L1.40 12.00L10.00 10.50ZM9.52 12.30L2.82 6.70L11.02 9.70ZM9.70 11.02L6.70 2.82L12.30 9.52Z"/><circle cx="12" cy="12" r="2.1"/></svg>';
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function one() {
@@ -50,7 +50,6 @@
         '<button class="ai-cta__trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="ai-menu">' +
           '<span class="ai-cta__icons">' + claudeIcon + gptIcon + "</span>" +
           '<span class="ai-cta__label">Ask AI about Nike</span>' +
-          '<svg class="ai-cta__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>' +
         "</button>" +
       "</div>";
 
@@ -78,8 +77,15 @@
     }
 
     if (hoverable.matches) {
-      cta.addEventListener("mouseenter", function () { open(true); });
-      cta.addEventListener("mouseleave", function () { open(false); });
+      var openTimer;
+      cta.addEventListener("mouseenter", function () {
+        clearTimeout(openTimer);
+        openTimer = setTimeout(function () { open(true); }, 140);
+      });
+      cta.addEventListener("mouseleave", function () {
+        clearTimeout(openTimer);
+        open(false);
+      });
     }
     trigger.addEventListener("click", function (e) {
       e.preventDefault();

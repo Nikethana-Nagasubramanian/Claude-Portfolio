@@ -573,7 +573,7 @@ img, video { max-width: 100%; display: block; }
 .home-rail__nav a:hover,
 .home-ai-links a:hover,
 .home-email:hover { color: var(--accent); }
-.home-ai-links { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); gap: 8px; }
+.home-ai-links { margin-top: clamp(28px, 12vh, 108px); padding-top: 0; border-top: 0; gap: 8px; }
 .home-ai-links .ai-button { display: inline-flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); font: 500 13px/1.25 var(--sans); }
 .home-ai-links .ai-button:hover { border-color: var(--ink); color: var(--ink); }
 .ai-button img { width: 16px; height: 16px; flex: 0 0 16px; }
@@ -620,7 +620,7 @@ img, video { max-width: 100%; display: block; }
   .home-rail { padding-top: 16px; }
   .home-rail .hero-marquee { display: none; }
   .home-rail__footer { padding-top: 20px; }
-  .home-ai-links { margin-top: 14px; padding-top: 14px; }
+  .home-ai-links { margin-top: 28px; padding-top: 0; }
   .home-ai-links .ai-button { padding: 8px 10px; }
   .home-email { margin-top: 12px; }
   .home-social-links { margin-top: 10px; }

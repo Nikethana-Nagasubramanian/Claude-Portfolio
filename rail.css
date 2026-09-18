@@ -165,40 +165,41 @@ body.has-rail { padding-left: var(--rail-w); }
 .site-rail__ai .ai-icon { width: 16px; height: 16px; flex: 0 0 16px; }
 
 /* ── One AI CTA with a menu above it ─────────────────────────────── */
+/* The menu opens upward, so the CTA keeps a gap above it: the menu lands in
+   empty space instead of covering the nav links. */
+.home-ai-links,
+.site-rail__ai {
+  margin-top: clamp(28px, 12vh, 108px);
+  padding-top: 0;
+  border-top: 0;
+}
+
 .ai-cta { position: relative; }
 
 .ai-cta__trigger {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
-  padding: 9px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--muted);
-  font: 400 14px/1.4 var(--sans);
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--bg);
+  font: 500 14px/1.4 var(--sans);
   letter-spacing: -0.01em;
   cursor: pointer;
-  transition: border-color .15s ease, color .15s ease;
+  transition: opacity .15s ease, transform .15s cubic-bezier(.32,.72,0,1);
 }
 .ai-cta__trigger:hover,
-.ai-cta.is-open .ai-cta__trigger { border-color: var(--ink); color: var(--ink); }
+.ai-cta.is-open .ai-cta__trigger { opacity: .9; }
+.ai-cta__trigger:active { transform: scale(.985); }
 
 .ai-cta__icons { display: inline-flex; align-items: center; }
-.ai-cta__icons > * {
-  width: 16px; height: 16px; flex: 0 0 16px;
-  border-radius: 50%;
-  background: var(--bg);
-  box-shadow: 0 0 0 1.5px var(--bg);
-}
-.ai-cta__icons > * + * { margin-left: -6px; }
+.ai-cta__icons > * { width: 16px; height: 16px; flex: 0 0 16px; }
+.ai-cta__icons > * + * { margin-left: 6px; }
+.ai-cta__icons svg:not(.ai-icon--claude) { color: var(--bg); }
 .ai-cta__label { flex: 1; text-align: left; }
-.ai-cta__arrow {
-  width: 14px; height: 14px; flex: 0 0 14px;
-  transition: transform .28s cubic-bezier(.32,.72,0,1);
-}
-.ai-cta.is-open .ai-cta__arrow { transform: rotate(180deg); }
 
 .ai-menu {
   position: absolute;
@@ -223,8 +224,8 @@ body.has-rail { padding-left: var(--rail-w); }
 .ai-menu__item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
+  gap: 10px;
+  padding: 9px 10px;
   border-radius: 7px;
   color: var(--muted);
   font: 400 14px/1.4 var(--sans);
@@ -232,7 +233,6 @@ body.has-rail { padding-left: var(--rail-w); }
   transition: background .12s ease, color .12s ease;
 }
 .ai-menu__item:hover { background: var(--surface); color: var(--ink); }
-.ai-menu__item img,
 .ai-menu__item svg { width: 16px; height: 16px; flex: 0 0 16px; }
 
 /* ── Social links, now a footer under the content ────────────────── */
