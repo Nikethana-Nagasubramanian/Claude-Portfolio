@@ -1,6 +1,5 @@
 (() => {
   const root = document.documentElement;
-  if (root.hasAttribute("data-shared-rail")) root.classList.add("rail-pending");
   const system = matchMedia('(prefers-color-scheme: dark)');
   let preference = null;
   try {

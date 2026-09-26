@@ -2,7 +2,7 @@
 <html lang="en" data-shared-rail>
 <head>
   <meta charset="UTF-8" />
-  <script src="site-theme.js?v=6"></script>
+  <script src="site-theme.js?v=7"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Builder</title>
   <meta name="description" content="I design and build products end to end. From strategy and user research to UI and functional prototypes." />
@@ -11,18 +11,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="patterns.css" />
-  <link rel="stylesheet" href="rail.css?v=14" />
   <link rel="stylesheet" href="home.css?v=21" />
-  <script defer src="site-rail.js?v=6"></script>
-  <script defer src="rail-ui.js?v=9"></script>
+  <link rel="stylesheet" href="gf-case.css?v=8" />
+  <link rel="stylesheet" href="site-theme.css?v=4" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css" />
+  <link rel="stylesheet" href="about-playground.css" />
+  <link rel="stylesheet" href="rail.css?v=15" />
+  <link rel="stylesheet" href="atmosphere.css?v=4" />
+  <link rel="stylesheet" href="site-shell.css?v=5" />
+  <script defer src="site-rail.js?v=7"></script>
+  <script defer src="rail-ui.js?v=12"></script>
+  <script defer src="atmosphere.js?v=4"></script>
+  <script defer src="tools/gh-contrib-widget.js"></script>
+  <script defer src="site-router.js?v=2"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" onload="window.LogRocket &amp;&amp; window.LogRocket.init('5orxf0/portfolio')"></script>
   <script defer src="social-icons.js"></script>
-  <link rel="stylesheet" href="site-theme.css?v=4" />
-  <link rel="stylesheet" href="page-transitions.css?v=2" />
-  <script defer src="page-transitions.js?v=1"></script>
+  <link rel="stylesheet" href="background-explorer.css?v=2" />
+  <script defer src="background-explorer.js?v=2"></script>
 </head>
-<body class="home-page has-rail">
+<body class="home-page has-rail has-atmosphere">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <filter id="watercolor-filter" x="-20%" y="-20%" width="140%" height="140%">
       <feTurbulence type="fractalNoise" baseFrequency="0.010 0.018" numOctaves="3" seed="7" result="noise">
@@ -46,10 +55,12 @@
   </div>
   -->
 
+  <a class="skip-content" href="#main-content">Skip to content</a>
   <noscript><nav aria-label="Site links"><a href="index.html">Home</a> · <a href="about.html">About Nike</a> · <a href="playground.html">Playground</a> · <a href="archive.html">Archived Projects</a></nav></noscript>
 
-  <main class="home-shell">
+  <main id="main-content" tabindex="-1" class="home-shell route-frame">
     <section class="hero" aria-labelledby="intro-title">
+      <button type="button" class="background-explore" data-explore-background aria-haspopup="dialog" aria-controls="background-explorer" aria-expanded="false">Explore the background <span aria-hidden="true">↗</span></button>
       <h1 class="hero-headline" id="intro-title">I design the part you interact with, and the <span class="pen-mark">trust layer</span> beneath it.</h1>
       <p class="hero-support">
         I love getting into the weeds of how something feels, how it works, how much time it saves you, and underneath all of that, why you'd believe it in the first place.
@@ -182,28 +193,7 @@
     </div>
   </main>
 
-  <script>
-    const workTabs = document.querySelectorAll('.work-tab[data-tab]');
-    const workPanels = {
-      selected: document.getElementById('panel-selected'),
-      personal: document.getElementById('panel-personal')
-    };
-    workTabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const selected = tab.dataset.tab;
 
-        workTabs.forEach((item) => {
-          const isActive = item === tab;
-          item.classList.toggle('active', isActive);
-          item.setAttribute('aria-selected', String(isActive));
-        });
-
-        Object.entries(workPanels).forEach(([key, panel]) => {
-          panel.hidden = key !== selected;
-        });
-      });
-    });
-  </script>
 
 </body>
 </html>

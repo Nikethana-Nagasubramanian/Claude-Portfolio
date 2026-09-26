@@ -1,7 +1,4 @@
-/* Renders the left rail on every page that opts in with <body class="has-rail">.
-   Every page gets the same rail; the home page additionally hands over its
-   <section class="hero">, which this script moves into the rail so the two
-   layouts are structurally identical. */
+/* Builds the persistent shell once per document. Route content stays in main. */
 (function () {
   var LINKS = [
     { href: "index.html", label: "Home" },
@@ -26,7 +23,7 @@
     rail.innerHTML = [
       '<div class="rail-top"></div>',
       '<div class="hero-id">',
-      '<p class="hero-name"><span class="nike-preview"><span class="hero-name-text">I\'m Nike</span><span class="nike-photo" aria-hidden="true"><img src="assets/nike-portrait.jpg" alt="" width="520" height="693" loading="lazy" /></span></span><span class="hero-status">Open to work</span></p>',
+      '<p class="hero-name"><button type="button" class="nike-preview" aria-expanded="false" aria-controls="nike-portrait"><span class="hero-name-text">I\'m Nike</span></button><span class="hero-status">Open to work</span></p>',
       '<p class="hero-role">Product Designer who codes</p>',
       "</div>",
       '<div class="site-rail__footer">',
@@ -45,8 +42,6 @@
       "</div>",
     ].join("");
 
-    var hero = document.querySelector("main .hero");
-    if (hero) rail.insertBefore(hero, rail.querySelector(".site-rail__footer"));
 
     rail.querySelector(".site-rail__social").innerHTML = [
       ['LinkedIn', 'https://www.linkedin.com/in/nikethana-nn/'],

@@ -73,9 +73,9 @@ body.scout-case { background: #fffefe !important; color: #20201e; }
 .scout-case .github-link:active { transform: scale(.98); }
 .scout-case .scout-limitations { margin-top: 48px; padding-top: 24px; border-top: 1px solid #eeece9; }
 .scout-case .scout-limitations p:not(.mono-label) { margin-top: 16px; font: 400 15px/1.6 "Geist", sans-serif; color: #55534f; }
-.scout-case .next-case { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr); gap: 28px; margin-top: 72px; padding: 16px; border: 1px solid #e9e7e3; border-radius: 10px; background: #f7f7f5; transition: border-color 160ms ease, transform 160ms ease; }
+.scout-case .next-case { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr); gap: 28px; margin-top: 72px; --preview-radius: 6px; --card-padding: 16px; padding: var(--card-padding); border: 1px solid #e9e7e3; border-radius: calc(var(--preview-radius) + var(--card-padding)); background: #f7f7f5; transition: border-color 160ms ease, transform 160ms ease; }
 .scout-case .next-case:hover { border-color: #c9c6c0; color: #20201e; transform: translateY(-2px); }
-.scout-case .next-case-preview { min-height: 190px; overflow: hidden; border-radius: 6px; background: #e9eee4; }
+.scout-case .next-case-preview { min-height: 190px; overflow: hidden; border-radius: var(--preview-radius); background: #e9eee4; }
 .scout-case .next-case-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .scout-case .next-case-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 12px 12px 12px 0; }
 .scout-case .next-case-title { font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; }
@@ -129,7 +129,7 @@ html[data-theme='dark'] body.scout-case { background: #201f1d !important; color:
 @media (max-width: 720px) {
   .scout-case .scout-hero { height: 240px; }
   .scout-case .feature-gallery { width: calc(100vw - 32px); }
-  .scout-case .next-case { grid-template-columns: 1fr; gap: 8px; padding: 12px; }
+  .scout-case .next-case { grid-template-columns: 1fr; gap: 8px; --card-padding: 12px; }
   .scout-case .next-case-preview { min-height: 150px; }
   .scout-case .next-case-copy { padding: 12px 4px 8px; }
 }
@@ -140,3 +140,6 @@ html[data-theme='dark'] body.scout-case { background: #201f1d !important; color:
   .scout-case .case-section { margin-top: 64px; }
   .scout-case .case-section.sec--major { margin-top: 80px; }
 }
+
+/* Clip case-study media to a consistent, quiet corner. */
+.media-full { border-radius: 12px; overflow: hidden; }

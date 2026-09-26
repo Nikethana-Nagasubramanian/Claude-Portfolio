@@ -2,7 +2,7 @@
 <html lang="en" data-shared-rail>
 <head>
   <meta charset="UTF-8" />
-  <script src="site-theme.js?v=6"></script>
+  <script src="site-theme.js?v=7"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Archive — Nikethana</title>
   <meta name="description" content="Archive collection of earlier projects that reveal my design process, decision-making, and growth as a designer." />
@@ -11,21 +11,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="patterns.css" />
-  <link rel="stylesheet" href="rail.css?v=14" />
   <link rel="stylesheet" href="home.css?v=21" />
-  <script defer src="site-rail.js?v=6"></script>
-  <script defer src="rail-ui.js?v=9"></script>
+  <link rel="stylesheet" href="gf-case.css?v=8" />
+  <link rel="stylesheet" href="site-theme.css?v=4" />
+  <link rel="stylesheet" href="case-typography.css" />
+  <link rel="stylesheet" href="gf-revamp.css" />
+  <link rel="stylesheet" href="about-playground.css" />
+  <link rel="stylesheet" href="rail.css?v=15" />
+  <link rel="stylesheet" href="atmosphere.css?v=4" />
+  <link rel="stylesheet" href="site-shell.css?v=5" />
+  <script defer src="site-rail.js?v=7"></script>
+  <script defer src="rail-ui.js?v=12"></script>
+  <script defer src="atmosphere.js?v=4"></script>
+  <script defer src="tools/gh-contrib-widget.js"></script>
+  <script defer src="site-router.js?v=2"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" onload="window.LogRocket &amp;&amp; window.LogRocket.init('5orxf0/portfolio')"></script>
   <script defer src="social-icons.js"></script>
-  <link rel="stylesheet" href="site-theme.css?v=4" />
-  <link rel="stylesheet" href="page-transitions.css?v=2" />
-  <script defer src="page-transitions.js?v=1"></script>
+  <link rel="stylesheet" href="background-explorer.css?v=2" />
+  <script defer src="background-explorer.js?v=2"></script>
 </head>
-<body class="has-rail archive-page">
+<body class="has-rail archive-page has-atmosphere">
+  <a class="skip-content" href="#main-content">Skip to content</a>
   <noscript><nav aria-label="Site links"><a href="index.html">Home</a> · <a href="about.html">About Nike</a> · <a href="playground.html">Playground</a> · <a href="archive.html">Archived Projects</a></nav></noscript>
 
-  <main class="home-shell">
+  <main id="main-content" tabindex="-1" class="home-shell route-frame">
     <header class="archive-intro">
       <p class="mono-label">Archive</p>
       <h1 class="hero-headline">Other Projects</h1>
@@ -111,28 +121,6 @@
     </section>
   </main>
 
-  <script>
-    const archiveTabs = document.querySelectorAll('.work-tab[data-tab]');
-    const archivePanels = {
-      work: document.getElementById('panel-work'),
-      interviews: document.getElementById('panel-interviews')
-    };
-    archiveTabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const selected = tab.dataset.tab;
 
-        archiveTabs.forEach((item) => {
-          const isActive = item === tab;
-          item.classList.toggle('active', isActive);
-          item.setAttribute('aria-selected', String(isActive));
-        });
-
-        Object.entries(archivePanels).forEach(([key, panel]) => {
-          panel.hidden = key !== selected;
-        });
-
-      });
-    });
-  </script>
 </body>
 </html>

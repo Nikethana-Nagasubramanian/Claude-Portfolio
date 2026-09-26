@@ -3,7 +3,7 @@
    Three jobs, all progressive enhancement over the markup already on the page:
    1. Collapse the two AI links into one CTA that opens a menu (hover on
       pointer devices, tap on touch).
-   2. Move the rail's social links into a footer at the end of the content.
+   2. Keep the social footer and responsive header outside route content.
    3. Draw the nav's active-page square as one element that slides between
       items instead of appearing and disappearing.
 
@@ -124,8 +124,7 @@
   /* ── 2. Socials belong at the end of the page, not in the rail ───── */
   function moveSocial() {
     var social = one(".home-social-links", ".site-rail__social");
-    var pane = one(".home-work", "main.home-shell", "main");
-    if (!social || !pane || document.querySelector(".site-footer")) return;
+    if (!social || document.querySelector(".site-footer")) return;
 
     var labels = {
       linkedin: "LinkedIn", x: "X", twitter: "X", github: "GitHub",
@@ -143,51 +142,60 @@
     var footer = document.createElement("footer");
     footer.className = "site-footer";
     footer.setAttribute("aria-label", "Social links");
-    footer.innerHTML = out.join("");
-    pane.appendChild(footer);
+    footer.innerHTML = '<nav class="site-footer__links" aria-label="Social links">' + out.join("") + "</nav>";
+    document.body.appendChild(footer);
     social.parentNode.removeChild(social);
   }
 
   /* The marker is already in the shared markup. Fixed nav rows keep its
      geometry independent of font loading; only user clicks enable motion. */
   function navMarker() {
-    var nav = document.querySelector(".site-rail__nav");
+    var nav = document.querySelector('.site-rail__nav');
     if (!nav) return;
-    var marker = nav.querySelector(".nav-marker");
-    var frame, navigationTimer;
-    var current = nav.querySelector("a[aria-current='page']");
-    function place(link) {
-      marker.style.transform = "translateY(" + (link.offsetTop + (link.offsetHeight - 8) / 2) + "px)";
-    }
-    function settle() {
-      nav.classList.remove("marker-animated");
-      if (current) place(current);
+    var marker = nav.querySelector('.nav-marker');
+    function place(animate) {
+      var current = nav.querySelector('[aria-current="page"]');
+      nav.classList.toggle('marker-animated', !!animate && !reduced.matches);
+      if (current) marker.style.transform = 'translateY(' + (current.offsetTop + (current.offsetHeight - 8) / 2) + 'px)';
       marker.dataset.ready = String(!!current);
-      nav.classList.add("marker-positioned");
-      document.documentElement.classList.remove("rail-pending");
+      nav.classList.add('marker-positioned');
     }
-    function schedule() {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(settle);
+    place(false);
+    window.addEventListener('resize', function () { place(false); });
+    reduced.addEventListener('change', function () { place(false); });
+    document.addEventListener('site:navigation', function (e) { place(e.detail.animate); });
+  }
+
+  function portrait() {
+    var trigger = document.querySelector('.nike-preview');
+    var photo = document.createElement('div');
+    photo.className = 'nike-photo';
+    photo.id = 'nike-portrait';
+    photo.innerHTML = '<img src="assets/nike-portrait.jpg" alt="Nike" width="520" height="693" loading="eager" decoding="async">';
+    document.body.append(photo);
+    var hover = matchMedia('(hover: hover) and (pointer: fine)');
+    var pointer = false;
+    var touch = false;
+    function show(open, instant) {
+      photo.classList.toggle('is-visible', open);
+      photo.classList.toggle('is-instant', !!instant);
+      photo.setAttribute('aria-hidden', String(!open));
+      trigger.setAttribute('aria-expanded', String(open));
     }
-    schedule();
-    window.addEventListener("resize", schedule);
-    reduced.addEventListener("change", schedule);
-    window.addEventListener("pageshow", function (e) {
-      if (e.persisted) { clearTimeout(navigationTimer); schedule(); }
+    show(false);
+    trigger.addEventListener('pointerenter', function (e) { if (hover.matches && e.pointerType !== 'touch') show(true); });
+    trigger.addEventListener('pointerleave', function () { if (!trigger.matches(':focus-visible')) show(false); });
+    trigger.addEventListener('pointerdown', function (e) { pointer = true; touch = e.pointerType === 'touch'; });
+    trigger.addEventListener('focus', function () { if (!pointer) show(true, true); });
+    trigger.addEventListener('blur', function () { show(false, true); pointer = false; });
+    trigger.addEventListener('click', function (e) {
+      if (touch || !hover.matches || e.detail === 0) show(trigger.getAttribute('aria-expanded') !== 'true', e.detail === 0);
+      pointer = false;
     });
-    nav.addEventListener("click", function (e) {
-      var link = e.target.closest("a");
-      if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || link.target || link.hasAttribute("download")) return;
-      clearTimeout(navigationTimer);
-      if (link === current || e.detail === 0 || reduced.matches) return;
-      e.preventDefault();
-      nav.classList.add("marker-animated");
-      place(link);
-      // Finish this one short movement before the native document navigation.
-      // The destination paints its marker directly in the matching position.
-      navigationTimer = setTimeout(function () { location.assign(link.href); }, 300);
-    });
+    document.addEventListener('pointerdown', function (e) { if (!trigger.contains(e.target)) show(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false, true); });
+    document.addEventListener('site:routechange', function () { show(false, true); });
+    window.addEventListener('resize', function () { show(false, true); });
   }
 
   /* ── 4. Mobile: the rail is a drawer behind a floating hamburger ─── */
@@ -216,9 +224,14 @@
       toggle.setAttribute("aria-label", state ? "Close menu" : "Menu");
       rail.inert = small.matches && !state;
       document.querySelector("main").inert = small.matches && state;
+      var header = document.querySelector(".mobile-shell-header");
+      if (header) header.inert = small.matches && state;
+      var footer = document.querySelector("body > .site-footer");
+      if (footer) footer.inert = small.matches && state;
       if (state) rail.querySelector("button, a").focus();
       else if (rail.contains(document.activeElement)) toggle.focus();
     }
+    document.addEventListener("site:routechange", function () { setOpen(false); });
     setOpen(false);
     toggle.addEventListener("click", function () {
       setOpen(!document.body.classList.contains("rail-open"));
@@ -237,21 +250,18 @@
     });
 
     var main = document.querySelector("main");
-    var hero = rail.querySelector(".hero");
     var identity = rail.querySelector(".hero-id");
     var top = rail.querySelector(".rail-top");
     var intro = document.createElement("div");
-    intro.className = "mobile-home-intro";
-    main.insertBefore(intro, main.firstChild);
+    intro.className = "mobile-shell-header";
+    main.before(intro);
     function placeIntro() {
       if (small.matches) {
         intro.appendChild(top);
         intro.appendChild(identity);
-        if (hero) intro.appendChild(hero);
       } else {
         rail.insertBefore(top, rail.firstChild);
         top.after(identity);
-        if (hero) identity.after(hero);
       }
     }
     placeIntro();
@@ -266,6 +276,7 @@
     moveSocial();
     drawer();
     navMarker();
+    portrait();
     document.body.classList.add("rail-ready");
   }
 

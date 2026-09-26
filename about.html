@@ -2,46 +2,46 @@
 <html lang="en" data-shared-rail>
 <head>
   <meta charset="UTF-8" />
-  <script src="site-theme.js?v=6"></script>
+  <script src="site-theme.js?v=7"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Nikethana</title>
   <meta name="description" content="A little about Nikethana (Nike) — product designer, her journey, and how she works." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="patterns.css" />
-  <link rel="stylesheet" href="rail.css?v=14" />
+  <link rel="stylesheet" href="home.css?v=21" />
   <link rel="stylesheet" href="gf-case.css?v=8" />
-  <script defer src="site-rail.js?v=6"></script>
-  <script defer src="rail-ui.js?v=9"></script>
-  <script defer src="/_vercel/insights/script.js"></script>
-  <script defer src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" onload="window.LogRocket &amp;&amp; window.LogRocket.init('5orxf0/portfolio')"></script>
-  <script defer src="social-icons.js"></script>
-  <script defer src="https://www.itsmenike.com/tools/gh-contrib-widget.js"></script>
   <link rel="stylesheet" href="site-theme.css?v=4" />
   <link rel="stylesheet" href="case-typography.css" />
   <link rel="stylesheet" href="gf-revamp.css" />
   <link rel="stylesheet" href="about-playground.css" />
-  <link rel="stylesheet" href="page-transitions.css?v=2" />
-  <script defer src="page-transitions.js?v=1"></script>
+  <link rel="stylesheet" href="rail.css?v=15" />
+  <link rel="stylesheet" href="atmosphere.css?v=4" />
+  <link rel="stylesheet" href="site-shell.css?v=5" />
+  <script defer src="site-rail.js?v=7"></script>
+  <script defer src="rail-ui.js?v=12"></script>
+  <script defer src="atmosphere.js?v=4"></script>
+  <script defer src="tools/gh-contrib-widget.js"></script>
+  <script defer src="site-router.js?v=2"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" onload="window.LogRocket &amp;&amp; window.LogRocket.init('5orxf0/portfolio')"></script>
+  <script defer src="social-icons.js"></script>
+  <link rel="stylesheet" href="background-explorer.css?v=2" />
+  <script defer src="background-explorer.js?v=2"></script>
 </head>
-<body class="case-type gf-case about-case has-rail">
+<body class="case-type gf-case about-case has-rail has-atmosphere">
+  <a class="skip-content" href="#main-content">Skip to content</a>
   <noscript><nav aria-label="Site links"><a href="index.html">Home</a> · <a href="about.html">About Nike</a> · <a href="playground.html">Playground</a> · <a href="archive.html">Archived Projects</a></nav></noscript>
 
-  <main class="case-shell">
-    <aside class="case-nav" aria-label="About sections">
-      <p class="case-nav-label">Contents</p>
-      <a href="#overview">Overview</a>
-      <a href="#why-hire">Why Hire Me</a>
-      <a href="#design-lessons">Design Lessons</a>
-      <a href="#professionally">Professionally</a>
-      <a href="#personally">Personally</a>
-    </aside>
+  <main id="main-content" tabindex="-1" class="case-shell route-frame">
 
     <article class="case-content">
       <header class="case-hero" id="overview">
+        <button type="button" class="background-explore" data-explore-background aria-haspopup="dialog" aria-controls="background-explorer" aria-expanded="false">Explore the background <span aria-hidden="true">↗</span></button>
         <p class="hero-eyebrow">About</p>
+        <div class="about-intro-row"><div class="about-intro-copy">
         <h1 class="case-title" aria-label="Hello — I'm Nikethana, call me Nike.">
           <span class="hello-rotor" aria-hidden="true"><span class="hello-track">
             <span class="hello-pink">Hello.</span><span class="hello-yellow">Hola.</span><span class="hello-orange">வணக்கம்.</span><span class="hello-blue">नमस्ते.</span><span class="hello-purple">你好.</span><span class="hello-pink">Hello.</span>
@@ -49,7 +49,11 @@
           I'm Nikethana — call me Nike.
         </h1>
         <p class="hero-support">Ni-kay-tha-na means Goddess of Victory in Greek. I design and build products end to end, and I ask a lot of "why."</p>
+
+
+        </div>
         <a class="resume-cta hero-resume" href="https://docs.google.com/document/d/1aWXR3U98yh4VY9gF1RPq-lIz_Kmo1BjMQ04dx9SKnlA/edit?usp=sharing" target="_blank" rel="noopener">View Resume →</a>
+        </div>
 
         <div class="spec-strip" aria-label="Quick facts">
           <div class="spec-rows">
@@ -91,7 +95,7 @@
         </div>
       </header>
 
-      <section class="case-section sec--major" id="why-hire">
+<section class="case-section sec--major" id="why-hire">
         <div class="sec-head">
           <p class="sec-index"><em>01</em>Why Hire Me</p>
           <h2 class="sec-title">Product Thinking, Shipped Fast</h2>
@@ -211,7 +215,7 @@
           <p class="sec-support">A few things that shape how I show up to work.</p>
         </div>
         <div class="sec-body">
-          <p>Based in Boston, originally from India — I love exploring new cities and cultures. Amateur photographer (mostly street and travel). Music is always on, from indie folk to classic Tamil film music. Currently reading about product strategy and behavioral psychology.</p>
+          <p>Based in New Orleans, previously in Boston and originally from India — I love exploring new cities and cultures. Amateur photographer (mostly street and travel). Music is always on, from indie folk to classic Tamil film music. Currently reading about product strategy and behavioral psychology.</p>
 
           <p class="mono-label">Principles I Learned to Live By</p>
           <div class="principles-grid">
@@ -239,43 +243,10 @@
         </div>
       </section>
 
-      <footer class="bottom-contact">
-        <span>Reach out to me on</span>
-        <div class="social-links" aria-label="Contact links">
-          <a href="https://www.linkedin.com/in/nikethana-nn/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://x.com/nike_thana" target="_blank" rel="noopener" title="Twitter" aria-label="Twitter">
-            <svg viewBox="0 0 24 24"><path d="M23.95 4.57a10 10 0 0 1-2.82.77 4.93 4.93 0 0 0 2.16-2.72 9.86 9.86 0 0 1-3.13 1.2 4.92 4.92 0 0 0-8.38 4.48A13.96 13.96 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.62v.06a4.93 4.93 0 0 0 3.95 4.83 4.93 4.93 0 0 1-2.22.08 4.93 4.93 0 0 0 4.6 3.42A9.87 9.87 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14.01-7.5 14.01-14.01v-.64a10.02 10.02 0 0 0 2.46-2.55l-.02-.01z"/></svg>
-          </a>
-          <a href="mailto:itsmenike3@gmail.com" title="Email" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h17v11h-17z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </footer>
+
     </article>
   </main>
 
-  <script>
-    const aboutNav = document.querySelector('.case-nav');
-    const updateAboutNav = () => document.body.classList.toggle('gf-nav-visible', window.scrollY > 120);
-    window.addEventListener('scroll', updateAboutNav, { passive: true });
-    updateAboutNav();
 
-    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
-    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
-
-    const scrollSpyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
-          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
-          if (active) active.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-
-    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
-  </script>
 </body>
 </html>

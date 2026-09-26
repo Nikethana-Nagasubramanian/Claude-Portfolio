@@ -1,0 +1,39 @@
+.background-explore, .background-explorer__close {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 15px;
+  font: 500 13px/1.4 var(--sans); color: var(--ink); border: 1px solid var(--rule);
+  border-radius: 999px; background: var(--atmosphere-glass, var(--paper));
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); cursor: pointer;
+}
+.background-explore { margin-bottom: 18px; }
+.background-explore:hover, .background-explorer__close:hover { border-color: var(--accent); }
+.background-explore:active { transform: scale(.98); }
+.background-explorer {
+  position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0; overflow: auto; background: #9fcdf0; color: #152a45;
+}
+.background-explorer[data-scene='night'] { background: #0c102d; color: #f1efff; }
+.background-explorer::backdrop { background: transparent; }
+.background-explorer__close { position: fixed; z-index: 2; background: #f5f8f3ed; color: #152a45; border-color: #627b92; }
+.background-explorer[data-scene='night'] .background-explorer__close { background: #20294fed; color: #f1efff; border-color: #7d8bb8; }
+.background-explorer__close span { font-size: 20px; line-height: 1; }
+.background-explorer__art { position: absolute; width: min(100%, 177.68dvh); aspect-ratio: 1672 / 941; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; }
+.background-explorer__image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.background-explorer__cities { position: absolute; left: 3%; right: 3%; bottom: 9%; display: flex; justify-content: space-between; }
+.background-explorer__cities[hidden] { display: none; }
+.background-explorer__cities button { min-height: 44px; padding: 9px 14px; color: #173653; background: #f8fbf5ed; border: 1px solid #657c8f; border-radius: 20px; font: 500 13px/1.4 var(--sans); cursor: pointer; }
+.background-explorer__cities button[aria-expanded='true'] { color: #fff; background: #214967; }
+.background-explorer__caption { position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 94%; padding: 6px 12px; border-radius: 8px; background: #f8fbf5e8; font: 400 13px/1.5 var(--sans); color: #173653; text-align: center; }
+.background-explorer[data-scene='night'] .background-explorer__caption { background: #20294fe8; color: #f1efff; }
+.background-explorer__note { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: min(440px, 92vw); margin: 12px 0; padding: 14px 18px; background: #f8fbf5f5; color: #173653; border-radius: 12px; font: 400 14px/1.6 var(--sans); }
+@media (min-aspect-ratio: 1672/1100) { .background-explorer__note { top: auto; bottom: 17%; } }
+.exploring-background { overflow: hidden; }
+/* The native modal makes the mounted portfolio inert; keep it painted beneath
+   the opacity transition so there is never a blank frame. */
+@media (max-width: 600px) {
+  .background-explorer__cities { bottom: -24px; left: 10px; right: 10px; }
+  .background-explorer__cities button { padding: 8px 10px; font-size: 12px; }
+  .background-explorer__caption { bottom: auto; top: calc(100% + 36px); }
+  .background-explorer__note { top: calc(100% + 82px); bottom: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .background-explore:active { transform: none; } }
+@media (prefers-reduced-transparency: reduce) { .background-explore, .background-explorer__close { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); color: var(--ink); } }

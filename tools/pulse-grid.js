@@ -321,8 +321,21 @@ async function load(username) {
   submitBtn.disabled = true;
 
   try {
-    const res = await fetch(`/api/contributions?username=${encodeURIComponent(username)}`);
-    const body = await res.json().catch(() => ({}));
+    const path = `/api/contributions?username=${encodeURIComponent(username)}`;
+    let res = await fetch(path);
+    const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+    // A plain static preview cannot execute Vercel functions. Keep local API
+    // support for Vercel dev; use the public CORS-enabled proxy only if absent.
+    if (localPreview && res.status === 404 &&
+        !res.headers.get('content-type')?.includes('application/json')) {
+      res = await fetch(`https://www.itsmenike.com${path}`);
+    }
+    if (!res.headers.get('content-type')?.includes('application/json')) {
+      showState(`The contribution service is unavailable.<span class="hint">Please retry in a moment.</span>`, true);
+      stageTitle.textContent = 'Error';
+      return;
+    }
+    const body = await res.json();
     if (!res.ok) {
       const msgs = {
         user_not_found: `No GitHub user <b>${escapeHtml(username)}</b>.<span class="hint">Check the spelling and try again.</span>`,
