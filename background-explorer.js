@@ -9,24 +9,29 @@
     <figure class="background-explorer__art">
       <img class="background-explorer__image" width="1672" height="941" alt="">
       <div class="background-explorer__cities" aria-label="Cities in the illustration">
-        <button type="button" data-city="Chennai" aria-expanded="false" aria-controls="background-city-note">Chennai</button>
-        <button type="button" data-city="Boston" aria-expanded="false" aria-controls="background-city-note">Boston</button>
-        <button type="button" data-city="New Orleans" aria-expanded="false" aria-controls="background-city-note">New Orleans</button>
+        <article class="background-explorer__city" data-city="Chennai">
+          <img class="background-explorer__sticker" src="assets/atmosphere/coffee.png" width="130" height="130" alt="" />
+          <h2>Chennai, Tamil Nadu, India</h2>
+          <p>Chennai is my home; if you’re ever visiting the city, I’d recommend trying filter coffee (kaapi if I’m being accurate) and seeing Marina Beach!</p>
+        </article>
+        <article class="background-explorer__city" data-city="Boston">
+          <img class="background-explorer__sticker" src="assets/atmosphere/grad-cap.png" width="130" height="130" alt="" />
+          <h2>Boston, MA</h2>
+          <p>Boston became my 2nd home when I moved here in 2022. I did my master’s, found my people.</p>
+        </article>
+        <article class="background-explorer__city" data-city="New Orleans">
+          <img class="background-explorer__sticker" src="assets/atmosphere/alligator.png" width="130" height="130" alt="" />
+          <h2>New Orleans, LA</h2>
+          <p>Currently hereee! Kayaking with the alligators. And no, they’re not as cute as the sticker, bruh.</p>
+        </article>
       </div>
       <figcaption class="background-explorer__caption"></figcaption>
-      <p id="background-city-note" class="background-explorer__note" role="status" hidden></p>
     </figure>`;
   document.body.append(dialog);
   const close = dialog.querySelector('.background-explorer__close');
   const picture = dialog.querySelector('img');
   const caption = dialog.querySelector('figcaption');
   const cities = dialog.querySelector('.background-explorer__cities');
-  const note = dialog.querySelector('.background-explorer__note');
-  const notes = {
-    Chennai: 'Chennai · A nod to the city and its temple architecture. Two temples I love: Parthasarathy and Thiruvallarai (outside Chennai). The illustration is not a depiction of one specific temple.',
-    Boston: 'Boston · 2022–2026. I moved here in 2022; its skyline marks the next chapter.',
-    'New Orleans': 'New Orleans · 2026–present. My newest chapter—and where I live now.'
-  };
   let trigger, savedScroll = [0, 0], motion;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   function fade(target, instant, done) {
@@ -54,31 +59,21 @@
     if (!button || dialog.open) return;
     trigger = button;
     savedScroll = [window.scrollX, window.scrollY];
-    const rect = button.getBoundingClientRect();
-    close.style.left = Math.max(16, Math.min(rect.left, window.innerWidth - 210)) + 'px';
-    close.style.top = Math.max(16, Math.min(rect.top, window.innerHeight - 64)) + 'px';
     const night = document.documentElement.dataset.theme === 'dark';
     dialog.dataset.scene = night ? 'night' : 'day';
     picture.src = night ? 'assets/atmosphere/night-nebula.png' : 'assets/atmosphere/day-sky.png';
     picture.alt = night ? 'A blue and purple galaxy inspired by Rick and Morty.' : 'Chennai temple and waterfront on the left, the Boston skyline in the center, and New Orleans on the right.';
     cities.hidden = night;
-    caption.textContent = night ? 'A galaxy inspired by Rick and Morty.' : 'Chennai → Boston → New Orleans';
-    note.hidden = true;
-    cities.querySelectorAll('button').forEach(item => item.setAttribute('aria-expanded', 'false'));
+    dialog.dataset.animateCities = String(!night && event.detail !== 0 && !reducedMotion.matches);
+    caption.textContent = night ? 'A galaxy inspired by Rick and Morty.' : '';
+    caption.hidden = !night;
+    close.textContent = 'Click here to go back to portfolio';
     button.setAttribute('aria-expanded', 'true');
     dialog.style.opacity = 0;
     dialog.showModal();
     document.body.classList.add('exploring-background');
     close.focus({ preventScroll: true });
     fade(1, event.detail === 0);
-  });
-  cities.addEventListener('click', event => {
-    const button = event.target.closest('[data-city]');
-    if (!button) return;
-    const expanded = button.getAttribute('aria-expanded') !== 'true';
-    cities.querySelectorAll('button').forEach(item => item.setAttribute('aria-expanded', String(expanded && item === button)));
-    note.textContent = notes[button.dataset.city];
-    note.hidden = !expanded;
   });
   close.addEventListener('click', event => dismiss(event.detail === 0));
   dialog.addEventListener('cancel', event => { event.preventDefault(); dismiss(true); });

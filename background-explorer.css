@@ -18,22 +18,47 @@
 .background-explorer__close span { font-size: 20px; line-height: 1; }
 .background-explorer__art { position: absolute; width: min(100%, 177.68dvh); aspect-ratio: 1672 / 941; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; }
 .background-explorer__image { display: block; width: 100%; height: 100%; object-fit: contain; }
-.background-explorer__cities { position: absolute; left: 3%; right: 3%; bottom: 9%; display: flex; justify-content: space-between; }
+ .background-explorer, .background-explorer button { font-family: 'Geist', sans-serif; }
+.background-explorer__cities { position: absolute; inset: 0; pointer-events: none; }
 .background-explorer__cities[hidden] { display: none; }
-.background-explorer__cities button { min-height: 44px; padding: 9px 14px; color: #173653; background: #f8fbf5ed; border: 1px solid #657c8f; border-radius: 20px; font: 500 13px/1.4 var(--sans); cursor: pointer; }
-.background-explorer__cities button[aria-expanded='true'] { color: #fff; background: #214967; }
-.background-explorer__caption { position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 94%; padding: 6px 12px; border-radius: 8px; background: #f8fbf5e8; font: 400 13px/1.5 var(--sans); color: #173653; text-align: center; }
+.background-explorer__city { position: absolute; width: 227px; box-sizing: border-box; padding: 16px 12px; border-radius: 12px; background: rgb(248 252 255 / 76%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); text-align: left; color: #152a45; pointer-events: auto; }
+.background-explorer__city[data-city='Chennai'] { left: 7%; top: 40%; }
+.background-explorer__city[data-city='Boston'] { left: 36%; top: 51%; }
+.background-explorer__city[data-city='New Orleans'] { right: 7%; top: 59%; }
+.background-explorer__city h2 { margin: 0 0 20px; font: 500 16px/1.4 'Geist', sans-serif; }
+.background-explorer__city p { margin: 0; font: 400 15px/1.5 'Geist', sans-serif; }
+.background-explorer__sticker { position: absolute; top: -104px; right: -20px; display: block; width: 130px; height: 130px; max-width: none; object-fit: contain; pointer-events: none; }
+/* The cap artwork has more transparent padding than the coffee sticker. */
+.background-explorer__city[data-city='Boston'] .background-explorer__sticker { top: -78px; }
+.background-explorer[data-scene] .background-explorer__close { position: absolute; inset: 0 0 auto; width: 100%; height: 32%; padding: 0 24px; display: flex; justify-content: center; align-items: center; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; text-align: center; font: 400 16px/1.5 'Geist', sans-serif; }
+.background-explorer__close:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+.background-explorer__caption { position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 94%; padding: 6px 12px; border-radius: 8px; background: #f8fbf5e8; font: 400 18px/1.5 'Geist', sans-serif; color: #173653; text-align: center; }
 .background-explorer[data-scene='night'] .background-explorer__caption { background: #20294fe8; color: #f1efff; }
-.background-explorer__note { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: min(440px, 92vw); margin: 12px 0; padding: 14px 18px; background: #f8fbf5f5; color: #173653; border-radius: 12px; font: 400 14px/1.6 var(--sans); }
-@media (min-aspect-ratio: 1672/1100) { .background-explorer__note { top: auto; bottom: 17%; } }
 .exploring-background { overflow: hidden; }
 /* The native modal makes the mounted portfolio inert; keep it painted beneath
    the opacity transition so there is never a blank frame. */
-@media (max-width: 600px) {
-  .background-explorer__cities { bottom: -24px; left: 10px; right: 10px; }
-  .background-explorer__cities button { padding: 8px 10px; font-size: 12px; }
-  .background-explorer__caption { bottom: auto; top: calc(100% + 36px); }
-  .background-explorer__note { top: calc(100% + 82px); bottom: auto; }
+@media (max-width: 900px), (max-height: 650px) {
+  .background-explorer[data-scene='day'] .background-explorer__art { position: relative; top: auto; left: auto; transform: none; width: 100%; margin: 120px 0 32px; }
+  .background-explorer__cities { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(227px, 100%), 1fr)); gap: 110px 32px; padding: 80px 24px 24px; }
+  .background-explorer__city[data-city] { position: relative; inset: auto; width: 227px; max-width: 100%; justify-self: center; }
+  .background-explorer[data-scene] .background-explorer__close { height: 100px; position: fixed; }
 }
 @media (prefers-reduced-motion: reduce) { .background-explore:active { transform: none; } }
 @media (prefers-reduced-transparency: reduce) { .background-explore, .background-explorer__close { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); color: var(--ink); } }
+
+@media (prefers-reduced-transparency: reduce) { .background-explorer__city { background: #f8fcff; backdrop-filter: none; -webkit-backdrop-filter: none; } }
+
+/* A brief, overlapping reveal keeps the three notes feeling connected. */
+.background-explorer[open][data-animate-cities='true'] .background-explorer__city {
+  animation: city-note-enter 280ms cubic-bezier(.23,1,.32,1) both;
+  animation-delay: 60ms;
+}
+.background-explorer[open][data-animate-cities='true'] .background-explorer__city:nth-child(2) { animation-delay: 140ms; }
+.background-explorer[open][data-animate-cities='true'] .background-explorer__city:nth-child(3) { animation-delay: 220ms; }
+@keyframes city-note-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .background-explorer[open][data-animate-cities='true'] .background-explorer__city { animation: none; }
+}

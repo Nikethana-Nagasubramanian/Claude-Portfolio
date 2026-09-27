@@ -86,8 +86,9 @@ document.querySelector('#run').onclick = async () => {
     assert(doc.activeElement.classList.contains('background-explorer__close'), 'Explorer did not receive focus');
     await until(() => dialog.querySelector('img').naturalWidth > 0);
     if (dialog.dataset.scene === 'day') {
-      dialog.querySelector('[data-city="Boston"]').click();
-      assert(dialog.querySelector('.background-explorer__note').textContent.includes('2022–2026'), 'City dates missing');
+      assert(dialog.querySelector('[data-city="Boston"]').textContent.includes('2022'), 'City date missing');
+      const stickers = [...dialog.querySelectorAll('.background-explorer__sticker')];
+      assert(stickers.length === 3 && stickers.every(img => img.width === 130 && img.height === 130), 'Sticker dimensions differ');
     }
     dialog.querySelector('.background-explorer__close').click();
     await wait(80);
