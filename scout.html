@@ -9,12 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="gf-case.css?v=9" />
+  <link rel="stylesheet" href="scout-brand.css" />
+  <script defer src="scout-brand.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400&amp;family=Archivo&amp;family=Hanken+Grotesk&amp;family=Host+Grotesk&amp;family=PT+Serif&amp;family=Poppins&amp;family=Schibsted+Grotesk&amp;family=Source+Serif+Pro&amp;display=swap" rel="stylesheet" />
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
   <script>window.LogRocket && window.LogRocket.init('5orxf0/portfolio');</script>
   <script defer src="social-icons.js"></script>
 </head>
-<body>
+<body class="scout-case">
   <nav class="top-nav" aria-label="Primary">
     <div class="nav-content">
       <a class="nav-link" href="index.html">home</a>
@@ -44,12 +47,27 @@
   <main class="case-shell">
     <aside class="case-nav" aria-label="Case study sections">
       <p class="case-nav-label">Contents</p>
-      <a href="#overview">Overview</a>
-      <a href="#idea">The Idea</a>
-      <a href="#features">Sneak Peek</a>
+      <div data-view-nav="product">
+        <a href="#overview">Overview</a>
+        <a href="#idea">The Idea</a>
+        <a href="#features">Sneak Peek</a>
+      </div>
+      <div data-view-nav="brand" hidden>
+        <a href="#brand-voice">Voice</a>
+        <a href="#brand-references">References</a>
+        <a href="#brand-principles">Principles</a>
+        <a href="#brand-type">Typography</a>
+        <a href="#brand-color">Color</a>
+        <a href="#brand-final">Final System</a>
+      </div>
     </aside>
 
     <article class="case-content">
+      <div class="case-view-switcher" role="tablist" aria-label="Scout case study view" hidden>
+        <button type="button" id="product-tab" role="tab" aria-selected="true" aria-controls="product-panel" tabindex="0">Product Design</button>
+        <button type="button" id="brand-tab" role="tab" aria-selected="false" aria-controls="brand-panel" tabindex="-1">Brand Design</button>
+      </div>
+      <section id="product-panel" class="case-view-panel" role="tabpanel" aria-labelledby="product-tab" tabindex="0">
       <header class="case-hero" id="overview">
         <p class="hero-eyebrow">Scout — Work in Progress</p>
         <h1 class="case-title">From 230 Roles Across 5 Sources to 3 Worth My Time</h1>
@@ -158,6 +176,203 @@
         </div>
       </section>
 
+      </section>
+
+      <section id="brand-panel" class="case-view-panel" role="tabpanel" aria-labelledby="brand-tab" tabindex="0" hidden>
+        <header class="case-hero" id="brand-overview">
+          <p class="hero-eyebrow">Scout — Brand Design</p>
+          <h1 class="case-title case-display">Giving Scout the Voice of an Editor You Trust</h1>
+          <p class="hero-support">Scout needed to feel less like an AI assistant and more like a meticulous editor sitting beside you—calm, candid, and always working in your corner.</p>
+          <div class="spec-strip" aria-label="Brand design details">
+            <div class="spec-rows">
+              <p class="spec-item"><b>Focus</b>Voice, Visual Identity, Product Expression</p>
+              <p class="spec-item"><b>Role</b>Brand Designer</p>
+              <p class="spec-item"><b>System</b>Young Serif, Geist, Geist Mono</p>
+            </div>
+          </div>
+        </header>
+
+        <section class="case-section" id="brand-voice">
+          <div class="sec-head">
+            <p class="sec-index"><em>01</em>Finding the Voice</p>
+            <h2 class="sec-title">Not a chatbot. An editor in your corner.</h2>
+          </div>
+          <div class="sec-body">
+            <p>In my head, Scout has the measured confidence of Robert De Niro in <cite>The Intern</cite>: meticulous, quietly opinionated, and always in your corner.</p>
+          </div>
+          <figure class="brand-character">
+            <img src="assets/scout/brand/the-intern.webp" width="1050" height="957" alt="Robert De Niro as Ben in The Intern, holding a folder of papers." loading="lazy" />
+            <figcaption>A reference for the character: calm, supportive, firm.<span class="brand-credit">Film still: <cite>The Intern</cite> (2015), Warner Bros. Pictures.</span></figcaption>
+          </figure>
+          <div class="brand-voice-layout brand-wide">
+            <div class="brand-voice-notes">
+              <article><h3>Trustworthy</h3><p>Make the strongest case the truth allows.</p><span class="mono-label">In the product</span><p>Suggestions stay connected to their sources. No new achievement or metric is introduced.</p></article>
+              <article><h3>Opinionated</h3><p>Have a point of view, and explain it.</p><span class="mono-label">Scout’s note</span><blockquote>“Name the flow and connect it to the outcome.”</blockquote></article>
+              <article><h3>Tactile</h3><p>Make every edit feel reviewable.</p><span class="mono-label">In the product</span><p>Stacked notes sit beside the résumé, keeping the change and the decision together.</p></article>
+            </div>
+            <figure class="brand-proof">
+              <img src="assets/scout/brand/suggestion-detail.webp" width="1090" height="1636" alt="Scout’s editorial note, original and revised text, source evidence, and Keep Original, Refine and Accept Change controls." loading="lazy" />
+              <figcaption>The voice becomes visible: a recommendation, its evidence, and a decision that stays yours.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-section" id="brand-references">
+          <div class="sec-head">
+            <p class="sec-index"><em>02</em>References</p>
+            <h2 class="sec-title">Software that shows its work</h2>
+            <p class="sec-support">I borrowed the clarity of a diff, the accountability of a citation, and the texture of an editor’s desk.</p>
+          </div>
+          <div class="brand-reference-carousel brand-wide" data-brand-carousel role="region" aria-roledescription="carousel" aria-label="Scout design references">
+            <div class="brand-carousel-controls">
+              <p class="mono-label" aria-live="polite" aria-atomic="true">Reference <span id="brand-reference-current" data-carousel-count>1</span> of 4</p>
+              <div><button type="button" class="brand-reference-prev" data-carousel-prev aria-label="Previous reference" aria-controls="brand-reference-track">←</button><button type="button" class="brand-reference-next" data-carousel-next aria-label="Next reference" aria-controls="brand-reference-track">→</button></div>
+            </div>
+            <div class="brand-reference-track" data-carousel-track id="brand-reference-track" tabindex="0" aria-label="References; swipe or use the left and right arrow keys">
+            <figure role="group" aria-roledescription="slide" aria-label="1 of 4: Making Software">
+              <img src="assets/scout/brand/making-software.webp" width="1200" height="964" alt="Making Software pairs editorial text with blue, annotated technical diagrams." loading="lazy" />
+              <figcaption><h3>Technical clarity. Editorial character.</h3><p><span class="mono-label">Applied to Scout</span> Precise labels and editorial hierarchy give technical information a distinct personality.</p><span class="brand-credit">Reference: <a href="https://www.makingsoftware.com/" target="_blank" rel="noopener">Making Software — Dan Hollick ↗</a></span></figcaption>
+            </figure>
+            <figure role="group" aria-roledescription="slide" aria-label="2 of 4: GitHub diffs">
+              <img src="assets/scout/brand/github-diff.webp" width="1014" height="622" alt="GitHub’s review interface uses highlighted lines to make code changes visible." loading="lazy" />
+              <figcaption><h3>Visible changes</h3><p><span class="mono-label">Applied to Scout</span> Original and proposed résumé content remain visible together.</p><span class="brand-credit">Reference: GitHub’s diff interface.</span></figcaption>
+            </figure>
+            <figure role="group" aria-roledescription="slide" aria-label="3 of 4: Source citations">
+              <img src="assets/scout/brand/citation-reference.webp" width="970" height="514" alt="An answer about climate connects its explanation to nine supporting sources." loading="lazy" />
+              <figcaption><h3>Evidence beside the claim</h3><p><span class="mono-label">Applied to Scout</span> Important suggestions expose their supporting evidence and reasoning.</p><span class="brand-credit">Reference: citation interface from my software research board.</span></figcaption>
+            </figure>
+            <figure role="group" aria-roledescription="slide" aria-label="4 of 4: Editorial manuscripts">
+              <img src="assets/scout/brand/manuscript.webp" width="1054" height="675" alt="A typed manuscript covered with handwritten corrections, deletions, and margin notes." loading="lazy" />
+              <figcaption><h3>Editing as a physical process</h3><p><span class="mono-label">Applied to Scout</span> Ruled dividers, stacked suggestions, paper texture, and margin annotations make reviewing feel tangible.</p><span class="brand-credit">Reference: annotated manuscript from my editorial research board; original attribution unavailable.</span></figcaption>
+            </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="brand-principles">
+          <div class="sec-head">
+            <p class="sec-index"><em>03</em>From Principle to Product</p>
+            <h2 class="sec-title">Every visual choice had a job</h2>
+            <p class="sec-support">The personality became a set of decisions you can see in the interface.</p>
+          </div>
+          <div class="brand-matrix brand-wide">
+            <div class="brand-matrix-head" aria-hidden="true"><span>Principle</span><span>Visual expression</span><span>Product expression</span></div>
+            <article><h3>Trustworthy</h3><p><span class="brand-mobile-label">Visual expression</span>Restrained olive, precise labels, visible sources</p><p><span class="brand-mobile-label">Product expression</span>Evidence and verification panels</p></article>
+            <article><h3>Opinionated</h3><p><span class="brand-mobile-label">Visual expression</span>Strong serif hierarchy and direct language</p><p><span class="brand-mobile-label">Product expression</span>Scout’s recommendation and primary action</p></article>
+            <article><h3>Tactile</h3><p><span class="brand-mobile-label">Visual expression</span>Paper grain, rules, margins, stacked sheets</p><p><span class="brand-mobile-label">Product expression</span>Résumé editor and suggestion cards</p></article>
+            <article><h3>Transparent</h3><p><span class="brand-mobile-label">Visual expression</span>Paired before-and-after colors</p><p><span class="brand-mobile-label">Product expression</span>Original and proposed résumé lines</p></article>
+            <article><h3>Technical</h3><p><span class="brand-mobile-label">Visual expression</span>Monospace metadata</p><p><span class="brand-mobile-label">Product expression</span>Application IDs, sources, evidence counts</p></article>
+          </div>
+        </section>
+
+        <section class="case-section" id="brand-type">
+          <div class="sec-head">
+            <p class="sec-index"><em>04</em>Typography</p>
+            <h2 class="sec-title">Three typefaces, three responsibilities</h2>
+          </div>
+          <div class="brand-type-specimen brand-wide">
+            <p class="mono-label">Young Serif · Editorial authority</p>
+            <p class="brand-serif-statement">Make the strongest case the truth allows.</p>
+            <div class="brand-interface-specimen">
+              <p class="brand-specimen-meta">Application 042 <span>Source: Hiring Cafe</span></p>
+              <p class="brand-specimen-title">Founding Product Designer</p>
+              <p class="brand-specimen-description">A clearer account of the work you’ve already done.</p>
+              <div class="brand-specimen-note"><span>Scout’s note</span><p>Name the flow and connect it to the outcome.</p></div>
+            </div>
+          </div>
+          <div class="brand-type-roles">
+            <article><h3 style="font-family:'Young Serif',serif">Young Serif</h3><p>Editorial authority for major job titles and expressive statements.</p></article>
+            <article><h3 style="font-family:'Geist',sans-serif">Geist</h3><p>Product clarity for navigation, controls, descriptions, and everyday interface copy.</p></article>
+            <article><h3 style="font-family:'Geist Mono',monospace">Geist Mono</h3><p>Traceable metadata for sources, evidence counts, application numbers, and suggestion labels.</p></article>
+          </div>
+          <p class="brand-small-note">Within the résumé itself, Archivo keeps the applicant’s content distinct from Scout’s editorial voice.</p>
+          <div class="brand-type-explorations" data-brand-carousel role="region" aria-roledescription="carousel" aria-labelledby="brand-type-explorations-title">
+            <h3 id="brand-type-explorations-title">Behind the type choices</h3>
+            <p class="brand-small-note">The typefaces I explored, grouped by the job they needed to do. Each name is set in its own typeface.</p>
+            <div class="brand-carousel-controls">
+              <p class="mono-label" aria-live="polite" aria-atomic="true">Group <span data-carousel-count>1</span> of 3</p>
+              <div><button type="button" data-carousel-prev aria-label="Previous type group" aria-controls="brand-type-track">←</button><button type="button" data-carousel-next aria-label="Next type group" aria-controls="brand-type-track">→</button></div>
+            </div>
+            <div class="brand-type-track" data-carousel-track id="brand-type-track" tabindex="0" aria-label="Type choices; swipe or use the left and right arrow keys">
+            <div class="brand-font-group" role="group" aria-roledescription="slide" aria-label="1 of 3: Interface and document"><p class="mono-label">01 · Interface &amp; document</p>
+              <p class="brand-font-selected"><span class="brand-font-name" style="font-family:'Archivo',sans-serif">Archivo</span><span class="brand-font-role">Résumé content</span></p>
+              <p class="brand-font-selected"><span class="brand-font-name" style="font-family:'Geist',sans-serif">Geist</span><span class="brand-font-role">Selected · Interface</span></p>
+              <p class="brand-font-option" style="font-family:'Host Grotesk',sans-serif">Host Grotesk</p>
+              <p class="brand-font-option" style="font-family:'Schibsted Grotesk',sans-serif">Schibsted Grotesk</p>
+              <p class="brand-font-option" style="font-family:'Hanken Grotesk',sans-serif">Hanken Grotesk</p>
+              <p class="brand-font-option" style="font-family:'Poppins',sans-serif">Poppins</p>
+            </div>
+            <div class="brand-font-group" role="group" aria-roledescription="slide" aria-label="2 of 3: Editorial character"><p class="mono-label">02 · Editorial character</p>
+              <p class="brand-font-option" style="font-family:'Source Serif Pro',serif">Source Serif Pro</p>
+              <p class="brand-font-selected"><span class="brand-font-name" style="font-family:'Young Serif',serif">Young Serif</span><span class="brand-font-role">Selected · Headlines</span></p>
+              <p class="brand-font-option" style="font-family:'PT Serif',serif">PT Serif</p>
+            </div>
+            <div class="brand-font-group" role="group" aria-roledescription="slide" aria-label="3 of 3: Metadata"><p class="mono-label">03 · Metadata</p>
+              <p class="brand-font-selected"><span class="brand-font-name" style="font-family:'Geist Mono',monospace">Geist Mono</span><span class="brand-font-role">Selected · Metadata</span></p>
+              <p class="brand-font-option" style="font-family:'JetBrains Mono',monospace">JetBrains Mono</p>
+            </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="brand-color">
+          <div class="sec-head">
+            <p class="sec-index"><em>05</em>Color</p>
+            <h2 class="sec-title">Color explains what changed—and what to trust</h2>
+            <p class="sec-support">An olive anchor and a quiet document surface leave room for changes and evidence to stand out.</p>
+          </div>
+          <figure class="brand-palette-explorations">
+            <div class="brand-palette-strips" role="img" aria-label="Three explored palette directions: violet and peach, blues, and muted olive neutrals.">
+              <div><i style="background:#381d2a"></i><i style="background:#3e6990"></i><i style="background:#aabd8c"></i><i style="background:#e9e3b4"></i><i style="background:#f39b6d"></i></div>
+              <div><i style="background:#ffffff"></i><i style="background:#00171f"></i><i style="background:#003459"></i><i style="background:#007ea7"></i><i style="background:#00a8e8"></i></div>
+              <div><i style="background:#dde392"></i><i style="background:#afbe8f"></i><i style="background:#7d8570"></i><i style="background:#646f58"></i><i style="background:#504b3a"></i></div>
+            </div>
+            <figcaption>Palette exploration: three directions from my initial color studies.</figcaption>
+          </figure>
+          <div class="brand-palette brand-wide">
+            <figure style="--swatch:#515b41"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Olive</h3><code>#515B41</code><p>Scout’s voice and navigation.</p></figcaption><img src="assets/scout/brand/color-olive.webp" width="544" height="132" alt="Olive sidebar with the selected Jobs item." loading="lazy" /></figure>
+            <figure style="--swatch:#ffffff"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Paper white</h3><code>#FFFFFF</code><p>The document surface.</p></figcaption><img src="assets/scout/brand/color-paper.webp" width="620" height="150" alt="White résumé surface with black summary text." loading="lazy" /></figure>
+            <figure style="--swatch:#b94e38"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Terracotta</h3><code>#B94E38</code><p>The original résumé line.</p></figcaption><img src="assets/scout/brand/color-original.webp" width="620" height="150" alt="Original résumé text marked in terracotta." loading="lazy" /></figure>
+            <figure style="--swatch:#49688d"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Blue</h3><code>#49688D</code><p>The proposed improvement.</p></figcaption><img src="assets/scout/brand/color-proposed.webp" width="620" height="150" alt="Proposed résumé revision marked in blue." loading="lazy" /></figure>
+            <figure style="--swatch:#e9f4e9"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Pale green</h3><code>#E9F4E9</code><p>Supporting source evidence.</p></figcaption><img src="assets/scout/brand/color-evidence.webp" width="620" height="150" alt="Supporting quotation highlighted in pale green." loading="lazy" /></figure>
+            <figure style="--swatch:#6e6368"><div class="brand-swatch" aria-hidden="true"></div><figcaption><h3>Warm gray</h3><code>#6E6368</code><p>Annotations and metadata.</p></figcaption><img src="assets/scout/brand/color-metadata.webp" width="620" height="150" alt="Warm gray source and suggestion labels." loading="lazy" /></figure>
+          </div>
+          <p class="brand-small-note">Color supports the labels “Original,” “Proposed,” and “Evidence”; the meaning never depends on color alone.</p>
+        </section>
+
+        <section class="case-section" id="brand-final">
+          <div class="sec-head">
+            <p class="sec-index"><em>06</em>The System at Work</p>
+            <h2 class="sec-title">From application software to an editorial workspace</h2>
+            <p class="sec-support">The early exploration established the editorial language. The final direction gave the workspace a stronger olive frame.</p>
+          </div>
+          <div class="brand-comparison brand-wide">
+            <figure><a data-brand-preview="Exploration" href="assets/scout/brand/exploration.webp" aria-label="Enlarge exploration image"><img src="assets/scout/brand/exploration.webp" width="2160" height="1536" alt="Early Scout workspace with a pale sidebar, résumé document, and editorial suggestion stack." loading="lazy" /></a><figcaption><span class="mono-label">Exploration</span><p>The paper, serif hierarchy, and stacked notes were already taking shape.</p><a data-brand-preview="Exploration" class="brand-image-link" href="assets/scout/brand/exploration.webp">View full size ⤢</a></figcaption></figure>
+            <figure><a data-brand-preview="Final direction" href="assets/scout/brand/final.webp" aria-label="Enlarge final design image"><img src="assets/scout/brand/final.webp" width="2160" height="1536" alt="Final Scout workspace with olive navigation framing a white document and a source-backed suggestion panel." loading="lazy" /></a><figcaption><span class="mono-label">Final direction</span><p>Olive navigation anchors the document and gives Scout a more distinct presence.</p><a data-brand-preview="Final direction" class="brand-image-link" href="assets/scout/brand/final.webp">View full size ⤢</a></figcaption></figure>
+          </div>
+          <ol class="brand-final-notes">
+            <li><h3>A stronger frame</h3><p>The olive sidebar adds contrast and separates navigation from the document.</p></li>
+            <li><h3>An editorial hierarchy</h3><p>Serif titles and monospace labels carry through from exploration to final.</p></li>
+            <li><h3>Reviewable suggestions</h3><p>Layered notes keep the original, revision, and evidence together in both directions.</p></li>
+          </ol>
+        </section>
+        <section class="case-section" id="brand-moodboards" aria-label="Scout moodboards">
+          <div class="brand-moodboard-carousel brand-wide" data-brand-carousel role="region" aria-roledescription="carousel" aria-label="Scout moodboards">
+            <div class="brand-carousel-controls">
+              <p class="mono-label" aria-live="polite" aria-atomic="true">Poster <span data-carousel-count>1</span> of 5</p>
+              <div><button type="button" data-carousel-prev aria-label="Previous poster" aria-controls="brand-moodboard-track">←</button><button type="button" data-carousel-next aria-label="Next poster" aria-controls="brand-moodboard-track">→</button></div>
+            </div>
+            <div class="brand-moodboard-track" data-carousel-track id="brand-moodboard-track" tabindex="0" aria-label="Posters; swipe or use the left and right arrow keys">
+              <figure role="group" aria-roledescription="slide" aria-label="1 of 5: The editor’s desk"><a href="assets/scout/brand/moodboard-full.webp" data-brand-preview="The editor’s desk" aria-label="View The editor’s desk poster at full size"><img src="assets/scout/brand/moodboard.webp" width="4281" height="2712" alt="Scout’s design statement on olive paper: the rigor of document review and the tactility of an editor’s desk." loading="lazy" /></a></figure>
+              <figure role="group" aria-roledescription="slide" aria-label="2 of 5: Finding Scout’s voice"><a href="assets/scout/brand/moodboard-1-full.webp" data-brand-preview="Finding Scout’s voice" aria-label="View Finding Scout’s voice poster at full size"><img src="assets/scout/brand/moodboard-1.webp" width="4332" height="2712" alt="Voice exploration with a meticulous editor, annotated manuscript, truth check, and technical diagrams." loading="lazy" /></a></figure>
+              <figure role="group" aria-roledescription="slide" aria-label="3 of 5: Clarity and credibility"><a href="assets/scout/brand/moodboard-2-full.webp" data-brand-preview="Clarity and credibility" aria-label="View Clarity and credibility poster at full size"><img src="assets/scout/brand/moodboard-2.webp" width="4332" height="2712" alt="Technical illustrations and résumé annotations exploring tactile clarity and verified suggestions." loading="lazy" /></a></figure>
+              <figure role="group" aria-roledescription="slide" aria-label="4 of 5: Evidence and decisions"><a href="assets/scout/brand/moodboard-3-full.webp" data-brand-preview="Evidence and decisions" aria-label="View Evidence and decisions poster at full size"><img src="assets/scout/brand/moodboard-3.webp" width="4332" height="2712" alt="Résumé edits, tracked changes, and source evidence connected to the decision-making process." loading="lazy" /></a></figure>
+              <figure role="group" aria-roledescription="slide" aria-label="5 of 5: Software that shows its work"><a href="assets/scout/brand/moodboard-4-full.webp" data-brand-preview="Software that shows its work" aria-label="View Software that shows its work poster at full size"><img src="assets/scout/brand/moodboard-4.webp" width="4332" height="2712" alt="Software review references showing a code diff alongside an explanation with source citations." loading="lazy" /></a></figure>
+            </div>
+          </div>
+        </section>
+      </section>
+
       <a class="next-case" href="nutricopilot.html">
         <span class="mono-label">Next Case Study</span>
         <span class="next-case-title">NutriCopilot: A Nutrition Coach That Talks Like I Do</span>
@@ -181,22 +396,12 @@
     </article>
   </main>
 
+  <dialog class="brand-image-dialog" aria-labelledby="brand-preview-title">
+    <div class="brand-preview-toolbar"><h2 id="brand-preview-title">Scout design</h2><div><button type="button" class="brand-preview-zoom" aria-pressed="false">Zoom in</button><button type="button" class="brand-preview-close" aria-label="Close image preview">Close ×</button></div></div>
+    <div class="brand-preview-stage" tabindex="0" aria-label="Image preview; scroll to explore when zoomed"><img alt="" /></div>
+  </dialog>
+
   <script>
-    const scrollSpySections = document.querySelectorAll('.case-hero[id], .case-section[id]');
-    const scrollSpyLinks = document.querySelectorAll('.case-nav a');
-
-    const scrollSpyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          scrollSpyLinks.forEach((link) => link.classList.remove('active'));
-          const active = document.querySelector('.case-nav a[href="#' + entry.target.id + '"]');
-          if (active) active.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-
-    scrollSpySections.forEach((section) => scrollSpyObserver.observe(section));
-
     const galleryTrack = document.getElementById('feature-gallery-track');
     const gallerySlides = Array.from(galleryTrack.querySelectorAll('.feature-gallery-slide'));
     const galleryCurrent = document.getElementById('gallery-current');
