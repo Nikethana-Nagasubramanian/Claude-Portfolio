@@ -53,6 +53,10 @@
     position: fixed; inset: 0 0 auto; width: 100vw; height: 22svh;
   }
 }
+@media (max-width: 979px) {
+  /* Keep the first mobile viewport focused on the introduction. */
+  .background-explore { display: none; }
+}
 @media (prefers-reduced-motion: reduce) { .background-explore:active { transform: none; } }
 @media (prefers-reduced-transparency: reduce) { .background-explore, .background-explorer__close { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); color: var(--ink); } }
 

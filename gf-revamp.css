@@ -30,7 +30,7 @@
 .gf-case .media-caption,
 .gf-case .stat-label { font-family: "Geist Mono", ui-monospace, monospace; font-weight: 400; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
 .gf-case .hero-eyebrow { margin-bottom: 32px; color: var(--gf-accent); }
-.gf-case .case-title { max-width: 100%; font: 500 29px/1.31 "Geist", sans-serif; letter-spacing: -.035em; color: var(--gf-ink); }
+.gf-case .case-title { max-width: 100%; font: 550 clamp(32px, 3.5vw, 38px)/1.16 "Geist", sans-serif; letter-spacing: -.04em; color: var(--gf-ink); }
 .gf-case .hero-support { max-width: 100%; margin-top: 24px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
 .gf-case .spec-strip { display: block; margin-top: 40px; padding: 24px 0; border-color: var(--gf-rule); }
 .gf-case .hero-duo { display: block; margin-top: 32px; }
@@ -39,12 +39,12 @@
 .gf-case .hero-duo p:not(.mono-label) { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
 
 .gf-case .case-section,
-.gf-case .case-section.sec--major { margin-top: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--gf-rule); scroll-margin-top: 96px; }
-.gf-case .sec-index { margin-bottom: 12px; }
-.gf-case .sec-index em { margin-right: 8px; }
-.gf-case .sec-title { max-width: 100%; font: 500 20px/1.4 "Geist", sans-serif; letter-spacing: -.02em; color: var(--gf-ink); }
-.gf-case .sec-support { max-width: 100%; margin-top: 12px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
-.gf-case .sec-body { margin-top: 28px; }
+.gf-case .case-section.sec--major { margin-top: 80px; padding-bottom: 68px; border-bottom: 1px solid var(--gf-rule); scroll-margin-top: 96px; }
+.gf-case .sec-index { margin-bottom: 12px; font-size: 11px; letter-spacing: .045em; }
+.gf-case .sec-index em { margin-right: 10px; color: var(--gf-accent); }
+.gf-case .sec-title { max-width: 24ch; font: 550 clamp(24px, 2.7vw, 28px)/1.22 "Geist", sans-serif; letter-spacing: -.03em; color: var(--gf-ink); }
+.gf-case .sec-support { max-width: 58ch; margin-top: 14px; font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-muted); }
+.gf-case .sec-body { margin-top: 30px; }
 .gf-case .sec-body > p { max-width: var(--case-copy-width); font: 400 16px/1.625 "Geist", sans-serif; color: var(--gf-ink); }
 
 .gf-case .media-full { border-color: #e9e7e3; background: var(--gf-surface); }
@@ -76,19 +76,22 @@
 .gf-case .bottom-contact { margin-top: 72px; padding-top: 32px; border-color: var(--gf-rule); }
 .gf-case .bottom-contact > span { font: 400 12px/20px "Geist Mono", monospace; letter-spacing: 0; text-transform: none; color: var(--gf-subtle); }
 
-:root[data-theme='dark'] .gf-case { --gf-paper: #201f1d; --gf-ink: #ede9df; --gf-muted: #b6b2a9; --gf-subtle: #b6b2a9; --gf-rule: #45423c; --gf-surface: #2b2925; --gf-accent: #86a9dd; }
-:root[data-theme='dark'] .gf-case .top-nav { background: color-mix(in srgb, #201f1d 94%, transparent); }
+:root[data-theme='dark'] .gf-case { --gf-paper: #111b34; --gf-ink: #f2f5fb; --gf-muted: #c6d0e0; --gf-subtle: #a6b4ca; --gf-rule: #35445f; --gf-surface: #1b2947; --gf-accent: #9dbfff; }
+:root[data-theme='dark'] .gf-case .top-nav { background: color-mix(in srgb, var(--gf-paper) 94%, transparent); }
 :root[data-theme='dark'] .gf-case .case-cover { border-color: var(--gf-rule); }
 :root[data-theme='dark'] .gf-case .media-full { border-color: var(--gf-rule); }
 :root[data-theme='dark'] .gf-case .next-case { border-color: var(--gf-rule); }
-:root[data-theme='dark'] .gf-case .next-case:hover { border-color: #68645c; }
-:root[data-theme='dark'] .gf-case .next-case-preview { background: #242b24; }
+:root[data-theme='dark'] .gf-case .next-case:hover { border-color: #64789d; }
+:root[data-theme='dark'] .gf-case .next-case-preview { background: #192841; }
 
 @media (max-width: 1020px) { .gf-case .case-nav { display: none; } }
 @media (max-width: 720px) {
   .gf-case .case-cover { height: 240px; }
   .gf-case .case-shell { padding: 44px 16px 80px; }
-  .gf-case .case-title { font-size: 29px; }
+  .gf-case .case-title { font-size: 32px; }
+  .gf-case .case-section,
+  .gf-case .case-section.sec--major { margin-top: 64px; padding-bottom: 56px; }
+  .gf-case .sec-title { font-size: 24px; }
   .gf-case .media-full,
   .gf-case .media-plain,
   .gf-case .stats-band { grid-template-columns: 1fr 1fr; }

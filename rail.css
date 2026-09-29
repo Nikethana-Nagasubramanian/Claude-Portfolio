@@ -353,9 +353,9 @@ body.has-rail { background: var(--surface); }
     height: 44px;
     padding: 0;
     border: 1px solid var(--rule);
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    background: var(--paper);
+    backdrop-filter: none;
     box-shadow: none;
     color: var(--ink);
     cursor: pointer;

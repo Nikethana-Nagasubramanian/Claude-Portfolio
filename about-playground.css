@@ -11,6 +11,8 @@
 .about-case .resume-cta:hover { background: #000; color: #fff; }
 .about-case .hero-resume { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 20px; padding: 13px 18px; }
 .about-case .playground-teaser { margin-top: 32px; }
+.about-case .spec-item { color: #354252; font-size: 13px; }
+.about-case .spec-item b { color: #59687a; font-weight: 500; }
 .about-case .truths-matrix { border-color: var(--ap-rule); }
 .about-case .truth { border-color: var(--ap-rule); }
 .about-case .career-row { border-color: var(--ap-rule); }
@@ -40,10 +42,12 @@
 .playground-case .playground-card-support { margin-top: 10px; font: 400 14px/1.5 "Geist", sans-serif; color: var(--ap-muted); }
 
 :root[data-theme='dark'] .about-case,
-:root[data-theme='dark'] .playground-case { --ap-paper: #201f1d; --ap-ink: #ede9df; --ap-muted: #b6b2a9; --ap-subtle: #b6b2a9; --ap-rule: #45423c; --ap-surface: #2b2925; --ap-accent: #86a9dd; }
-:root[data-theme='dark'] .about-case .resume-cta { background: #ede9df; color: #201f1d; }
+:root[data-theme='dark'] .playground-case { --ap-paper: #1b254e; --ap-ink: #f1efff; --ap-muted: #c4c9e6; --ap-subtle: #b1bbda; --ap-rule: #414b78; --ap-surface: #25315e; --ap-accent: #a7c5ff; }
+:root[data-theme='dark'] .about-case .spec-item { color: #e0e7f6; }
+:root[data-theme='dark'] .about-case .spec-item b { color: #aebbd8; }
+:root[data-theme='dark'] .about-case .resume-cta { background: #e4ecff; color: #15213f; }
 :root[data-theme='dark'] .playground-case .playground-card { border-color: var(--ap-rule); }
-:root[data-theme='dark'] .playground-case .playground-card-media { border-color: var(--ap-rule); background: #242b24; }
+:root[data-theme='dark'] .playground-case .playground-card-media { border-color: var(--ap-rule); background: #1a294c; }
 
 @media (max-width: 720px) {
   .playground-case .nav-content { height: 56px; padding: 0 16px; }
