@@ -3,7 +3,7 @@
 .scout-case .case-view-panel[hidden],
 .scout-case .case-view-switcher[hidden],
 .scout-case [data-view-nav][hidden] { display: none !important; }
-.scout-case .case-view-switcher { position: sticky; top: 56px; z-index: 40; display: flex; justify-content: flex-start; width: max-content; max-width: 100%; margin: 0 0 64px; border-bottom: 1px solid var(--rule); background: var(--bg); scroll-margin-top: 96px; }
+.scout-case .case-view-switcher { position: sticky; top: 56px; z-index: 40; display: flex; justify-content: flex-start; width: 100%; margin: 0 0 64px; border-bottom: 1px solid var(--rule); background: var(--bg); scroll-margin-top: 96px; }
 .scout-case .case-view-switcher button { min-width: 100px; min-height: 54px; padding: 8px 20px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--subtle); font: 500 16px/1.5 var(--sans); white-space: nowrap; cursor: pointer; transition: color 160ms ease, border-color 160ms ease; }
 .scout-case .case-view-switcher button[aria-selected="true"] { border-bottom-color: var(--ink); color: var(--ink); font-weight: 500; }
 .scout-case .case-view-switcher button:hover:not([aria-selected="true"]) { color: var(--ink); }
