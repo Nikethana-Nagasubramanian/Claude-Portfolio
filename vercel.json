@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/orient",
-      "destination": "/orient/index.html"
+      "destination": "/orient.html"
     },
     {
       "source": "/paper",
