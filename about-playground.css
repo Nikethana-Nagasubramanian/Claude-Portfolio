@@ -13,6 +13,8 @@
 .about-case .playground-teaser { margin-top: 32px; }
 .about-case .spec-item { color: #354252; font-size: 13px; }
 .about-case .spec-item b { color: #59687a; font-weight: 500; }
+.about-case .opportunity-status { display: inline-flex; align-items: center; gap: 9px; }
+.about-case .opportunity-status__dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: var(--available); }
 .about-case .truths-matrix { border-color: var(--ap-rule); }
 .about-case .truth { border-color: var(--ap-rule); }
 .about-case .career-row { border-color: var(--ap-rule); }

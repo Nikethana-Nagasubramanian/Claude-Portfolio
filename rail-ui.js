@@ -121,7 +121,7 @@
     });
   }
 
-  /* ── 2. Socials belong at the end of the page, not in the rail ───── */
+  /* ── 2. Keep LinkedIn and X below email; move the rest to the footer ── */
   function moveSocial() {
     var social = one(".home-social-links", ".site-rail__social");
     if (!social || document.querySelector(".site-footer")) return;
@@ -133,10 +133,12 @@
     var out = [];
     Array.prototype.forEach.call(social.querySelectorAll("a"), function (a) {
       var key = (a.getAttribute("aria-label") || "").toLowerCase();
+      if (key === "linkedin" || key === "x" || key === "twitter") return;
       var label = labels[key] || a.getAttribute("aria-label") || "Link";
       out.push('<a href="' + a.getAttribute("href") + '"' +
         (a.target ? ' target="' + a.target + '" rel="noopener"' : "") +
         ">" + label + "</a>");
+      a.remove();
     });
 
     var footer = document.createElement("footer");
@@ -144,7 +146,6 @@
     footer.setAttribute("aria-label", "Social links");
     footer.innerHTML = '<nav class="site-footer__links" aria-label="Social links">' + out.join("") + "</nav>";
     document.body.appendChild(footer);
-    social.parentNode.removeChild(social);
   }
 
   /* The marker is already in the shared markup. Fixed nav rows keep its

@@ -80,6 +80,7 @@ body.has-rail { padding-left: var(--rail-w); }
 .site-rail__social { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
 .site-rail__social a { display: grid; place-items: center; color: var(--muted); transition: color .15s ease; }
 .site-rail__social a:hover { color: var(--accent); }
+.site-rail__social a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .site-rail__social svg { width: 20px; height: 20px; fill: currentColor; }
 
 /* The rail carries the site links, so the top bar would just repeat them. */

@@ -38,7 +38,7 @@
       '<a class="ai-button ai-button--claude" href="https://claude.ai/new?q=' + AI_PROMPT + '" target="_blank" rel="noopener"><img class=\"ai-icon\" src=\"assets/icons/claude-star.png?v=2\" alt=\"\" aria-hidden=\"true\" width=\"16\" height=\"16\" />Ask Claude about Nike</a>',
       "</div>",
       '<a class="site-rail__email" href="mailto:itsmenike3@gmail.com">itsmenike3@gmail.com</a>',
-      '<div class="site-rail__social" aria-label="Social links"></div>',
+      '<nav class="site-rail__social" aria-label="LinkedIn and X"></nav>',
       "</div>",
     ].join("");
 
