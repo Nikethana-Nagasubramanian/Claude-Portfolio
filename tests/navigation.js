@@ -67,8 +67,8 @@ document.querySelector('#run').onclick = async () => {
     assert(photo.classList.contains('is-visible'), 'Touch did not open portrait');
     doc.body.dispatchEvent(new win.PointerEvent('pointerdown', {bubbles:true}));
     assert(photo.getAttribute('aria-hidden') === 'true', 'Outside pointer did not dismiss portrait');
-    assert(photo.parentNode === doc.body && photo.querySelector('img').loading === 'eager', 'Portrait can be clipped or lazy loaded');
-    report('PASS: portrait focus, Escape, hover, touch, outside dismissal, body placement and eager loading.');
+    assert(photo.parentNode === doc.querySelector('.site-rail') && photo.querySelector('img').loading === 'eager', 'Portrait is not anchored inside the rail or eager loaded');
+    report('PASS: portrait focus, Escape, hover, touch, outside dismissal, rail placement and eager loading.');
     const link = doc.querySelector('.site-rail__nav a[href="about.html"]');
     const modified = new win.MouseEvent('click', {bubbles:true,cancelable:true,ctrlKey:true,button:0});
     // Prevent the browser opening a real test tab, after the router has run.
@@ -82,13 +82,29 @@ document.querySelector('#run').onclick = async () => {
     explore.click();
     const dialog = doc.querySelector('.background-explorer');
     assert(dialog.open, 'Background explorer did not open');
+    assert(dialog.getAnimations().length === 0, 'Keyboard opening animated');
     assert(dialog.matches(':modal'), 'Explorer did not isolate the portfolio in a native modal');
     assert(doc.activeElement.classList.contains('background-explorer__close'), 'Explorer did not receive focus');
     await until(() => dialog.querySelector('img').naturalWidth > 0);
     if (dialog.dataset.scene === 'day') {
-      assert(dialog.querySelector('[data-city="Boston"]').textContent.includes('2022'), 'City date missing');
+      const hotspots = dialog.querySelector('.background-explorer__hotspots');
+      const cityNav = dialog.querySelector('.background-explorer__switcher');
       const stickers = [...dialog.querySelectorAll('.background-explorer__sticker')];
-      assert(stickers.length === 3 && stickers.every(img => img.width === 130 && img.height === 130), 'Sticker dimensions differ');
+      assert(stickers.length === 3, 'City stickers missing');
+      const dockLeft = dialog.querySelector('.background-explorer__close').getBoundingClientRect().left;
+      hotspots.querySelector('[data-place="chennai"]').click();
+      assert(!dialog.querySelector('#explorer-story-chennai').hidden, 'Chennai did not open');
+      assert(dialog.querySelector('#explorer-story-chennai').textContent.includes('quiet reliability'), 'Chennai story missing');
+      assert(hotspots.inert, 'Background hotspots remain interactive behind story');
+      cityNav.querySelector('[data-place="boston"]').click();
+      cityNav.querySelector('[data-place="nola"]').click();
+      assert(dialog.querySelector('#explorer-story-chennai').hidden && dialog.querySelector('#explorer-story-boston').hidden, 'Stale city stories remain open');
+      assert(!dialog.querySelector('#explorer-story-nola').hidden, 'Rapid switching lost latest city');
+      assert(cityNav.querySelector('[data-place="nola"]').getAttribute('aria-pressed') === 'true', 'Switcher lost selected state');
+      assert(dialog.querySelector('.background-explorer__close').getBoundingClientRect().left === dockLeft, 'City selection moved return dock');
+      dialog.dispatchEvent(new win.Event('cancel', {cancelable:true}));
+      assert(dialog.open && !dialog.classList.contains('has-place'), 'Escape failed to return to landscape');
+      assert(!hotspots.inert, 'Returning to landscape left landmarks disabled');
     }
     dialog.querySelector('.background-explorer__close').click();
     await wait(80);
@@ -106,10 +122,56 @@ document.querySelector('#run').onclick = async () => {
     assert(doc.activeElement === explore, 'Interrupted transition lost return focus');
     explore.dispatchEvent(new win.MouseEvent('click', {bubbles:true, detail:1}));
     dialog.dispatchEvent(new win.Event('cancel', {cancelable:true}));
-    assert(!dialog.open, 'Escape did not close immediately during entry');
+    await until(() => !dialog.open);
     await wait(30);
     assert(!doc.body.classList.contains('exploring-background'), 'Explorer left scroll locked');
-    report('PASS: pointer transition can reverse during entry; Escape cancels immediately without a stale animation or scroll lock.');
+    report('PASS: pointer transition reverses during entry; Escape closes without stale animation or scroll lock.');
+    if (!win.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      explore.dispatchEvent(new win.MouseEvent('click', {bubbles:true, detail:1}));
+      const surface = dialog.getAnimations()[0];
+      const origin = surface.effect.getKeyframes()[0].clipPath;
+      assert(origin.includes('round') && origin !== 'inset(0px)', 'Expansion origin is not rounded');
+      await wait(90);
+      const close = dialog.querySelector('.background-explorer__close');
+      close.dispatchEvent(new win.MouseEvent('click', {bubbles:true, detail:1}));
+      assert(dialog.getAnimations()[0] === surface, 'Closing restarted the animation');
+      await wait(30);
+      close.dispatchEvent(new win.MouseEvent('click', {bubbles:true, detail:1}));
+      assert(dialog.getAnimations()[0] === surface, 'Reopening replaced the active animation');
+      await until(() => dialog.getAnimations().length === 0);
+      assert(dialog.open, 'Repeat click failed to reverse closing');
+      assert(win.getComputedStyle(dialog).clipPath === 'none', 'Expanded viewport remains clipped');
+      close.click();
+      await until(() => !dialog.open);
+      report('PASS: repeated clicks reverse the same anchored animation in both directions.');
+    }
+    // Resize the real embedded viewport across the control breakpoint.
+    frame.style.width = '390px'; await wait(80);
+    assert(win.getComputedStyle(explore).display === 'none', 'Mobile explorer control visible');
+    assert(win.getComputedStyle(doc.querySelector('main')).borderTopWidth === '0px', 'Mobile stage border visible');
+    assert(doc.documentElement.scrollWidth <= win.innerWidth, 'Mobile page overflows horizontally');
+    frame.style.width = '1280px'; await wait(80);
+    report('PASS: mobile keeps the simplified scenery, hides the control, and has no horizontal overflow.');
+    // Isolate the reduced-motion JS branch without changing OS preferences.
+    const reducedFrame = document.createElement('iframe');
+    reducedFrame.title = 'Reduced-motion explorer check';
+    reducedFrame.srcdoc = `<body class="has-rail"><button data-explore-background>Explore</button>
+      <script>const nativeMatchMedia = window.matchMedia.bind(window);
+      window.matchMedia = query => query === '(prefers-reduced-motion: reduce)'
+        ? { matches: true, addEventListener() {} } : nativeMatchMedia(query);<\/script>
+      <script src="/background-explorer.js"><\/script>`;
+    document.body.append(reducedFrame);
+    try {
+      await until(() => reducedFrame.contentDocument.querySelector('dialog'));
+      const reducedDoc = reducedFrame.contentDocument;
+      const reducedWin = reducedFrame.contentWindow;
+      reducedDoc.querySelector('button').dispatchEvent(new reducedWin.MouseEvent('click', {bubbles:true, detail:1}));
+      const reducedDialog = reducedDoc.querySelector('dialog');
+      assert(reducedDialog.open && reducedDialog.getAnimations({subtree:true}).length === 0, 'Reduced motion animated on pointer opening');
+      reducedDialog.dispatchEvent(new reducedWin.Event('cancel', {cancelable:true}));
+      assert(!reducedDialog.open, 'Reduced motion animated on Escape');
+      report('PASS: reduced-motion signal bypasses expansion and dismissal animations.');
+    } finally { reducedFrame.remove(); }
     report('ALL CHECKS PASSED');
   } catch (error) { report('FAIL: ' + error.message); }
 };

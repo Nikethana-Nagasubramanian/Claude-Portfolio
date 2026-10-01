@@ -22,10 +22,6 @@ body.has-rail > .site-footer { box-sizing: border-box; width: 100%; max-width: 9
 .site-rail__nav.marker-positioned.marker-animated .nav-marker { transition: transform 180ms cubic-bezier(.23,1,.32,1); }
 button.nike-preview { border: 0; padding: 4px 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .nike-preview:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-body > .nike-photo { display: block; z-index: 150; max-height: calc(100dvh - 120px); width: min(260px, 70vw); pointer-events: none; }
-body > .nike-photo img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 140px); object-fit: contain; }
-body > .nike-photo.is-visible { opacity: 1; visibility: visible; transform: none; }
-body > .nike-photo.is-instant { transition: none; }
 .route-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 body:not(.has-atmosphere) > .atmosphere { visibility: hidden; }
 body:not(.has-atmosphere) .atmosphere * { animation-play-state: paused; }
@@ -48,13 +44,12 @@ body.has-rail .route-frame .playground-card { border-radius: 16px; background: v
   .mobile-shell-header .hero-name { margin: 0; display: flex; align-items: center; gap: 10px; }
   .mobile-shell-header .hero-status { margin: 0; flex-basis: auto; }
   .mobile-shell-header .hero-role { margin-top: 4px; font-size: 14px; }
-  body > .nike-photo { top: 124px; left: 24px; }
   body.has-rail .route-frame > :is(.archive-intro, .hero), body.has-rail .route-frame .case-hero { margin-bottom: 40px; }
   body.has-rail .route-frame :is(.work-entry, .case-hero, .case-section)::before { inset: -10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .site-rail__nav.marker-positioned.marker-animated .nav-marker, body > .nike-photo { transition: none; }
+  .site-rail__nav.marker-positioned.marker-animated .nav-marker { transition: none; }
 }
 
 .skip-content { position: fixed; top: 8px; left: 8px; z-index: 300; transform: translateY(-150%); padding: 10px 16px; color: var(--ink); background: var(--paper); border: 2px solid var(--accent); border-radius: 8px; }
@@ -67,8 +62,8 @@ body.has-rail .route-frame .playground-card { border-radius: 16px; background: v
   --accent: #a7c5ff; --link: #a7c5ff; --marker: #a7c5ff;
   --selection: #48538c; --selection-ink: #fff;
 }
-body.has-rail { --atmosphere-glass: rgb(255 255 255 / 94%); --atmosphere-edge: rgb(83 108 137 / 18%); --rail-background: rgb(248 250 253 / 96%); }
-:root[data-theme='dark'] body.has-rail { --atmosphere-glass: rgb(24 36 70 / 94%); --atmosphere-edge: rgb(161 181 232 / 20%); --rail-background: rgb(21 32 65 / 96%); }
+body.has-rail { --atmosphere-glass: rgb(255 255 255 / 76%); --atmosphere-edge: rgb(83 108 137 / 18%); --rail-background: rgb(248 250 253 / 96%); }
+:root[data-theme='dark'] body.has-rail { --atmosphere-glass: rgb(24 36 70 / 80%); --atmosphere-edge: rgb(161 181 232 / 20%); --rail-background: rgb(21 32 65 / 96%); }
 body.has-rail .site-rail { background: var(--rail-background); }
 :root[data-theme='dark'] .theme-toggle { background: #303b6c !important; }
 :root[data-theme='dark'] .theme-toggle__thumb { background: #202b57; box-shadow: 0 0 0 1px #626d9c; }
@@ -115,6 +110,15 @@ body.has-rail .route-frame .work-entry::before {
   border-radius: calc(var(--media-radius) + var(--card-padding));
 }
 body.has-rail .route-frame .work-media { border-radius: var(--media-radius); }
+.work-meta .work-credit { color: var(--ink); }
+/* Use the browser center in both states, independent of the portfolio rail. */
+.stage-control { display: none; }
+@media (min-width: 980px) {
+  .stage-control {
+    display: block; position: fixed; top: 0; left: 50%;
+    transform: translateX(-50%); z-index: 21; width: max-content;
+  }
+}
 @media (max-width: 979px) { body.has-rail .route-frame .work-entry { --card-padding: 10px; } }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   body.has-rail .site-footer a { backdrop-filter: none; -webkit-backdrop-filter: none; }

@@ -9,7 +9,7 @@
 
    The four entry pages use the same generated rail. */
 (function () {
-  var CLAUDE_ICON = '<img class="ai-icon ai-icon--claude" src="assets/icons/claude-star.png" width="16" height="16" alt="" />';
+  var CLAUDE_ICON = '<img class="ai-icon ai-icon--claude" src="assets/icons/claude-star.png?v=2" width="16" height="16" alt="" />';
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function one() {
@@ -168,20 +168,29 @@
 
   function portrait() {
     var trigger = document.querySelector('.nike-preview');
+    var rail = document.querySelector('.site-rail');
+    var identity = document.querySelector('.hero-id');
     var photo = document.createElement('div');
     photo.className = 'nike-photo';
     photo.id = 'nike-portrait';
     photo.innerHTML = '<img src="assets/nike-portrait.jpg" alt="Nike" width="520" height="693" loading="eager" decoding="async">';
-    document.body.append(photo);
+    rail.insertBefore(photo, rail.querySelector('.site-rail__footer'));
     var hover = matchMedia('(hover: hover) and (pointer: fine)');
     var pointer = false;
     var touch = false;
+    function place() {
+      if (!rail.contains(identity)) return;
+      photo.style.top = identity.offsetTop + identity.offsetHeight + 24 + 'px';
+    }
     function show(open, instant) {
+      if (open) place();
       photo.classList.toggle('is-visible', open);
       photo.classList.toggle('is-instant', !!instant);
       photo.setAttribute('aria-hidden', String(!open));
       trigger.setAttribute('aria-expanded', String(open));
     }
+    place();
+    if (document.fonts) document.fonts.ready.then(place);
     show(false);
     trigger.addEventListener('pointerenter', function (e) { if (hover.matches && e.pointerType !== 'touch') show(true); });
     trigger.addEventListener('pointerleave', function () { if (!trigger.matches(':focus-visible')) show(false); });
@@ -195,7 +204,7 @@
     document.addEventListener('pointerdown', function (e) { if (!trigger.contains(e.target)) show(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false, true); });
     document.addEventListener('site:routechange', function () { show(false, true); });
-    window.addEventListener('resize', function () { show(false, true); });
+    window.addEventListener('resize', function () { place(); show(false, true); });
   }
 
   /* ── 4. Mobile: the rail is a drawer behind a floating hamburger ─── */

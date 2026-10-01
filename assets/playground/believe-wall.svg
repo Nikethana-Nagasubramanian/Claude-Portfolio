@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Believe Wall</title>
+  <desc id="desc">A blue and yellow Believe poster taped to a colorful wall with handwritten sticky notes.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#07182e" flood-opacity=".28"/></filter>
+    <filter id="texture"><feTurbulence baseFrequency=".62" numOctaves="3" seed="7" type="fractalNoise"/><feColorMatrix values=".32 0 0 0 .68  0 .32 0 0 .68  0 0 .32 0 .68  0 0 0 .18 0"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="#F6F0EF"/>
+  <rect width="1200" height="800" filter="url(#texture)" opacity=".18" style="mix-blend-mode:multiply"/>
+  <g transform="translate(250 220) rotate(-1 350 190)" filter="url(#shadow)">
+    <path d="M18 8 690 0l12 360-690 10z" fill="#4c91b8"/>
+    <text x="350" y="235" text-anchor="middle" fill="#e8d94f" font-family="Arial Narrow, sans-serif" font-size="150" font-stretch="condensed" letter-spacing="8">BELIEVE</text>
+    <g fill="#272b30" opacity=".82"><path d="m0 0 70-25 16 32-72 25z"/><path d="m650 4 75 12-9 34-75-14z"/><path d="m-5 345 74-5 4 35-76 5z"/><path d="m650 342 78-8 6 34-80 9z"/></g>
+  </g>
+  <g transform="translate(795 430) rotate(8)" filter="url(#shadow)">
+    <path d="M0 0h170v170H0z" fill="#efe566"/>
+    <text x="85" y="72" text-anchor="middle" fill="#343330" font-family="Comic Sans MS, cursive" font-size="46">AND</text>
+    <text x="85" y="126" text-anchor="middle" fill="#343330" font-family="Comic Sans MS, cursive" font-size="46">WIN</text>
+    <path d="M37 140h98" stroke="#343330" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(125 558) rotate(-5)" filter="url(#shadow)"><rect width="150" height="150" fill="#f7b6ca"/><text x="75" y="68" text-anchor="middle" fill="#5d2940" font-family="Comic Sans MS, cursive" font-size="28">Be curious.</text><text x="75" y="105" text-anchor="middle" fill="#5d2940" font-family="Comic Sans MS, cursive" font-size="28">Stay kind.</text></g>
+  <g transform="translate(1010 520) rotate(4)" filter="url(#shadow)"><rect width="135" height="135" fill="#a9e0c4"/><text x="68" y="60" text-anchor="middle" fill="#174e3e" font-family="Comic Sans MS, cursive" font-size="25">Make the</text><text x="68" y="94" text-anchor="middle" fill="#174e3e" font-family="Comic Sans MS, cursive" font-size="25">next play.</text></g>
+</svg>

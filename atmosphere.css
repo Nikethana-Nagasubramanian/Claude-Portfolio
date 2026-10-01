@@ -3,10 +3,10 @@
 :root[data-theme='dark'] .has-atmosphere { background: #101a35 !important; }
 .atmosphere { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; }
 .atmosphere__day, .atmosphere__night { position: absolute; inset: 0; background: center / cover no-repeat; transition: opacity 220ms ease; }
-.atmosphere__day { background-image: url('assets/atmosphere/day-sky.png'); opacity: .13; }
+.atmosphere__day { background-image: url('assets/atmosphere/day-sky.png'); opacity: .18; }
 .atmosphere__night { background-image: url('assets/atmosphere/night-nebula.png'); background-position: center; opacity: 0; }
 :root[data-theme='dark'] .atmosphere__day { opacity: 0; }
-:root[data-theme='dark'] .atmosphere__night { opacity: .07; }
+:root[data-theme='dark'] .atmosphere__night { opacity: .15; }
 .atmosphere__sparkles { position: absolute; inset: 0; opacity: 0; }
 :root[data-theme='dark'] .atmosphere__sparkles { opacity: .2; }
 .atmosphere__star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #d9edff; box-shadow: 0 0 7px #a8bdff; animation: star-glimmer 7s ease-in-out infinite; }
@@ -16,8 +16,8 @@
 .has-atmosphere :is(.work-entry, .case-hero, .case-section)::before { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 @media (max-width: 979px) {
   .atmosphere__day, .atmosphere__night { background-position: 65% center; }
-  .atmosphere__day { opacity: .06; }
-  :root[data-theme='dark'] .atmosphere__night { opacity: 0; }
+  .atmosphere__day { opacity: .15; }
+  :root[data-theme='dark'] .atmosphere__night { opacity: .13; }
   .atmosphere__sparkles { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .atmosphere * { animation: none !important; transition: none !important; } }

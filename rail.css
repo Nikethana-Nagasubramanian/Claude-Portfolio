@@ -90,9 +90,9 @@ body.has-rail { padding-left: var(--rail-w); }
   body.has-rail { padding-left: 0; }
 }
 
-/* The portrait is a desktop affordance; on a phone it would hang off the page. */
+/* The portrait is a desktop affordance; on a phone it would crowd the drawer. */
 @media (max-width: 979px) {
-  .nike-photo { display: none; }
+  .site-rail > .nike-photo { display: none; }
 }
 
 /* The rail never scrolls; on a short screen it tightens instead. */
@@ -105,38 +105,44 @@ body.has-rail { padding-left: var(--rail-w); }
   .site-rail__social { margin-top: 10px; }
 }
 
-/* Hovering the name brings the portrait in: a short fade with a small rise,
-   the same easing the rest of the site uses. Focus shows it for keyboards. */
-/* Anchored to the rail, not the name, so it sits clear of the rail's edge. */
+/* The portrait lands inside the rail like a paper sticker being pressed down. */
 .nike-preview { display: inline-block; }
-.nike-photo {
-  position: fixed;
-  top: 76px;
-  left: calc(var(--rail-w) + 20px);
-  z-index: 200;
-  width: 300px;
-  padding: 4px;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  box-shadow: 0 10px 28px #00000014;
+.site-rail > .nike-photo {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  z-index: 3;
+  width: auto;
+  padding: 6px;
+  border: 1px solid rgb(42 53 72 / 18%);
+  border-radius: 4px;
+  background: #fffdf9;
+  box-shadow: 0 8px 20px rgb(15 30 55 / 16%);
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-6px) scale(.98);
-  transform-origin: left center;
-  transition: opacity 140ms ease-out, transform 180ms var(--ease-out), visibility 0s linear 180ms;
+  transform: translateY(-14px) rotate(-3.5deg) scale(.96);
+  transform-origin: center top;
+  transition: opacity 120ms ease-out, transform 260ms cubic-bezier(.2,.85,.2,1.08), visibility 0s linear 260ms;
 }
-.nike-photo img { display: block; width: 100%; height: auto; }
-.nike-preview:hover .nike-photo,
-.nike-preview:focus-within .nike-photo {
+.site-rail > .nike-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(325px, calc(100dvh - 390px));
+  border-radius: 2px;
+  object-fit: cover;
+  object-position: center 32%;
+}
+.site-rail > .nike-photo.is-visible {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0) scale(1);
+  transform: translateY(0) rotate(-1.25deg) scale(1);
   transition-delay: 0s;
-  transition-duration: 200ms, 240ms, 0s;
 }
+.site-rail > .nike-photo.is-instant { transition: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .nike-photo, .nike-preview:hover .nike-photo { transition: none; transform: none; }
+  .site-rail > .nike-photo { transition: none; transform: rotate(-1.25deg); }
 }
 
 /* Two ways to ask about the work: ChatGPT outlined, Claude filled. */
@@ -415,7 +421,7 @@ body.has-rail .site-rail { background: var(--rail-background); }
 .rail-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .ai-menu__item:focus-visible { background: var(--surface); }
 .ai-menu__item .ai-icon { width: 16px; height: 16px; flex: 0 0 16px; }
-.nike-photo { pointer-events: none; }
+.site-rail > .nike-photo { pointer-events: none; }
 @media (max-width: 979px) {
   body.has-rail .site-rail { transition-duration: 240ms; }
   /* Enough space for the upward menu without covering navigation. */
@@ -423,7 +429,7 @@ body.has-rail .site-rail { background: var(--rail-background); }
 }
 @media (hover: none) {
   .ai-cta__trigger:hover { opacity: 1; }
-  .nike-preview:hover .nike-photo { visibility: hidden; }
+  .site-rail > .nike-photo { visibility: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-menu { transform: none; transition: opacity 100ms ease, visibility 0s linear 100ms; }

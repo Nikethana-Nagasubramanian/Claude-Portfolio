@@ -591,6 +591,10 @@ img, video { max-width: 100%; display: block; }
 /* Same voice as the rail headline: 500 weight, -.035em, 1.3 line-height. */
 .home-page .work-title { font: 500 24px/1.3 var(--sans); letter-spacing: -.035em; }
 .home-page .work-support { font: 400 16px/1.625 var(--sans); }
+@media (max-width: 480px) {
+  .home-page .work-tabs { display: flex; width: 100%; }
+  .home-page .work-tab { flex: 1; min-width: 0; padding: 7px 8px; font-size: 11px; letter-spacing: .02em; line-height: 1.3; }
+}
 
 @media (max-width: 979px) {
   .home-page .home-mobile-nav { display: block; }

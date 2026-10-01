@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/site-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>The Believe Wall — Nike</title>
+  <meta name="description" content="Leave an anonymous handwritten note on a shared Believe wall." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/tokens.css" />
+  <link rel="stylesheet" href="/patterns.css" />
+  <link rel="stylesheet" href="/playground-tools.css" />
+  <link rel="stylesheet" href="/site-theme.css" />
+  <link rel="stylesheet" href="/tools/believe-wall.css?v=3" />
+  <script defer src="/tools/believe-wall.js?v=2"></script>
+</head>
+<body class="tool-page believe-page">
+  <nav class="believe-nav">
+    <a class="believe-back" href="/playground">← Back to Playground</a>
+    <span class="believe-nav-note">An anonymous corner of the internet</span>
+  </nav>
+
+  <main class="believe-shell">
+    <div class="believe-workspace">
+      <section class="believe-board" data-believe-board aria-labelledby="board-title">
+        <h2 class="visually-hidden" id="board-title">Shared Believe wall</h2>
+        <div class="wall-grain" aria-hidden="true"></div>
+
+        <div class="believe-poster" aria-hidden="true">
+          <i class="poster-tape poster-tape--tl"></i>
+          <i class="poster-tape poster-tape--tr"></i>
+          <i class="poster-tape poster-tape--bl"></i>
+          <i class="poster-tape poster-tape--br"></i>
+          <span>BELIEVE</span>
+        </div>
+
+        <div class="and-win-note" aria-hidden="true">
+          <span>AND<br />WIN</span>
+          <i></i>
+        </div>
+
+        <div class="believe-notes" data-believe-notes></div>
+        <p class="board-message" data-board-message>Fetching the notes…</p>
+      </section>
+
+      <button class="add-note-button" type="button" data-open-composer aria-haspopup="dialog" aria-controls="note-composer"><span aria-hidden="true">＋</span> Add a note</button>
+      <dialog class="note-station" id="note-composer" aria-labelledby="note-station-title">
+        <header class="composer-header">
+          <h2 id="note-station-title">Leave a note</h2>
+          <button class="composer-close" type="button" data-close-composer aria-label="Close note editor">×</button>
+        </header>
+
+        <form data-believe-form>
+          <div class="composer-body">
+          <label class="visually-hidden" for="believe-message">Your note</label>
+          <div class="note-preview" data-note-preview="sunshine" data-ink-preview="charcoal" data-font-preview="patrick">
+            <textarea id="believe-message" data-note-input maxlength="160" rows="4" placeholder="What do you believe in?" aria-describedby="note-count" required></textarea>
+            <span class="character-count" id="note-count"><b data-character-count>0</b> / 160</span>
+          </div>
+
+          <details class="note-customization">
+            <summary><span>Make it yours</span><span class="style-summary" data-style-summary>Sunshine · Warm</span><span class="customization-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="customization-controls">
+          <fieldset class="choice-group">
+            <legend>Paper</legend>
+            <div class="swatch-row">
+              <label class="color-swatch color-swatch--sunshine"><input type="radio" name="noteColor" value="sunshine" checked /><span>Sunshine</span></label>
+              <label class="color-swatch color-swatch--blush"><input type="radio" name="noteColor" value="blush" /><span>Blush</span></label>
+              <label class="color-swatch color-swatch--sky"><input type="radio" name="noteColor" value="sky" /><span>Sky</span></label>
+              <label class="color-swatch color-swatch--mint"><input type="radio" name="noteColor" value="mint" /><span>Mint</span></label>
+              <label class="color-swatch color-swatch--lilac"><input type="radio" name="noteColor" value="lilac" /><span>Lilac</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-group">
+            <legend>Ink</legend>
+            <div class="swatch-row">
+              <label class="ink-swatch ink-swatch--charcoal"><input type="radio" name="inkColor" value="charcoal" checked /><span>Charcoal</span></label>
+              <label class="ink-swatch ink-swatch--navy"><input type="radio" name="inkColor" value="navy" /><span>Navy</span></label>
+              <label class="ink-swatch ink-swatch--berry"><input type="radio" name="inkColor" value="berry" /><span>Berry</span></label>
+              <label class="ink-swatch ink-swatch--forest"><input type="radio" name="inkColor" value="forest" /><span>Forest</span></label>
+              <label class="ink-swatch ink-swatch--violet"><input type="radio" name="inkColor" value="violet" /><span>Violet</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-group">
+            <legend>Handwriting</legend>
+            <div class="font-row">
+              <label class="font-choice font-choice--patrick"><input type="radio" name="font" value="patrick" checked /><span>Warm</span></label>
+              <label class="font-choice font-choice--caveat"><input type="radio" name="font" value="caveat" /><span>Loose</span></label>
+            </div>
+          </fieldset>
+
+            </div>
+          </details>
+          </div>
+          <footer class="composer-footer">
+            <button class="stick-button" type="submit" data-stick-button disabled>Stick it on the wall <span aria-hidden="true">↗</span></button>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+          </footer>
+        </form>
+      </dialog>
+    </div>
+
+    <div class="trash-target" data-trash-target aria-hidden="true">
+      <div class="trash-can" aria-hidden="true"><i class="trash-lid"></i><i class="trash-body"></i></div>
+      <span data-trash-label>Move here to remove</span>
+    </div>
+
+    <p class="wall-status" data-wall-status role="status" aria-live="polite"></p>
+    <p class="wall-footnote"><span aria-hidden="true">✦</span> Drag your notes to move them. Bring one near the bin to remove it.</p>
+  </main>
+</body>
+</html>

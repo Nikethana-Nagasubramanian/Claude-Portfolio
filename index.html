@@ -11,25 +11,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="patterns.css" />
-  <link rel="stylesheet" href="home.css?v=21" />
+  <link rel="stylesheet" href="home.css?v=22" />
   <link rel="stylesheet" href="gf-case.css?v=8" />
   <link rel="stylesheet" href="site-theme.css?v=4" />
   <link rel="stylesheet" href="case-typography.css" />
   <link rel="stylesheet" href="gf-revamp.css" />
   <link rel="stylesheet" href="about-playground.css" />
-  <link rel="stylesheet" href="rail.css?v=15" />
-  <link rel="stylesheet" href="atmosphere.css?v=4" />
-  <link rel="stylesheet" href="site-shell.css?v=5" />
-  <script defer src="site-rail.js?v=7"></script>
-  <script defer src="rail-ui.js?v=12"></script>
+  <link rel="stylesheet" href="rail.css?v=16" />
+  <link rel="stylesheet" href="atmosphere.css?v=6" />
+  <link rel="stylesheet" href="site-shell.css?v=10" />
+  <script defer src="site-rail.js?v=8"></script>
+  <script defer src="rail-ui.js?v=14"></script>
   <script defer src="atmosphere.js?v=4"></script>
   <script defer src="tools/gh-contrib-widget.js"></script>
   <script defer src="site-router.js?v=2"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" onload="window.LogRocket &amp;&amp; window.LogRocket.init('5orxf0/portfolio')"></script>
   <script defer src="social-icons.js"></script>
-  <link rel="stylesheet" href="background-explorer.css?v=9" />
-  <script defer src="background-explorer.js?v=5"></script>
+  <link rel="stylesheet" href="background-explorer.css?v=16" />
+  <script defer src="background-explorer.js?v=10"></script>
 </head>
 <body class="home-page has-rail has-atmosphere">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -59,11 +59,12 @@
   <noscript><nav aria-label="Site links"><a href="index.html">Home</a> · <a href="about.html">About Nike</a> · <a href="playground.html">Playground</a> · <a href="archive.html">Archived Projects</a></nav></noscript>
 
   <main id="main-content" tabindex="-1" class="home-shell route-frame">
+    <div class="stage-control"><button type="button" class="background-explore" data-explore-background aria-haspopup="dialog" aria-controls="background-explorer" aria-expanded="false">Step into my world</button></div>
     <section class="hero" aria-labelledby="intro-title">
-      <button type="button" class="background-explore" data-explore-background aria-haspopup="dialog" aria-controls="background-explorer" aria-expanded="false">Explore the background <span aria-hidden="true">↗</span></button>
+
       <h1 class="hero-headline" id="intro-title">I design the part you interact with, and the <span class="pen-mark">trust layer</span> beneath it.</h1>
       <p class="hero-support">
-        I love getting into the weeds of how something feels, how it works, how much time it saves you, and underneath all of that, why you'd believe it in the first place.
+        Product designer and design engineer for complex B2B and AI workflows. I love getting into the weeds of how something feels, how it works, how much time it saves you, and underneath all of that, why you'd believe it in the first place.
       </p>
 
       <div class="hero-marquee" aria-hidden="true">
@@ -82,17 +83,17 @@
       <div class="work-header">
         <div class="work-tabs" role="tablist" aria-label="Project categories">
           <button class="work-tab active" id="tab-selected" type="button" role="tab" aria-selected="true" aria-controls="panel-selected" data-tab="selected">Selected Work</button>
-          <button class="work-tab" id="tab-personal" type="button" role="tab" aria-selected="false" aria-controls="panel-personal" data-tab="personal">Personal Projects</button>
+          <button class="work-tab" id="tab-personal" type="button" role="tab" aria-selected="false" aria-controls="panel-personal" data-tab="personal">Writing &amp; Experiments</button>
         </div>
       </div>
 
       <div class="work-panel" id="panel-selected" role="tabpanel" aria-labelledby="tab-selected">
         <a class="work-entry" href="gf.html">
           <div class="work-meta">
-            <span class="work-index">01</span>
-            <span>2024 – 2025</span>
+            <span class="work-credit">Founding Product Designer</span>
             <span class="work-tags">Shipped / Enterprise Design / Visual Design / B2B</span>
           </div>
+
           <p class="work-title">How I helped accelerate retail location evaluation: From 6 hours to &lt; 2 minutes</p>
           <p class="work-support">This helped 30+ customers open 180+ retail locations.</p>
           <div class="work-media">
@@ -104,10 +105,10 @@
 
         <a class="work-entry" href="designing-charlie.html">
           <div class="work-meta">
-            <span class="work-index">02</span>
-            <span>Mar 2026 – Jun 2026</span>
+            <span class="work-credit">Design Engineer</span>
             <span class="work-tags">Shipped / Enterprise Design / Product Strategy / B2B2C</span>
           </div>
+
           <p class="work-title">Designing Trust Into a Conversational AI</p>
           <p class="work-support">A privacy layer between the user and the LLM.</p>
           <div class="work-media">
@@ -115,47 +116,36 @@
           </div>
         </a>
 
-        <a class="work-entry" href="nutricopilot.html">
-          <div class="work-meta">
-            <span class="work-index">03</span>
-            <span>Aug 2026</span>
-            <span class="work-tags">Side Project / WHOOP API / Design Engineering</span>
-          </div>
-          <p class="work-title">NutriCopilot</p>
-          <p class="work-support">A nutrition coach that takes rough, spoken-language food logs and answers "does this fit?"</p>
-          <div class="work-media">
-            <img src="assets/NutriCopilot/hero image.png" alt="NutriCopilot app screens showing daily macros and an Ask response" />
-          </div>
-        </a>
-
         <a class="work-entry" href="scout.html">
           <div class="work-meta">
-            <span class="work-index">04</span>
-            <span>2026 – Present</span>
+            <span class="work-credit">Solo Product Designer &amp; Builder</span>
             <span class="work-tags">Side Project / Product Strategy / UX / Design Engineering</span>
           </div>
+
           <p class="work-title">Scout: From 230 Roles Across 5 Sources to 3 Worth My Time</p>
           <p class="work-support">A source-directed job-search copilot that helps find and prepare for the roles worth pursuing.</p>
           <div class="work-media">
             <img src="assets/scout/source-fetch.png" alt="Scout job-search copilot summarizing roles fetched from multiple sources" />
           </div>
         </a>
+
+        <a class="work-entry" href="nutricopilot.html">
+          <div class="work-meta">
+            <span class="work-credit">Solo Designer &amp; Builder</span>
+            <span class="work-tags">Side Project / WHOOP API / Design Engineering</span>
+          </div>
+
+          <p class="work-title">NutriCopilot</p>
+          <p class="work-support">A nutrition coach that takes rough, spoken-language food logs and answers "does this fit?"</p>
+          <div class="work-media">
+            <img src="assets/NutriCopilot/hero image.png" alt="NutriCopilot app screens showing daily macros and an Ask response" />
+          </div>
+        </a>
       </div>
 
       <div class="work-panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
-        <a class="work-entry work-entry--no-media" href="/orient">
-          <div class="work-meta">
-            <span class="work-index">01</span>
-            <span>Sep 2026</span>
-            <span class="work-tags">Interaction Prototype / AI Systems / Design Engineering</span>
-          </div>
-          <p class="work-title">Reviewing research intent with ORIENT</p>
-          <p class="work-support">An interactive prototype exploring how a scientist could inspect and refine an agent’s working assumptions before an autonomous run.</p>
-        </a>
-
         <a class="work-entry" href="https://medium.com/@nike_thana/redesigning-cleras-matches-a-product-teardown-717ee7377af1" target="_blank" rel="noopener">
           <div class="work-meta">
-            <span class="work-index">02</span>
             <span>Jul 2026</span>
             <span class="work-tags">Medium Article / Product Teardown</span>
           </div>
@@ -170,7 +160,6 @@
 
         <a class="work-entry" href="https://medium.com/@nike_thana/redesigning-gptzeros-advanced-scan-a-product-teardown-7234a19c4c95" target="_blank" rel="noopener">
           <div class="work-meta">
-            <span class="work-index">03</span>
             <span>Feb 2026</span>
             <span class="work-tags">Medium Article / Product Teardown</span>
           </div>
@@ -185,10 +174,10 @@
 
         <a class="work-entry" href="website-project.html">
           <div class="work-meta">
-            <span class="work-index">04</span>
-            <span>Dec 2025</span>
+            <span class="work-credit">Designer &amp; Developer</span>
             <span class="work-tags">Side Project / ReactJS / Design Engineering</span>
           </div>
+
           <p class="work-title">High-Performance Website Builder</p>
           <p class="work-support">Keyboard-first, instant interactions, zero friction.</p>
           <div class="work-media">

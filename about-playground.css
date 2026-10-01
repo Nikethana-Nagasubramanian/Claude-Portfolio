@@ -16,6 +16,14 @@
 .about-case .truths-matrix { border-color: var(--ap-rule); }
 .about-case .truth { border-color: var(--ap-rule); }
 .about-case .career-row { border-color: var(--ap-rule); }
+body.has-rail.about-case .route-frame .career-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: .5px solid var(--rule);
+}
 .about-case .principle { border-color: var(--ap-rule); background: var(--ap-surface); box-shadow: none; }
 
 .playground-case { min-height: 100vh; font-family: "Geist", system-ui, sans-serif; }

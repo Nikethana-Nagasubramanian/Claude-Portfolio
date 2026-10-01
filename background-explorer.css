@@ -4,75 +4,90 @@
   border-radius: 999px; background: var(--atmosphere-glass, var(--paper));
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); cursor: pointer;
 }
-.background-explore { margin-bottom: 18px; }
-.background-explore:hover, .background-explorer__close:hover { border-color: var(--accent); }
-.background-explore:active { transform: scale(.98); }
+.background-explore {
+  position: relative; min-height: 40px; margin: 0; padding: 8px 14px;
+  border: 0; border-radius: 0 0 22px 22px; transform-origin: center top;
+  box-shadow: 0 6px 18px rgb(15 30 55 / 6%);
+  transition: transform 160ms cubic-bezier(.23,1,.32,1);
+}
+.background-explore:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .background-explore:hover { border-color: var(--accent); }
+}
+.background-explore:active { transform: scale(.97); }
+:root[data-theme='dark'] .background-explore {
+  box-shadow: inset 0 0 0 1px rgb(167 197 255 / 28%), 0 6px 18px rgb(0 0 0 / 22%);
+}
 .background-explorer {
   position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
-  margin: 0; padding: 0; border: 0; overflow: auto; background: #9fcdf0; color: #152a45;
+  margin: 0; padding: 0; border: 0; overflow: hidden; background: #9fcdf0; color: #152a45;
 }
 .background-explorer[data-scene='night'] { background: #0c102d; color: #f1efff; }
 .background-explorer::backdrop { background: transparent; }
-.background-explorer__close { position: fixed; z-index: 2; background: #f5f8f3ed; color: #152a45; border-color: #627b92; }
-.background-explorer[data-scene='night'] .background-explorer__close { background: #20294fed; color: #f1efff; border-color: #7d8bb8; }
-.background-explorer__close span { font-size: 20px; line-height: 1; }
-.background-explorer__art { position: absolute; width: min(100%, 177.68dvh); aspect-ratio: 1672 / 941; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; }
-.background-explorer__image { display: block; width: 100%; height: 100%; object-fit: contain; }
- .background-explorer, .background-explorer button { font-family: 'Geist', sans-serif; }
-.background-explorer__cities { position: absolute; inset: 0; pointer-events: none; }
-.background-explorer__cities[hidden] { display: none; }
-.background-explorer__city { position: absolute; width: 227px; box-sizing: border-box; padding: 16px 12px; border-radius: 12px; background: rgb(248 252 255 / 76%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); text-align: left; color: #152a45; pointer-events: auto; }
-.background-explorer__city[data-city='Chennai'] { left: 7%; top: 40%; }
-.background-explorer__city[data-city='Boston'] { left: 36%; top: 51%; }
-.background-explorer__city[data-city='New Orleans'] { right: 7%; top: 59%; }
-.background-explorer__city h2 { margin: 0 0 20px; font: 500 16px/1.4 'Geist', sans-serif; }
-.background-explorer__city p { margin: 0; font: 400 15px/1.5 'Geist', sans-serif; }
-.background-explorer__sticker { position: absolute; top: -104px; right: -20px; display: block; width: 130px; height: 130px; max-width: none; object-fit: contain; pointer-events: none; }
-/* The cap artwork has more transparent padding than the coffee sticker. */
-.background-explorer__city[data-city='Boston'] .background-explorer__sticker { top: -78px; }
-.background-explorer[data-scene] .background-explorer__close { position: absolute; inset: 0 0 auto; width: 100%; height: 32%; padding: 0 24px; display: flex; justify-content: center; align-items: center; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; text-align: center; font: 400 16px/1.5 'Geist', sans-serif; }
-.background-explorer__close:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+.background-explorer__close { position: fixed; top: 0; z-index: 10; justify-content: center; white-space: nowrap; }
+.background-explorer__art { position: absolute; inset: 0; margin: 0; }
+.background-explorer__image { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.background-explorer, .background-explorer button { font-family: 'Geist', sans-serif; }
+.background-explorer__sky { position: absolute; inset: 0; opacity: 0; background: #9fcdf0 url('assets/atmosphere/day-sky.png') center top / 100% 230% no-repeat; pointer-events: none; }
+.background-explorer__hotspots { position: absolute; width: min(100%, 177.68dvh); aspect-ratio: 1672 / 941; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 160ms ease; }
+.background-explorer__hotspots[hidden], .background-explorer__switcher[hidden], .background-explorer__story[hidden] { display: none; }
+.background-explorer.has-place .background-explorer__hotspots { opacity: 0; pointer-events: none; }
+.background-explorer__hotspot { position: absolute; appearance: none; background: transparent; border: 0; padding: 0; cursor: pointer; border-radius: 14px; }
+.background-explorer__hotspot[data-place='chennai'] { left: 0; top: 52%; width: 30%; height: 44%; }
+.background-explorer__hotspot[data-place='boston'] { left: 30%; top: 59%; width: 44%; height: 35%; }
+.background-explorer__hotspot[data-place='nola'] { left: 75%; top: 55%; width: 25%; height: 40%; }
+.background-explorer__hotspot span { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; width: max-content; padding: 10px 15px; border: 1px solid #ffffffa8; border-radius: 999px; background: #f8fcffe6; box-shadow: 0 4px 16px #25405c18; color: #243e57; font-size: 14px; transition: transform 180ms ease, box-shadow 180ms ease; }
+.background-explorer__hotspot b { font-weight: 400; }
+.background-explorer__hotspot:hover span, .background-explorer__hotspot:focus-visible span { transform: translate(-50%, -4px); box-shadow: 0 8px 24px #25405c30; }
+.background-explorer__hotspot:focus-visible { outline: 2px solid #244a70; outline-offset: 4px; }
+.background-explorer__landmarks { position: absolute; inset: 0; pointer-events: none; }
+.background-explorer__landmark { position: absolute; top: 0; left: 0; max-width: none; opacity: 0; transform-origin: 0 0; pointer-events: none; }
+.background-explorer__stories { position: absolute; z-index: 3; top: 15%; bottom: 104px; left: 5%; width: min(36%, 510px); display: flex; align-items: center; opacity: 0; pointer-events: none; }
+.background-explorer__story { box-sizing: border-box; width: 100%; max-height: 100%; padding: clamp(24px, 3vw, 42px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; background: #faf8f0; background-image: linear-gradient(93deg, transparent 49.7%, #d4cfc226 50%, transparent 50.5%); border: 1px solid #fffaf0; border-radius: 2px 4px 3px 2px; box-shadow: 2px 12px 30px #334b6520; color: #30342e; pointer-events: auto; }
+.background-explorer__story header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 26px; }
+.background-explorer__story h2 { margin: 0; font: 600 clamp(23px, 2.2vw, 32px)/1.12 'Caveat', 'Segoe Print', cursive; color: #32382d; }
+.background-explorer__story h2:focus { outline: none; }
+.background-explorer__story p { margin: 0 0 20px; font: 400 clamp(14px, 1.1vw, 17px)/1.65 'Geist', sans-serif; }
+.background-explorer__story p:last-child { margin-bottom: 0; }
+.background-explorer__sticker { flex: none; display: block; width: clamp(66px, 7vw, 100px); height: clamp(66px, 7vw, 100px); object-fit: contain; pointer-events: none; }
+.background-explorer__switcher { position: absolute; z-index: 8; bottom: max(22px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; max-width: calc(100% - 24px); padding: 3px; background: #f7fbfff0; border: 1px solid #ffffffb3; border-radius: 999px; box-shadow: 0 5px 24px #1b355b26; }
+.background-explorer__switcher button { position: relative; flex: none; min-height: 32px; padding: 5px 14px; border: 0; border-radius: 999px; background: transparent; color: #354b5e; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
+.background-explorer__switcher button:hover { background: #e2edf5; }
+.background-explorer__switcher button[aria-pressed='true'] { background: #24465d; color: #fff; }
+.background-explorer__switcher button:focus-visible { outline: 2px solid #244a70; outline-offset: 2px; }
+.background-explorer[data-scene='night'] .background-explorer__sky,
+.background-explorer[data-scene='night'] .background-explorer__landmarks,
+.background-explorer[data-scene='night'] .background-explorer__stories { display: none; }
 .background-explorer__caption { position: absolute; bottom: 2%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 94%; padding: 6px 12px; border-radius: 8px; background: #f8fbf5e8; font: 400 18px/1.5 'Geist', sans-serif; color: #173653; text-align: center; }
 .background-explorer[data-scene='night'] .background-explorer__caption { background: #20294fe8; color: #f1efff; }
 .exploring-background { overflow: hidden; }
-/* The native modal makes the mounted portfolio inert; keep it painted beneath
-   the opacity transition so there is never a blank frame. */
-@media (max-width: 900px), (max-height: 650px) {
-  /* Keep the landscape intact. The dialog becomes a single, horizontally
-     scrollable canvas instead of turning the city notes into a vertical feed. */
-  .background-explorer { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; }
-  .background-explorer__art {
-    position: relative; top: auto; left: auto; transform: none;
-    width: 177.68svh; min-width: 177.68svh; height: 100svh;
-    margin: 0; max-width: none;
-  }
-  .background-explorer__image { object-fit: cover; }
-  .background-explorer__cities { position: absolute; display: block; inset: 0; padding: 0; }
-  .background-explorer__city[data-city] { position: absolute; width: 227px; max-width: none; }
-  .background-explorer[data-scene] .background-explorer__close {
-    position: fixed; inset: 0 0 auto; width: 100vw; height: 22svh;
-  }
+/* Keep the mounted portfolio painted beneath the expanding viewport. */
+@media (max-width: 760px) {
+  .background-explorer__stories { top: 45%; bottom: 96px; left: 16px; right: 16px; width: auto; align-items: flex-start; }
+  .background-explorer__story { padding: 20px 24px; }
+  .background-explorer__story header { margin-bottom: 14px; }
+  .background-explorer__story p { font-size: 14px; }
+  .background-explorer__switcher { bottom: max(16px, env(safe-area-inset-bottom)); gap: 0; }
+  .background-explorer__switcher button { padding: 5px 8px; font-size: 12px; }
+  .background-explorer__hotspot span { padding: 8px 9px; font-size: 11px; gap: 4px; }
+}
+@media (pointer: coarse) {
+  .background-explorer__switcher button::after { content: ""; position: absolute; inset: -6px 0; }
 }
 @media (max-width: 979px) {
   /* Keep the first mobile viewport focused on the introduction. */
   .background-explore { display: none; }
-}
-@media (prefers-reduced-motion: reduce) { .background-explore:active { transform: none; } }
-@media (prefers-reduced-transparency: reduce) { .background-explore, .background-explorer__close { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); color: var(--ink); } }
-
-@media (prefers-reduced-transparency: reduce) { .background-explorer__city { background: #f8fcff; backdrop-filter: none; -webkit-backdrop-filter: none; } }
-
-/* A brief, overlapping reveal keeps the three notes feeling connected. */
-.background-explorer[open][data-animate-cities='true'] .background-explorer__city {
-  animation: city-note-enter 280ms cubic-bezier(.23,1,.32,1) both;
-  animation-delay: 60ms;
-}
-.background-explorer[open][data-animate-cities='true'] .background-explorer__city:nth-child(2) { animation-delay: 140ms; }
-.background-explorer[open][data-animate-cities='true'] .background-explorer__city:nth-child(3) { animation-delay: 220ms; }
-@keyframes city-note-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  .background-explorer__close { display: inline-flex; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .background-explorer[open][data-animate-cities='true'] .background-explorer__city { animation: none; }
+  .background-explore, .background-explorer__hotspots, .background-explorer__hotspot span, .background-explorer__switcher button { transition: none; }
+  .background-explore:active { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) { .background-explore, .background-explorer__close { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); color: var(--ink); } }
+
+@media (prefers-reduced-transparency: reduce) { .background-explorer__hotspot span, .background-explorer__switcher { background: #f8fcff; } }
+
+@media (prefers-reduced-transparency: reduce) {
+  .background-explorer__caption { background: #f8fbf5; }
+  .background-explorer[data-scene='night'] .background-explorer__caption { background: #20294f; }
 }
