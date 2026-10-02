@@ -78,7 +78,7 @@ body.has-rail { padding-left: var(--rail-w); }
 :root[data-theme='dark'] .site-rail__ai .ai-button img { filter: invert(1); }
 .site-rail__email { display: block; margin-top: 18px; }
 .site-rail__social { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
-.site-rail__social a { display: grid; place-items: center; color: var(--muted); transition: color .15s ease; }
+.site-rail__social a { display: grid; place-items: center; color: var(--muted); font: 400 14px/1.6 var(--sans); letter-spacing: -.01em; transition: color .15s ease; }
 .site-rail__social a:hover { color: var(--accent); }
 .site-rail__social a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .site-rail__social svg { width: 20px; height: 20px; fill: currentColor; }
