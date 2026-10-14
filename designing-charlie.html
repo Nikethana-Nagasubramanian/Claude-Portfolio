@@ -5,8 +5,8 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <script src="site-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Designing Trust Into a Conversational AI — Nikethana</title>
-  <meta name="description" content="A case study on designing privacy-first conversational AI workflows for Charlie." />
+  <title>Redesigning a financial AI users didn’t trust yet — Nikethana</title>
+  <meta name="description" content="How I researched, designed, and shipped the trust checkpoints for a privacy-first financial AI assistant." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -62,21 +62,21 @@
       <a href="#context">Context</a>
       <a href="#problem">Problem</a>
       <a href="#discovery">Discovery</a>
-      <a href="#architecture">Architecture</a>
+      <a href="#testing">Review step</a>
       <a href="#agent-ux">Agent UX</a>
-      <a href="#testing">Testing</a>
+      <a href="#architecture">Shipped systems</a>
       <a href="#impact">Impact</a>
     </aside>
 
     <article class="case-content">
       <header class="case-hero" id="overview">
         <p class="hero-eyebrow">Charlie — Privacy-first AI assistant</p>
-        <h1 class="case-title case-display">Designing Trust Into a Conversational AI</h1>
-        <p class="hero-support">I designed the moments that made a financial AI assistant feel understandable and optional before it ever asked someone to share sensitive context.</p>
+        <h1 class="case-title case-display">Redesigning a financial AI users didn’t trust yet</h1>
+        <p class="hero-support">In early research, only 1–2 of every 10 users continued after starting a chat and reaching the bank-connection flow. Over 2–3 weeks, I studied the problem with 20 users, redesigned Charlie’s trust checkpoints, and shipped changes that reduced privacy questions while improving confidence and comprehension.</p>
         <div class="spec-strip" aria-label="Project details">
           <div class="spec-rows">
             <p class="spec-item"><b>Role</b>Design Engineer</p>
-            <p class="spec-item"><b>Timeline</b>Mar 2026 – June 2026</p>
+            <p class="spec-item"><b>Timeline</b>2026</p>
             <p class="spec-item"><b>Implementation</b>Research, interaction design, AI-assisted functional prototypes, and shipped frontend work</p>
           </div>
         </div>
@@ -84,15 +84,15 @@
         <div class="summary-matrix" aria-label="Project summary">
           <div class="summary-item">
             <p class="truth-head">What</p>
-            <p>Redesigned Charlie's core trust surfaces for an AI handling financial data: onboarding, data masking, and the pre-send review step.</p>
+            <p>I joined a product whose privacy architecture was stronger than its explanation. New users landed directly in chat without knowing Charlie was a protective layer — not the model itself. They were then pushed toward connecting a bank account before the product had explained what it would access, what would leave, or whether connection was optional.</p>
           </div>
           <div class="summary-item">
             <p class="truth-head">How</p>
-            <p>User research turned directly into shipped screens — feature brief to functional prototype in 1-2 days, AI-assisted.</p>
+            <p>Across 2 research rounds over 2–3 weeks, I studied 20 users aged 25–60, translated the findings into trust checkpoints, and moved from feature brief to functional prototype in 1–2 days.</p>
           </div>
           <div class="summary-item">
             <p class="truth-head">Impact</p>
-            <p>Cut privacy-related support tickets ~80% and user abandonment 40%; shaped the company's enterprise go-to-market strategy.</p>
+            <p>Users asked fewer privacy questions and showed stronger confidence and comprehension; the research also shaped the company's enterprise go-to-market strategy.</p>
           </div>
         </div>
 
@@ -105,8 +105,8 @@
       <section class="case-section" id="context">
         <div class="sec-head">
           <p class="sec-index"><em>01</em>Context</p>
-          <h2 class="sec-title">A Privacy Layer, Not a Chat Feature</h2>
-          <p class="sec-support">Charlie sits between user and model, masking identity before any query leaves the product.</p>
+          <h2 class="sec-title">The privacy architecture worked. The experience didn’t explain it.</h2>
+          <p class="sec-support">Charlie masked identity before requests reached the model, but users landed in chat without knowing that — or why the product needed their financial data.</p>
         </div>
         <div class="sec-body">
           <p>Charlie is an AI-powered personal assistant that masks identifying data before a query leaves the product, so the model gets useful context without knowing who the user is. The first wedge was personal finance, where trust breaks quickly if security feels confusing or heavy.</p>
@@ -122,12 +122,12 @@
       <section class="case-section sec--narrow" id="problem">
         <div class="sec-head">
           <p class="sec-index"><em>02</em>Problem</p>
-          <h2 class="sec-title">Make Privacy Feel Invisible</h2>
-          <p class="sec-support">Every security step is a moment where trust either grows — or quietly breaks.</p>
+          <h2 class="sec-title">Trust broke before the first question</h2>
+          <p class="sec-support">The product asked for sensitive context and a bank connection before users understood the privacy model or saw a meaningful choice.</p>
         </div>
         <div class="sec-body">
-          <p>Users want deeply personalized financial answers, but the product has to handle sensitive data to get there. Every security step is a moment where confidence can grow, or trust can break.</p>
-          <p>The design challenge was making that infrastructure legible without making it feel like surveillance. Users needed clarity, control, and momentum inside the same flow.</p>
+          <p>The experience asked for trust in the wrong order. Users were expected to share sensitive financial context before Charlie had explained what it was, how its privacy layer worked, or what control they retained.</p>
+          <p>I needed to make the infrastructure legible without making the product feel like surveillance — preserving clarity, control, and momentum in the same flow.</p>
         </div>
 
         <div class="media-full">
@@ -136,7 +136,7 @@
         <p class="media-caption">Fig: Onboarding flow</p>
 
         <div class="sec-body">
-          <p class="mono-label">Decision: explain before you ask</p>
+          <h3 class="decision-title"><span>Decision:</span> explain before you ask</h3>
           <p>Early builds dropped users straight into chat with no explanation of what Charlie was — not the model itself, but a privacy layer in front of one. I pushed to front-load that explanation. In interviews, users who saw it upfront understood the mechanism before their first query, and were already positive about Charlie by the time they reached the chat.</p>
         </div>
 
@@ -146,7 +146,7 @@
         <div class="media-full media-full--716">
           <img src="assets/charlie/onboarding-after.svg" alt="Diagram: user signs up, goes through onboarding explaining what Charlie is, then reaches the chat window confident" />
         </div>
-        <p class="media-caption">Fig: 4 unanswered questions at first contact, down to 0 — dramatic improvement in trust when users understood what was going on before being asked for anything</p>
+        <p class="media-caption">Fig: 4 recurring questions the new onboarding needed to answer before first contact</p>
 
         <div class="media-full media-full--716">
           <img src="https://framerusercontent.com/images/6pMAwbG4qECb087nF4Z7DxiCkqQ.png?width=2260&amp;height=1534" alt="Charlie masking user data before sending a query to an external LLM." />
@@ -154,23 +154,23 @@
         <p class="media-caption">Fig: Masking a query before it leaves the product</p>
 
         <div class="sec-body">
-          <p class="mono-label">Decision: choice over coercion</p>
+          <h3 class="decision-title"><span>Decision:</span> choice over coercion</h3>
           <p>Early versions pushed users to connect a bank account the moment they landed. I pushed back — some users weren't comfortable linking an account, dummy or real, and preferred typing raw numbers. We replaced the push with a real choice: "You can connect bank accounts or give me raw numbers, whichever you're comfortable with."</p>
         </div>
 
         <div class="sec-body">
-          <p>This reframing cut privacy-related support tickets and user questions ~80%, measured against pre-launch support volume — trust was built through the product experience itself, not disclaimers or consent screens.</p>
+          <p>Across 20 users over 2–3 weeks, the redesigned experience produced fewer privacy questions and stronger confidence and comprehension. Trust was built through the product experience itself, not disclaimers or consent screens.</p>
         </div>
       </section>
 
       <section class="case-section" id="discovery">
         <div class="sec-head">
           <p class="sec-index"><em>03</em>Discovery</p>
-          <h2 class="sec-title">Not Waiting for a Brief</h2>
-          <p class="sec-support">Proactive research surfaced four strategy questions leadership could use to shape the roadmap.</p>
+          <h2 class="sec-title">No research brief, so I built the evidence loop</h2>
+          <p class="sec-support">Across 2 research rounds with 20 users aged 25–60, I identified the trust gap behind abandonment and translated it into roadmap and go-to-market questions.</p>
         </div>
         <div class="sec-body">
-          <p>I ran 11 usability sessions across 2 research rounds and identified a critical trust gap that was driving abandonment. I advocated for human-in-the-loop checkpoints and formal usability testing — a change that reduced user abandonment 40%. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
+          <p>Over 2–3 weeks, I ran 2 rounds of usability research with 20 users and identified a critical trust gap that was driving abandonment. I advocated for human-in-the-loop checkpoints and formal usability testing. The work quickly moved beyond screens into product strategy: who is this actually for, and what does each audience need to trust?</p>
         </div>
 
         <div class="media-plain">
@@ -192,61 +192,31 @@
         </div>
       </section>
 
-      <section class="case-section sec--major" id="architecture">
+      <section class="case-section sec--narrow" id="testing">
         <div class="sec-head">
-          <p class="sec-index"><em>04</em>Design &amp; Architecture</p>
-          <h2 class="sec-title">Features That Answered Real Questions</h2>
+          <p class="sec-index"><em>04</em>Data Package Review</p>
+          <h2 class="sec-title">“Why does Charlie have this — and why is it leaving?”</h2>
+          <p class="sec-support">Four unmoderated sessions exposed the failure of a raw-data review screen. I rebuilt it around the context users actually needed.</p>
         </div>
         <div class="sec-body">
-          <p>I moved fast by treating AI as a design-to-code partner - going from feature brief to functional prototype in 1-2 days. My focus was 4 modular pillars, each designed so privacy operates as invisible infrastructure:</p>
-
-          <p class="pillar-lead"><span class="pillar-num">1.</span> <strong class="pillar-name">Visualizing the Knowledge Graph:</strong> Translating a growing network of connected financial sources into an interface users can understand, manage, and audit at a glance. Personalizing recommendations across 6 connected financial data sources lifted discovery-flow completion to 69%, up from a lower baseline before personalization shipped.</p>
-
-          <div class="media-full">
-            <img src="assets/charlie/KnowledgeGraph.gif" alt="Interactive knowledge graph interface for Charlie, illustrating connected financial nodes." />
-          </div>
-          <p class="media-caption">Fig: Interactive knowledge graph - Illustrative only; original data and structure withheld under NDA</p>
-
-          <div class="media-full">
-            <img src="assets/charlie/info-source.png" alt="Income and Spending panel showing a mortgage balance field sourced from MonthlySavings.pdf." />
-          </div>
-          <p class="media-caption">Fig: Source attribution shown in the user's profile</p>
-
-          <div class="notice">
-            <p><b>Takeaway —</b> testing showed provenance mattered more to users than the masking itself — knowing where a number came from built more trust than hiding it did. Field-level source attribution across 15 profile fields cut user confusion 70%.</p>
-          </div>
-
-          <p class="pillar-lead"><span class="pillar-num">2.</span> <strong class="pillar-name">Frictionless Ingestion via Email Sync:</strong> A secure email-forwarding verification pipeline - frictionless enough that connecting a new source feels like a natural step, not a security checkpoint.</p>
-
-          <div class="media-full">
-            <img src="assets/charlie/email.png" alt="Document inbox with email verification flow for connecting a new data source." />
-          </div>
-          <p class="media-caption">Fig: A way to connect through emails seamlessly</p>
-
-          <p class="pillar-lead"><span class="pillar-num">3.</span> <strong class="pillar-name">Local-First Voice Architecture:</strong> Protected sensitive user input while preserving the speed and naturalness of voice interaction. Aimed at users increasingly comfortable speaking to an assistant over typing; I began scoping a voice-first onboarding flow before the contract ended.</p>
-
-          <div class="media-full">
-            <img src="assets/charlie/claude-ideation.png" alt="Early ideation concept for Charlie's local-first voice architecture." />
-          </div>
-        <p class="media-caption">Fig: Exploring task execution UI with Claude Design</p>
-
-          <p class="pillar-lead"><span class="pillar-num">4.</span> <strong class="pillar-name">Autonomous Task Execution:</strong> A structured task-scheduling modal that lets users set up persistent financial check-ins in plain English - no configuration overhead. I owned 4 of 9 implementation tickets for this feature and shipped the frontend 79% faster than scoped (3 days).</p>
-
-          <div class="media-full">
-            <img src="assets/charlie/task-creation.png" alt="Create a routine modal for scheduling a recurring financial check-in task." />
-          </div>
-          <p class="media-caption">Fig: Tasks to run on recurrence</p>
+          <p>I ran 4 unmoderated evaluation sessions across mobile and desktop, focused on the Data Package Review component: the moment where users decide what context to share before a query goes out.</p>
+          <p>Across the broader onboarding and chat journey, only 1–2 of every 10 participants continued after starting a chat and reaching bank connection. The review screen showed why: it surfaced every raw field being pulled — full transaction logs, unfiltered. Users asked the exact question you don't want at a trust checkpoint: "why does Charlie have this, and why is it about to leave?" I rebuilt the review UI around what needed to be shown, not everything that could be.</p>
         </div>
+
+        <div class="media-full media-full--652">
+          <img src="https://framerusercontent.com/images/w8eUXRGkszaqYu03NBrmPqJC6k.png?width=739&amp;height=276" alt="Brief insights from Charlie user testing sessions." />
+        </div>
+        <p class="media-caption">Fig: Brief insights from testing</p>
       </section>
 
       <section class="case-section sec--narrow" id="agent-ux">
         <div class="sec-head">
           <p class="sec-index"><em>05</em>Agent UX</p>
-          <h2 class="sec-title">Designing What the Agent Says While It Thinks</h2>
-          <p class="sec-support">From generic filler to a live readout of what the agent is actually doing.</p>
+          <h2 class="sec-title">Replacing “Thinking…” with the truth</h2>
+          <p class="sec-support">I mapped interface language to backend events so users could see the actual operation underway.</p>
         </div>
         <div class="sec-body">
-          <p>One of the first things I noticed after joining was the assistant's loading state: it cycled through generic filler — "Thinking...", "Pondering...", "Frolicking..." — copy that didn't match a security-first product handling sensitive data. I rewrote the phrases to be event-based instead, mapped to the actual backend action underway: a data lookup, a permissions check, a model handoff, each with its own phrase. Now, when the agent is working through something, users know exactly what it's doing, because the UI is telling the truth.</p>
+          <p>One of the first things I noticed after joining was the assistant's loading state: it cycled through generic filler — "Thinking...", "Pondering...", "Frolicking..." — copy that didn't match a security-first product handling sensitive data. I rewrote and shipped event-based phrases mapped to the actual backend action underway: a data lookup, a permissions check, a model handoff, each with its own phrase. Now, when the agent is working through something, users know exactly what it's doing, because the UI is telling the truth.</p>
         </div>
 
         <div class="media-full media-full--434">
@@ -264,32 +234,63 @@
         </div>
       </section>
 
-      <section class="case-section sec--narrow" id="testing">
+      <section class="case-section sec--major" id="architecture">
         <div class="sec-head">
-          <p class="sec-index"><em>06</em>Testing</p>
-          <h2 class="sec-title">One Thread, Four Sessions</h2>
-          <p class="sec-support">Moderated testing on the Data Package Review step shaped the v2 direction for consent and trust.</p>
+          <p class="sec-index"><em>06</em>Design &amp; Architecture</p>
+          <h2 class="sec-title">Four shipped systems that made privacy feel invisible</h2>
+          <p class="sec-support">Each started from a trust problem and shipped as part of the product — none were speculative concepts.</p>
         </div>
         <div class="sec-body">
-          <p>I ran moderated evaluation sessions across mobile and desktop, focused on the Data Package Review component: the moment where users decide what context to share before a query goes out.</p>
-          <p>The early version of this screen surfaced every raw field being pulled — full transaction logs, unfiltered. Users asked the exact question you don't want at a trust checkpoint: "why does Charlie have this, and why is it about to leave?" I rebuilt the review UI around what needed to be shown, not everything that could be — which is what took abandonment down 40%.</p>
-        </div>
+          <p>I moved from feature brief to functional prototype in 1–2 days, then carried 4 modular systems into the shipped product. Each made privacy operate as invisible infrastructure:</p>
 
-        <div class="media-full media-full--652">
-          <img src="https://framerusercontent.com/images/w8eUXRGkszaqYu03NBrmPqJC6k.png?width=739&amp;height=276" alt="Brief insights from Charlie user testing sessions." />
+          <p class="pillar-lead"><span class="pillar-status">Shipped</span><span class="pillar-num">1.</span> <strong class="pillar-name">Visualizing the knowledge graph:</strong> The shipped experience personalized recommendations across 6 connected financial data sources, giving users one place to understand, manage, and audit the information shaping Charlie’s answers.</p>
+
+          <div class="media-full">
+            <img src="assets/charlie/KnowledgeGraph.gif" alt="Interactive knowledge graph interface for Charlie, illustrating connected financial nodes." />
+          </div>
+          <p class="media-caption">Fig: Interactive knowledge graph - Illustrative only; original data and structure withheld under NDA</p>
+
+          <div class="media-full">
+            <img src="assets/charlie/info-source.png" alt="Income and Spending panel showing a mortgage balance field sourced from MonthlySavings.pdf." />
+          </div>
+          <p class="media-caption">Fig: Source attribution shown in the user's profile</p>
+
+          <div class="notice">
+            <p><b>Takeaway —</b> testing showed provenance mattered more to users than the masking itself — knowing where a number came from built more trust than hiding it did. Field-level source attribution across 15 shipped profile fields gave users a way to verify each number, reducing errors and confusion during testing.</p>
+          </div>
+
+          <p class="pillar-lead"><span class="pillar-status">Shipped</span><span class="pillar-num">2.</span> <strong class="pillar-name">Frictionless ingestion via email sync:</strong> A secure email-forwarding verification pipeline — frictionless enough that connecting a new source feels like a natural step, not a security checkpoint.</p>
+
+          <div class="media-full">
+            <img src="assets/charlie/email.png" alt="Document inbox with email verification flow for connecting a new data source." />
+          </div>
+          <p class="media-caption">Fig: A way to connect through emails seamlessly</p>
+
+          <p class="pillar-lead"><span class="pillar-status">Shipped</span><span class="pillar-num">3.</span> <strong class="pillar-name">Local-first voice architecture:</strong> I designed and shipped the full feature, protecting sensitive user input while preserving the speed and naturalness of voice interaction for users increasingly comfortable speaking to an assistant over typing.</p>
+
+          <div class="media-full">
+            <img src="assets/charlie/claude-ideation.png" alt="Early ideation concept for Charlie's local-first voice architecture." />
+          </div>
+          <p class="media-caption">Fig: Exploring task execution UI with Claude Design</p>
+
+          <p class="pillar-lead"><span class="pillar-status">Shipped</span><span class="pillar-num">4.</span> <strong class="pillar-name">Autonomous task execution:</strong> A structured task-scheduling modal that lets users set up persistent financial check-ins in plain English — no configuration overhead. I owned 4 of 9 implementation tickets and shipped my frontend scope in 3 days against a 2-week estimate set by the PM and CPO.</p>
+
+          <div class="media-full">
+            <img src="assets/charlie/task-creation.png" alt="Create a routine modal for scheduling a recurring financial check-in task." />
+          </div>
+          <p class="media-caption">Fig: Tasks to run on recurrence</p>
         </div>
-        <p class="media-caption">Fig: Brief insights from testing</p>
       </section>
 
       <section class="case-section" id="impact">
         <div class="sec-head">
           <p class="sec-index"><em>07</em>Impact</p>
-          <h2 class="sec-title">Built to Scale Trust</h2>
-          <p class="sec-support">Research and prototypes shaped the roadmap, the testing strategy, and the story told to institutional stakeholders.</p>
+          <h2 class="sec-title">From user trust to product strategy</h2>
+          <p class="sec-support">The work strengthened user confidence, shipped at production scale, and influenced the roadmap and enterprise story.</p>
         </div>
         <div class="sec-body">
-          <p>The research, prototypes, and interaction framework did not just produce screens. They fed into the product roadmap, the formal testing strategy, and the enterprise narrative presented to institutional stakeholders.</p>
-          <p>My contract wrapped in June 2026. By then, the institution-tagged interview method was already in use for enterprise conversations — a piece of the go-to-market approach that outlasted the placement itself.</p>
+          <p>Across 20 users over 2–3 weeks, the redesigned experience produced fewer privacy questions and stronger confidence and comprehension. The shipped product supported 6 connected financial data sources and field-level provenance across 15 profile fields.</p>
+          <p>I also delivered 4 of the feature's 9 autonomous-task tickets in 3 days against a 2-week estimate. The research framework went on to shape formal testing, the product roadmap, and enterprise conversations.</p>
         </div>
       </section>
 
