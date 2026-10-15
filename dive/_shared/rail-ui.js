@@ -122,19 +122,19 @@
     });
   }
 
-  /* ── 2. Keep LinkedIn and X below email; move the rest to the footer ── */
+  /* ── 2. Keep GitHub and X below email; move the rest to the footer ── */
   function moveSocial() {
     var social = one(".home-social-links", ".site-rail__social");
     if (!social || document.querySelector(".site-footer")) return;
 
     var labels = {
-      linkedin: "LinkedIn", x: "X", twitter: "X", github: "GitHub",
+      x: "X", twitter: "X", github: "GitHub",
       email: "Email", medium: "Medium"
     };
     var out = [];
     Array.prototype.forEach.call(social.querySelectorAll("a"), function (a) {
       var key = (a.getAttribute("aria-label") || "").toLowerCase();
-      if (key === "linkedin" || key === "x" || key === "twitter") return;
+      if (key === "github" || key === "x" || key === "twitter") return;
       var label = labels[key] || a.getAttribute("aria-label") || "Link";
       out.push('<a href="' + a.getAttribute("href") + '"' +
         (a.target ? ' target="' + a.target + '" rel="noopener"' : "") +

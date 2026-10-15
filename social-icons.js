@@ -5,7 +5,6 @@
   document.head.append(stylesheet);
 
   const icons = {
-    LinkedIn: 'linkedin-logo',
     Twitter: 'x-logo',
     GitHub: 'github-logo',
     Email: 'envelope',

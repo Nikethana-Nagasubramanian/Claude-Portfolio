@@ -38,15 +38,14 @@
       '<a class="ai-button ai-button--claude" href="https://claude.ai/new?q=' + AI_PROMPT + '" target="_blank" rel="noopener"><img class=\"ai-icon\" src=\"assets/icons/claude-star.png?v=2\" alt=\"\" aria-hidden=\"true\" width=\"16\" height=\"16\" />Ask Claude about Nike</a>',
       "</div>",
       '<a class="site-rail__email" href="mailto:itsmenike3@gmail.com">itsmenike3@gmail.com</a>',
-      '<nav class="site-rail__social" aria-label="LinkedIn and X"></nav>',
+      '<nav class="site-rail__social" aria-label="GitHub and X"></nav>',
       "</div>",
     ].join("");
 
 
     rail.querySelector(".site-rail__social").innerHTML = [
-      ['LinkedIn', 'https://www.linkedin.com/in/nikethana-nn/'],
-      ['X', 'https://x.com/nike_thana'],
       ['GitHub', 'https://github.com/Nikethana-Nagasubramanian/'],
+      ['X', 'https://x.com/nike_thana'],
       ['Email', 'mailto:itsmenike3@gmail.com'],
       ['Medium', 'https://medium.com/@nike_thana/']
     ].map(function (item) { return '<a aria-label="' + item[0] + '" href="' + item[1] + '" target="_blank" rel="noopener">' + item[0] + '</a>'; }).join('');
